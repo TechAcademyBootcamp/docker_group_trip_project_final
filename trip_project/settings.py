@@ -37,6 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
+    'ckeditor_uploader',
+    'Hotels',
+    'Main',
+    'Restaurants',
+    'Tours',
 ]
 
 MIDDLEWARE = [
@@ -118,3 +124,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_FILENAME_GENERATOR = 'Main.utils.get_filename'
+CKEDITOR_BROWSE_SHOW_DIRS = True
+CKEDITOR_RESTRICT_BY_DATE = True
+
+CKEDITOR_CONFIGS = {
+    "default":{
+        'height':'100%',
+        'width':'100%',
+    }
+}
