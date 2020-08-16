@@ -99,6 +99,13 @@ class StaticPage(models.Model):
 class AboutProject(models.Model):
     #information
     project_devops = models.CharField('Fullname',max_length=60)
+    key_words = models.CharField('Key words',max_length=500)
+    title = models.CharField('Title',max_length=60)
+    faq_icon = models.ImageField('Faq icon',upload_to='images')
+    logo = models.ImageField('Logo',upload_to='images')
+    description = models.TextField('Description')
+
+    #moderation
     project_developing_start_time = models.DateField()
     project_developing_finish_time = models.DateField()
 
@@ -110,3 +117,4 @@ class WebsiteSettings(models.Model):
         ('rus', 'Russian'),
     ]
     languages = models.CharField('Type', max_length=5, choices=type_choice)
+    cover_image = models.ImageField('Image',upload_to='image')
