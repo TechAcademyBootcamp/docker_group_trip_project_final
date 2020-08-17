@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'Main',
     'Restaurants',
     'Tours',
+    'Account',
 ]
 
 MIDDLEWARE = [
@@ -85,6 +86,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+AUTH_USER_MODEL = 'Account.User'
 
 
 # Password validation
