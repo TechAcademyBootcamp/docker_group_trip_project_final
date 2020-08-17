@@ -118,3 +118,18 @@ class WebsiteSettings(models.Model):
     ]
     languages = models.CharField('Type', max_length=5, choices=type_choice)
     cover_image = models.ImageField('Image',upload_to='image')
+
+class Subscriber(models.Model):
+    email = models.EmailField('Email',max_length=30,unique=True)
+    is_active = models.BooleanField('is active',default=True)
+
+    # moderations
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Subscriber'
+        verbose_name_plural = 'Subscribers'
+
+    def __str__(self):
+        return self.email
