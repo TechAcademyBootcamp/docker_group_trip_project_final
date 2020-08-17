@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.min.css' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900|Display+Playfair:200,300,400,700">
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet"> 
-    {% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> {% endcomment %}
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
@@ -25,7 +24,8 @@
     {% endblock %}
 </head>
 
-<body class=''>
+<body>
+    <div class="site-wrap">
     {% include 'includes/navbar.html' %}
     
     {% block content %}
@@ -34,6 +34,7 @@
 
     
     {% include 'includes/footer.html' %}
+</div>
 
 
     <script src="{% static 'js/jquery.min.js' %}"></script>
