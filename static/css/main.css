@@ -1,3 +1,18 @@
+body {
+  line-height: 1.7;
+  color: #4d4d4d;
+  font-weight: 300;
+  font-size: 1rem; 
+  margin: 0;
+  text-align: left;
+  background-color: #fff;
+}
+
+a{
+  text-decoration: none !important;
+  background-color: transparent;
+  transition: .3s all ease;
+}
 .active-purple-2 input.form-control[type=text]:focus:not([readonly]) {
     border-bottom: 1px solid #ce93d8;
     box-shadow: 0 1px 0 0 #ce93d8;
