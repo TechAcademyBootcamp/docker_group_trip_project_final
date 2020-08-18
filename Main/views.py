@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.urls import reverse_lazy
 from Main.forms import SubscriberForm,ContactForm
 from django.views.generic import ListView,CreateView,TemplateView
-from Main.models import City,ContactInfo
+from Main.models import City,ContactInfo,AboutProject
 # Create your views here.
 
 class MainClassView(ListView):
@@ -47,5 +47,13 @@ class ContactPageView(TemplateView):
         context['form'] = ContactForm()
         return context
 
+class AboutUsView(TemplateView):
+    template_name = 'about_us.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        aboutUs = AboutProject.objects.get()
+        context['aboutUs'] = aboutUs
+        return context
 
 
