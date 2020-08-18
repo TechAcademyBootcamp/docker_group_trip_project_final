@@ -1,0 +1,29 @@
+{% load custom_tags %}
+
+{% get_subscriber_form as form %}
+<section class="ftco-subscribe ftco-section bg-dark">
+    <div class="overlay">
+        <div class="container">
+            <div class="row text-wrap text-center heading-section ftco-animate justify-content-center p-5">
+                <div class="col-md-5 col-12 offset-md-1 d-flex flex-column">
+                    <h4 class="mb-4 text-left text-white"><span>Subcribe to our Newsletter</span></h4>
+                    <p class="text-left text-white" style="font-size: 12px;">A small river named Duden flows by
+                        their place and supplies it with the necessary regelialia.
+                        It
+                        is a paradisematic countr.</p>
+                </div>
+                <div class="col-md-5 col-12 d-flex justify-content-center mt-4 mb-4">
+                    <form method="POST" class="subscribe-form">
+                        <div class="form-group d-flex">
+                            {{form.email}}
+                            {{form.email.help_text}}
+                            {{form.email.errors}}
+                            <input type="submit" value="Subscribe"
+                                class="submit px-3 ml-2 py-2 bg-danger border-0 rounded text-light">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
