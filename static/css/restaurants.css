@@ -1,0 +1,149 @@
+.background-filter{
+    background-image: url(/media/images/background-filter.png)
+}
+
+.restaurant-filter-input{
+    border-style: none;
+    font-family: 'Ubuntu', sans-serif;
+    width: 80%;
+}
+
+.restaurant-find{
+    padding: 0 .5rem;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 0;
+    border-style: none;
+    background: #dc3545;
+    color: white;
+    padding: 10px;
+    border-radius: 0px 10px 10px 0px;
+}
+
+.search-input{
+    border-radius: 10px 0px 0px 10px;
+}
+
+.restaurant-options{
+    font-size: 16px;
+    font-weight: 700;
+}
+.restaurant-list-option{
+    font-size: 14px;
+    font-weight: 500;
+}
+.available-tables{
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.restaurant-dropdown-featured{
+    border-style: none;
+    background: white;
+    padding: 0.2rem 6.5rem 0.2rem 0.5rem;
+    font-size: 12px;
+    font-weight: 700;
+    width: 100%;
+}
+
+.restaurant-dropdown{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border: 2px solid rgba(0,0,0,.12);
+}
+
+.restaurant-dropdown:hover{
+    border: 2px solid #da3743;
+}
+
+.restaurant-dropdown:focus{
+    outline: #4a6fde solid 2px;
+}
+
+.dropdown-list{
+    position: absolute;
+    list-style: none;
+    top: 45px;
+    width: 215px;
+    background: #f1f0ef;
+    margin-left: -1px;
+    padding: 0px;
+    cursor: pointer;
+    border: 2px solid rgba(0,0,0,.12);
+    visibility: hidden;
+}
+
+.restaurant-dropdown:focus + .dropdown-list{
+    visibility: visible !important;
+}
+
+.dropdown-list li{
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 10px;
+}
+.dropdown-list li:hover{
+    background-color: #da3743;
+    color: #fff;
+}
+
+.restaurant-name{
+    color: #247f9e;
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.restaurant-name:hover{
+    text-decoration: underline !important; 
+}
+
+.restaurant-feedback{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+}
+.restaurant-feedback-number{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.restaurant-city-name{
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.restaurant-delivery{
+    color: #2d333f;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 8px 0;
+    text-transform: none;
+}
+
+.restaurant-telephone{
+    font-size: 14px;
+    font-weight: 500;
+    color: #da3743;
+    vertical-align: middle;
+    line-height: 20px;
+    border: 2px solid rgba(0,0,0,.12);
+    padding: 8px 0px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 766px) {
+    .search-input{
+        padding:10px;
+        border-radius: 10px 10px 0px 0px;
+    }
+    .restaurant-find{
+        width: 100%;
+        border-radius:0px 0px 10px 10px;
+    }
+  }
+
