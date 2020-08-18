@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="p-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <div class="p-3">
+                    <h3>Contact Information</h3>
+                </div>
+                <div class="border p-2 text-left my-3">
+                    <p>Organisation name: <span class="text-danger"> {{contactInfo.fullname}} </span></p>
+                </div>
+                <div class="border p-2 text-left my-3">
+                    <p>Our email: <span class="text-danger"> {{contactInfo.email}} </span></p>
+                </div>
+                <div class="border p-2 text-left my-3">
+                    <p>Our phone number: <span class="text-danger"> {{contactInfo.phone_number}} </span></p>
+                </div>
+                <div class="border p-2 text-left my-3">
+                    <p>Our location: <span class="text-danger"> {{contactInfo.location}} </span></p>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 py-4">
+                <form action="" class="bg-light p-5 contact-form" method="POST">
+                    {% csrf_token %}
+                    {% for field in form %}
+                   <div class="form-group p-2">
+                       {{field}}
+                       {{field.errors}}
+                    </div>
+                    {% endfor %}
+                    <div class="form-group">
+                        <input type="submit" value="Send Message" class="btn btn-danger py-3 px-5">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+                
+
+            
+
+{% endblock content %}
