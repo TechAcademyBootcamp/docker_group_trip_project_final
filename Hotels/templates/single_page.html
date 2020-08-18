@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="jquery.lightroom.css" rel="stylesheet">
+    <!-- <link href="jquery.lightroom.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="css/gallery.css">
     <link rel="stylesheet" href="css/pignose.calendar.css">
-  
+
     <title>Document</title>
 </head>
 
@@ -29,111 +29,83 @@
                 </div>
             </div>
             <div class="row p-3 gallery">
-            <div class="gallery col-6">
+                <div class="gallery col-6">
                     <div class="images">
                         <div class="image active">
-                            <div class="content" style="background-image: url(https://static.toiimg.com/thumb/72975551.cms?width=680&height=512&imgsize=881753)"></div>
+                            <div class="content"
+                                style="background-image: url(https://static.toiimg.com/thumb/72975551.cms?width=680&height=512&imgsize=881753)">
+                            </div>
                         </div>
                         <div class="image">
-                            <div class="content" style="background-image: url(https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg)"></div>
+                            <div class="content"
+                                style="background-image: url(https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg)">
+                            </div>
                         </div>
                         <div class="image">
-                            <div class="content" style="background-image: url(https://cdn.pixabay.com/photo/2015/02/24/15/41/dog-647528__340.jpg)"></div>
+                            <div class="content"
+                                style="background-image: url(https://cdn.pixabay.com/photo/2015/02/24/15/41/dog-647528__340.jpg)">
+                            </div>
                         </div>
                         <div class="image">
-                            <div class="content" style="background-image: url(https://cdn.pixabay.com/photo/2015/02/24/15/41/dog-647528__340.jpg)"></div>
+                            <div class="content"
+                                style="background-image: url(https://cdn.pixabay.com/photo/2015/02/24/15/41/dog-647528__340.jpg)">
+                            </div>
                         </div>
                     </div>
                     <div class="thumbs">
-                        <div class="thumb active" style="background-image: url(https://static.toiimg.com/thumb/72975551.cms?width=680&height=512&imgsize=881753)"></div>
-                        <div class="thumb" style="background-image: url(https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg)"></div>
-                        <div class="thumb" style="background-image: url(https://cdn.pixabay.com/photo/2015/02/24/15/41/dog-647528__340.jpg)"></div>
-                        <div class="thumb" style="background-image: url(https://cdn.pixabay.com/photo/2015/02/24/15/41/dog-647528__340.jpg)"></div>
+                        <div class="thumb active"
+                            style="background-image: url(https://static.toiimg.com/thumb/72975551.cms?width=680&height=512&imgsize=881753)">
+                        </div>
+                        <div class="thumb"
+                            style="background-image: url(https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg)">
+                        </div>
+                        <div class="thumb"
+                            style="background-image: url(https://cdn.pixabay.com/photo/2015/02/24/15/41/dog-647528__340.jpg)">
+                        </div>
+                        <div class="thumb"
+                            style="background-image: url(https://cdn.pixabay.com/photo/2015/02/24/15/41/dog-647528__340.jpg)">
+                        </div>
                     </div>
                 </div>
-            <div class="col-6">
-                <div class="calender"></div>
+                <div class="col-6">
+                    <div class="calender"></div>
+                </div>
             </div>
-        </div>
     </section>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.4/hammer.min.js"></script>
+    <script src="js/gallery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
+        integrity="sha512-rmZcZsyhe0/MAjquhTgiUcb4d9knaFc7b5xAfju483gbEXTkeJRUMIPk6s3ySZMYUHEcjKbjLjyddGWMrNEvZg=="
+        crossorigin="anonymous"></script>
+    <script src="js/pignose.calendar.js"></script>
+    <script>
+        $(function () {
+            $('.gallery').gallery();
+        });
+
+        $(function () {
+            $('.calender').pignoseCalender({
+                multiple: true,
+                select: function (date, obj) {
+                    obj.calender.parent().next().show().text('You selected ' +
+                        (date[0] === null ? 'null' : date[0].format('YYYY-MM-DD')) +
+                        '~' +
+                        (date[1] === null ? 'null' : date[1].format('YYYY-MM-DD')) +
+                        '.');
+                }
+            });
+        });
+
+    </script>
+
 </body>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-    crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-    crossorigin="anonymous"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.4/hammer.min.js"></script>
-<script src="js/gallery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
-<script src="js/pignose.calendar.js"></script>
-<script>
-    $(function () {
-        $('.gallery').gallery();
-    });
-</script>
-<script>
-    $('.calender').pignoseCalender();
-    $('.calender').pignoseCalender({
-	  lang: 'en',
-	  date: moment(),
-	  // light, dark
-	  theme: 'dark',
-	  // date format
-	  format: 'YYYY-MM-DD',
-	  // CSS class array
-	  classOnDays: [],
-	  // array of enabled dates
-	  enabledDates: [],
-	  // disabled dates
-	  disabledDates: [],
-	  // You can disable by using a weekday number array (This is a sequential number start from 0 [sunday]).
-	  disabledWeekdays: [],
-	  // This option is advanced way to using disable settings, You can give multiple disabled range by double array date string by formatted to 'YYYY-MM-DD'.
-	  disabledRanges: [],
-	  // Set and array of events to pin on calendar.
-	  // Each event is an object that must contain a date string formatted to 'YYYY-MM-DD' and class key that belong to classOnEvents dictionary indicating its color on calendar.
-	  // Events with not color class suitable are all pin with  #5c6270.
-	  // Issues may arise when the number of color class increase, this could break the calendar cell.
-	  schedules: [],
-	  // Set a dictionary with class 'key' and color code 'value' used for pin events class by date.
-	  scheduleOptions: {
-	      colors: {}
-	  },
-	  // Your first day of week (0: Sunday ~ 6: Saturday).
-	  week: 0,
-	  // If you set true this option, You can use multiple range picker by one click on your Calendar.
-	  pickWeeks: false,
-	  //  You can turn on/off initialized date by this option.
-	  initialize: true,
-	  // enable multiple date selection
-	  multiple: true,
-	  // use toggle in the calendar
-	  toggle: false,
-	  // shows buttons
-	  buttons: false,
-	  // reverse mode
-	  reverse: false,
-	  // display calendar as modal
-	  modal: false,
-	  // add button controller for confirm by user
-	  buttons: false,
-	  // minimum disable date range by 'YYYY-MM-DD' formatted string
-	  minDate: null,
-	  // maximum disable date range by 'YYYY-MM-DD' formatted string
-	  maxDate: null,
-	  // called when you select a date on calendar (date click).
-	  select: functon (),
-	  // If you set true this option, You can pass the check of disabled dates when multiple mode enabled.
-	  selectOver: false,
-	  // called when you apply a date on calendar. (OK button click).
-	  apply: functon (),
-	  // called when you apply a date on calendar. (OK button click).
-	  click: null,
-	});
-</script>
 
 </html>
