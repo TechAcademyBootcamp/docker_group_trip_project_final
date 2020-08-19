@@ -56,4 +56,8 @@ class AboutUsView(TemplateView):
         context['aboutUs'] = aboutUs
         return context
 
+class PrivacyPolicyView(TemplateView):
+    template_name = 'policies.html'
 
+class TermsOfUseView(TemplateView):
+    template_name = 'terms.html'
