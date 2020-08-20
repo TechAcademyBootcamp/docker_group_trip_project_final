@@ -29,3 +29,7 @@ class SubscriberCreateView(CreateView):
         messages.success(self.request,form.errors)
         redirect_url = self.request.GET.get('redirect_url',self.success_url)
         return redirect(redirect_url)
+
+class CitySinglePage(ListView):
+    model = City
+    template_name = 'city_single_page.html'
