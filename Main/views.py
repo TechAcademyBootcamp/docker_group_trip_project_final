@@ -58,6 +58,12 @@ class AboutUsView(TemplateView):
 
 class PrivacyPolicyView(TemplateView):
     template_name = 'policies.html'
+    
 
 class TermsOfUseView(TemplateView):
     template_name = 'terms.html'
+
+
+class CitySinglePage(ListView):
+    model = City
+    template_name = 'city_single_page.html'
