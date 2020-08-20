@@ -4,11 +4,26 @@
   }
 
 .search-parent{
-  background-image: url('https://www.spa-hotel-imperial.cz/userfiles/thumbs/f/ext-2_15937844253843_1920x1200_tt_90.jpg');
+  background-image: url('https://www.tripadvisor.com/img2/brand/feed/home_hero_got_illustration.svg');
+  background-repeat: no-repeat;
+  background-position: right;
+  position: relative;
+  left: 0;
+  height: 318px;
+  bottom: -18px;
+  width: var(--_2T1StAM-);
+  background-size: contain;
 }
+.for-bg{
+  background-color: #c9f2e3;
+
+}
+
 .main-images{
-  
   border-radius: 12px;
+}
+.main-images::before{
+  background: linear-gradient(to bottom, rgba(4, 14, 39, 0) 0%, rgba(4, 14, 39, 0.7) 100%) !important;
 }
 .main-image-div:hover{
   transform: translate(0,-10px) !important;
@@ -21,12 +36,16 @@
 
 .main-image-div{
   position: relative;
-  background: linear-gradient(to bottom, rgba(4, 14, 39, 0) 0%, rgba(4, 14, 39, 0.7) 100%);
+  
+}
+.main-image-div::before{
+  background: linear-gradient(to bottom, rgba(4, 14, 39, 0) 0%, rgba(4, 14, 39, 0.7) 100%) !important;
+
 }
 .city-name{
   position: absolute;
-  bottom: 50px;
-  left: 50px;
+  bottom: 10px;
+  left: 30px;
   color: white;
   font-size: 22px;
   font-family: "Rubik", sans-serif;
@@ -69,7 +88,20 @@
     align-items: flex-end;
     margin: 8px 0 24px;
     font-weight: 900;
+    font-family: 'Do Hyeon', sans-serif;
 }
 .for-fonts{
   font-family: 'Montserrat', sans-serif;
+}
+.search-input{
+font-size: 18px;
+line-height: 36px;
+padding-left: 42px;
+height: 60px;
+border-radius: 12px;
+box-shadow: 3px;
+}
+.search-input-form{
+border-radius: 12px;
+box-shadow: 0 4px 4px rgba(0,0,0,.25);
 }
