@@ -11,7 +11,7 @@ class SubscriberForm(forms.ModelForm):
 
         widgets = {
             'email': forms.EmailInput(attrs={
-                'class':'form-control w-75 py-4 col-md-10',
+                'class':'form-control w-100 py-4 col-md-10 rounded',
 
                 'placeholder':'Enter email address'
             })
@@ -40,10 +40,11 @@ class ContactForm(forms.ModelForm):
                     'class':'form-control py-4',
                      'placeholder':'Subject',
                 }),
-            'message':forms.TextInput(attrs={
+            'message':forms.Textarea(attrs={
                     'class':'form-control py-4',
                     'rows':7,
                     'cols':30,
                      'placeholder':'Message',
+                    'style':'resize:off',
                 }),
         }

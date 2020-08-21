@@ -61,3 +61,4 @@ class PrivacyPolicyView(TemplateView):
 
 class TermsOfUseView(TemplateView):
     template_name = 'terms.html'
+

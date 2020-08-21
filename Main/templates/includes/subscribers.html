@@ -1,15 +1,40 @@
 {% load custom_tags %}
 {% block css %}
 <style>
+    .body{
+        font-family: 'Roboto', sans-serif;
+    }
     .overlayy {
         background-image: url('https://colorlib.com/preview/theme/travelo/img/banner/newsletter.png;');
         background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
-        padding: 40px 0;
+        background-position: left;
+        background-position-x: -169px;
+        z-index: -10;
+        position: relative;
     }
+.subs{
+    padding: 40px 0;
+    background-color:#3d485d;
+    opacity: 0.9;
+    z-index: 1;
+}
+.subs-text{
+    font-size: 24px;
+color: #fff;
+margin-bottom: 0;
+margin-bottom: 11px;
+}
+.sub-small-text{
+    color: #AAB1B7;
+font-size: 16px;
+line-height: 28px;
+margin-bottom: 0;
+}
+.input-terr{
+    z-index: 10;
+}
     /* .ftco-subscribe.overlay::before{
-        opacity: 0.7;
+        
     }
 
     .overlayy::before {
@@ -27,25 +52,24 @@
 {% endblock %}
 {% get_subscriber_form as form %}
 <section class="ftco-subscribe overlayy ftco-section ">
-    <div class="container ">
-        <div class="row text-wrap text-center heading-section ftco-animate justify-content-center">
-            <div class="col-md-5 col-12 offset-md-1 d-flex flex-column">
-                <h4 class="mb-4 text-left text-white"><span>Subcribe to our Newsletter</span></h4>
-                <p class="text-left text-white" style="font-size: 12px;">A small river named Duden flows by
-                    their place and supplies it with the necessary regelialia.
-                    It
-                    is a paradisematic countr.</p>
-            </div>
-            <div class="col-md-5 col-12 d-flex justify-content-center mt-4 mb-4">
-                <form method="POST" class="subscribe-form">
-                    <div class="form-group d-flex">
-                        {{form.email}}
-                        {{form.email.help_text}}
-                        {{form.email.errors}}
-                        <input type="submit" value="Subscribe"
-                            class="submit px-3 ml-2 py-2 bg-danger border-0 rounded text-light">
-                    </div>
-                </form>
+    <div class="subs">
+        <div class="container ">
+            <div class="row text-wrap text-center heading-section ftco-animate justify-content-center">
+                <div class="col-md-4 col-12 offset-md-1 d-flex flex-column">
+                    <h4 class="mb-4 text-left text-white"><span class="subs-text">Subcribe to our Newsletter</span></h4>
+                    <p class="sub-small-text text-left" >Subscribe newsletter to get offers and about new places to discover.</p>
+                </div>
+                <div class="input-terr col-md-6 col-12 d-flex justify-content-left mt-4 mb-4">
+                    <form method="POST" class="subscribe-form w-75">
+                        <div class="form-group d-flex">
+                            {{form.email}}
+                            {{form.email.help_text}}
+                            {{form.email.errors}}
+                            <input type="submit" value="Subscribe"
+                                class="submit px-3 ml-2 py-2 bg-danger border-0 rounded text-light">
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

@@ -6,5 +6,43 @@
   font-size: 18px;
 }
 .options-div{
-  background-color: rgb(238, 225, 225);
+  background-color: rgb(251, 248, 248);
+}
+
+/* Reviews css */
+
+.user-avatar{
+  width: 60px;
+  height: 60px;
+}
+.user-data{
+  font-size: 14px;
+}
+.line-div{
+  position: relative !important;
+  height: 4px !important;
+  margin-right: 4px !important;
+  background: rgb(221, 221, 221) none repeat scroll 0% 0% !important;
+  border-radius: 2px !important;
+  width: 60% !important;
+}
+.line-span{
+  position: absolute !important;
+top: 0px !important;
+left: 0px !important;
+bottom: 0px !important;
+border-radius: 2px !important;
+background: black !important;
+width: 100%;
+}
+.rating-count{
+  font-size: 12px;
+  font-weight: bold;
+}
+.line-span.rating{
+  width: 90% !important;
+}
+.review-rating-count{
+  font-weight: bold;
+  font-size: 22px;
 }

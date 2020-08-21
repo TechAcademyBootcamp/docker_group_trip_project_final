@@ -95,7 +95,7 @@ a{
 .search-text{
   font-size: 36px;
     line-height: 40px;
-    color: var(--primaryText);
+    color:rgb(20, 20, 20);
     height: 80px;
     display: flex;
     -webkit-align-items: flex-end;
@@ -109,14 +109,26 @@ a{
   font-family: 'Montserrat', sans-serif;
 }
 .search-input{
-font-size: 18px;
-line-height: 36px;
-padding-left: 42px;
-height: 60px;
-border-radius: 12px;
-box-shadow: 3px;
+font-size: 18px !important;
+line-height: 36px !important;
+padding-left: 42px !important;
+height: 60px !important;
+border-radius: 12px !important;
+box-shadow: 3px !important;
 }
 .search-input-form{
 border-radius: 12px;
 box-shadow: 0 4px 4px rgba(0,0,0,.25);
+}
+.for-linear:before{
+  background: linear-gradient(to bottom, rgba(4, 14, 39, 0) 0%, rgba(4, 14, 39, 0.7) 100%) !important;
+}
+.counters-divv:before{
+  background: linear-gradient(to bottom, #000428  0%,#004e92 100%) !important;
+}
+.counterss{
+  color: black;
+}
+.demo-1,.demo-0,.demo-2{
+  font-weight: bolder;
 }
