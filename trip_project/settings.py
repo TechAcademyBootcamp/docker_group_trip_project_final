@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'Main',
     'Restaurants',
     'Tours',
+    'Places'
 ]
 
 MIDDLEWARE = [

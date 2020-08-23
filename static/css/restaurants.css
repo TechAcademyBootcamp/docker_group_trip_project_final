@@ -5,35 +5,51 @@
 .restaurant-filter-input{
     border-style: none;
     font-family: 'Ubuntu', sans-serif;
-    width: 80%;
+    width: 100%;
+}
+
+.restaurant-search-input{
+    padding: 15px 0px;
+    justify-content: center;
+}
+
+.restaurant-info{
+    padding:20px 0px;
+    border-bottom:1px solid rgba(0,0,0,.12);
+    flex-wrap: wrap;
+    text-align: center;
 }
 
 .restaurant-find{
-    padding: 0 .5rem;
+    font-weight: 500;
     border-top-right-radius: 3px;
     border-bottom-left-radius: 0;
     border-style: none;
     background: #dc3545;
     color: white;
-    padding: 10px;
-    border-radius: 0px 10px 10px 0px;
+    border-radius: 0px 3px 3px 0px;
+    transition: 0.3s ease all;
+    padding: 10px 0px;
+    width: 100%;
+}
+
+.restaurant-find:hover{
+    background-color: #b8222d;
 }
 
 .search-input{
-    border-radius: 10px 0px 0px 10px;
+    border-radius: 3px 0px 0px 3px;
 }
 
 .restaurant-options{
     font-size: 16px;
     font-weight: 700;
+    white-space: nowrap;
 }
 .restaurant-list-option{
     font-size: 14px;
     font-weight: 500;
-}
-.available-tables{
-    font-size: 13px;
-    font-weight: 500;
+    white-space: nowrap;
 }
 
 .restaurant-dropdown-featured{
@@ -73,6 +89,7 @@
     cursor: pointer;
     border: 2px solid rgba(0,0,0,.12);
     visibility: hidden;
+    z-index: 2;
 }
 
 .restaurant-dropdown:focus + .dropdown-list{
@@ -93,6 +110,11 @@
     color: #247f9e;
     font-size: 1.125rem;
     font-weight: 600;
+    cursor: pointer;
+}
+
+.body-card{
+    padding: 0px 10px !important;
 }
 
 .restaurant-name:hover{
@@ -111,7 +133,7 @@
 }
 
 .restaurant-city-name{
-    font-size: 17px;
+    font-size: 12px;
     font-weight: 400;
 }
 
@@ -123,6 +145,22 @@
     text-transform: none;
 }
 
+.restaurant-card{
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+    padding: 20px 0px;
+}
+
+.restaurant-description{
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.restaurant-card-img{
+    width: 205px;
+    height: 205px;
+}
+
 .restaurant-telephone{
     font-size: 14px;
     font-weight: 500;
@@ -130,20 +168,343 @@
     vertical-align: middle;
     line-height: 20px;
     border: 2px solid rgba(0,0,0,.12);
-    padding: 8px 0px;
-    border-radius: 8px;
+    padding: 5px 0px;
+    border-radius: 3px;
+    width: 150px;
     display: flex;
     justify-content: center;
 }
 
+.available-table{
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+}
+.count-restaurants{
+    font-size: .9rem;
+    line-height: 1.3rem;
+    font-weight: 400;
+}
+
+
+@media only screen and (max-width: 1040px) {
+    .restaurant-card-img{
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media only screen and (max-width: 1020px) {
+    .restaurant-card-img{
+        width: 195px;
+        height: 195px;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .restaurant-card-img{
+        width: 191px;
+        height: 191px;
+    }
+}
+
+@media only screen and (max-width: 975px) {
+    .restaurant-card-img{
+        width: 186px;
+        height: 186px;
+    }
+}
+
+@media only screen and (max-width: 955px) {
+    .restaurant-card-img{
+        width: 181px;
+        height: 181px;
+    }
+}
+
+@media only screen and (max-width: 935px) {
+    .restaurant-card-img{
+        width: 178px;
+        height: 178px;
+    }
+}
+
+@media only screen and (max-width: 930px) {
+    .restaurant-card-img{
+        width: 174px;
+        height: 174px;
+    }
+}
+@media only screen and (max-width: 920px) {
+    .restaurant-card-img{
+        width: 171px;
+        height: 171px;
+    }
+}
+@media only screen and (max-width: 910px) {
+    .restaurant-card-img{
+        width: 169px;
+        height: 169px;
+    }
+}
+@media only screen and (max-width: 890px) {
+    .restaurant-card-img{
+        width: 165px;
+        height: 165px;
+    }
+}
+@media only screen and (max-width: 870px) {
+    .restaurant-card-img{
+        width: 163px;
+        height: 163px;
+    }
+}
+@media only screen and (max-width: 840px) {
+    .restaurant-card-img{
+        width: 160px;
+        height: 160px;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .restaurant-card-img{
+        width: 196px;
+        height: 196px;
+    }
+}
+@media only screen and (max-width: 672px) {
+    .restaurant-card-img{
+        width: 190px;
+        height: 190px;
+    }
+}
+@media only screen and (max-width: 662px) {
+    .restaurant-card-img{
+        width: 187px;
+        height: 187px;
+    }
+}
+@media only screen and (max-width: 640px) {
+    .restaurant-card-img{
+        width: 181px;
+        height: 181px;
+    }
+}
+@media only screen and (max-width: 620px) {
+    .restaurant-card-img{
+        width: 176px;
+        height: 176px;
+    }
+}
+@media only screen and (max-width: 605px) {
+    .restaurant-card-img{
+        width: 171px;
+        height: 171px;
+    }
+}
+@media only screen and (max-width: 580px) {
+    .restaurant-card-img{
+        width: 164px;
+        height: 164px;
+    }
+}
+@media only screen and (max-width: 555px) {
+    .restaurant-card-img{
+        width: 157px;
+        height: 157px;
+    }
+}
+@media only screen and (max-width: 535px) {
+    .restaurant-card-img{
+        width: 152px;
+        height: 152px;
+    }
+}
+@media only screen and (max-width: 515px) {
+    .restaurant-card-img{
+        width: 147px;
+        height: 147px;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .restaurant-card-img{
+        width: 144px;
+        height: 144px;
+    }
+}
+@media only screen and (max-width: 480px) {
+    .restaurant-card-img{
+        width: 140px;
+        height: 140px;
+    }
+}
+@media only screen and (max-width: 460px) {
+    .restaurant-card-img{
+        width: 134px;
+        height: 134px;
+    }
+}
+@media only screen and (max-width: 440px) {
+    .restaurant-card-img{
+        width: 129px;
+        height: 129px;
+    }
+}
+@media only screen and (max-width: 405px) {
+    .restaurant-card-img{
+        width: 123px;
+        height: 123px;
+    }
+}
+@media only screen and (max-width: 380px) {
+    .restaurant-card-img{
+        width: 116px;
+        height: 116px;
+    }
+}
+@media only screen and (max-width: 365px) {
+    .restaurant-card-img{
+        width: 111px;
+        height: 111px;
+    }
+}
+@media only screen and (max-width: 350px) {
+    .restaurant-card-img{
+        width: 108px;
+        height: 108px;
+    }
+}
+@media only screen and (max-width: 340px) {
+    .restaurant-card-img{
+        width: 105px;
+        height: 105px;
+    }
+}
+@media only screen and (max-width: 330px) {
+    .restaurant-card-img{
+        width: 102px;
+        height: 102px;
+    }
+}
+@media only screen and (max-width: 315px) {
+    .restaurant-card-img{
+        width: 98px;
+        height: 98px;
+    }
+}
+@media only screen and (max-width: 290px) {
+    .restaurant-card-img{
+        width: 93px;
+        height: 93px;
+    }
+}
+@media only screen and (max-width: 275px) {
+    .restaurant-card-img{
+        width: 87px;
+        height: 87px;
+    }
+}
+@media only screen and (max-width: 270px) {
+    .restaurant-card-img{
+        width: 84px;
+        height: 84px;
+    }
+}
+@media only screen and (max-width: 260px) {
+    .restaurant-card-img{
+        width: 80px;
+        height: 80px;
+    }
+}
+@media only screen and (max-width: 250px) {
+    .restaurant-card-img{
+        width: 77px;
+        height: 77px;
+    }
+}
+@media only screen and (max-width: 240px) {
+    .restaurant-card-img{
+        width: 74px;
+        height: 74px;
+    }
+}
+@media only screen and (max-width: 230px) {
+    .restaurant-card-img{
+        width: 71px;
+        height: 71px;
+    }
+}
+@media only screen and (max-width: 215px) {
+    .restaurant-card-img{
+        width: 66px;
+        height: 66px;
+    }
+}
+@media only screen and (max-width: 200px) {
+    .restaurant-card-img{
+        width: 64px;
+        height: 64px;
+    }
+}
+
+
 @media only screen and (max-width: 766px) {
     .search-input{
         padding:10px;
-        border-radius: 10px 10px 0px 0px;
+        border-radius: 3px 3px 0px 0px;
     }
     .restaurant-find{
         width: 100%;
-        border-radius:0px 0px 10px 10px;
+        border-radius:0px 0px 3px 3px;
     }
   }
+
+@media only screen and (max-width: 434px) {
+   .restaurant-filter-input{
+    width: 80%;
+}
+  }
+
+@media only screen and (max-width: 418px) {
+    .available-table{
+        display: block;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        height: 75px !important;
+        margin-top: 20px !important;
+   }
+   .dropdown-list{
+       top: 61px;
+   }
+   .count-restaurants{
+        font-size: 1rem;
+        line-height: 1.5rem;
+        padding: 8px 8px 0 0;
+        text-transform: none;
+        font-weight: 500;
+   }
+   .restaurant-dropdown-featured{
+        padding: 0.3rem 6.5rem 0.3rem 0.5rem;
+   }
+    
+   }
+
+.restaurant_container{
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media screen and  (min-width: 1200px){
+    .restaurant_container{
+        max-width: 1140px;
+    }
+    .restaurant-search-input{
+        padding: 15px 40px;
+    }
+} 
+
+
+
 

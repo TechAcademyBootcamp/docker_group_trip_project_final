@@ -1,12 +1,13 @@
 body {
   line-height: 1.7;
-  color: #4d4d4d;
+  color: black;
   font-weight: 300;
   font-size: 1rem; 
   margin: 0;
   text-align: left;
   background-color: #fff;
   font-family: 'Ubuntu', sans-serif;
+  overflow-x: hidden;
 }
 
 a{

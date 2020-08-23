@@ -14,6 +14,7 @@
 .site-navbar .site-navigation .site-menu > li {
     display: inline-block;
     padding: 10px 5px;
+    margin-right: 5px;
 }
 
 .site-navbar .site-navigation .site-menu .active > a {
@@ -279,4 +280,18 @@
     bottom: 0;
     opacity: 0;
     visibility: hidden;
+}
+
+.Sign-methods{
+    font-size: 16px !important;
+    background: #000000 !important;
+    color: white !important;
+    font-weight: 400;
+    padding: 10px 15px ;
+    border-radius: 5px;
+    transition: 0.3s ease all;
+}
+.Sign-methods:hover{
+    background: #474747 !important;
+    color: white !important;
 }
