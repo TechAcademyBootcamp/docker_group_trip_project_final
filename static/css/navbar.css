@@ -290,8 +290,10 @@
     padding: 10px 15px ;
     border-radius: 5px;
     transition: 0.3s ease all;
+    text-decoration: none;
 }
 .Sign-methods:hover{
     background: #474747 !important;
     color: white !important;
+    text-decoration: none;
 }

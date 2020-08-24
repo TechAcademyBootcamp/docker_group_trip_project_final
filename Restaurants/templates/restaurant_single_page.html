@@ -47,8 +47,8 @@
             </div>
         </div> -->
 
-        <!-- ..........Slide show.......... -->
-        <!-- <div id="slideshow">
+<!-- ..........Slide show.......... -->
+<!-- <div id="slideshow">
             <div class="slides">
                 <a href="#" class="slide">
                     <img src="https://media-cdn.tripadvisor.com/media/photo-s/0a/1d/5f/85/firuza.jpg" alt="" />
@@ -66,20 +66,20 @@
                     <img src="https://media-cdn.tripadvisor.com/media/photo-s/11/4c/8c/8f/banket.jpg" alt="" />
                 </a>
             </div> -->
-        <!-- ..........Slide show  pagination.......... -->
-        <!-- <div class="controls">
+<!-- ..........Slide show  pagination.......... -->
+<!-- <div class="controls">
             <a href="#" class="control">1</a>
             <a href="#" class="control">2</a>
             <a href="#" class="control">3</a>
             <a href="#" class="control">4</a>
             <a href="#" class="control">5</a>
         </div> -->
-        <!-- .........End slide show........... -->
-        <!-- </div> -->
+<!-- .........End slide show........... -->
+<!-- </div> -->
 
 
 
-    <!-- </div>
+<!-- </div>
 </section> -->
 
 
@@ -142,7 +142,7 @@
             </div>
         </div>
         <div class=" col-12" style="padding: 0px 0px 0px 10px">
-            <div>
+            <div style="display: inline-block">
                 <div class="d-flex jquery-effect">
                     <img src="{% static 'images/opentime.svg' %}" width="16px" alt="">
                     <div class="ml-1 mr-1">
@@ -504,10 +504,109 @@
                 <a class="nearby-restaurants">Best Nearby Restaurants</a>
                 <a class="see-all">See all</a>
             </div>
-            <div class="col-12 d-flex">
-                <div class="col-3">
-                    <div><img src="https://media-cdn.tripadvisor.com/media/photo-f/18/e5/bd/46/indoor-tent.jpg" alt=""></div>
+            <div class="col-12 d-flex flex-wrap" style="padding:0px 0px 0px 20px;margin-left:2px">
+                <div class="col-lg-3 col-12 same-location mb-3">
+                    <div class="position:relative">
+                        <a href="">
+                            <div class="same-location-image-background img1"></div>
+                        </a>
+                        <div class="save-restaurant-icon">
+                            <div class="same-location-save-restaurant"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <a class="same-location-restaurant-name" href="">Zouzou Restaurant</a>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img src="{% static 'images/image-2.svg' %}" width="12px" height="12px" alt="">
+                        <img src="{% static 'images/image-2.svg' %}" width="12px" height="12px" alt="">
+                        <img src="{% static 'images/image-2.svg' %}" width="12px" height="12px" alt="">
+                        <img src="{% static 'images/image-2.svg' %}" width="12px" height="12px" alt="">
+                        <img src="{% static 'images/image-3.svg' %}" width="12px" height="12px" alt="">
+                        <div class="ml-1 same-location-review">85 Reviews</div>
+                    </div>
+                    <div>
+                        <span class="same-location-type">$$ - $$$, Turkish</span>
+                    </div>
+
                 </div>
+
+                <div class="col-lg-3 col-12 same-location mb-3">
+                    <div class="position:relative">
+                        <a href="">
+                            <div class="same-location-image-background img2"></div>
+                        </a>
+                        <div class="save-restaurant-icon">
+                            <div class="same-location-save-restaurant"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <a class="same-location-restaurant-name" href="">BLVD on One</a>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img src="{% static 'images/image-2.svg' %}" width="12px" height="12px" alt="">
+                        <img src="{% static 'images/image-2.svg' %}" width="12px" height="12px" alt="">
+                        <img src="{% static 'images/image-2.svg' %}" width="12px" height="12px" alt="">
+                        <img src="{% static 'images/image-2.svg' %}" width="12px" height="12px" alt="">
+                        <img src="{% static 'images/image-3.svg' %}" width="12px" height="12px" alt="">
+                        <div class="ml-1 same-location-review">1,151 Reviews</div>
+                    </div>
+                    <div>
+                        <span class="same-location-type">$$ - $$$, European, Central European</span>
+                    </div>
+
+                </div>
+                <div class="col-lg-3 col-12 same-location mb-3">
+                    <div class="position:relative">
+                        <a href="">
+                            <div class="same-location-image-background img3"></div>
+                        </a>
+                        <div class="save-restaurant-icon">
+                            <div class="same-location-save-restaurant"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <a class="same-location-restaurant-name" href="">Cho Gao</a>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img src="{% static 'images/image-2.svg' %}" width="12px" height="12px" alt="">
+                        <img src="{% static 'images/image-2.svg' %}" width="12px" height="12px" alt="">
+                        <img src="{% static 'images/image-2.svg' %}" width="12px" height="12px" alt="">
+                        <img src="{% static 'images/image-2.svg' %}" width="12px" height="12px" alt="">
+                        <img src="{% static 'images/image-3.svg' %}" width="12px" height="12px" alt="">
+                        <div class="ml-1 same-location-review">1,409 Reviews</div>
+                    </div>
+                    <div>
+                        <span class="same-location-type">$$ - $$$, Chinese, Asian, Thai, Caucasian</span>
+                    </div>
+
+                </div>
+                <div class="col-lg-3 col-12 same-location mb-3">
+                    <div class="position:relative">
+                        <a href="">
+                            <div class="same-location-image-background img4"></div>
+                        </a>
+                        <div class="save-restaurant-icon">
+                            <div class="same-location-save-restaurant"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <a class="same-location-restaurant-name" href="">Prani Dilli Dubai</a>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img src="{% static 'images/image-2.svg' %}" width="12px" height="12px" alt="">
+                        <img src="{% static 'images/image-2.svg' %}" width="12px" height="12px" alt="">
+                        <img src="{% static 'images/image-2.svg' %}" width="12px" height="12px" alt="">
+                        <img src="{% static 'images/image-2.svg' %}" width="12px" height="12px" alt="">
+                        <img src="{% static 'images/image-3.svg' %}" width="12px" height="12px" alt="">
+                        <div class="ml-1 same-location-review">1,307 Reviews</div>
+                    </div>
+                    <div>
+                        <span class="same-location-type">$$ - $$$, Indian</span>
+                    </div>
+
+                </div>
+
             </div>
         </div>
     </div>
@@ -527,18 +626,7 @@
 
 
 {% block js %}
-<script src="{% static 'js/slideshow.js' %}"></script>
-<script>
-    $('#slideshow').slideshow();
-    $(".position-exit-cursor").click(function () {
-        $(".table-restaurant-open-time").hide();
-    });
-    $(".jquery-effect").click(function () {
-        $(".table-restaurant-open-time").show();
-    });
-
-
-</script>
+<script src="{% static 'js/restaurant_single_page.js' %}"></script>
 {% endblock %}
 
 
