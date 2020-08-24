@@ -1,0 +1,426 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/tours-single-page.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<section class="header-image">
+    <div class="header-text-div">
+        <h1>England Retreat: Peak District</h1>
+    </div>
+</section>
+<div class="under-header-div">
+    <div class="row container m-auto">
+        <div class="under-header-cols col-2">
+            <span class="">Days</span>
+            <span>3</span>
+        </div>
+        <div class="under-header-cols col-3">
+            <span>Style</span>
+            <span>Original</span>
+        </div>
+        <div class="hidden-xs col-2">
+
+        </div>
+        <div class="under-header-cols col-2">
+            <span>From</span>
+            <div class="for-sup">
+                <span>$ 400</span>
+                <sup>USD</sup>
+            </div>
+        </div>
+        <div class="under-header-cols col-3 d-md-block d-none">
+            <div class="add-wish">
+                <i class="fa fa-heart-o" style="font-size:22px"></i>
+                <span class="ml-2">Add To Wishlist</span>
+            </div>
+            <a class="dates mt-1">
+                <img class="mr-2" src="{% static 'images/calendar (1).svg' %}" />
+                <span>View dates</span>
+            </a>
+        </div>
+    </div>
+</div>
+<section class="middle container">
+    <div class="row mt-4">
+        <ul class="route col-md-3 d-none d-md-block">
+            <li class="row a-hoverly">
+                <a class="a-hoverly" href=""><img class="svgs mr-1" src="{% static 'images/list.svg' %}" />Overviw</a>
+            </li>
+            <li class="row a-hoverly">
+                <a class="a-hoverly" href=""><img class="svgs mr-1"
+                        src="{% static 'images/gallery.svg' %}" />Gallery</a>
+            </li>
+            <li class="row a-hoverly">
+                <a class="a-hoverly" href=""><img class="svgs mr-1" src="{% static 'images/tour.svg' %}" />Itinerary</a>
+            </li>
+            <li class="row a-hoverly">
+                <a class="a-hoverly" href=""><img class="svgs mr-1" src="{% static 'images/tick.svg' %}" />Inclusion</a>
+            </li>
+            <li class="row a-hoverly">
+                <a class="a-hoverly" href=""><img class="svgs mr-1" src="{% static 'images/calendar (1).svg' %}" />Dates
+                    & Avebility</a>
+            </li>
+            <li class="row a-hoverly">
+                <a class="a-hoverly" href=""><img class="svgs mr-1" src="{% static 'images/note.svg' %}" />Importants
+                    notes </a>
+            </li>
+            <li class="row a-hoverly">
+                <a class="a-hoverly" href=""> <img class="svgs mr-1"
+                        src="{% static 'images/newsletter.svg' %}" />Essential trip
+                    informations </a>
+            </li>
+            <li class="row a-hoverly">
+                <a class="" href=""><img class="svgs mr-1" src="{% static 'images/star.svg' %}" />Reviews</a>
+            </li>
+        </ul>
+        <div class="mid-right col-md-9 col-12 mb-5">
+            <p class="title">
+                Escape to the country of deep dales and walking trails
+            </p>
+            <p class="title-under">
+                Take a break to Britain’s first national park and explore its forested valleys and small stone villages
+                threaded by walking trails. This three-day Intrepid Retreats experience offers a comfortable yet active
+                way to getaway from it all. Base yourself in the quintessential country town of Castleton and walk your
+                way to the scenic villages of Bamford and Bakewell, dropping into friendly local pubs and discovering
+                more about the local communities, all while surrounded by iconic backdrop of rolling green hills backed
+                by steep peaks. A Intrepid countryside escape awaits.
+            </p>
+            <div class="add-wish d-md-none">
+                <i class="fa fa-heart-o" style="font-size:22px"></i>
+                <span class="ml-2">Add To Wishlist</span>
+            </div>
+
+            <hr>
+            <div class="row">
+                <div class="col-md-5 col-12">
+                    <div class="row">
+                        <div class="start-finish col-6">
+                            <ul>
+                                <li class="nowrap">Start</li>
+                                <li class="nowrap">Finish</li>
+                                <li class="nowrap">Destiniton</li>
+                                <li class="nowrap">Style</li>
+                                <li class="nowrap">Theme
+                                </li>
+                            </ul>
+
+                        </div>
+                        <div class="col-6">
+                            <ul>
+                                <li class="nowrap">Castleton, United Kingdom</li>
+                                <li class="nowrap">Castleton, United Kingdom</li>
+                                <li class="nowrap">United Kingdom</li>
+                                <li class="nowrap">Original</li>
+                                <li class="nowrap">Intrepid Retreats
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-2 d-none d-md-block">
+
+                </div>
+
+                <div class="col-md-5 col-12">
+                    <div class="row">
+                        <div class="col-6">
+                            <ul>
+                                <li>Code</li>
+                                <li>Physical rating</li>
+                                <li>Ages</li>
+                                <li>Group size</li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <ul>
+                                <li>BMPL</li>
+                                <li>
+                                    <img class="tour-rating"
+                                        src="https://img.icons8.com/material-outlined/24/000000/filled-star.png" />
+                                    <img class="tour-rating"
+                                        src="https://img.icons8.com/material-outlined/24/000000/filled-star.png" />
+                                    <img class="tour-rating"
+                                        src="https://img.icons8.com/material-outlined/24/000000/filled-star.png" />
+                                    <img class="tour-rating"
+                                        src="https://img.icons8.com/fluent-systems-regular/24/000000/hand-drawn-star--v2.png" />
+                                    <img class="tour-rating"
+                                        src="https://img.icons8.com/fluent-systems-regular/24/000000/hand-drawn-star--v2.png" />
+                                </li>
+                                <li>Min 15</li>
+                                <li>Min 4, Max 12</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="love-trip">
+                <h2>Why you'll love this trip</h2>
+                <ul>
+                    <li>
+                        <p>Walk the winding trails between picturesque villages and then hole up at a local pub to try a
+                            fittingly named brew from Intrepid Brewing Co.</p>
+                    </li>
+                    <li>
+                        <p>Treat yourself one of the town’s famous tarts or puddings in Bakewell and explore the arched
+                            bridges, narrow shopping streets and stone cottages.</p>
+                    </li>
+                    <li>
+                        <p>Chat with the locals in the village community shop as you take a break from walks through
+                            beautiful countryside of farms, woods, and tumbledown remains.</p>
+                    </li>
+                    <li>
+                        <p>Enjoy the ease of leaving your walking boots at the same comfortable, conveniently located
+                            accommodation each night.</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="right-for-you">
+                <h2>Is this trip right for you?</h2>
+                <ul>
+                    <li>
+                        <p>Walk the winding trails between picturesque villages and then hole up at a local pub to try a
+                            fittingly named brew from Intrepid Brewing Co.</p>
+                    </li>
+                    <li>
+                        <p>Treat yourself one of the town’s famous tarts or puddings in Bakewell and explore the arched
+                            bridges, narrow shopping streets and stone cottages.</p>
+                    </li>
+                    <li>
+                        <p>This trip is new to our range this year. And while we have thoroughly researched every detail
+                            of the logistics, new destinations can sometimes throw us some unexpected surprises. More
+                            often than not, it’ll be a great surprise. But every now and again there might be a hiccup.
+                            We like to think that’s what puts the ‘adventure’ in ‘adventure travel’.</p>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="collapse mt-5">
+                <div class="Itenenary">
+                    <h2>Itinenary</h2>
+                    <span class="expendall">
+                        <img class="plus-img" src="https://img.icons8.com/metro/26/000000/plus.png"/>
+                        Expend All
+                    </span>
+                </div>
+
+                
+                <div id="accordion">
+                    <div class="card mb-2">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0 itinerary-plus">
+                                <button class="btn btn-link " data-toggle="collapse" data-target="#collapseOne"
+                                    aria-expanded="true" aria-controls="collapseOne" style="text-decoration: none;">
+                                    <span class="collapse-day">Day 1:Peek District /Castleton</span> 
+                                    
+                                </button>
+                                <img class="plus-img" src="https://img.icons8.com/metro/26/000000/plus.png"/>
+                            </h5>
+                        </div>
+
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                            data-parent="#accordion">
+                            <div class="card-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                                squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
+                                quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it
+                                squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+                                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+                                butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
+                                nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-2">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0 itinerary-plus">
+                                <button style="text-decoration: none;" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                                    aria-expanded="false" aria-controls="collapseTwo">
+                                    <span class="collapse-day">Day 2:Peek District /Castleton</span>
+
+                                </button>
+                                <img class="plus-img" src="https://img.icons8.com/metro/26/000000/plus.png"/>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div class="card-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                                squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
+                                quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it
+                                squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+                                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+                                butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
+                                nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-2">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0 itinerary-plus">
+                                <button class="btn btn-link collapsed" data-toggle="collapse"
+                                    data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <span class="collapse-day">Day 3:Peek District /Castleton</span>
+                                </button>
+                                <img class="plus-img" src="https://img.icons8.com/metro/26/000000/plus.png"/>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                            data-parent="#accordion">
+                            <div class="card-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                                squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
+                                quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it
+                                squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+                                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+                                butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
+                                nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-collapse">
+                    <img src="https://img.icons8.com/material/24/000000/info--v1.png"/>
+                    Want to tailor this itinerary?
+                </div>
+            </div>
+            <div class="inclusion mt-5 d-md-block d-none">
+
+                <h2 class="">Inclusions</h2>
+
+                <div class="meals row">
+                    <div class="col-2">
+                        <img class="forkandknife"
+                            src="https://img.icons8.com/ios-filled/50/000000/restaurant--v1.png" />
+                    </div>
+                    <div class="col-10">
+                        <h2>Meals</h2>
+                        2 breakfasts
+                    </div>
+                </div>
+                <div class="meals row">
+                    <div class="col-2">
+                        <img src="https://img.icons8.com/material-rounded/50/000000/train.png" />
+                    </div>
+                    <div class="col-10">
+                        <h2>Trasnport</h2>
+                        Taxi , bus, Train
+                    </div>
+                </div>
+                <div class="meals row">
+                    <div class="col-2">
+                        <img src="https://img.icons8.com/ios-filled/50/000000/hotel-information.png" />
+                    </div>
+                    <div class="col-10">
+                        <h2>
+                            Accommodation</h2>
+                        Original style bed & breakfast (2 nights)
+                    </div>
+                </div>
+                <div class="meals row lastone">
+                    <div class="col-2 mb-5">
+                        <img src="https://img.icons8.com/ios-filled/50/000000/unsplash.png" />
+                    </div>
+                    <div class="col-10 mt-4">
+                        <h2>Included activities</h2>
+                        <ul>
+                            <li>Bamford - Hope Valley & Village Walk</li>
+                            <li>Bamford - Local Beer Tasting (Intrepid Explorer Pub)</li>
+                            <li>Hathersage - Hike to Bakewell</li>
+                            <li>Grindleford - Village Community Shop Drink & Snack</li>
+                            <li>Hathersage - Longshaw Estate Walk</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="inclusion-resp d-block d-md-none">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><div class="col-2">
+                        <img class="forkandknife"
+                            src="https://img.icons8.com/ios-filled/50/000000/restaurant--v1.png" />
+                    </div></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><img src="https://img.icons8.com/material-rounded/50/000000/train.png" /></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"><img src="https://img.icons8.com/ios-filled/50/000000/hotel-information.png" /></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="Photo-tab" data-toggle="tab" href="#Photo" role="tab" aria-controls="Photo" aria-selected="false"><img src="https://img.icons8.com/ios-filled/50/000000/unsplash.png" /></a>
+                      </li>
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><div class="col-10">
+                        <h2>Meals</h2>
+                        2 breakfasts
+                    </div></div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"><div class="col-10">
+                        <h2>Trasnport</h2>
+                        Taxi , bus, Train
+                    </div></div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><h2>
+                        Accommodation</h2>
+                    Original style bed & breakfast (2 nights)</div>
+                    <div class="tab-pane fade" id="Photo" role="tabpanel" aria-labelledby="Photo-tab"><h2>Included activities</h2>
+                        <ul>
+                            <li>Bamford - Hope Valley & Village Walk</li>
+                            <li>Bamford - Local Beer Tasting (Intrepid Explorer Pub)</li>
+                            <li>Hathersage - Hike to Bakewell</li>
+                            <li>Grindleford - Village Community Shop Drink & Snack</li>
+                            <li>Hathersage - Longshaw Estate Walk</li>
+                        </ul></div>
+                  </div>
+            </div>
+            <div class="important-notes mt-5">
+                <h2>Important notes</h2>
+                <p>
+                    START & END OF TOUR
+                    <br>
+                    This trip starts with a group meeting at 2 pm on day 1, and ends after lunch on the final day.
+                    Please plan your arrival and departure accordingly. We are happy to book additional
+                    accommodation before or after the trip for you, subject to availability.
+                </p>
+                <p>
+                    MINIMUM NUMBERS
+                    <br>
+                    This trip requires a minimum of 4 clients booked and confirmed in order to depart.
+                </p>
+                <p>
+                    SINGLE SUPPLEMENT
+                    <br>
+                    A single supplement is bookable on this trip, subject to availability at the time of booking. If
+                    you would like to book a single supplement and enquire about availability please speak to your
+                    booking agent.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+{% include 'includes/subscribers.html' %}
+
+{% block js %}
+<script>
+    $('.collapse').collapse()
+
+    $('#myTab a').on('click', function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+      })
+</script>
+
+{% endblock %}
+<a class="dates d-md-none d-block">
+    <img class="mr-2" src="{% static 'images/calendar (1).svg' %}" />
+    <span>Go to dates</span>
+</a>
+{% endblock content %}
