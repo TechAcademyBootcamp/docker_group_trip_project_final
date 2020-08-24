@@ -67,3 +67,7 @@ class TermsOfUseView(TemplateView):
 class CitySinglePage(ListView):
     model = City
     template_name = 'city_single_page.html'
+
+class CitiesPage(ListView):
+    model = City
+    template_name = 'cities-page.html'
