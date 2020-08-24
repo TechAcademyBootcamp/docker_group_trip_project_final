@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     <link rel="stylesheet" href="{% static 'css/iconstyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/subscribe.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400;1,500;1,700&display=swap" rel="stylesheet">  
     <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">  -->
 
@@ -44,7 +45,7 @@
     
     {% include 'includes/footer.html' %}
 </div>
-
+<div id="snackbar">Some text some message..</div>
 
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
@@ -64,6 +65,45 @@
     <script src="{% static 'js/navbar.js' %}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="{% static 'js/animationCounter.js' %}"></script>
+
+    <script>
+
+        document.querySelector('.subscribe-form').addEventListener('submit',(e)=>{
+            e.preventDefault();
+            var form_data = {
+                'email': document.querySelector('[name="email"]').value
+            };
+
+            $.ajax({
+                url:"{% url 'api_main:subscribe' %}",
+                method: "POST",
+                data: form_data,
+
+                success: function(response,textStatus, xhr){
+                    if(xhr.status == 201){
+                        show_message('Success subscribed')
+                    }
+                },
+                error: function(error_resp){
+                    response = error_resp.responseJSON
+                    for(let error_key in response){
+                        show_message(response[error_key]);
+                    }
+                }
+            })
+           
+        })
+
+        function show_message(message) {
+            var x = document.getElementById("snackbar");
+            x.innerText = message;
+            x.className = "show";
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+
+    </script>
+
+
 
     {% block js %}
     {% endblock %}

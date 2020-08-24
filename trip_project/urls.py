@@ -22,4 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('Main.urls',namespace='main')),
     path('',include('Tours.urls')),
+    path('',include('Main.api.urls')),
+    path('api/v1.0/subscribe/',include('Main.api.urls',namespace='api_main')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

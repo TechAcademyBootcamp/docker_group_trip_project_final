@@ -59,11 +59,11 @@ margin-bottom: 0;
                     <p class="sub-small-text text-left" >Subscribe newsletter to get offers and about new places to discover.</p>
                 </div>
                 <div class="input-terr col-md-6 col-12 d-flex justify-content-left mt-4 mb-4">
-                    <form method="POST" class="subscribe-form w-75">
+                    <form  method="POST" class="subscribe-form w-75">
                         <div class="form-group d-flex">
+                            {% csrf_token %}
                             {{form.email}}
                             {{form.email.help_text}}
-                            {{form.email.errors}}
                             <input type="submit" value="Subscribe"
                                 class="submit px-3 ml-2 py-2 bg-danger border-0 rounded text-light">
                         </div>

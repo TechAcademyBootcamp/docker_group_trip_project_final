@@ -46,3 +46,43 @@ width: 100%;
   font-weight: bold;
   font-size: 22px;
 }
+.line-under-hotels{
+  height: 1px;
+  width: 100%;
+  background-color: black;
+}
+.nearest-hotels{
+  font-size: 26px;
+  font-weight: bolder;
+}
+.checked {
+  color: orange;
+}
+.nearest-hotel-price{
+
+  font-size: 22px;
+}
+.dollar-symbol{
+  font-family: 'Raleway', sans-serif;
+  color: #363636;
+  font-size: 22px;
+line-height: 22px;
+}
+
+
+.rating-count{
+  background: #007bff;
+  color: #fff;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+  -webkit-box-pack: center;
+  justify-content: center;
+  vertical-align: baseline;
+  border-radius: 6px 6px 6px 0;
+  height: 36px;
+  width: 36px;
+  min-width: 32px;
+  }
