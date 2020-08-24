@@ -1,11 +1,26 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block css %}
-    <link rel="stylesheet" href="{% static 'css/tourspage.css' %}">
-{% endblock css %}
+<link rel="stylesheet" href="{% static 'css/tourspage.css' %}">
+{% endblock %}
+
 {% block content %}
 
 
-<section class="main-sections my_container">
+<section class="header-image">
+    <div class="image-headerrr">
+        <img class="head-image" src="{% static 'images/CH-asset-Azerbaijanv2_l2r_main_jpg' %}" style="width: 100%;">
+    </div>
+
+    <div class="header-text">
+        <h1>Azerbaijan Tours</h1>
+        <h4>2020 & 2021 tours</h4>
+    </div>
+    <div class="see-all-header">
+        <button class="seeall-button-header">See all</button>
+    </div>
+</section>
+<section class="main-sections my_container mt-5">
     <div class="row">
         <div class="col-3"></div>
         <div class="up-text col-6">
@@ -21,9 +36,15 @@
     </div>
     <div class="row m-auto mt-4 mb-4">
         <div class="tours-cards col-xl-3 col-lg-4 col-md-6 col-12 mb-4 mt-4 m-auto">
-            <div class="mt-4" style="box-shadow: 0 2px 10px 0 rgba(0,0,0,0.1);">
-                <img src="https://www.thenational.ae/image/policy:1.716830:1522588673/GettyImages-170881144.jpg?f=16x9&w=1200&$p$f$w=bad6bfb"
-                    class="card-img-top" alt="...">
+            <div class="mt-4 mb-4" style="box-shadow: 0 2px 10px 0 rgba(0,0,0,0.1);">
+                <div class="image-div">
+                    <img src="https://www.thenational.ae/image/policy:1.716830:1522588673/GettyImages-170881144.jpg?f=16x9&w=1200&$p$f$w=bad6bfb"
+                        class="card-img-top" alt="...">
+                    <div class="heart">
+                        <i class="fa fa-heart-o" style="font-size:22px"></i>
+                    </div>
+                </div>
+
                 <div class="card-body">
                     <h1 class="card-title mt-2 mb-2">card title</h1>
                     <p class="card-text mt-3">With Baku extension</p>
@@ -58,9 +79,15 @@
 
         </div>
         <div class="tours-cards col-xl-3 col-lg-4 col-md-6 col-12 mb-4 mt-4 m-auto">
-            <div class="mt-4" style="box-shadow: 0 2px 10px 0 rgba(0,0,0,0.1);">
-                <img src="https://www.thenational.ae/image/policy:1.716830:1522588673/GettyImages-170881144.jpg?f=16x9&w=1200&$p$f$w=bad6bfb"
-                    class="card-img-top" alt="...">
+            <div class="mt-4 mb-4" style="box-shadow: 0 2px 10px 0 rgba(0,0,0,0.1);">
+                <div class="image-div">
+                    <img src="https://www.thenational.ae/image/policy:1.716830:1522588673/GettyImages-170881144.jpg?f=16x9&w=1200&$p$f$w=bad6bfb"
+                        class="card-img-top" alt="...">
+                    <div class="heart">
+                        <i class="fa fa-heart-o" style="font-size:22px"></i>
+                    </div>
+                </div>
+
                 <div class="card-body">
                     <h1 class="card-title mt-2 mb-2">card title</h1>
                     <p class="card-text mt-3">With Baku extension</p>
@@ -95,9 +122,15 @@
 
         </div>
         <div class="tours-cards col-xl-3 col-lg-4 col-md-6 col-12 mb-4 mt-4 m-auto">
-            <div class="mt-4" style="box-shadow: 0 2px 10px 0 rgba(0,0,0,0.1);">
-                <img src="https://www.thenational.ae/image/policy:1.716830:1522588673/GettyImages-170881144.jpg?f=16x9&w=1200&$p$f$w=bad6bfb"
-                    class="card-img-top" alt="...">
+            <div class="mt-4 mb-4" style="box-shadow: 0 2px 10px 0 rgba(0,0,0,0.1);">
+                <div class="image-div">
+                    <img src="https://www.thenational.ae/image/policy:1.716830:1522588673/GettyImages-170881144.jpg?f=16x9&w=1200&$p$f$w=bad6bfb"
+                        class="card-img-top" alt="...">
+                    <div class="heart">
+                        <i class="fa fa-heart-o" style="font-size:22px"></i>
+                    </div>
+                </div>
+
                 <div class="card-body">
                     <h1 class="card-title mt-2 mb-2">card title</h1>
                     <p class="card-text mt-3">With Baku extension</p>
@@ -132,9 +165,15 @@
 
         </div>
         <div class="tours-cards col-xl-3 col-lg-4 col-md-6 col-12 mb-4 mt-4 m-auto">
-            <div class="mt-4" style="box-shadow: 0 2px 10px 0 rgba(0,0,0,0.1);">
-                <img src="https://www.thenational.ae/image/policy:1.716830:1522588673/GettyImages-170881144.jpg?f=16x9&w=1200&$p$f$w=bad6bfb"
-                    class="card-img-top" alt="...">
+            <div class="mt-4 mb-4" style="box-shadow: 0 2px 10px 0 rgba(0,0,0,0.1);">
+                <div class="image-div">
+                    <img src="https://www.thenational.ae/image/policy:1.716830:1522588673/GettyImages-170881144.jpg?f=16x9&w=1200&$p$f$w=bad6bfb"
+                        class="card-img-top" alt="...">
+                    <div class="heart">
+                        <i class="fa fa-heart-o" style="font-size:22px"></i>
+                    </div>
+                </div>
+
                 <div class="card-body">
                     <h1 class="card-title mt-2 mb-2">card title</h1>
                     <p class="card-text mt-3">With Baku extension</p>
@@ -171,6 +210,9 @@
     </div>
 
 </section>
+<div class="see-all mb-5 mt-5">
+    <button class="seeall-button">See All Tours</button>
+</div>
 
 {% include 'includes/subscribers.html' %}
 {% endblock content %}

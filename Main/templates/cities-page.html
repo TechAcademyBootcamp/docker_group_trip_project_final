@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/cities-page.css' %}">
+{% endblock %}
+{% block content %}
+
+
+<section class="header-image">
+    <div class="image-headerrr">
+        <img class="head-image" src="{% static 'images/CH-asset-Azerbaijanv2_l2r_main_jpg' %}" style="width: 100%;">
+    </div>
+
+    <div class="header-text">
+        <h1>Azerbaijan Tours</h1>
+        <h4>2020 & 2021 tours</h4>
+    </div>
+    <div class="see-all-header">
+        <button class="seeall-button-header">See all</button>
+    </div>
+</section>
+<section class="main-sections container mt-5">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="up-text col-6">
+            <h1>Most Popular Tours</h1>
+            <p class="center-text">
+                Iconic cities, stunning landscapes, a mixture of cultures—there's so much to experience across this
+                incredible continent. On our trips to Europe, you can see it all on a sweeping journey across the
+                continent,
+                or get an in-depth look at a certain country that interests you.
+            </p>
+        </div>
+        <div class="col-3"></div>
+    </div>
+    <div class="container m-auto mt-4 mb-4">
+        <div class="row">
+            <div class="card col-4" style="width: 18rem;">
+                <img src="{% static 'images/sicily-italy.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                </div>
+            </div>
+            <div class="card col-4" style="width: 18rem;">
+                <img src="{% static 'images/sicily-italy.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                </div>
+            </div>
+            <div class="card col-4" style="width: 18rem;">
+                <img src="{% static 'images/sicily-italy.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</section>
+<div class="see-all mb-5 mt-5">
+    <button class="seeall-button">See All Tours</button>
+</div>
+{% include 'includes/subscribers.html' %}
+{% endblock content %}
