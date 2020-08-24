@@ -13,5 +13,5 @@ urlpatterns = [
     path('about-us/',AboutUsView.as_view(),name='about-us'),
     path('privacy/',PrivacyPolicyView.as_view(),name='privacy'),
     path('terms/',TermsOfUseView.as_view(),name='terms'),
-    path('city-single-page/',CitySinglePage.as_view(),name='city_single_page')
+    path('city-single-page/',CitySinglePage.as_view(),name='city_single_page'),
 ]
