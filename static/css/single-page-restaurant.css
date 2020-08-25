@@ -388,7 +388,6 @@
 }
 .table-restaurant-open-time{
   position:absolute;
-  display:inline-block;
   margin-left: 10px;
   margin-top: 6px;
   display: none;

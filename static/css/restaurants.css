@@ -43,13 +43,15 @@
 
 .restaurant-options{
     font-size: 16px;
-    font-weight: 700;
-    white-space: nowrap;
-}
-.restaurant-list-option{
-    font-size: 14px;
     font-weight: 500;
     white-space: nowrap;
+    color: #2d333f;
+}
+.restaurant-list-option{
+    font-size: 15px;
+    font-weight: 400;
+    white-space: nowrap;
+    color: #2d333f;
 }
 
 .restaurant-dropdown-featured{
@@ -504,7 +506,105 @@
         padding: 15px 40px;
     }
 } 
+.special-border{
+    border-bottom: 1px solid #ebebeb;
+}
+.option-padding{
+    padding:15px 12px;
+}
+.option-tables{
+    position: absolute;
+    top: 52px;
+    left: 146px;
+    z-index: 5;
+    background: white;
+}
+.all-options-in-table{
+    width: 250px;
+    padding-left: 5px;
+    box-shadow: 1px 1px 10px 6px #ededed;
+    border-radius: 5px;
+    position: relative;
+}
+.triangle-table{
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid white;
+    position: absolute;
+    top: -7px;
+    left: 5px;
+  }
+#dining-option-table{
+    display: none;
+}
 
+.custom-checkbox{
+    -webkit-appearance: none;
+    background-color: #fafafa;
+    border: 2px solid #2d333f;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+    padding: 6px !important;
+    border-radius: 3px;
+    display: inline-block;
+    position: relative;
+    height: 1px;
+    opacity: 0.8;
+}
+.custom-checkbox:active, .custom-checkbox:checked:active {
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+}
+.custom-checkbox:checked {
+	background-color: #da3743;
+    border: 1px solid #da3743;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+    color: white;
+}
+.custom-checkbox:checked:after {
+	content: '\2714';
+    font-size: 11px;
+    position: absolute;
+    top: -3px;
+    left: 2px;
+    color: white;
+}
+.regular-radio {
+    -webkit-appearance: none;
+    background-color: #fafafa;
+    border: 1px solid black;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+    padding: 7px !important;
+    border-radius: 50px;
+    display: inline-block;
+    position: relative;
+    height: 4px;
+    border: 2px solid #565b65;
+}
+
+.regular-radio:checked:after {
+    content: ' ';
+    width: 6px;
+    height: 6px;
+    border-radius: 50px;
+    position: absolute;
+    top: 5px;
+    background: white;
+    text-shadow: 0px;
+    left: 5px;
+    font-size: 5px;
+}
+
+.regular-radio:checked {
+    background-color: #da3743;
+    color: #99a1a7;
+    border: 1px solid #adb8c0;
+    padding: 8px !important;
+}
+
+.regular-radio:active, .regular-radio:checked:active {
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+}
 
 
 
