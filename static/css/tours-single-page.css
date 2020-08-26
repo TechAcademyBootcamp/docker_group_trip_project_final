@@ -93,18 +93,17 @@ li a:hover{
     color: white;
 }.
 .start-finish{
-    display: flex;
-    
+    display: flex;  
 }
 .nowrap{
     white-space: nowrap;
-
 }
 ul li{
     text-decoration: none;
     list-style: none;
 }
-.a-hoverly:hover{
+.li-hoverly:hover{
+    
     background-color: #2b3945;
     color: white;
 }
@@ -161,4 +160,15 @@ ul li{
 .info-collapse{
     display: flex;
     justify-content: flex-end;
+}
+.lef-ul{
+    position: fixed;
+}
+.a-hoverly{
+    display: flex;
+    align-items: center;
+}
+.a-hoverly span{
+    white-space: nowrap;
+    font-size: 16px;
 }
