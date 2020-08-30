@@ -86,3 +86,13 @@ line-height: 22px;
   width: 36px;
   min-width: 32px;
   }
+  .nearest-hotel-card{
+    background-color: #ebf3ff;
+  }
+  .parent-nearest-hotel-card{
+    box-shadow:0 0 10px #5bbaff !important;
+  }
+  .nearest-hotels-row{
+    margin:auto;
+    margin-left: 48px;
+  }

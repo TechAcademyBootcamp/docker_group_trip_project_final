@@ -1,3 +1,4 @@
+
 from django.urls import path
 from Main.views import MainClassView,SubscriberCreateView,ContactSubjectView,ContactPageView,AboutUsView,PrivacyPolicyView, \
     TermsOfUseView,CitySinglePage,CitiesPage

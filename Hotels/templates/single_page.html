@@ -1,22 +1,27 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     <!-- <link href="jquery.lightroom.css" rel="stylesheet"> -->
-    <link rel="stylesheet" href="css/gallery.css">
+    <!-- <link rel="stylesheet" href="css/gallery.css">
     <link rel="stylesheet" href="css/pignose.calendar.css">
-    <link rel="stylesheet" href="single_page.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,100;1,300&display=swap" rel="stylesheet">
-    <title>Document</title>
-</head>
+    <link rel="stylesheet" href="single_page.css"> -->
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,100;1,300&display=swap" rel="stylesheet"> -->
+    <!-- <title>Document</title>
+</head> -->
+<!-- 
+<body> -->
 
-<body>
+
+    {% extends 'base.html' %}
+    {% load static %}
+    {% block content %}
     <section>
         <div class="container">
             <div class="row justify-content-between align-items-center pt-4">
@@ -467,30 +472,32 @@
     <section>
         <div class="container">
             <span class="nearest-hotels">Nearest hotels : </span>
-            <div class="line-under-hotels my-5"></div>
-            <div class="row">
-                <div class="col-4">
-                    <div class="card p-2 mb-3" style="width: 18rem;">
+            <div class="line-under-hotels my-5 col-lg-block"></div>
+            <div class="row nearest-hotels-row">
+                <div class="col-12 col-lg-4 ">
+                    <div class="card p-2 mb-5 nearest-hotel-card parent-nearest-hotel-card" style="width: 18rem;">
                         <img class="card-img-top"
                             src="https://www.geobookings.com/data/accomodations/03ac5df68db3441893459f77c0b8743f.jpg"
                             alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title mb-1">City Hotel</h5>
-                            <div class="mb-2">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
+                        <div class="card-body p-0">
+                            <div class="p-2 ">
+                                <h5 class="card-title mb-1">City Hotel</h5>
+                                <div class="mb-2">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
                             </div>
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div class="d-flex flex-column justify-content-start p-2 mt-3">
-                                    <div class="rating-count mb-3">8.5</div>
+                            <div class="d-flex  justify-content-between">
+                                <div class="d-flex flex-column justify-content-start p-1 mb-3 ml-2">
+                                    <div class="rating-count mt-2 mb-3 ml-4">8.5</div>
                                     <div class="d-flex flex-column mr-2 justify-content-start" style="line-height:5px;">
                                         <small>(231 Reviews)</small>
                                     </div>
                                 </div>
-                                <div class="d-flex flex-column">
+                                <div class="d-flex flex-column px-2">
                                     <span class="nearest-hotel-price text-right"><span
                                             class="dollar-symbol mr-1">$</span>35</span>
                                     <a href="#" class="btn btn-primary">View deal</a>
@@ -499,47 +506,93 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-4">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="..." alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                <div class="col-12 col-lg-4 ">
+                    <div class="card p-2 mb-5 nearest-hotel-card parent-nearest-hotel-card" style="width: 18rem;">
+                        <img class="card-img-top"
+                            src="https://www.geobookings.com/data/accomodations/03ac5df68db3441893459f77c0b8743f.jpg"
+                            alt="Card image cap">
+                        <div class="card-body p-0">
+                            <div class="p-2 ">
+                                <h5 class="card-title mb-1">City Hotel</h5>
+                                <div class="mb-2">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+                            </div>
+                            <div class="d-flex  justify-content-between">
+                                <div class="d-flex flex-column justify-content-start p-1 mb-3 ml-2">
+                                    <div class="rating-count mt-2 mb-3 ml-4">8.5</div>
+                                    <div class="d-flex flex-column mr-2 justify-content-start" style="line-height:5px;">
+                                        <small>(231 Reviews)</small>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-column px-2">
+                                    <span class="nearest-hotel-price text-right"><span
+                                            class="dollar-symbol mr-1">$</span>35</span>
+                                    <a href="#" class="btn btn-primary">View deal</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-4">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="..." alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                <div class="col-12 col-lg-4 ">
+                    <div class="card p-2 mb-5 nearest-hotel-card parent-nearest-hotel-card" style="width: 18rem;">
+                        <img class="card-img-top"
+                            src="https://www.geobookings.com/data/accomodations/03ac5df68db3441893459f77c0b8743f.jpg"
+                            alt="Card image cap">
+                        <div class="card-body p-0">
+                            <div class="p-2 ">
+                                <h5 class="card-title mb-1">City Hotel</h5>
+                                <div class="mb-2">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+                            </div>
+                            <div class="d-flex  justify-content-between">
+                                <div class="d-flex flex-column justify-content-start p-1 mb-3 ml-2">
+                                    <div class="rating-count mt-2 mb-3 ml-4">8.5</div>
+                                    <div class="d-flex flex-column mr-2 justify-content-start" style="line-height:5px;">
+                                        <small>(231 Reviews)</small>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-column px-2">
+                                    <span class="nearest-hotel-price text-right"><span
+                                            class="dollar-symbol mr-1">$</span>35</span>
+                                    <a href="#" class="btn btn-primary">View deal</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"
-        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+
+    {% include 'includes/subscribers.html' %}
+    {% endblock %}
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js" -->
+        <!-- integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        crossorigin="anonymous"></script> -->
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-        crossorigin="anonymous"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.4/hammer.min.js"></script>
-    <script src="js/gallery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
+        crossorigin="anonymous"></script> -->
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.4/hammer.min.js"></script> -->
+    
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
         integrity="sha512-rmZcZsyhe0/MAjquhTgiUcb4d9knaFc7b5xAfju483gbEXTkeJRUMIPk6s3ySZMYUHEcjKbjLjyddGWMrNEvZg=="
-        crossorigin="anonymous"></script>
-    <script src="js/pignose.calendar.js"></script>
-    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    <script>
+        crossorigin="anonymous"></script> -->
+    <!-- <script src="js/gallery.js"></script>
+    <script src="js/pignose.calendar.js"></script> -->
+    <!-- <script src='https://kit.fontawesome.com/a076d05399.js'></script> -->
+    <!-- <script>
         $(function () {
             $('.gallery').gallery();
         });
@@ -561,4 +614,4 @@
 
 </body>
 
-</html>
+</html> -->
