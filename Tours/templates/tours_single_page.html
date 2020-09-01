@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/tours-single-page.css' %}">
 {% endblock %}
@@ -46,38 +47,51 @@
 </div>
 <section class="middle container">
     <div class="row mt-4">
-        <ul class="route col-md-3 d-none d-md-block">
-            <li class="row a-hoverly">
-                <a class="a-hoverly" href=""><img class="svgs mr-1" src="{% static 'images/list.svg' %}" />Overviw</a>
-            </li>
-            <li class="row a-hoverly">
-                <a class="a-hoverly" href=""><img class="svgs mr-1"
-                        src="{% static 'images/gallery.svg' %}" />Gallery</a>
-            </li>
-            <li class="row a-hoverly">
-                <a class="a-hoverly" href=""><img class="svgs mr-1" src="{% static 'images/tour.svg' %}" />Itinerary</a>
-            </li>
-            <li class="row a-hoverly">
-                <a class="a-hoverly" href=""><img class="svgs mr-1" src="{% static 'images/tick.svg' %}" />Inclusion</a>
-            </li>
-            <li class="row a-hoverly">
-                <a class="a-hoverly" href=""><img class="svgs mr-1" src="{% static 'images/calendar (1).svg' %}" />Dates
-                    & Avebility</a>
-            </li>
-            <li class="row a-hoverly">
-                <a class="a-hoverly" href=""><img class="svgs mr-1" src="{% static 'images/note.svg' %}" />Importants
-                    notes </a>
-            </li>
-            <li class="row a-hoverly">
-                <a class="a-hoverly" href=""> <img class="svgs mr-1"
-                        src="{% static 'images/newsletter.svg' %}" />Essential trip
-                    informations </a>
-            </li>
-            <li class="row a-hoverly">
-                <a class="" href=""><img class="svgs mr-1" src="{% static 'images/star.svg' %}" />Reviews</a>
-            </li>
-        </ul>
-        <div class="mid-right col-md-9 col-12 mb-5">
+        <section class="route col-lg-3 d-none d-lg-block" data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+            <ul class="">
+                <li class="li-hoverly">
+                    <a class="a-hoverly " href=""><img class="svgs mr-1" src="{% static 'images/list.svg' %}" />
+                        <span>Overview</span></a>
+                </li>
+                <li class="li-hoverly">
+                    <a class="a-hoverly" href="#gallery"><img class="svgs mr-1"
+                            src="{% static 'images/gallery.svg' %}" />
+                        <span>Gallery</span></a>
+                </li>
+                <li class="li-hoverly">
+                    <a class="a-hoverly" href="#itinerary"><img class="svgs mr-1"
+                            src="{% static 'images/tour.svg' %}" />
+                        <span>Itinerary</span></a>
+                </li>
+                <li class="li-hoverly">
+                    <a class="a-hoverly" href="#inclusion"><img class="svgs mr-1"
+                            src="{% static 'images/tick.svg' %}" />
+                        <span>Inclusion</span></a>
+                </li>
+                <li class="li-hoverly">
+                    <a class="a-hoverly" href="#dates"><img class="svgs mr-1"
+                            src="{% static 'images/calendar (1).svg' %}" />
+                        <span>Dates & availabity</span>
+                    </a>
+                </li>
+                <li class="li-hoverly">
+                    <a class="a-hoverly" href="#notes"><img class="svgs mr-1" src="{% static 'images/note.svg' %}" />
+                        <span>Important notes</span> </a>
+                </li>
+                <li class="li-hoverly">
+                    <a class="a-hoverly" href="#info">
+                        <img class="svgs mr-1" src="{% static 'images/newsletter.svg' %}" />
+                        <span>Essential trip information</span>
+                    </a>
+                </li>
+                <li class="li-hoverly">
+                    <a class="a-hoverly " href="#reviews"><img class="svgs mr-1" src="{% static 'images/star.svg' %}" />
+                        <span>Reviews</span></a>
+                </li>
+            </ul>
+        </section>
+
+        <div class="mid-right col-lg-9 col-12 mb-5">
             <p class="title">
                 Escape to the country of deep dales and walking trails
             </p>
@@ -180,7 +194,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="right-for-you">
+            <div class="right-for-you" id="section1">
                 <h2>Is this trip right for you?</h2>
                 <ul>
                     <li>
@@ -202,25 +216,25 @@
             </div>
 
             <div class="collapse mt-5">
-                <div class="Itenenary">
+                <div class="Itenenary" id="itinerary">
                     <h2>Itinenary</h2>
                     <span class="expendall">
-                        <img class="plus-img" src="https://img.icons8.com/metro/26/000000/plus.png"/>
-                        Expend All
+                        <span class="plus-img">+</span>
+                        <span class="expend-all">expend All</span>
                     </span>
                 </div>
 
-                
+
                 <div id="accordion">
                     <div class="card mb-2">
-                        <div class="card-header" id="headingOne">
+                        <div class="card-header collapse-head" id="headingOne">
                             <h5 class="mb-0 itinerary-plus">
-                                <button class="btn btn-link " data-toggle="collapse" data-target="#collapseOne"
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
                                     aria-expanded="true" aria-controls="collapseOne" style="text-decoration: none;">
-                                    <span class="collapse-day">Day 1:Peek District /Castleton</span> 
-                                    
+                                    <span class="collapse-day">Day 1:Peek District /Castleton</span>
+
                                 </button>
-                                <img class="plus-img" src="https://img.icons8.com/metro/26/000000/plus.png"/>
+                                <span class="inhead-plus-img">+</span>
                             </h5>
                         </div>
 
@@ -238,14 +252,15 @@
                         </div>
                     </div>
                     <div class="card mb-2">
-                        <div class="card-header" id="headingTwo">
+                        <div class="card-header collapse-head" id="headingTwo">
                             <h5 class="mb-0 itinerary-plus">
-                                <button style="text-decoration: none;" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
-                                    aria-expanded="false" aria-controls="collapseTwo">
+                                <button style="text-decoration: none;" class="btn btn-link collapsed"
+                                    data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                    aria-controls="collapseTwo">
                                     <span class="collapse-day">Day 2:Peek District /Castleton</span>
 
                                 </button>
-                                <img class="plus-img" src="https://img.icons8.com/metro/26/000000/plus.png"/>
+                                <span class="inhead-plus-img">+</span>
                             </h5>
                         </div>
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
@@ -261,13 +276,13 @@
                         </div>
                     </div>
                     <div class="card mb-2">
-                        <div class="card-header" id="headingThree">
+                        <div class="card-header collapse-head" id="headingThree">
                             <h5 class="mb-0 itinerary-plus">
                                 <button class="btn btn-link collapsed" data-toggle="collapse"
                                     data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                     <span class="collapse-day">Day 3:Peek District /Castleton</span>
                                 </button>
-                                <img class="plus-img" src="https://img.icons8.com/metro/26/000000/plus.png"/>
+                                <span class="inhead-plus-img">+</span>
                             </h5>
                         </div>
                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
@@ -284,12 +299,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="info-collapse">
-                    <img src="https://img.icons8.com/material/24/000000/info--v1.png"/>
+                <!-- <div class="info-collapse">
+                    <img src="https://img.icons8.com/material/24/000000/info--v1.png" />
                     Want to tailor this itinerary?
-                </div>
+                </div> -->
             </div>
-            <div class="inclusion mt-5 d-md-block d-none">
+            <div class="inclusion mt-5 d-md-block d-none" id="inclusion">
 
                 <h2 class="">Inclusions</h2>
 
@@ -338,47 +353,64 @@
                     </div>
                 </div>
             </div>
-            <div class="inclusion-resp d-block d-md-none">
+            <div class="inclusion-resp d-block d-md-none mt-4 colxs-12">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
-                      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><div class="col-2">
-                        <img class="forkandknife"
-                            src="https://img.icons8.com/ios-filled/50/000000/restaurant--v1.png" />
-                    </div></a>
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                            aria-controls="home" aria-selected="true">
+                            <div class="col-2">
+                                <img class="forkandknife"
+                                    src="https://img.icons8.com/ios-filled/50/000000/restaurant--v1.png" />
+                            </div>
+                        </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><img src="https://img.icons8.com/material-rounded/50/000000/train.png" /></a>
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                            aria-controls="profile" aria-selected="false"><img
+                                src="https://img.icons8.com/material-rounded/50/000000/train.png" /></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"><img src="https://img.icons8.com/ios-filled/50/000000/hotel-information.png" /></a>
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                            aria-controls="contact" aria-selected="false"><img
+                                src="https://img.icons8.com/ios-filled/50/000000/hotel-information.png" /></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="Photo-tab" data-toggle="tab" href="#Photo" role="tab" aria-controls="Photo" aria-selected="false"><img src="https://img.icons8.com/ios-filled/50/000000/unsplash.png" /></a>
-                      </li>
-                  </ul>
-                  <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><div class="col-10">
-                        <h2>Meals</h2>
-                        2 breakfasts
-                    </div></div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"><div class="col-10">
-                        <h2>Trasnport</h2>
-                        Taxi , bus, Train
-                    </div></div>
-                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><h2>
-                        Accommodation</h2>
-                    Original style bed & breakfast (2 nights)</div>
-                    <div class="tab-pane fade" id="Photo" role="tabpanel" aria-labelledby="Photo-tab"><h2>Included activities</h2>
+                        <a class="nav-link" id="Photo-tab" data-toggle="tab" href="#Photo" role="tab"
+                            aria-controls="Photo" aria-selected="false"><img
+                                src="https://img.icons8.com/ios-filled/50/000000/unsplash.png" /></a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="col-10">
+                            <h2>Meals</h2>
+                            2 breakfasts
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="col-10">
+                            <h2>Trasnport</h2>
+                            Taxi , bus, Train
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <h2>
+                            Accommodation</h2>
+                        Original style bed & breakfast (2 nights)
+                    </div>
+                    <div class="tab-pane fade" id="Photo" role="tabpanel" aria-labelledby="Photo-tab">
+                        <h2>Included activities</h2>
                         <ul>
                             <li>Bamford - Hope Valley & Village Walk</li>
                             <li>Bamford - Local Beer Tasting (Intrepid Explorer Pub)</li>
                             <li>Hathersage - Hike to Bakewell</li>
                             <li>Grindleford - Village Community Shop Drink & Snack</li>
                             <li>Hathersage - Longshaw Estate Walk</li>
-                        </ul></div>
-                  </div>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="important-notes mt-5">
+            <div class="important-notes mt-5" id="notes">
                 <h2>Important notes</h2>
                 <p>
                     START & END OF TOUR
@@ -405,22 +437,20 @@
 </section>
 
 
+<div class="d-md-none">
+    <a class="dates-2">
+        <img class="mr-2" src="{% static 'images/calendar (1).svg' %}" />
+        <span>Go to dates</span>
+    </a>
+</div>
 
 {% include 'includes/subscribers.html' %}
 
 {% block js %}
-<script>
-    $('.collapse').collapse()
 
-    $('#myTab a').on('click', function (e) {
-        e.preventDefault()
-        $(this).tab('show')
-      })
-</script>
+
+<script src="{% static 'js/tour-single-page.js' %}"></script>
 
 {% endblock %}
-<a class="dates d-md-none d-block">
-    <img class="mr-2" src="{% static 'images/calendar (1).svg' %}" />
-    <span>Go to dates</span>
-</a>
+
 {% endblock content %}

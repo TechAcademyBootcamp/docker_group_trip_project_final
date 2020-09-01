@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/citysinglepage.css' %}">
+{% endblock %}
 
 {% block content %}
 
@@ -14,146 +19,244 @@
         </div>
     </div>
 </section>
-<section>
-    <div class="container-fluid">
+<section class="destinition-carousel mt-5 mb-5">
     <h4 class="text-center p-3 content-h4">
         <span class="span-under-content">
             <span class="content-name">
-                Cities
+                Most Popular Destinitions
             </span>
         </span>
     </h4>
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="for-relative">
+                    <img class="d-block w-100" src="{% static 'images/Bakü_gece_görünüşü.jpg' %}" alt="Third slide">
+                    <div class="for-absolute">
+                        <div class="description">
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quo aperiam recusandae dicta
+                            repudiandae
+                            doloribus atque explicabo fugiat odio, rerum praesentium magni assumenda harum iure!
+                            Laudantium
+                            repellendus voluptate itaque eligendi esse?
+                        </div>
+                        <button class="see-button">
+                            See Destinition
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="for-relative">
+                    <img class="d-block w-100" src="{% static 'images/Bakü_gece_görünüşü.jpg' %}" alt="Third slide">
+                    <div class="for-absolute">
+                        <div class="description">
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quo aperiam recusandae dicta
+                            repudiandae
+                            doloribus atque explicabo fugiat odio, rerum praesentium magni assumenda harum iure!
+                            Laudantium
+                            repellendus voluptate itaque eligendi esse?
+                        </div>
+                        <button class="see-button">
+                            See Destinition
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="for-relative">
+                    <img class="d-block w-100" src="{% static 'images/Bakü_gece_görünüşü.jpg' %}" alt="Third slide">
+                    <div class="for-absolute">
+                        <div class="description">
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quo aperiam recusandae dicta
+                            repudiandae
+                            doloribus atque explicabo fugiat odio, rerum praesentium magni assumenda harum iure!
+                            Laudantium
+                            repellendus voluptate itaque eligendi esse?
+                        </div>
+                        <button class="see-button">
+                            See Destinition
+                        </button>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</section>
+<!-- <section>
     <div class="container-fluid">
-        <div class="row align-items-center justify-content-center p-4">
-            
-            <div class="col-12 col-lg-4 mb-4 mb-lg-0">
-                <div class="main-image-div">
-                    <img class="main-images w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcST6sShmMHWP3T5E6ACaaVRbhUvwNCabzGuaQ&usqp=CAU" alt="">
-                    <p class="city-name">DESTINITON</p>
+        <h4 class="text-center p-3 content-h4">
+            <span class="span-under-content">
+                <span class="content-name">
+                    Most Popular Destinition
+                </span>
+            </span>
+        </h4>
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-center p-4">
+
+                <div class="col-12 col-lg-4 mb-4 mb-lg-0">
+                    <div class="main-image-div">
+                        <img class="main-images w-100"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcST6sShmMHWP3T5E6ACaaVRbhUvwNCabzGuaQ&usqp=CAU"
+                            alt="">
+                        <p class="city-name">DESTINITON</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-12 col-lg-4 mb-4 mb-lg-0">
-                <div class="main-image-div">
-                    <img class="main-images w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcST6sShmMHWP3T5E6ACaaVRbhUvwNCabzGuaQ&usqp=CAU" alt="">
-                    <p class="city-name">DESTINITON</p>
+                <div class="col-12 col-lg-4 mb-4 mb-lg-0">
+                    <div class="main-image-div">
+                        <img class="main-images w-100"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcST6sShmMHWP3T5E6ACaaVRbhUvwNCabzGuaQ&usqp=CAU"
+                            alt="">
+                        <p class="city-name">DESTINITON</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-12 col-lg-4 mb-4 mb-lg-0">
-                <div class="main-image-div">
-                    <img class="main-images w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcST6sShmMHWP3T5E6ACaaVRbhUvwNCabzGuaQ&usqp=CAU" alt="">
-                    <p class="city-name">DESTINITON</p>
+                <div class="col-12 col-lg-4 mb-4 mb-lg-0">
+                    <div class="main-image-div">
+                        <img class="main-images w-100"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcST6sShmMHWP3T5E6ACaaVRbhUvwNCabzGuaQ&usqp=CAU"
+                            alt="">
+                        <p class="city-name">DESTINITON</p>
+                    </div>
                 </div>
+
             </div>
-            
         </div>
     </div>
-</div>
+</section> -->
+
+<section>
+    <div class="container-fluid">
+        <h4 class="text-center p-3 content-h4">
+            <span class="span-under-content">
+                <span class="content-name">
+                    Hotels
+                </span>
+            </span>
+        </h4>
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-center p-4">
+
+                <div class="col-12 col-lg-4 mb-4 mb-lg-0">
+                    <div class="main-image-div">
+                        <img class="main-images w-100"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcST6sShmMHWP3T5E6ACaaVRbhUvwNCabzGuaQ&usqp=CAU"
+                            alt="">
+                        <p class="city-name">HOTEL</p>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4 mb-4 mb-lg-0">
+                    <div class="main-image-div">
+                        <img class="main-images w-100"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcST6sShmMHWP3T5E6ACaaVRbhUvwNCabzGuaQ&usqp=CAU"
+                            alt="">
+                        <p class="city-name">HOTEL</p>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4 mb-4 mb-lg-0">
+                    <div class="main-image-div">
+                        <img class="main-images w-100"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcST6sShmMHWP3T5E6ACaaVRbhUvwNCabzGuaQ&usqp=CAU"
+                            alt="">
+                        <p class="city-name">HOTEL</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
 </section>
 <section>
     <div class="container-fluid">
-    <h4 class="text-center p-3 content-h4">
-        <span class="span-under-content">
-            <span class="content-name">
-                Most Popular Destinition
+        <h4 class="text-center p-3 content-h4">
+            <span class="span-under-content">
+                <span class="content-name">
+                    Restaurants
+                </span>
             </span>
-        </span>
-    </h4>
-    <div class="container-fluid">
-        <div class="row align-items-center justify-content-center p-4">
-            
-            <div class="col-12 col-lg-4 mb-4 mb-lg-0">
-                <div class="main-image-div">
-                    <img class="main-images w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcST6sShmMHWP3T5E6ACaaVRbhUvwNCabzGuaQ&usqp=CAU" alt="">
-                    <p class="city-name">CITY</p>
+        </h4>
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-center p-4">
+
+                <div class="col-12 col-lg-4 mb-4 mb-lg-0">
+                    <div class="main-image-div">
+                        <img class="main-images w-100"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcST6sShmMHWP3T5E6ACaaVRbhUvwNCabzGuaQ&usqp=CAU"
+                            alt="">
+                        <p class="city-name">RESTAURANT</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-12 col-lg-4 mb-4 mb-lg-0">
-                <div class="main-image-div">
-                    <img class="main-images w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcST6sShmMHWP3T5E6ACaaVRbhUvwNCabzGuaQ&usqp=CAU" alt="">
-                    <p class="city-name">CITY</p>
+                <div class="col-12 col-lg-4 mb-4 mb-lg-0">
+                    <div class="main-image-div">
+                        <img class="main-images w-100"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcST6sShmMHWP3T5E6ACaaVRbhUvwNCabzGuaQ&usqp=CAU"
+                            alt="">
+                        <p class="city-name">RESTAURANT</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-12 col-lg-4 mb-4 mb-lg-0">
-                <div class="main-image-div">
-                    <img class="main-images w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcST6sShmMHWP3T5E6ACaaVRbhUvwNCabzGuaQ&usqp=CAU" alt="">
-                    <p class="city-name">CITY</p>
+                <div class="col-12 col-lg-4 mb-4 mb-lg-0">
+                    <div class="main-image-div">
+                        <img class="main-images w-100"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcST6sShmMHWP3T5E6ACaaVRbhUvwNCabzGuaQ&usqp=CAU"
+                            alt="">
+                        <p class="city-name">RESTAURANT</p>
+                    </div>
                 </div>
+
             </div>
-            
         </div>
-    </div>
-</div>
 </section>
 <section>
     <div class="container-fluid">
-    <h4 class="text-center p-3 content-h4">
-        <span class="span-under-content">
-            <span class="content-name">
-                Hotels
+        <h4 class="text-center p-3 content-h4">
+            <span class="span-under-content">
+                <span class="content-name">
+                    Tours
+                </span>
             </span>
-        </span>
-    </h4>
-    <div class="container-fluid">
-        <div class="row align-items-center justify-content-center p-4">
-            
-            <div class="col-12 col-lg-4 mb-4 mb-lg-0">
-                <div class="main-image-div">
-                    <img class="main-images w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcST6sShmMHWP3T5E6ACaaVRbhUvwNCabzGuaQ&usqp=CAU" alt="">
-                    <p class="city-name">HOTEL</p>
+        </h4>
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-center p-4">
+
+                <div class="col-12 col-lg-4 mb-4 mb-lg-0">
+                    <div class="main-image-div">
+                        <img class="main-images w-100"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcST6sShmMHWP3T5E6ACaaVRbhUvwNCabzGuaQ&usqp=CAU"
+                            alt="">
+                        <p class="city-name">Tours</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-12 col-lg-4 mb-4 mb-lg-0">
-                <div class="main-image-div">
-                    <img class="main-images w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcST6sShmMHWP3T5E6ACaaVRbhUvwNCabzGuaQ&usqp=CAU" alt="">
-                    <p class="city-name">HOTEL</p>
+                <div class="col-12 col-lg-4 mb-4 mb-lg-0">
+                    <div class="main-image-div">
+                        <img class="main-images w-100"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcST6sShmMHWP3T5E6ACaaVRbhUvwNCabzGuaQ&usqp=CAU"
+                            alt="">
+                        <p class="city-name">Tours</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-12 col-lg-4 mb-4 mb-lg-0">
-                <div class="main-image-div">
-                    <img class="main-images w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcST6sShmMHWP3T5E6ACaaVRbhUvwNCabzGuaQ&usqp=CAU" alt="">
-                    <p class="city-name">HOTEL</p>
+                <div class="col-12 col-lg-4 mb-4 mb-lg-0">
+                    <div class="main-image-div">
+                        <img class="main-images w-100"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcST6sShmMHWP3T5E6ACaaVRbhUvwNCabzGuaQ&usqp=CAU"
+                            alt="">
+                        <p class="city-name">Tours</p>
+                    </div>
                 </div>
+
             </div>
-            
         </div>
-       
-    </div>
-</div>
-</section>
-<section>
-    <div class="container-fluid">
-    <h4 class="text-center p-3 content-h4">
-        <span class="span-under-content">
-            <span class="content-name">
-                Restarants
-            </span>
-        </span>
-    </h4>
-    <div class="container-fluid">
-        <div class="row align-items-center justify-content-center p-4">
-            
-            <div class="col-12 col-lg-4 mb-4 mb-lg-0">
-                <div class="main-image-div">
-                    <img class="main-images w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcST6sShmMHWP3T5E6ACaaVRbhUvwNCabzGuaQ&usqp=CAU" alt="">
-                    <p class="city-name">RESTAURANT</p>
-                </div>
-            </div>
-            <div class="col-12 col-lg-4 mb-4 mb-lg-0">
-                <div class="main-image-div">
-                    <img class="main-images w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcST6sShmMHWP3T5E6ACaaVRbhUvwNCabzGuaQ&usqp=CAU" alt="">
-                    <p class="city-name">RESTAURANT</p>
-                </div>
-            </div>
-            <div class="col-12 col-lg-4 mb-4 mb-lg-0">
-                <div class="main-image-div">
-                    <img class="main-images w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcST6sShmMHWP3T5E6ACaaVRbhUvwNCabzGuaQ&usqp=CAU" alt="">
-                    <p class="city-name">RESTAURANT</p>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-</div>
 </section>
 {% include 'includes/subscribers.html' %}
 {% endblock content %}
