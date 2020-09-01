@@ -1,31 +1,42 @@
-    document.addEventListener('click', function (e) {
-        console.log('2defe')
-        e.stopPropagation();
-        // e.preventDefault();
+$(document).ready(function () {
+
+    $('.all-photos').click(function(){
+        document.querySelector('.all-photos-page').classList.remove('d-none');
+        document.querySelector('.all-photos-page').classList.add('d-block');
+        document.querySelector('body').style.overflow='hidden'
+      });
+    $('.close-all-photos').click(function(){
+        document.querySelector('.all-photos-page').classList.remove('d-block');
+        document.querySelector('.all-photos-page').classList.add('d-none');
+        document.querySelector('body').style.overflowY='scroll'
+      });
+    
+    })
+
+document.onclick = function (e){
         if (e.target.closest('.position-exit-cursor'))
         {
-            document.querySelector('.table-restaurant-open-time').style.display = 'none'; 
+            document.querySelector('.table-restaurant-open-time').classList.remove("d-block"); 
+            document.querySelector('.table-restaurant-open-time').classList.add("d-none"); 
         }
         else if (e.target.closest('.jquery-effect')) 
         {
-            console.log('jquery')
-            if(document.querySelector('.table-restaurant-open-time').style.display == 'none')
+            if(document.querySelector('.table-restaurant-open-time').classList.contains('d-none'))
             {
-                console.log('aa')
-                document.querySelector('.table-restaurant-open-time').style.display = 'block';
+                document.querySelector('.table-restaurant-open-time').classList.remove("d-none"); 
+                document.querySelector('.table-restaurant-open-time').classList.add("d-block"); 
             }
             else{
-                console.log('bbb')
-                document.querySelector('.table-restaurant-open-time').style.display = 'none';
+                document.querySelector('.table-restaurant-open-time').classList.remove("d-block"); 
+                document.querySelector('.table-restaurant-open-time').classList.add("d-none"); 
             }
             
         }
-        else if (e.target.closest('.table-restaurant-open-time')) 
+        else if (!e.target.closest('.table-restaurant-open-time')) 
         {
-            console.log('Nothing to happened')
+            document.querySelector('.table-restaurant-open-time').classList.remove("d-block"); 
+            document.querySelector('.table-restaurant-open-time').classList.add("d-none"); 
         }
-        else 
-        {
-            document.querySelector('.table-restaurant-open-time').style.display = 'none';
-        }
-    })
+
+    }
+

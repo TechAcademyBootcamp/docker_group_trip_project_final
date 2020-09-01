@@ -3,6 +3,6 @@ from Restaurants.views import RestaurantsClassView , RestaurantsSinglePageClassV
 
 urlpatterns = [
     path('restaurants/',RestaurantsClassView.as_view(),name='restaurants'),
-    path('single_page/',RestaurantsSinglePageClassView.as_view(),name='restaurant_single_page'),
+    path('single-page/',RestaurantsSinglePageClassView.as_view(),name='restaurant_single_page'),
 
 ]

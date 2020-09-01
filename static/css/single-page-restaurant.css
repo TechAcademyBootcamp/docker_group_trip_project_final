@@ -67,64 +67,6 @@
     color: white;
 }
 
-/* ..........Slide show.......... */
-#slideshow {
-    position: relative;
-  }
-  
-  #slideshow .slides {
-    z-index: 109;
-  }
-  
-  #slideshow .slides .slide img {
-    width: 100%;
-  }
-  
-  #slideshow .controls {
-    position: absolute;
-    z-index: 101;
-    left: 30px;
-    bottom: 30px;
-    width: auto;
-    margin: 0 auto;
-    overflow: hidden;
-    display: block;
-  }
-  
-  #slideshow .controls .control {
-    background-color: #ffffff;
-    padding: 5px 10px;
-    margin: 0 5px;
-    text-decoration: none;
-    color: #000000;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-    filter: alpha(opacity=50);
-    -moz-opacity: 0.5;
-    -khtml-opacity: 0.5;
-    opacity: 0.5;
-    display: inline-block;
-    float: left;
-  }
-
-/* ..........Responsive slide show........... */
-@media (max-width:979px) {
-    .slides {
-      width: 100%;
-    }
-  
-    .slides .slide {
-      width: 100%;
-    }
-  
-    .slides .slide img {
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-    }
-  }
-
-/* ........End slide show........ */
-
 .single-page-information-topic{
   font-size: 18px;
   line-height: 22px;
@@ -166,7 +108,7 @@
   font-weight: bold;
 }
 
-.restaurant_container{
+.restaurant-container{
   max-width: 1232px;
   padding-right: 15px;
   padding-left: 15px;
@@ -223,12 +165,7 @@
 }
 
 
-@media (max-width:1273px){
-  .reason-img{
-    width: 132px;
-    height: 132px;
-  }
-}
+
 
 .reason-text{
   margin-bottom: 12px;
@@ -291,27 +228,10 @@
 .restaurant-all-reasons{
   padding: 0px 15px 20px 15px;
 }
-@media (max-width:991px){
-  .same-location-image-background{
-    height: 250px;
-  }
-  .restaurant_container{
-    padding: 0px;
-  }
-  .for-border{
-    border-left: none;
-    border-right: none;
-  }
-  .reason{
-    margin-top: 20px;
-  }
-  .price{
-    padding: 0px 5px 20px 5px;
-  }
-  .about-restaurant{
-    border: none;
-  }
+.auto-video{
+  padding: 0px 1px 0px 15px;
 }
+
 .heart-img{
   background-image: url(/static/images/heart.svg);
   width: 19px;
@@ -390,7 +310,6 @@
   position:absolute;
   margin-left: 10px;
   margin-top: 6px;
-  display: none;
   z-index: 5;
   background: white;
 }
@@ -486,4 +405,105 @@
 .save-restaurant-icon:hover > .same-location-save-restaurant{
   background-image: url(/static/images/red-heart.svg);
 }
+.img-style{
+  object-fit: cover;
+  object-position: center;
+  height: 100%;
+}
+.photos-camera::before{
+  text-decoration: none;
+}
+.photos-camera::before {
+  content: "\e010";
+  display: inline-block;
+font-style: normal;
+font-weight: 400;
+font-variant: normal;
+font-size: inherit;
+line-height: 1;
+font-family: TripAdvisor_Regular !important;
+}
+.all-photos{
+  background: #000000;
+  color: white;
+  height: 40px;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+}
+.all-photos:hover{
+  color: white;
+  text-decoration: none;
+}
+.all-photos .fa-camera{
+  margin-left: 12px;
+  margin-right: 8px;
+}
+.all-photos-page{
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  overflow-y:scroll; 
+}
+.close-all-photos{
+  position: fixed;
+  top: 5px;
+  right: 25px;
+  cursor: pointer;
+}
+.land-of-fire img{
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+}
+.mobile-contact-info{
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px;
+}
 
+@media (max-width:1273px){
+  .reason-img{
+    width: 132px;
+    height: 132px;
+  }
+}
+@media (max-width:991px){
+  .responsive-restaurant-information{
+    padding: 0px 20px;
+  }
+  .same-location-image-background{
+    height: 250px;
+  }
+  .restaurant-container{
+    padding: 0px !important;
+  }
+  .for-border{
+    border-left: none;
+    border-right: none;
+  }
+  .reason{
+    margin-top: 20px;
+  }
+  .price{
+    padding: 0px 5px 20px 5px;
+  }
+  .about-restaurant{
+    border: none;
+  }
+}
+@media (max-width:575px){
+  .auto-video{
+    padding: 0px 15px;
+  }
+  .save-button{
+    margin-right: 10px;
+  }
+  .mobile-contact-info{
+    font-size: 12px;
+  }
+}

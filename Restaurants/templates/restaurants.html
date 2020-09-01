@@ -9,7 +9,7 @@
 {% block content %}
 <section>
     <div class="background-filter">
-        <div class="restaurant_container">
+        <div class="restaurant-container">
             <div class="row">
                 <div class="col-12 row m-0  d-flex restaurant-search-input ">
                     <div class="search-input bg-white col-md-9 col-10  w-100 d-flex align-items-center"><i
@@ -24,12 +24,12 @@
     </div>
 </section>
 
-<section class="restaurant_container  mt-2" style="justify-content: center !important;display: flex;">
+<section class="restaurant-container  mt-2" style="justify-content: center !important;display: flex;">
     <div class="col-md-11">
         <div class="row">
             <div class="col-md-3">
                 <div>
-                    <img class="w-100" style="height: 60px;" src="{% static 'images/index.jpeg' %}" alt="">
+                    <img class="w-100 restaurant-cover-photo"  src="{% static 'images/index.jpeg' %}" alt="">
                 </div>
                 <div class="d-none d-md-block">
                     <div class="special-border">
@@ -136,15 +136,15 @@
             <div class="d-md-none d-block col-12" style="margin-top: 15px;">
                 <!-- <div class="special-border mt-3"></div> -->
                 <div class="special-border"></div>
-                <div class="position-relative" id="dining-options" style="cursor: pointer">
-                    <div class="d-flex justify-content-between align-items-center option-padding">
+                <div class="position-relative " style="cursor: pointer">
+                    <div class="d-flex justify-content-between align-items-center option-padding all-options">
                         <div class="d-flex">
                             <img src="{% static 'images/plate.svg' %}" width="20px" alt="">
                             <p class="ml-1 mt-0 mb-0 mr-0 p-0 restaurant-options">Dining Options</p>
                         </div>
                         <i style="padding: 0px 10px;" class="fa fa-angle-down"></i>
                     </div>
-                    <div class="option-tables" id="dining-option-table">
+                    <div class="option-tables d-none all-option-tables">
                         <div class="all-options-in-table">
                             <div class="d-flex mb-2 align-items-center">
                                 <input class="ml-1 regular-radio" type="radio" name="" id="">
@@ -163,15 +163,15 @@
                     </div>
                 </div>
                 <div class="special-border"></div>
-                <div class="position-relative" id="seating-options" style="cursor: pointer">
-                    <div class="d-flex justify-content-between align-items-center option-padding">
+                <div class="position-relative" style="cursor: pointer">
+                    <div class="d-flex justify-content-between align-items-center option-padding  all-options">
                         <div class="d-flex">
                             <img src="{% static 'images/chair.svg' %}" width="20px" alt="">
                             <p class="ml-1 mt-0 mb-0 mr-0 p-0 restaurant-options">Seating Options</p>
                         </div>
                         <i style="padding: 0px 10px;" class="fa fa-angle-down"></i>
                     </div>
-                    <div class="option-tables" id="seating-option-table">
+                    <div class="option-tables d-none all-option-tables">
                         <div class="all-options-in-table">
                             <div class="d-flex mb-2 align-items-center">
                                 <input class="ml-1 custom-checkbox" type="checkbox" name="" id="">
@@ -194,15 +194,15 @@
                     </div>
                 </div>
                 <div class="special-border"></div>
-                <div class="position-relative" id="cuisine-options" style="cursor: pointer">
-                    <div class="d-flex justify-content-between align-items-center option-padding">
+                <div class="position-relative "  style="cursor: pointer">
+                    <div class="d-flex justify-content-between align-items-center option-padding all-options">
                         <div class="d-flex">
                             <img src="{% static 'images/kitchen.svg' %}" width="20px" alt="">
                             <p class="ml-1 mt-0 mb-0 mr-0 p-0 restaurant-options">Cuisine</p>
                         </div>
                         <i style="padding: 0px 10px;" class="fa fa-angle-down"></i>
                     </div>
-                    <div class="option-tables" id="cuisine-option-table">
+                    <div class="option-tables d-none all-option-tables">
                         <div class="all-options-in-table">
                             <div class="d-flex mb-2 align-items-center">
                                 <input class="ml-1 custom-checkbox" type="checkbox" name="" id="">
@@ -221,15 +221,15 @@
                     </div>
                 </div>
                 <div class="special-border"></div>
-                <div class="position-relative" id="top-rated-options" style="cursor: pointer">
-                    <div class="d-flex justify-content-between align-items-center option-padding">
+                <div class="position-relative "  style="cursor: pointer">
+                    <div class="d-flex justify-content-between align-items-center option-padding all-options">
                         <div class="d-flex">
                             <img src="{% static 'images/five.svg' %}" width="20px" alt="">
                             <p class="ml-1 mt-0 mb-0 mr-0 p-0 restaurant-options">Top Rated</p>
                         </div>
                         <i style="padding: 0px 10px;" class="fa fa-angle-down"></i>
                     </div>
-                    <div class="option-tables" id="top-rated-option-table">
+                    <div class="option-tables d-none all-option-tables">
                         <div class="all-options-in-table">
                             <div class="d-flex mb-2 align-items-center">
                                 <input class="ml-1 custom-checkbox" type="checkbox" name="" id="">
@@ -249,15 +249,15 @@
                 </div>
                 <div class="special-border"></div>
 
-                <div class="position-relative" id="time-options" style="cursor: pointer">
-                    <div class="d-flex justify-content-between align-items-center option-padding">
+                <div class="position-relative "  style="cursor: pointer">
+                    <div class="d-flex justify-content-between align-items-center option-padding all-options">
                         <div class="d-flex">
                             <img src="{% static 'images/clock.svg' %}" width="20px" alt="">
                             <p class="ml-1 mt-0 mb-0 mr-0 p-0 restaurant-options">Time</p>
                         </div>
                         <i style="padding: 0px 10px;" class="fa fa-angle-down"></i>
                     </div>
-                    <div class="option-tables" id="time-option-table">
+                    <div class="option-tables d-none all-option-tables">
                         <div class="all-options-in-table">
                             <div class="d-flex mb-2 align-items-center">
                                 <input class="ml-1 custom-checkbox" type="checkbox" name="" id="">
@@ -461,6 +461,8 @@
                 </div>
 
             </div>
+            </div>
+            </div>
 </section>
 
 
@@ -468,30 +470,8 @@
 {% include 'includes/subscribers.html' %}
 
 {% block js %}
-<script>
 
-    document.addEventListener('click', function (e) {
-        if (e.target.closest("#dining-option-table")) {
-            console.log('1')
-            if (document.querySelector('#dining-option-table').style.display == 'block') {
-                console.log('2')
-                document.querySelector('#dining-option-table').style.display = 'none';
-            }
-            else {
-                console.log('3')
-                document.querySelector('#dining-option-table').style.display = 'block';
-            }
-            document.querySelector('#dining-option-table').style.display = 'block';
-        }
-        else if (e.target.closest("#dining-options")) {
-            document.querySelector('#dining-option-table').style.display = 'block';
-        }
-        else {
-            document.querySelector('#dining-option-table').style.display = 'none';
-        }
-
-    })
-</script>
 {% endblock %}
-
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<script src="{% static 'js/restaurant.js' %}"></script>
 {% endblock content %}

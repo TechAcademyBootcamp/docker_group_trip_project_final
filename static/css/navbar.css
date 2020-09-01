@@ -1,6 +1,6 @@
 .site-navbar{
     margin-bottom: 0px;
-    z-index: 1999;
+    z-index: 90;
     position: relative;
 }
 .text-black{
@@ -177,6 +177,10 @@
     display: block;
     position: relative;
     color: #212529;
+    text-decoration: none;
+}
+.site-mobile-menu a:hover{
+    text-decoration: none;
 }
 
 .site-mobile-menu .site-nav-wrap .fa-angle-down  {
