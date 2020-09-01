@@ -12,8 +12,8 @@
     padding: 15px 0px;
     justify-content: center;
 }
-.search-input{
-    border-radius: 3px 0px 0px 3px;
+.search-inputt{
+    border-radius: 3px 0px 0px 3px !important;
 }
 .restaurant-filter-input{
     border-style: none;
@@ -22,12 +22,12 @@
 }
 .restaurant-find{
     font-weight: 500;
-    border-top-right-radius: 3px;
-    border-bottom-left-radius: 0;
+    border-top-right-radius: 3px !important;
+    border-bottom-left-radius: 0 !important;
     border-style: none;
     background: #dc3545;
     color: white;
-    border-radius: 0px 3px 3px 0px;
+    border-radius: 0px 3px 3px 0px !important;
     transition: 0.3s ease all;
     padding: 10px 0px;
     width: 100%;
@@ -266,13 +266,13 @@
     }
 }
 @media only screen and (max-width: 766px) {
-    .search-input{
+    .search-inputt{
         padding:10px;
-        border-radius: 3px 3px 0px 0px;
+        border-radius: 3px 3px 0px 0px !important;
     }
     .restaurant-find{
         width: 100%;
-        border-radius:0px 0px 3px 3px;
+        border-radius:0px 0px 3px 3px !important;
     }
   } 
   @media only screen and (max-width: 434px) {

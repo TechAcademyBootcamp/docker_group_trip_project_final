@@ -37,7 +37,7 @@
     background-color: #b8222d;
 }
 
-.search-input{
+.search-inputt{
     border-radius: 3px 0px 0px 3px;
 }
 
@@ -463,7 +463,7 @@
 
 
 @media only screen and (max-width: 766px) {
-    .search-input{
+    .search-inputt{
         padding:10px;
         border-radius: 3px 3px 0px 0px;
     }
