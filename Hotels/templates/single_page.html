@@ -1,81 +1,554 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- <link href="jquery.lightroom.css" rel="stylesheet"> -->
-    <link rel="stylesheet" href="css/gallery.css">
-    <link rel="stylesheet" href="css/pignose.calendar.css">
-    <link rel="stylesheet" href="single_page.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,100;1,300&display=swap" rel="stylesheet">
-    <title>Document</title>
-</head>
-
-<body>
-    <section>
-        <div class="container">
-            <div class="row justify-content-between align-items-center pt-4">
-                <div class="col-3 " style="line-height: 2px;">
-                    <h5>Abu Park</h5>
-                    <span class="star-icon">&#9733;&#9733;</span>
-                </div>
-                <div class="col-3 d-flex">
-                    <button class="rounded bg-light text-primary" style="margin-right: 3px;"><i class="fa fa-heart-o"
-                            style="font-size:14px"></i><span>Save</span></button>
-                    <button class="rounded bg-primary text-light">Reserve a room</button>
-                </div>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section>
+    <div class="container">
+        <div class="row justify-content-between align-items-center pt-4">
+            <div class="col-3 " >
+                <h5>Abu Park</h5>
+                <span class="star-icon">&#9733;&#9733;</span>
             </div>
-            <div class="row p-3 gallery">
-                <div class="gallery col-lg-6 col-12 p-4">
-                    <div class="images">
-                        <div class="image active">
-                            <div class="content"
-                                style="background-image: url(data:image/jpeg;base64,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)">
-                            </div>
-                        </div>
-                        <div class="image">
-                            <div class="content"
-                                style="background-image: url(https://www.interiorzine.com/wp-content/uploads/2012/11/classic-hotel-interior.jpg)">
-                            </div>
-                        </div>
-                        <div class="image">
-                            <div class="content"
-                                style="background-image: url(https://www.interiorzine.com/wp-content/uploads/2012/11/contemporary-classic-hotel-interior.jpg)">
-                            </div>
-                        </div>
-                        <div class="image">
-                            <div class="content"
-                                style="background-image: url(https://themalaysianreserve.com/wp-content/uploads/2020/03/TMRAK1011_07-HOTEL.jpg)">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="thumbs">
-                        <div class="thumb active"
+            <div class="col-3 d-flex">
+                <button class="rounded bg-light text-primary" style="margin-right: 3px;"><i class="fa fa-heart-o"
+                        style="font-size:14px"></i><span>Save</span></button>
+                <button class="rounded bg-primary text-light">Reserve a room</button>
+            </div>
+        </div>
+        <div class="row p-3 gallery">
+            <div class="gallery col-lg-6 col-12 p-4">
+                <div class="images">
+                    <div class="image active">
+                        <div class="content"
                             style="background-image: url(data:image/jpeg;base64,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)">
                         </div>
-                        <div class="thumb"
+                    </div>
+                    <div class="image">
+                        <div class="content"
                             style="background-image: url(https://www.interiorzine.com/wp-content/uploads/2012/11/classic-hotel-interior.jpg)">
                         </div>
-                        <div class="thumb"
+                    </div>
+                    <div class="image">
+                        <div class="content"
                             style="background-image: url(https://www.interiorzine.com/wp-content/uploads/2012/11/contemporary-classic-hotel-interior.jpg)">
                         </div>
-                        <div class="thumb"
+                    </div>
+                    <div class="image">
+                        <div class="content"
                             style="background-image: url(https://themalaysianreserve.com/wp-content/uploads/2020/03/TMRAK1011_07-HOTEL.jpg)">
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-12 ">
-                    <h6 class="text-center" style="font-weight: bold;">Check in/Check out</h6>
-                    <div class="calender"></div>
+                <div class="thumbs">
+                    <div class="thumb active"
+                        style="background-image: url(data:image/jpeg;base64,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)">
+                    </div>
+                    <div class="thumb"
+                        style="background-image: url(https://www.interiorzine.com/wp-content/uploads/2012/11/classic-hotel-interior.jpg)">
+                    </div>
+                    <div class="thumb"
+                        style="background-image: url(https://www.interiorzine.com/wp-content/uploads/2012/11/contemporary-classic-hotel-interior.jpg)">
+                    </div>
+                    <div class="thumb"
+                        style="background-image: url(https://themalaysianreserve.com/wp-content/uploads/2020/03/TMRAK1011_07-HOTEL.jpg)">
+                    </div>
                 </div>
             </div>
-    </section>
-    <section>
+            <div class="col-lg-6 col-12 ">
+                <h6 class="text-center" style="font-weight: bold;">Check in/Check out</h6>
+                <div class="calender"></div>
+            </div>
+        </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row pb-2">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="py-3">
+                            <span class="title-of-description">Stay in the heart of Istanbul</span>
+                        </div>
+                        <div class="py-2">
+                            <span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bookmark-star"
+                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z" />
+                                    <path
+                                        d="M7.84 4.1a.178.178 0 0 1 .32 0l.634 1.285a.178.178 0 0 0 .134.098l1.42.206c.145.021.204.2.098.303L9.42 6.993a.178.178 0 0 0-.051.158l.242 1.414a.178.178 0 0 1-.258.187l-1.27-.668a.178.178 0 0 0-.165 0l-1.27.668a.178.178 0 0 1-.257-.187l.242-1.414a.178.178 0 0 0-.05-.158l-1.03-1.001a.178.178 0 0 1 .098-.303l1.42-.206a.178.178 0 0 0 .134-.098L7.84 4.1z" />
+                                </svg>
+                                <span class="short-description">One of our top picks in Istanbul.</span> </span>
+                        </div>
+                        <div class="main-description py-2 mb-4">
+                            Located in Istanbul, a 10-minute walk from Basilica Cistern, Sirkeci Ersu Hotel has
+                            accommodations with a shared lounge, private parking, a garden and a terrace. Located around
+                            a 14-minute walk from Column of Constantine, the hotel with free WiFi is also 1.1 km away
+                            from Grand Bazaar. The property provides a 24-hour front desk, room service and currency
+                            exchange for guests.
+
+                            <br> All rooms features air conditioning, a TV with satellite channels, a fridge, an
+                            electric tea
+                            pot, a bidet, a hairdryer and a desk. Rooms come complete with a private bathroom equipped
+                            with a shower and free toiletries, while some rooms at the hotel also have a seating area.
+                            All guest rooms will provide guests with a closet and a coffee machine.
+
+                            <br>Continental and buffet breakfast options are available every morning at Sirkeci Ersu
+                            Hotel.
+
+                            <br>The accommodation also provides a business center and guests can check the newspapers,
+                            use
+                            the fax machine and photocopier or use the on-site ATM machine at Sirkeci Ersu Hotel.
+
+                            <br>Popular points of interest near the hotel include Spice Bazaar, Blue Mosque and Topkapi
+                            Palace. The nearest airport is Istanbul, 40.2 km from Sirkeci Ersu Hotel, and the property
+                            offers a paid airport shuttle service.
+
+                            <br>This is our guests' favorite part of Istanbul, according to independent reviews.
+
+                            <br>Solo travelers in particular like the location – they rated it 9.6 for a one-person
+                            stay.
+
+                            <br>We speak your language!
+
+                            <br>Sirkeci Ersu Hotel has been welcoming Booking.com guests since May 13, 2018
+
+                            <br> in property description is calculated using © OpenStreetMap
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 d-flex" style="background-color: gainsboro;">
+                <div class="row">
+                    <div class="col-12 pb-5">
+                        <div class="pb-4 px-4">
+                            <span class="most-popular-facilities">
+                                Most popular facilities :
+                            </span>
+                        </div>
+                        <div class="d-flex">
+                            <div class="px-3">
+                                <div class="popular-facilities py-2">
+                                    <span class="px-3"><i class='fas fa-smoking-ban fas-icon'
+                                            style='font-size:24px'></i></span>
+                                    <span class="name-of-facility">Non-smoking rooms</span>
+                                </div>
+                                <div class="popular-facilities py-2">
+                                    <span class="px-3"><i class='fas fa-bus-alt fas-icon'
+                                            style='font-size:24px'></i></span>
+                                    <span class="name-of-facility">Airport shuttle</span>
+                                </div>
+                            </div>
+                            <div class="px-3">
+                                <div class="popular-facilities py-2">
+                                    <span class="px-3"><i class='fas fa-wheelchair fas-icon'
+                                            style='font-size:24px'></i></span>
+                                    <span class="name-of-facility">Facilities for disabled guests</span>
+                                </div>
+                                <div class="popular-facilities py-2">
+                                    <span class="px-3"><i class='fas fa-concierge-bell fas-icon'
+                                            style='font-size:24px'></i></span>
+                                    <span class="name-of-facility">Room service</span>
+                                </div>
+                            </div>
+                            <div class="px-3">
+                                <div class="popular-facilities py-2">
+                                    <span class="px-3"><i class='fas fa-wifi fas-icon'
+                                            style='font-size:22px'></i></span>
+                                    <span class="name-of-facility">Free WiFi</span>
+                                </div>
+                                <div class="popular-facilities py-2">
+                                    <span class="px-3"><i class='fas fa-parking fas-icon'
+                                            style='font-size:24px'></i></span>
+                                    <span class="name-of-facility">Private Parking</span>
+                                </div>
+                            </div>
+                            <div class="px-3">
+                                <div class="popular-facilities py-2">
+                                    <span class="px-3 "><svg
+                                            class="bk-icon -iconset-tea_maker hp__important_facility_icon fas-icon-svg "
+                                            height="20" width="20" viewBox="0 0 128 128" role="presentation"
+                                            aria-hidden="true" focusable="false">
+                                            <path
+                                                d="M102 40H58a2 2 0 0 0-2 2v46a8 8 0 0 0 8 8h32a8 8 0 0 0 8-8v-.4a20 20 0 0 0 0-39.2V42a2 2 0 0 0-2-2zM73 80a4 4 0 0 1-8 0V56a4 4 0 0 1 8 0zm39-12a12 12 0 0 1-8 11.3V56.7a12 12 0 0 1 8 11.3zm0-60H16a8 8 0 0 0-8 8v96a8 8 0 0 0 8 8h96a8 8 0 0 0 8-8v-6a2 2 0 0 0-2-2H50a2 2 0 0 1-2-2V26a2 2 0 0 1 2-2h14v8h32v-8h22a2 2 0 0 0 2-2v-6a8 8 0 0 0-8-8zM28 64a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm0-24a8 8 0 1 1 8-8 8 8 0 0 1-8 8z">
+                                            </path>
+                                        </svg></span>
+                                    <span class="name-of-facility">Tea/Coffee Maker in Room</span>
+                                </div>
+                                <div class="popular-facilities py-2">
+                                    <span class="px-3"><i class='fas fa-coffee fas-icon'
+                                            style='font-size:22px'></i></span>
+                                    <span class="name-of-facility">Very Good Breakfast</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <table class="w-100 border table-class">
+                    <tbody>
+
+                        <tr class="row">
+                            <th class="col-5 p-3 table-headers first border">Accommodation Type </th>
+                            <th class="col-1 p-3 table-headers second border">Sleeps </th>
+                            <th class="col-3 p-3 table-headers third border">Price</th>
+                            <th class="col-3 p-3 table-headers forth border">
+
+                            </th>
+                        </tr>
+                        <tr class="row">
+                            <td class="border p-0 col-5">
+                                <div class="col-12">
+                                    <div class="row flex-column">
+                                        <div class="titles-for-types">
+                                            <span class="room-type">Standart Double Room</span>
+                                        </div>
+                                        <div class="titles-for-types">
+                                            <span class="bed-types-title">Bed types : </span>
+                                            <span>1 king bed <i class="fa fa-bed pl-2"
+                                                    style="font-size:24px"></i></span>
+                                        </div>
+                                        <div class="titles-for-types">
+                                            <span class="small-description">
+                                                Spacious, air-conditioned room with a flat-screen TV, a minibar and
+                                                a
+                                                private bathroom.
+                                            </span>
+                                        </div>
+                                        <div class="titles-for-types">
+                                            <span class="px-2 facilities-with-logo"><i
+                                                    class='fas fa-swimming-pool facilities-with-logo'></i>
+                                                <span class="facilities-with-logo">Pool view</span></span>
+                                            <span class="px-2"><i class='far fa-building facilities-with-logo'></i>
+                                                <span class="facilities-with-logo">City view</span></span>
+                                            <span class="px-2 pl-3"><i
+                                                    class='far fa-snowflake facilities-with-logo'></i>
+                                                <span class="facilities-with-logo">Air conditioning</span></span>
+                                            <span class="px-2"><i class='fas fa-bath facilities-with-logo'></i>
+                                                <span class="facilities-with-logo">Private bathroom</span></span>
+                                            <span class="px-2"><i class='fas fa-tv facilities-with-logo'></i>
+                                                <span class="facilities-with-logo">Flat screen TV</span></span>
+                                            <span class="px-2"><i class='fas fa-wifi facilities-with-logo'></i>
+                                                <span class="facilities-with-logo">Free WI-FI</span></span>
+                                        </div>
+                                        <div class=" d-flex justify-content-center align-items-center w-100">
+                                            <div class="underline-after-facilities">
+
+                                            </div>
+                                        </div>
+                                        <div class="titles-for-types">
+                                            <span class="px-2 facilities-with-logo"><svg
+                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
+                                                    width="14" viewBox="0 0 128 128" role="presentation"
+                                                    aria-hidden="true" focusable="false">
+                                                    <path
+                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
+                                                    </path>
+                                                </svg>
+                                                <span>Free toiletries</span></span>
+                                            <span class="px-2 facilities-with-logo"><svg
+                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
+                                                    width="14" viewBox="0 0 128 128" role="presentation"
+                                                    aria-hidden="true" focusable="false">
+                                                    <path
+                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
+                                                    </path>
+                                                </svg>
+                                                <span>Bathrobe</span></span>
+                                            <span class="pl-2 pr-4 facilities-with-logo"><svg
+                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
+                                                    width="14" viewBox="0 0 128 128" role="presentation"
+                                                    aria-hidden="true" focusable="false">
+                                                    <path
+                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
+                                                    </path>
+                                                </svg>
+                                                <span>Sofa</span></span>
+                                            <span class="pl-1 pr-4 facilities-with-logo"><svg
+                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
+                                                    width="14" viewBox="0 0 128 128" role="presentation"
+                                                    aria-hidden="true" focusable="false">
+                                                    <path
+                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
+                                                    </path>
+                                                </svg>
+                                                <span>Safe</span></span>
+                                            <span class="px-2 facilities-with-logo"><svg
+                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
+                                                    width="14" viewBox="0 0 128 128" role="presentation"
+                                                    aria-hidden="true" focusable="false">
+                                                    <path
+                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
+                                                    </path>
+                                                </svg>
+                                                <span>High chaire</span></span>
+                                            <span class="pl-2 facilities-with-logo"><svg
+                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
+                                                    width="14" viewBox="0 0 128 128" role="presentation"
+                                                    aria-hidden="true" focusable="false">
+                                                    <path
+                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
+                                                    </path>
+                                                </svg>
+                                                <span>Toilet paper</span></span>
+                                            <span class="px-2 facilities-with-logo"><svg
+                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
+                                                    width="14" viewBox="0 0 128 128" role="presentation"
+                                                    aria-hidden="true" focusable="false">
+                                                    <path
+                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
+                                                    </path>
+                                                </svg>
+                                                <span>Alarm clock</span></span>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="border col-1 d-flex align-items-start">
+                                <div>
+                                    <i class='fas fa-user-alt' style='font-size:20px'></i>
+
+                                </div>
+                                <div>
+                                    <i class='fas fa-user-alt ml-1' style='font-size:20px'></i>
+                                </div>
+                            </td>
+                            <td class="border col-3 d-flex align-items-start">
+                                <div class="d-flex flex-column align-items-start">
+                                    <div class="col-12 ">
+                                        <div class="row">
+                                            <span class="price-value">AZN <span class="price-count">150</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="border col-3">
+                                <button type="button" class="btn btn-primary rounded-0">i'll reserve</button>
+                            </td>
+                        </tr>
+                        <tr class="row">
+                            <td class="border p-0 col-5">
+                                <div class="col-12">
+                                    <div class="row flex-column">
+                                        <div class="titles-for-types">
+                                            <span class="room-type">Standart Double Room</span>
+                                        </div>
+                                        <div class="titles-for-types">
+                                            <span class="bed-types-title">Bed types : </span>
+                                            <span>1 king bed <i class="fa fa-bed pl-2"
+                                                    style="font-size:24px"></i></span>
+                                        </div>
+                                        <div class="titles-for-types">
+                                            <span class="small-description">
+                                                Spacious, air-conditioned room with a flat-screen TV, a minibar and
+                                                a
+                                                private bathroom.
+                                            </span>
+                                        </div>
+                                        <div class="titles-for-types">
+                                            <span class="px-2 facilities-with-logo"><i
+                                                    class='fas fa-swimming-pool facilities-with-logo'></i>
+                                                <span class="facilities-with-logo">Pool view</span></span>
+                                            <span class="px-2"><i class='far fa-building facilities-with-logo'></i>
+                                                <span class="facilities-with-logo">City view</span></span>
+                                            <span class="px-2 pl-3"><i
+                                                    class='far fa-snowflake facilities-with-logo'></i>
+                                                <span class="facilities-with-logo">Air conditioning</span></span>
+                                            <span class="px-2"><i class='fas fa-bath facilities-with-logo'></i>
+                                                <span class="facilities-with-logo">Private bathroom</span></span>
+                                            <span class="px-2"><i class='fas fa-tv facilities-with-logo'></i>
+                                                <span class="facilities-with-logo">Flat screen TV</span></span>
+                                            <span class="px-2"><i class='fas fa-wifi facilities-with-logo'></i>
+                                                <span class="facilities-with-logo">Free WI-FI</span></span>
+                                        </div>
+                                        <div class=" d-flex justify-content-center align-items-center w-100">
+                                            <div class="underline-after-facilities">
+
+                                            </div>
+                                        </div>
+                                        <div class="titles-for-types">
+                                            <span class="px-2 facilities-with-logo"><svg
+                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
+                                                    width="14" viewBox="0 0 128 128" role="presentation"
+                                                    aria-hidden="true" focusable="false">
+                                                    <path
+                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
+                                                    </path>
+                                                </svg>
+                                                <span>Free toiletries</span></span>
+                                            <span class="px-2 facilities-with-logo"><svg
+                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
+                                                    width="14" viewBox="0 0 128 128" role="presentation"
+                                                    aria-hidden="true" focusable="false">
+                                                    <path
+                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
+                                                    </path>
+                                                </svg>
+                                                <span>Bathrobe</span></span>
+                                            <span class="pl-2 pr-4 facilities-with-logo"><svg
+                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
+                                                    width="14" viewBox="0 0 128 128" role="presentation"
+                                                    aria-hidden="true" focusable="false">
+                                                    <path
+                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
+                                                    </path>
+                                                </svg>
+                                                <span>Sofa</span></span>
+                                            <span class="pl-1 pr-4 facilities-with-logo"><svg
+                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
+                                                    width="14" viewBox="0 0 128 128" role="presentation"
+                                                    aria-hidden="true" focusable="false">
+                                                    <path
+                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
+                                                    </path>
+                                                </svg>
+                                                <span>Safe</span></span>
+                                            <span class="px-2 facilities-with-logo"><svg
+                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
+                                                    width="14" viewBox="0 0 128 128" role="presentation"
+                                                    aria-hidden="true" focusable="false">
+                                                    <path
+                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
+                                                    </path>
+                                                </svg>
+                                                <span>High chaire</span></span>
+                                            <span class="pl-2 facilities-with-logo"><svg
+                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
+                                                    width="14" viewBox="0 0 128 128" role="presentation"
+                                                    aria-hidden="true" focusable="false">
+                                                    <path
+                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
+                                                    </path>
+                                                </svg>
+                                                <span>Toilet paper</span></span>
+                                            <span class="px-2 facilities-with-logo"><svg
+                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
+                                                    width="14" viewBox="0 0 128 128" role="presentation"
+                                                    aria-hidden="true" focusable="false">
+                                                    <path
+                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
+                                                    </path>
+                                                </svg>
+                                                <span>Alarm clock</span></span>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="border col-1 d-flex align-items-start">
+                                <div>
+                                    <i class='fas fa-user-alt' style='font-size:20px'></i>
+
+                                </div>
+                                <div>
+                                    <i class='fas fa-user-alt ml-1' style='font-size:20px'></i>
+                                </div>
+                            </td>
+                            <td class="border col-3 d-flex align-items-start">
+                                <div class="d-flex flex-column align-items-start">
+                                    <div class="col-12 ">
+                                        <div class="row">
+                                            <span class="price-value">AZN <span class="price-count">150</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="border col-3">
+                                <button type="button" class="btn btn-primary rounded-0">i'll reserve</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-12">
+                <h4>Hotel surroindings</h4>
+            </div>
+            <div class="col-6 px-4 py-2">
+                <div class="row ">
+                    <div class="col-12 py-3">
+                        <span class="restaurants-nearby d-flex align-items-center">
+                            <span><i class="material-icons rest-icon px-2">&#xe56c;</i></span>
+                            <span class="d-flex align-items-center pb-1"><span>Restaurants nearby</span></span>
+                            
+                        </span>
+                    </div>
+                </div>
+                <div class="row pb-2">
+                    <div class="col-12 d-flex justify-content-between px-4 py-2">
+                        <span class="names-of-places">Gulhane Tram Station </span>
+                        <span class="names-of-places">0 km</span>
+                    </div>
+                    <div class="line-under-surroundings">
+                    </div>
+                </div>
+                <div class="row pb-2">
+                    <div class="col-12 d-flex justify-content-between px-4 py-2">
+                        <span class="names-of-places">Gulhane Tram Station </span>
+                        <span class="names-of-places">0 km</span>
+                    </div>
+                    <div class="line-under-surroundings">
+                    </div>
+                </div>
+                <div class="row pb-2">
+                    <div class="col-12 d-flex justify-content-between px-4 py-2">
+                        <span class="names-of-places">Gulhane Tram Station </span>
+                        <span class="names-of-places">0 km</span>
+                    </div>
+                    <div class="line-under-surroundings">
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 px-4 py-2">
+                <div class="row ">
+                    <div class="col-12 py-3">
+                        <span class="restaurants-nearby d-flex align-items-center">
+                            <span><i class='fas fa-walking px-2' style='font-size:24px'></i></span>
+                            <span class="d-flex align-items-center pb-1"><span>Important places</span></span>
+                            
+                        </span>
+                    </div>
+                </div>
+                <div class="row pb-2">
+                    <div class="col-12 d-flex justify-content-between px-4 py-2">
+                        <span class="names-of-places">Gulhane Tram Station </span>
+                        <span class="names-of-places">0 km</span>
+                    </div>
+                    <div class="line-under-surroundings px-2">
+                    </div>
+                </div>
+                <div class="row pb-2">
+                    <div class="col-12 d-flex justify-content-between px-4 py-2">
+                        <span class="names-of-places">Gulhane Tram Station </span>
+                        <span class="names-of-places">0 km</span>
+                    </div>
+                    <div class="line-under-surroundings">
+                    </div>
+                </div>
+                <div class="row pb-2">
+                    <div class="col-12 d-flex justify-content-between px-4 py-2">
+                        <span class="names-of-places">Gulhane Tram Station </span>
+                        <span class="names-of-places">0 km</span>
+                    </div>
+                    <div class="line-under-surroundings">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- <section>
         <div class="options-div container p-3 text-dark">
             <div class="row">
                 <div class="col-4">
@@ -203,278 +676,279 @@
                 </div>
             </div>
         </div>
-    </section>
-    <section>
-        <div class="container p-3 options-div text-dark">
-            <div class="row">
-                <div class="col-4">
-                    <h4>Policies :</h4>
-                </div>
-                <div class="col-8">
-                    <div class="row">
-                        <div class="col-6">
+    </section> -->
+<section>
+    <div class="container p-3 options-div text-dark">
+        <div class="row">
+            <div class="col-4">
+                <h4>Policies :</h4>
+            </div>
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-6">
+                        <div>
+                            <div class="py-3">
+                                <span class="option-title"> Check-in: </span>
+                            </div>
                             <div>
-                                <div class="py-3">
-                                    <span class="option-title"> Check-in: </span>
-                                </div>
-                                <div>
-                                    <p>Check-in time starts at 2:00 PM</p>
-                                    <p>Express check-in</p>
-                                    <p>Minimum check-in age - 18</p>
-                                </div>
+                                <p>Check-in time starts at 2:00 PM</p>
+                                <p>Express check-in</p>
+                                <p>Minimum check-in age - 18</p>
                             </div>
                         </div>
-                        <div class="col-6">
+                    </div>
+                    <div class="col-6">
+                        <div>
+                            <div class="py-2">
+                                <span class="option-title"> Check-out: </span>
+                            </div>
                             <div>
-                                <div class="py-2">
-                                    <span class="option-title"> Check-out: </span>
-                                </div>
-                                <div>
-                                    <p>Check-out before noon</p>
-                                    <p>Late check-out subject to availability</p>
-                                    <p>Express check-out</p>
-                                </div>
+                                <p>Check-out before noon</p>
+                                <p>Late check-out subject to availability</p>
+                                <p>Express check-out</p>
                             </div>
                         </div>
-                        <div class="col-6">
+                    </div>
+                    <div class="col-6">
+                        <div>
+                            <div class="py-3">
+                                <span class="option-title"> Access methods: </span>
+                            </div>
                             <div>
-                                <div class="py-3">
-                                    <span class="option-title"> Access methods: </span>
-                                </div>
-                                <div>
-                                    <p>Host will greet you, key retrieval</p>
-                                </div>
+                                <p>Host will greet you, key retrieval</p>
                             </div>
                         </div>
-                        <div class="col-6">
+                    </div>
+                    <div class="col-6">
+                        <div>
+                            <div class="py-2">
+                                <span class="option-title"> Pets : </span>
+                            </div>
                             <div>
-                                <div class="py-2">
-                                    <span class="option-title"> Pets : </span>
-                                </div>
-                                <div>
-                                    <p>Pets not allowed</p>
-                                </div>
+                                <p>Pets not allowed</p>
                             </div>
                         </div>
-                        <div class="col-6">
+                    </div>
+                    <div class="col-6">
+                        <div>
+                            <div class="py-3">
+                                <span class="option-title"> Children and extra beds : </span>
+                            </div>
                             <div>
-                                <div class="py-3">
-                                    <span class="option-title"> Children and extra beds : </span>
-                                </div>
-                                <div>
-                                    <p>Children are welcome</p>
-                                    <p>Rollaway/extra beds are available for AZN 40.0 per day</p>
-                                    <p>Cribs (infant beds) are not available</p>
-                                </div>
+                                <p>Children are welcome</p>
+                                <p>Rollaway/extra beds are available for AZN 40.0 per day</p>
+                                <p>Cribs (infant beds) are not available</p>
                             </div>
                         </div>
+                    </div>
 
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="my-3 d-flex align-items-center">
+            <i class="material-icons mx-2" style="color:red">&#xe838;</i><span class="mt-1 review-rating-count"> 5.0
+                (4 reviews)</span>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div class="row my-2">
+                    <div class="col-6">
+                        <span>Cleanlines</span>
+                    </div>
+                    <div class="col-6 d-flex align-items-center">
+                        <div class="line-div">
+                            <span class="line-span"></span>
+                        </div>
+                        <span class="rating-count">5.0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="row my-2">
+                    <div class="col-6">
+                        <span>Accuracy</span>
+                    </div>
+                    <div class="col-6 d-flex align-items-center">
+                        <div class="line-div">
+                            <span class="line-span"></span>
+                        </div>
+                        <span class="rating-count">5.0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="row my-2">
+                    <div class="col-6">
+                        <span>Communication</span>
+                    </div>
+                    <div class="col-6 d-flex align-items-center">
+                        <div class="line-div">
+                            <span class="line-span"></span>
+                        </div>
+                        <span class="rating-count">5.0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="row my-2">
+                    <div class="col-6">
+                        <span>Location</span>
+                    </div>
+                    <div class="col-6 d-flex align-items-center">
+                        <div class="line-div">
+                            <span class="line-span"></span>
+                        </div>
+                        <span class="rating-count">5.0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="row my-2">
+                    <div class="col-6">
+                        <span>Check-in</span>
+                    </div>
+                    <div class="col-6 d-flex align-items-center">
+                        <div class="line-div">
+                            <span class="line-span rating"></span>
+                        </div>
+                        <span class="rating-count">4.8</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="row my-2">
+                    <div class="col-6">
+                        <span>Value</span>
+                    </div>
+                    <div class="col-6 d-flex align-items-center">
+                        <div class="line-div">
+                            <span class="line-span"></span>
+                        </div>
+                        <span class="rating-count">5.0</span>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <section>
-        <div class="container">
-            <div class="my-3 d-flex align-items-center">
-                <i class="material-icons mx-2" style="color:red">&#xe838;</i><span class="mt-1 review-rating-count"> 5.0
-                    (4 reviews)</span>
-            </div>
-            <div class="row">
-                <div class="col-12 col-md-6">
-                    <div class="row my-2">
-                        <div class="col-6">
-                            <span>Cleanlines</span>
-                        </div>
-                        <div class="col-6 d-flex align-items-center">
-                            <div class="line-div">
-                                <span class="line-span"></span>
+    </div>
+</section>
+<section>
+    <div class="container" style="background-color:aliceblue;">
+        <div class="row justify-content-between">
+            <div class="col-6 mt-2 rounded">
+                <div class="row p-4">
+                    <div class="d-flex flex-column">
+                        <div class="d-flex">
+                            <div class="mr-2">
+                                <img class="user-avatar"
+                                    src="https://www.kutchguide.in/wp-content/uploads/2018/02/pict-customer-male-ivr-people-vector-stencils-library.png-diagram-flowchart-example.png"
+                                    alt="">
                             </div>
-                            <span class="rating-count">5.0</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="row my-2">
-                        <div class="col-6">
-                            <span>Accuracy</span>
-                        </div>
-                        <div class="col-6 d-flex align-items-center">
-                            <div class="line-div">
-                                <span class="line-span"></span>
+                            <div class="d-flex flex-column pt-1 justify-content-center">
+                                <span class="user-data">Name Surname</span>
+                                <span class="user-data">Created time</span>
                             </div>
-                            <span class="rating-count">5.0</span>
                         </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="row my-2">
-                        <div class="col-6">
-                            <span>Communication</span>
-                        </div>
-                        <div class="col-6 d-flex align-items-center">
-                            <div class="line-div">
-                                <span class="line-span"></span>
-                            </div>
-                            <span class="rating-count">5.0</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="row my-2">
-                        <div class="col-6">
-                            <span>Location</span>
-                        </div>
-                        <div class="col-6 d-flex align-items-center">
-                            <div class="line-div">
-                                <span class="line-span"></span>
-                            </div>
-                            <span class="rating-count">5.0</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="row my-2">
-                        <div class="col-6">
-                            <span>Check-in</span>
-                        </div>
-                        <div class="col-6 d-flex align-items-center">
-                            <div class="line-div">
-                                <span class="line-span rating"></span>
-                            </div>
-                            <span class="rating-count">4.8</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="row my-2">
-                        <div class="col-6">
-                            <span>Value</span>
-                        </div>
-                        <div class="col-6 d-flex align-items-center">
-                            <div class="line-div">
-                                <span class="line-span"></span>
-                            </div>
-                            <span class="rating-count">5.0</span>
+                        <div>
+                            <span>It was a great time for me and my family. House was amazingly clean and our host’s
+                                hospitality was in the highest level. Definitely looking forward to come back again
+                                sometime soon. I highly recommend this place.</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section>
-        <div class="container">
-            <div class="row justify-content-between">
-                <div class="col-6 mt-2 rounded">
-                    <div class="row p-4">
-                        <div class="d-flex flex-column">
-                            <div class="d-flex">
-                                <div class="mr-2">
-                                    <img class="user-avatar"
-                                        src="https://www.kutchguide.in/wp-content/uploads/2018/02/pict-customer-male-ivr-people-vector-stencils-library.png-diagram-flowchart-example.png"
-                                        alt="">
-                                </div>
-                                <div class="d-flex flex-column pt-1 justify-content-center">
-                                    <span class="user-data">Name Surname</span>
-                                    <span class="user-data">Created time</span>
-                                </div>
+            <div class="col-6 mt-2 rounded">
+                <div class="row p-4">
+                    <div class="d-flex flex-column">
+                        <div class="d-flex">
+                            <div class="mr-2">
+                                <img class="user-avatar"
+                                    src="https://www.kutchguide.in/wp-content/uploads/2018/02/pict-customer-male-ivr-people-vector-stencils-library.png-diagram-flowchart-example.png"
+                                    alt="">
                             </div>
-                            <div>
-                                <span>It was a great time for me and my family. House was amazingly clean and our host’s
-                                    hospitality was in the highest level. Definitely looking forward to come back again
-                                    sometime soon. I highly recommend this place.</span>
+                            <div class="d-flex flex-column pt-1 justify-content-center">
+                                <span class="user-data">Name Surname</span>
+                                <span class="user-data">Created time</span>
                             </div>
+                        </div>
+                        <div>
+                            <span>It was a great time for me and my family. House was amazingly clean and our host’s
+                                hospitality was in the highest level. Definitely looking forward to come back again
+                                sometime soon. I highly recommend this place.</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-6 mt-2 rounded">
-                    <div class="row p-4">
-                        <div class="d-flex flex-column">
-                            <div class="d-flex">
-                                <div class="mr-2">
-                                    <img class="user-avatar"
-                                        src="https://www.kutchguide.in/wp-content/uploads/2018/02/pict-customer-male-ivr-people-vector-stencils-library.png-diagram-flowchart-example.png"
-                                        alt="">
-                                </div>
-                                <div class="d-flex flex-column pt-1 justify-content-center">
-                                    <span class="user-data">Name Surname</span>
-                                    <span class="user-data">Created time</span>
-                                </div>
+            </div>
+            <div class="col-6 mt-2 rounded">
+                <div class="row p-4">
+                    <div class="d-flex flex-column">
+                        <div class="d-flex">
+                            <div class="mr-2">
+                                <img class="user-avatar"
+                                    src="https://www.kutchguide.in/wp-content/uploads/2018/02/pict-customer-male-ivr-people-vector-stencils-library.png-diagram-flowchart-example.png"
+                                    alt="">
                             </div>
-                            <div>
-                                <span>It was a great time for me and my family. House was amazingly clean and our host’s
-                                    hospitality was in the highest level. Definitely looking forward to come back again
-                                    sometime soon. I highly recommend this place.</span>
+                            <div class="d-flex flex-column pt-1 justify-content-center">
+                                <span class="user-data">Name Surname</span>
+                                <span class="user-data">Created time</span>
                             </div>
+                        </div>
+                        <div>
+                            <span>It was a great time for me and my family. House was amazingly clean and our host’s
+                                hospitality was in the highest level. Definitely looking forward to come back again
+                                sometime soon. I highly recommend this place.</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-6 mt-2 rounded">
-                    <div class="row p-4">
-                        <div class="d-flex flex-column">
-                            <div class="d-flex">
-                                <div class="mr-2">
-                                    <img class="user-avatar"
-                                        src="https://www.kutchguide.in/wp-content/uploads/2018/02/pict-customer-male-ivr-people-vector-stencils-library.png-diagram-flowchart-example.png"
-                                        alt="">
-                                </div>
-                                <div class="d-flex flex-column pt-1 justify-content-center">
-                                    <span class="user-data">Name Surname</span>
-                                    <span class="user-data">Created time</span>
-                                </div>
+            </div>
+            <div class="col-6 mt-2 rounded">
+                <div class="row p-4">
+                    <div class="d-flex flex-column">
+                        <div class="d-flex">
+                            <div class="mr-2">
+                                <img class="user-avatar"
+                                    src="https://www.kutchguide.in/wp-content/uploads/2018/02/pict-customer-male-ivr-people-vector-stencils-library.png-diagram-flowchart-example.png"
+                                    alt="">
                             </div>
-                            <div>
-                                <span>It was a great time for me and my family. House was amazingly clean and our host’s
-                                    hospitality was in the highest level. Definitely looking forward to come back again
-                                    sometime soon. I highly recommend this place.</span>
+                            <div class="d-flex flex-column pt-1 justify-content-center">
+                                <span class="user-data">Name Surname</span>
+                                <span class="user-data">Created time</span>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-6 mt-2 rounded">
-                    <div class="row p-4">
-                        <div class="d-flex flex-column">
-                            <div class="d-flex">
-                                <div class="mr-2">
-                                    <img class="user-avatar"
-                                        src="https://www.kutchguide.in/wp-content/uploads/2018/02/pict-customer-male-ivr-people-vector-stencils-library.png-diagram-flowchart-example.png"
-                                        alt="">
-                                </div>
-                                <div class="d-flex flex-column pt-1 justify-content-center">
-                                    <span class="user-data">Name Surname</span>
-                                    <span class="user-data">Created time</span>
-                                </div>
-                            </div>
-                            <div>
-                                <span>It was a great time for me and my family. House was amazingly clean and our host’s
-                                    hospitality was in the highest level. Definitely looking forward to come back again
-                                    sometime soon. I highly recommend this place.</span>
-                            </div>
+                        <div>
+                            <span>It was a great time for me and my family. House was amazingly clean and our host’s
+                                hospitality was in the highest level. Definitely looking forward to come back again
+                                sometime soon. I highly recommend this place.</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <section class="py-5">
-        <div class="container">
-            <div class="row">
-                <button type="button" class="btn btn-outline-primary w-100 py-2"><span
-                        style="font-weight: bold;">Reserve for 155$</span></button>
-                - </div>
-        </div>
-    </section>
-    <section>
-        <div class="container">
-            <span class="nearest-hotels">Nearest hotels : </span>
-            <div class="line-under-hotels my-5"></div>
-            <div class="row">
-                <div class="col-4">
-                    <div class="card p-2 mb-3" style="width: 18rem;">
-                        <img class="card-img-top"
-                            src="https://www.geobookings.com/data/accomodations/03ac5df68db3441893459f77c0b8743f.jpg"
-                            alt="Card image cap">
-                        <div class="card-body">
+    </div>
+</section>
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <button type="button" class="btn btn-outline-primary w-100 py-2"><span style="font-weight: bold;">Reserve
+                    for 155$</span></button>
+            - </div>
+    </div>
+</section>
+<section class="pb-2">
+    <div class="container " style="background-color: rgb(245, 245, 245);">
+        <span class="nearest-hotels">Nearest hotels : </span>
+        <div class="line-under-hotels my-5 col-lg-block"></div>
+        <div class="row nearest-hotels-row">
+            <div class="col-12 col-lg-3 ">
+                <div class="card p-2 mb-5 nearest-hotel-card parent-nearest-hotel-card" >
+                    <img class="card-img-top"
+                        src="https://www.geobookings.com/data/accomodations/03ac5df68db3441893459f77c0b8743f.jpg"
+                        alt="Card image cap">
+                    <div class="card-body p-0">
+                        <div class="p-2 ">
                             <h5 class="card-title mb-1">City Hotel</h5>
                             <div class="mb-2">
                                 <span class="fa fa-star checked"></span>
@@ -483,82 +957,122 @@
                                 <span class="fa fa-star"></span>
                                 <span class="fa fa-star"></span>
                             </div>
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div class="d-flex flex-column justify-content-start p-2 mt-3">
-                                    <div class="rating-count mb-3">8.5</div>
-                                    <div class="d-flex flex-column mr-2 justify-content-start" style="line-height:5px;">
-                                        <small>(231 Reviews)</small>
-                                    </div>
+                        </div>
+                        <div class="d-flex  justify-content-between">
+                            <div class="d-flex flex-column justify-content-start p-1 mb-3 ml-2">
+                                <div class="rating-count mt-2 mb-3 ml-4">8.5</div>
+                                <div class="d-flex flex-column mr-2 justify-content-start" style="line-height:5px;">
+                                    <small>(231 Reviews)</small>
                                 </div>
-                                <div class="d-flex flex-column">
-                                    <span class="nearest-hotel-price text-right"><span
-                                            class="dollar-symbol mr-1">$</span>35</span>
-                                    <a href="#" class="btn btn-primary">View deal</a>
-                                </div>
+                            </div>
+                            <div class="d-flex flex-column px-2">
+                                <span class="nearest-hotel-price text-right"><span
+                                        class="dollar-symbol mr-1">$</span>35</span>
+                                <a href="#" class="btn btn-primary">View deal</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-4">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="..." alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+            <div class="col-12 col-lg-3 ">
+                <div class="card p-2 mb-5 nearest-hotel-card parent-nearest-hotel-card" >
+                    <img class="card-img-top"
+                        src="https://www.geobookings.com/data/accomodations/03ac5df68db3441893459f77c0b8743f.jpg"
+                        alt="Card image cap">
+                    <div class="card-body p-0">
+                        <div class="p-2 ">
+                            <h5 class="card-title mb-1">City Hotel</h5>
+                            <div class="mb-2">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+                        </div>
+                        <div class="d-flex  justify-content-between">
+                            <div class="d-flex flex-column justify-content-start p-1 mb-3 ml-2">
+                                <div class="rating-count mt-2 mb-3 ml-4">8.5</div>
+                                <div class="d-flex flex-column mr-2 justify-content-start" style="line-height:5px;">
+                                    <small>(231 Reviews)</small>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column px-2">
+                                <span class="nearest-hotel-price text-right"><span
+                                        class="dollar-symbol mr-1">$</span>35</span>
+                                <a href="#" class="btn btn-primary">View deal</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-4">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="..." alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+            <div class="col-12 col-lg-3 ">
+                <div class="card p-2 mb-5 nearest-hotel-card parent-nearest-hotel-card" >
+                    <img class="card-img-top"
+                        src="https://www.geobookings.com/data/accomodations/03ac5df68db3441893459f77c0b8743f.jpg"
+                        alt="Card image cap">
+                    <div class="card-body p-0">
+                        <div class="p-2 ">
+                            <h5 class="card-title mb-1">City Hotel</h5>
+                            <div class="mb-2">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+                        </div>
+                        <div class="d-flex  justify-content-between">
+                            <div class="d-flex flex-column justify-content-start p-1 mb-3 ml-2">
+                                <div class="rating-count mt-2 mb-3 ml-4">8.5</div>
+                                <div class="d-flex flex-column mr-2 justify-content-start" style="line-height:5px;">
+                                    <small>(231 Reviews)</small>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column px-2">
+                                <span class="nearest-hotel-price text-right"><span
+                                        class="dollar-symbol mr-1">$</span>35</span>
+                                <a href="#" class="btn btn-primary">View deal</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-3 ">
+                <div class="card p-2 mb-5 nearest-hotel-card parent-nearest-hotel-card" >
+                    <img class="card-img-top"
+                        src="https://www.geobookings.com/data/accomodations/03ac5df68db3441893459f77c0b8743f.jpg"
+                        alt="Card image cap">
+                    <div class="card-body p-0">
+                        <div class="p-2 ">
+                            <h5 class="card-title mb-1">City Hotel</h5>
+                            <div class="mb-2">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+                        </div>
+                        <div class="d-flex  justify-content-between">
+                            <div class="d-flex flex-column justify-content-start p-1 mb-3 ml-2">
+                                <div class="rating-count mt-2 mb-3 ml-4">8.5</div>
+                                <div class="d-flex flex-column mr-2 justify-content-start" style="line-height:5px;">
+                                    <small>(231 Reviews)</small>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column px-2">
+                                <span class="nearest-hotel-price text-right"><span
+                                        class="dollar-symbol mr-1">$</span>35</span>
+                                <a href="#" class="btn btn-primary">View deal</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"
-        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-        crossorigin="anonymous"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.4/hammer.min.js"></script>
-    <script src="js/gallery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
-        integrity="sha512-rmZcZsyhe0/MAjquhTgiUcb4d9knaFc7b5xAfju483gbEXTkeJRUMIPk6s3ySZMYUHEcjKbjLjyddGWMrNEvZg=="
-        crossorigin="anonymous"></script>
-    <script src="js/pignose.calendar.js"></script>
-    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    <script>
-        $(function () {
-            $('.gallery').gallery();
-        });
+    </div>
+</section>
 
-        $(function () {
-            $('.calender').pignoseCalender({
-                multiple: true,
-                select: function (date, obj) {
-                    obj.calender.parent().next().show().text('You selected ' +
-                        (date[0] === null ? 'null' : date[0].format('YYYY-MM-DD')) +
-                        '~' +
-                        (date[1] === null ? 'null' : date[1].format('YYYY-MM-DD')) +
-                        '.');
-                }
-            });
-        });
-
-    </script>
-
-</body>
-
-</html>
+{% include 'includes/subscribers.html' %}
+{% endblock %}

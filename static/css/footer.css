@@ -52,11 +52,11 @@ p {
         border-bottom-right-radius: 0px;
 }
 
-.btn-primary {
+/* .btn-primary {
     color: #fff;
     background-color: #ef6c57;
     border-color: #ef6c57;
-}
+} */
 
 .btn.btn-primary:hover {
     border: 2px solid #000;

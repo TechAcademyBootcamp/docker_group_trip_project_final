@@ -8,3 +8,7 @@ class ToursPage(TemplateView):
     template_name = 'tourspage.html'
 
 
+class ToursSinglePage(TemplateView):
+    template_name = 'tours_single_page.html'
+
+

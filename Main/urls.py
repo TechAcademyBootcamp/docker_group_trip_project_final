@@ -1,6 +1,7 @@
+
 from django.urls import path
 from Main.views import MainClassView,SubscriberCreateView,ContactSubjectView,ContactPageView,AboutUsView,PrivacyPolicyView, \
-    TermsOfUseView,CitySinglePage
+    TermsOfUseView,CitySinglePage,CitiesPage
 
 app_name = 'main'
 
@@ -14,4 +15,5 @@ urlpatterns = [
     path('privacy/',PrivacyPolicyView.as_view(),name='privacy'),
     path('terms/',TermsOfUseView.as_view(),name='terms'),
     path('city-single-page/',CitySinglePage.as_view(),name='city_single_page'),
+    path('cities-page/',CitiesPage.as_view(),name='cities_page')
 ]
