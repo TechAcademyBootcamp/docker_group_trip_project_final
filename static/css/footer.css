@@ -1,8 +1,6 @@
 .site-footer {
     padding: 4em 0;
     background: #333333;
-    font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-
 }
 
 .site-footer .footer-heading {
@@ -16,6 +14,9 @@
 
 .site-footer a {
     color: #999999;
+}
+.site-footer a:hover{
+    text-decoration: none !important;
 }
 
 p {
@@ -32,36 +33,11 @@ p {
     margin-bottom: 10px;
 }
 
-.input-group {
-    position: relative;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-box-align: stretch;
-    -ms-flex-align: stretch;
-    align-items: stretch;
-    width: 100%;
-}
-
 .form-control {
     height: 43px;
     border-radius: 0;
         border-top-right-radius: 0px;
         border-bottom-right-radius: 0px;
-}
-
-.btn-primary {
-    color: #fff;
-    background-color: #ef6c57;
-    border-color: #ef6c57;
-}
-
-.btn.btn-primary:hover {
-    border: 2px solid #000;
-    background: none !important;
-    color: #000 !important;
 }
 
 .site-footer a:hover {
