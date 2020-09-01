@@ -172,3 +172,45 @@ ul li{
     white-space: nowrap;
     font-size: 16px;
 }
+.plus-img{
+    width: 24px;
+    font-weight: 700;
+    height: 24px;
+    background-color: #2b3945;
+    color: white;
+    border-radius: 50%;
+    padding: 0px 5px 0px 4px;
+}
+.dates-2{
+    background-color: #00ab99;
+    width: 100%;
+    z-index: 2000;
+    height: 50px;
+    display: flex;
+    bottom: 0;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    display: flex !important;
+}
+.dates-2 img{
+    width: 18px;
+    height: 18px;
+}
+.dates-2 span{
+    color: white;
+    font-size: 20px;
+
+}
+.inhead-plus-img{
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 19px;
+    height: 20px;
+    background-color: #2b3945;
+    color: white;
+    border-radius: 50%;
+    /* padding: 0px 15px 25px 7px; */
+}

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/tours-single-page.css' %}">
 {% endblock %}
@@ -47,25 +48,29 @@
 <section class="middle container">
     <div class="row mt-4">
         <section class="route col-lg-3 d-none d-lg-block" data-spy="scroll" data-target="#myScrollspy" data-offset="20">
-            <ul >
+            <ul class="">
                 <li class="li-hoverly">
                     <a class="a-hoverly " href=""><img class="svgs mr-1" src="{% static 'images/list.svg' %}" />
                         <span>Overview</span></a>
                 </li>
                 <li class="li-hoverly">
-                    <a class="a-hoverly" href="#gallery"><img class="svgs mr-1" src="{% static 'images/gallery.svg' %}" />
+                    <a class="a-hoverly" href="#gallery"><img class="svgs mr-1"
+                            src="{% static 'images/gallery.svg' %}" />
                         <span>Gallery</span></a>
                 </li>
                 <li class="li-hoverly">
-                    <a class="a-hoverly" href="#itinerary"><img class="svgs mr-1" src="{% static 'images/tour.svg' %}" />
+                    <a class="a-hoverly" href="#itinerary"><img class="svgs mr-1"
+                            src="{% static 'images/tour.svg' %}" />
                         <span>Itinerary</span></a>
                 </li>
                 <li class="li-hoverly">
-                    <a class="a-hoverly" href="#inclusion"><img class="svgs mr-1" src="{% static 'images/tick.svg' %}" />
+                    <a class="a-hoverly" href="#inclusion"><img class="svgs mr-1"
+                            src="{% static 'images/tick.svg' %}" />
                         <span>Inclusion</span></a>
                 </li>
                 <li class="li-hoverly">
-                    <a class="a-hoverly" href="#dates"><img class="svgs mr-1" src="{% static 'images/calendar (1).svg' %}" />
+                    <a class="a-hoverly" href="#dates"><img class="svgs mr-1"
+                            src="{% static 'images/calendar (1).svg' %}" />
                         <span>Dates & availabity</span>
                     </a>
                 </li>
@@ -74,10 +79,10 @@
                         <span>Important notes</span> </a>
                 </li>
                 <li class="li-hoverly">
-                    <a class="a-hoverly" href="#info"> 
+                    <a class="a-hoverly" href="#info">
                         <img class="svgs mr-1" src="{% static 'images/newsletter.svg' %}" />
                         <span>Essential trip information</span>
-                         </a>
+                    </a>
                 </li>
                 <li class="li-hoverly">
                     <a class="a-hoverly " href="#reviews"><img class="svgs mr-1" src="{% static 'images/star.svg' %}" />
@@ -85,7 +90,7 @@
                 </li>
             </ul>
         </section>
-      
+
         <div class="mid-right col-lg-9 col-12 mb-5">
             <p class="title">
                 Escape to the country of deep dales and walking trails
@@ -214,26 +219,26 @@
                 <div class="Itenenary" id="itinerary">
                     <h2>Itinenary</h2>
                     <span class="expendall">
-                        <img class="plus-img" src="https://img.icons8.com/metro/26/000000/plus.png" />
-                        Expend All
+                        <span class="plus-img">+</span>
+                        <span class="expend-all">expend All</span>
                     </span>
                 </div>
 
 
                 <div id="accordion">
                     <div class="card mb-2">
-                        <div class="card-header" id="headingOne">
+                        <div class="card-header collapse-head" id="headingOne">
                             <h5 class="mb-0 itinerary-plus">
-                                <button class="btn btn-link " data-toggle="collapse" data-target="#collapseOne"
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
                                     aria-expanded="true" aria-controls="collapseOne" style="text-decoration: none;">
                                     <span class="collapse-day">Day 1:Peek District /Castleton</span>
 
                                 </button>
-                                <img class="plus-img" src="https://img.icons8.com/metro/26/000000/plus.png" />
+                                <span class="inhead-plus-img">+</span>
                             </h5>
                         </div>
 
-                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                             data-parent="#accordion">
                             <div class="card-body">
                                 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
@@ -247,7 +252,7 @@
                         </div>
                     </div>
                     <div class="card mb-2">
-                        <div class="card-header" id="headingTwo">
+                        <div class="card-header collapse-head" id="headingTwo">
                             <h5 class="mb-0 itinerary-plus">
                                 <button style="text-decoration: none;" class="btn btn-link collapsed"
                                     data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
@@ -255,7 +260,7 @@
                                     <span class="collapse-day">Day 2:Peek District /Castleton</span>
 
                                 </button>
-                                <img class="plus-img" src="https://img.icons8.com/metro/26/000000/plus.png" />
+                                <span class="inhead-plus-img">+</span>
                             </h5>
                         </div>
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
@@ -271,13 +276,13 @@
                         </div>
                     </div>
                     <div class="card mb-2">
-                        <div class="card-header" id="headingThree">
+                        <div class="card-header collapse-head" id="headingThree">
                             <h5 class="mb-0 itinerary-plus">
                                 <button class="btn btn-link collapsed" data-toggle="collapse"
                                     data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                     <span class="collapse-day">Day 3:Peek District /Castleton</span>
                                 </button>
-                                <img class="plus-img" src="https://img.icons8.com/metro/26/000000/plus.png" />
+                                <span class="inhead-plus-img">+</span>
                             </h5>
                         </div>
                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
@@ -432,15 +437,20 @@
 </section>
 
 
+<div class="d-md-none">
+    <a class="dates-2">
+        <img class="mr-2" src="{% static 'images/calendar (1).svg' %}" />
+        <span>Go to dates</span>
+    </a>
+</div>
 
 {% include 'includes/subscribers.html' %}
 
 {% block js %}
 
+
 <script src="{% static 'js/tour-single-page.js' %}"></script>
+
 {% endblock %}
-<a class="dates d-md-none d-block">
-    <img class="mr-2" src="{% static 'images/calendar (1).svg' %}" />
-    <span>Go to dates</span>
-</a>
+
 {% endblock content %}

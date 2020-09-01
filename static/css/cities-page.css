@@ -92,3 +92,33 @@ body{
 .under-div-indiv{
     display: flex;
 }
+.image-headerrr{
+    position: relative;
+}
+.header-text{
+    width: 60%;
+    position: absolute;
+    top: 200px;
+    left: 300px
+}
+.header-text h1{
+    font-size: 80px;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 0;
+    line-height: 90px;
+    text-transform: capitalize;
+    font-family: "Nothing You Could Do", cursive;
+}
+.header-text h4{
+    font-size: 80px;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 0;
+    line-height: 90px;
+    text-transform: capitalize;
+    font-family: "Nothing You Could Do", cursive;
+}
+.head-image{
+    height: 470px;
+}
