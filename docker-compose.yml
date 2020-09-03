@@ -1,13 +1,37 @@
 version: '3'
 
 services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    restart: "always"
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./nginx/vhost/:/etc/nginx/vhost.d:ro
+      - ./nginx/conf.d/client_max_body_size.conf:/etc/nginx/conf.d/client_max_body_size.conf:ro
+      - ./static/:/code/static/
+      - ./media/:/code/media/
+
   postgres:
     image: postgres
     volumes:
       - ./postgresdb/:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - 5432:5432
     environment:
       POSTGRES_DB: 'trip_db_name'
       POSTGRES_USER: 'trip_user_name'
       POSTGRES_PASSWORD: '123'
+
+  web:
+    build: .
+    restart: "always"
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/code/
+    depends_on:
+      - "postgres"
+    env_file: ./.env
+    container_name: web

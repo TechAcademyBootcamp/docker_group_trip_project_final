@@ -122,3 +122,13 @@ body{
 .head-image{
     height: 470px;
 }
+.stars{
+    display: flex;  
+}
+.star{
+    width: 14px;
+    height: 14px;
+}
+.in-div:hover{
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}

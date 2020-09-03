@@ -100,6 +100,21 @@ li a:hover{
 }
 ul li{
     text-decoration: none;
+    /* list-style: none; */
+}
+.scroll-route li{
+    list-style: none;
+}
+.right-first-ul li{
+    list-style: none;
+}
+.right-second-ul li{
+    list-style: none;
+}
+.right-third-ul li{
+    list-style: none;
+}
+.right-four-ul li{
     list-style: none;
 }
 .li-hoverly:hover{
@@ -179,7 +194,7 @@ ul li{
     background-color: #2b3945;
     color: white;
     border-radius: 50%;
-    padding: 0px 5px 0px 4px;
+    padding: 0px 4px 1px 4px;
 }
 .dates-2{
     background-color: #00ab99;
@@ -213,4 +228,7 @@ ul li{
     color: white;
     border-radius: 50%;
     /* padding: 0px 15px 25px 7px; */
+}
+.carousel-inner{
+    height: 350px;
 }
