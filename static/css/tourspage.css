@@ -51,8 +51,7 @@
     vertical-align: baseline;
 }
 .stars{
-    display: flex;
-    
+    display: flex;  
 }
 .stars-first{
     display: flex;

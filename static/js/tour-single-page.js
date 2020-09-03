@@ -13,7 +13,7 @@ $(document).ready(function () {
     window.onscroll = function () {
         // console.log(window.pageYOffset)
         var element = document.querySelector('.mid-right');
-        if (window.pageYOffset <= 2438 && window.pageYOffset >= 530) {
+        if (window.pageYOffset <= 3000 && window.pageYOffset >= 530) {
 
             // console.log(element)
             this.document.querySelector('.route').style.position = 'fixed';
@@ -106,23 +106,23 @@ $(document).ready(function () {
 
 
 
-    var headerOne = document.querySelectorAll('.collapse-head')
-    headerOne.forEach((e) => {
-        e.addEventListener("click", function () {
+    // var headerOne = document.querySelectorAll('.collapse-head')
+    // headerOne.forEach((e) => {
+    //     e.addEventListener("click", function () {
 
-            console.log(this);
+    //         console.log(this);
 
-            if (this.closest('.card').querySelector('.collapse').classList.contains('show')) {
-                console.log('here')
-                this.style.backgroundColor = "#ededed";
+    //         if (this.closest('.card').querySelector('.collapse').classList.contains('show')) {
+    //             console.log('here')
+    //             this.style.backgroundColor = "#ededed";
 
 
 
-            } else {
-                this.style.backgroundColor = "#2b3945";
-            }
-        });
-    })
+    //         } else {
+    //             this.style.backgroundColor = "#2b3945";
+    //         }
+    //     });
+    // })
 
 
 
