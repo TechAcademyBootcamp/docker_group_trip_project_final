@@ -1,0 +1,120 @@
+from rest_framework import serializers
+from Hotels.models import Hotel,RoomTypeBeds,HotelAmenities,RoomType,HotelImages,ReviewFields,\
+    ReviewRating,Reservation,Reviews,Policies,PoliciesSubFeatures
+from Account.models import User
+from Main.api.serializers import CitySerializer
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('email',
+                  'image',
+                  'name',
+                  'surname')
+
+class RoomTypeBedsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RoomTypeBeds
+        fields = ('count',)
+
+class ReviewFieldSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ReviewFields
+        fields = ('title',)
+
+class ReviewRatingSerializer(serializers.ModelSerializer):
+    review_field = ReviewFieldSerializer(many=True)
+    class Meta:
+        model = ReviewRating
+        fields = ('rating_point',
+                  'review_field')
+
+class HotelAmenitiesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HotelAmenities
+        fields = ('name',
+                  'image',
+                  'sub_or_main',)
+
+class RoomTypeSerializer(serializers.ModelSerializer):
+    beds = RoomTypeBedsSerializer(many=True )
+    class Meta:
+        model = RoomType
+        fields = ('title',
+                  'description',
+                  'price',
+                  'beds',)
+
+class PoliciesSubSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PoliciesSubFeatures
+        fields = ('title',)
+
+class PoliciesSerializer(serializers.ModelSerializer):
+    sub_features=PoliciesSubSerializer()
+    class Meta:
+        model = Policies
+        fields = ('title',
+                  'sub_features',)
+
+class HotelSerializer(serializers.ModelSerializer):
+    city=CitySerializer()
+    author= UserSerializer()
+    policies=PoliciesSerializer()
+    room_type=RoomTypeSerializer(many=True)
+    review_fields=ReviewFieldSerializer(many=True)
+    class Meta:
+        model = Hotel
+        fields = ('name',
+                  'name_description',
+                  'short_description',
+                  'long_description',
+                  'longitude',
+                  'latitude',
+                  'phone_number',
+                  'website',
+                  'rating',
+                  'city',
+                  'author',
+                  'policies',
+                  'room_type',
+                  'review_fields',
+                  'slug')
+
+class HotelImageSerializer(serializers.ModelSerializer):
+    hotel = HotelSerializer()
+    class Meta:
+        model = HotelImages
+        fields = ('image',
+                  'is_main',
+                  'hotel',)
+
+
+
+
+
+class ReservationSerializer(serializers.ModelSerializer):
+    room_type = RoomTypeSerializer()
+    user= UserSerializer()
+    hotel = HotelSerializer()
+    class Meta:
+        model = Reservation
+        fields = ('reservation_time',
+                  'price',
+                  'note',
+                  'day_count',
+                  'room_type',
+                  'user',
+                  'hotel',)
+
+class ReviewSerializer(serializers.ModelSerializer):
+    reservation = ReservationSerializer()
+    review_rating= ReviewRatingSerializer(many=True)
+    class Meta:
+        model = Reviews
+        fields = ('title',
+                  'subject',
+                  'reservation',
+                  'review_rating',
+                  'created_at',)
+
