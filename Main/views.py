@@ -10,8 +10,16 @@ from Main.models import City,ContactInfo,AboutProject
 # Create your views here.
 
 class MainClassView(ListView):
-    model = City 
     template_name = 'main.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data( *args, **kwargs)
+        context['city'] = Recipe.objects.all().order_by('-show_home_page')[:2]
+        context['hotels'] = Category.objects.all()[:3]
+        context['restaurants'] = Category.objects.all()[:3]
+        context['tours'] = Category.objects.all()[:3]
+        return context
+
 
 
 class SubscriberCreateView(CreateView):

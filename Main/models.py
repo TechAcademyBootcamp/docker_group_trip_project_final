@@ -140,24 +140,4 @@ class Subscriber(models.Model):
     def __str__(self):
         return self.email
 
-# class Comment(models.Model):
-#     # relations
-#     author = models.ForeignKey(User, verbose_name='Author', on_delete=models.CASCADE, null=True, blank=True,
-#                                db_index=True, related_name='comments')
-#     reply = models.ForeignKey('self', null=True, on_delete=models.CASCADE, related_name='replies', blank=True)
-#
-#     # information
-#     slug = models.SlugField('slug', max_length=255, editable=False)
-#     user_name = models.CharField('Username', max_length=50, null=True, blank=True)
-#     email = models.CharField('Email', max_length=40, null=True, blank=True)
-#     description = models.TextField('Genis mezmunu')
-#
-#     # moderation
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
-#     is_published = models.BooleanField('is published', default=True)
 
-#
-
-
-#     def __str__(self):
