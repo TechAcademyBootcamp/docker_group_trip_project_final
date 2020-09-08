@@ -4,10 +4,13 @@ from django.urls import reverse_lazy
 from Main.forms import SubscriberForm,ContactForm
 from django.views.generic import ListView,CreateView,TemplateView
 from Main.models import City,ContactInfo,AboutProject
+# from Hotels.models import Hotels
+# from Restaurants.models import Res
+# from Tours.models import Tours
 # Create your views here.
 
 class MainClassView(ListView):
-    model = City
+    model = City 
     template_name = 'main.html'
 
 
@@ -20,7 +23,7 @@ class SubscriberCreateView(CreateView):
     def get_success_url(self):
         redirect_url = self.request.GET.get('redirect_url',self.success_url)
         return redirect_url
-#
+
     def form_valid(self, form):
         messages.success(self.request,'Subscribe oldunuz')
         return super().form_valid(form)
@@ -71,3 +74,7 @@ class CitySinglePage(ListView):
 class CitiesPage(ListView):
     model = City
     template_name = 'cities-page.html'
+
+    def get_context_data:
+
+
