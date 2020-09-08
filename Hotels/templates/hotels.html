@@ -1,5 +1,5 @@
     {% extends 'base.html' %}
-    {% load static %}
+    {% load static hotel_tags %}
     {% block css %}
         <link rel="stylesheet" href="{% static 'css/hotels.css' %}">
     {% endblock%}
@@ -316,6 +316,7 @@
                 </div>
                 <div class="col-9">
                     <h4 style="font-weight: bold;">Baki : 125 hotels was found</h4>
+                    {% for hotel in hotels %}
                     <div class="row">
                         <div class="col-12 ">
                             <div class="card mb-3 p-3"
@@ -323,27 +324,18 @@
                                 <div class="row no-gutters">
                                     <div class="col-md-3">
                                         <img class="content-image"
-                                            src="https://freshome.com/wp-content/uploads/2013/07/Dubai-Underwater-Hotel-Rooms.jpg"
+                                            src="{{hotel.main_image.url}}"
                                             class="card-img" alt="...">
                                     </div>
                                     <div class="col-md-6">
                                         <div class="card-body">
-                                            <h6 class="card-title text-primary mb-1" style="font-weight: bold;">Baku
-                                                City</h6>
+                                            <h6 class="card-title text-primary mb-1" style="font-weight: bold;">{{hotel.name}}</h6>
                                             <div class="d-flex align-items-center mb-3 ">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star"></span>
+                                                {% get_star_count hotel.rating as stars %}
+                                                {{stars|safe}}
                                             </div>
-                                            <p class="card-text" style="font-size: 12px;line-height: 18px;">This is a
-                                                wider card with
-                                                supporting
-                                                text below as a natural lead-in to additional content. This content is a
-                                                little bit longer.</p>
-                                            <p class="card-text"><small class="text-muted">Last reserved 3 mins
-                                                    ago</small>
+                                            <p class="card-text" style="font-size: 12px;line-height: 18px;">{{hotel.long_description}}</p>
+                                            <p class="card-text"><small class="text-muted">{{hotel.name_description}}</small>
                                             </p>
                                         </div>
                                     </div>
@@ -354,7 +346,7 @@
                                                     <h6>Very good</h6>
                                                     <small>231 Reviews</small>
                                                 </div>
-                                                <div class="rating-count">8.5</div>
+                                                <div class="rating-count">{{hotel.rating}}</div>
                                             </div>
                                             <div class="d-flex flex-column justify-content-end p-2">
                                                 <span class="text-right" style="font-size: 16px;">Price for night
@@ -368,269 +360,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12 ">
-                            <div class="card mb-3 p-3"
-                                style="max-width: 100%; height: 90%;border-color: #5bbaff;box-shadow: 0 0 10px #5bbaff;background-color: #ebf3ff;">
-                                <div class="row no-gutters">
-                                    <div class="col-md-3">
-                                        <img class="content-image"
-                                            src="https://freshome.com/wp-content/uploads/2013/07/Dubai-Underwater-Hotel-Rooms.jpg"
-                                            class="card-img" alt="...">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="card-body">
-                                            <h6 class="card-title text-primary mb-1" style="font-weight: bold;">Baku
-                                                City</h6>
-                                            <div class="d-flex align-items-center mb-3 ">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star"></span>
-                                            </div>
-                                            <p class="card-text" style="font-size: 12px;line-height: 18px;">This is a
-                                                wider card with
-                                                supporting
-                                                text below as a natural lead-in to additional content. This content is a
-                                                little bit longer.</p>
-                                            <p class="card-text"><small class="text-muted">Last reserved 3 mins
-                                                    ago</small>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="d-flex flex-column justify-content-between h-100">
-                                            <div class="d-flex align-items-center justify-content-end p-2">
-                                                <div class="d-flex flex-column mr-2" style="line-height:5px;">
-                                                    <h6>Very good</h6>
-                                                    <small>231 Reviews</small>
-                                                </div>
-                                                <div class="rating-count">8.5</div>
-                                            </div>
-                                            <div class="d-flex flex-column justify-content-end p-2">
-                                                <span class="text-right" style="font-size: 16px;">Price for night
-                                                    20$</span>
-                                                <button type="button" class="btn btn-danger"
-                                                    style="font-size:14px">Reserve</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 ">
-                            <div class="card mb-3 p-3"
-                                style="max-width: 100%; height: 90%;border-color: #5bbaff;box-shadow: 0 0 10px #5bbaff;background-color: #ebf3ff;">
-                                <div class="row no-gutters">
-                                    <div class="col-md-3">
-                                        <img class="content-image"
-                                            src="https://freshome.com/wp-content/uploads/2013/07/Dubai-Underwater-Hotel-Rooms.jpg"
-                                            class="card-img" alt="...">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="card-body">
-                                            <h6 class="card-title text-primary mb-1" style="font-weight: bold;">Baku
-                                                City</h6>
-                                            <div class="d-flex align-items-center mb-3 ">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star"></span>
-                                            </div>
-                                            <p class="card-text" style="font-size: 12px;line-height: 18px;">This is a
-                                                wider card with
-                                                supporting
-                                                text below as a natural lead-in to additional content. This content is a
-                                                little bit longer.</p>
-                                            <p class="card-text"><small class="text-muted">Last reserved 3 mins
-                                                    ago</small>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="d-flex flex-column justify-content-between h-100">
-                                            <div class="d-flex align-items-center justify-content-end p-2">
-                                                <div class="d-flex flex-column mr-2" style="line-height:5px;">
-                                                    <h6>Very good</h6>
-                                                    <small>231 Reviews</small>
-                                                </div>
-                                                <div class="rating-count">8.5</div>
-                                            </div>
-                                            <div class="d-flex flex-column justify-content-end p-2">
-                                                <span class="text-right" style="font-size: 16px;">Price for night
-                                                    20$</span>
-                                                <button type="button" class="btn btn-danger"
-                                                    style="font-size:14px">Reserve</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 ">
-                            <div class="card mb-3 p-3"
-                                style="max-width: 100%; height: 90%;border-color: #5bbaff;box-shadow: 0 0 10px #5bbaff;background-color: #ebf3ff;">
-                                <div class="row no-gutters">
-                                    <div class="col-md-3">
-                                        <img class="content-image"
-                                            src="https://freshome.com/wp-content/uploads/2013/07/Dubai-Underwater-Hotel-Rooms.jpg"
-                                            class="card-img" alt="...">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="card-body">
-                                            <h6 class="card-title text-primary mb-1" style="font-weight: bold;">Baku
-                                                City</h6>
-                                            <div class="d-flex align-items-center mb-3 ">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star"></span>
-                                            </div>
-                                            <p class="card-text" style="font-size: 12px;line-height: 18px;">This is a
-                                                wider card with
-                                                supporting
-                                                text below as a natural lead-in to additional content. This content is a
-                                                little bit longer.</p>
-                                            <p class="card-text"><small class="text-muted">Last reserved 3 mins
-                                                    ago</small>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="d-flex flex-column justify-content-between h-100">
-                                            <div class="d-flex align-items-center justify-content-end p-2">
-                                                <div class="d-flex flex-column mr-2" style="line-height:5px;">
-                                                    <h6>Very good</h6>
-                                                    <small>231 Reviews</small>
-                                                </div>
-                                                <div class="rating-count">8.5</div>
-                                            </div>
-                                            <div class="d-flex flex-column justify-content-end p-2">
-                                                <span class="text-right" style="font-size: 16px;">Price for night
-                                                    20$</span>
-                                                <button type="button" class="btn btn-danger"
-                                                    style="font-size:14px">Reserve</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 ">
-                            <div class="card mb-3 p-3"
-                                style="max-width: 100%; height: 90%;border-color: #5bbaff;box-shadow: 0 0 10px #5bbaff;background-color: #ebf3ff;">
-                                <div class="row no-gutters">
-                                    <div class="col-md-3">
-                                        <img class="content-image"
-                                            src="https://freshome.com/wp-content/uploads/2013/07/Dubai-Underwater-Hotel-Rooms.jpg"
-                                            class="card-img" alt="...">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="card-body">
-                                            <h6 class="card-title text-primary mb-1" style="font-weight: bold;">Baku
-                                                City</h6>
-                                            <div class="d-flex align-items-center mb-3 ">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star"></span>
-                                            </div>
-                                            <p class="card-text" style="font-size: 12px;line-height: 18px;">This is a
-                                                wider card with
-                                                supporting
-                                                text below as a natural lead-in to additional content. This content is a
-                                                little bit longer.</p>
-                                            <p class="card-text"><small class="text-muted">Last reserved 3 mins
-                                                    ago</small>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="d-flex flex-column justify-content-between h-100">
-                                            <div class="d-flex align-items-center justify-content-end p-2">
-                                                <div class="d-flex flex-column mr-2" style="line-height:5px;">
-                                                    <h6>Very good</h6>
-                                                    <small>231 Reviews</small>
-                                                </div>
-                                                <div class="rating-count">8.5</div>
-                                            </div>
-                                            <div class="d-flex flex-column justify-content-end p-2">
-                                                <span class="text-right" style="font-size: 16px;">Price for night
-                                                    20$</span>
-                                                <button type="button" class="btn btn-danger"
-                                                    style="font-size:14px">Reserve</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 ">
-                            <div class="card mb-3 p-3"
-                                style="max-width: 100%; height: 90%;border-color: #5bbaff;box-shadow: 0 0 10px #5bbaff;background-color: #ebf3ff;">
-                                <div class="row no-gutters">
-                                    <div class="col-md-3">
-                                        <img class="content-image"
-                                            src="https://freshome.com/wp-content/uploads/2013/07/Dubai-Underwater-Hotel-Rooms.jpg"
-                                            class="card-img" alt="...">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="card-body">
-                                            <h6 class="card-title text-primary mb-1" style="font-weight: bold;">Baku
-                                                City</h6>
-                                            <div class="d-flex align-items-center mb-3 ">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star"></span>
-                                            </div>
-                                            <p class="card-text" style="font-size: 12px;line-height: 18px;">This is a
-                                                wider card with
-                                                supporting
-                                                text below as a natural lead-in to additional content. This content is a
-                                                little bit longer.</p>
-                                            <p class="card-text"><small class="text-muted">Last reserved 3 mins
-                                                    ago</small>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="d-flex flex-column justify-content-between h-100">
-                                            <div class="d-flex align-items-center justify-content-end p-2">
-                                                <div class="d-flex flex-column mr-2" style="line-height:5px;">
-                                                    <h6>Very good</h6>
-                                                    <small>231 Reviews</small>
-                                                </div>
-                                                <div class="rating-count">8.5</div>
-                                            </div>
-                                            <div class="d-flex flex-column justify-content-end p-2">
-                                                <span class="text-right" style="font-size: 16px;">Price for night
-                                                    20$</span>
-                                                <button type="button" class="btn btn-danger"
-                                                    style="font-size:14px">Reserve</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
+                    {% endfor %}
                 </div>
             </div>
         </div>

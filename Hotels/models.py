@@ -16,7 +16,7 @@ class RoomTypeBeds(models.Model):
 class HotelAmenities(models.Model):
     #information
     name = models.CharField('Name',max_length=40)
-    image = models.ImageField('Image',upload_to='images/hotelAmenities',blank=True,null=True)
+    icon = models.CharField('Icon',max_length=200,blank=True,null=True)
     sub_or_main = models.BooleanField('Is this subcategory?', default=False)
 
     class Meta:
@@ -37,6 +37,7 @@ class Hotel(models.Model):
     phone_number=models.PositiveIntegerField('Phone number')
     website = models.CharField('Website',max_length=50)
     rating = models.DecimalField('Rating',max_digits=2,decimal_places=1)
+    main_image = models.ImageField('Main image',upload_to='images/hotelImages')
 
     #relations
     city = models.ForeignKey(City,verbose_name='City',on_delete=models.CASCADE,
@@ -77,7 +78,7 @@ class RoomType(models.Model):
 class HotelImages(models.Model):
     #information
     image = models.ImageField('Image',upload_to='images/hotelImages')
-    is_main = models.BinaryField()
+
 
     #relations
     hotel=models.ForeignKey(Hotel,verbose_name='Hotel images',on_delete=models.CASCADE,db_index=True,related_name='hotel_images')
