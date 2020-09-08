@@ -1,6 +1,5 @@
 from django.db import models
 from Main.models import City
-from Restaurants.models import Rating
 from Account.models import User
 
 
@@ -38,7 +37,6 @@ class Places(models.Model):
 
     user = models.ForeignKey(User,on_delete=models.CASCADE, db_index=True, related_name='user_place')
     name = models.CharField('Name',max_length=40)
-    rating = models.ForeignKey(Rating,on_delete = models.CASCADE,db_index=True, related_name = 'rating_place')
     city = models.ForeignKey(City, on_delete = models.CASCADE,db_index=True, related_name = 'city_name_place')
     options = models.ManyToManyField(OptionsPlaces, verbose_name='Options', related_name='options_place')
     image = models.ImageField('Image',upload_to=upload_location)

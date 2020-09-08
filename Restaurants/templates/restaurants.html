@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load static restaurant_tags %}
 {% block title %} Restaurants {% endblock %}
-{% load static %}
+
 
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/restaurants.css' %}">
@@ -25,261 +26,107 @@
 </section>
 
 <section class="restaurant-container  mt-2" style="justify-content: center !important;display: flex;">
-    <div class="col-md-11">
+    <div class="col-md-11 resp-options">
         <div class="row">
             <div class="col-md-3">
                 <div>
-                    <img class="w-100 restaurant-cover-photo"  src="{% static 'images/index.jpeg' %}" alt="">
+                    <img class="w-100 restaurant-cover-photo" src="{% static 'images/index.jpeg' %}" alt="">
                 </div>
                 <div class="d-none d-md-block">
                     <div class="special-border">
+                    {% for types in type_radio %}
                         <div class="d-flex mt-2 mb-2">
-                            <img src="{% static 'images/plate.svg' %}" width="20px" alt="">
-                            <p class="ml-1 mt-0 mb-0 mr-0 p-0 restaurant-options">Dining Options</p>
+                            <img src="{{types.option_svg_file.url}}" width="20px" alt="">
+                            <p class="ml-1 mt-0 mb-0 mr-0 p-0 restaurant-options">{{types.option_name}}</p>
                         </div>
+                        {% for element in types.option_inputs.all %}
                         <div class="d-flex align-items-center">
                             <input class="ml-1 regular-radio" type="radio" name="dining-option" id="">
-                            <p class="restaurant-list-option ml-2 mt-0 mb-0 mr-0 ">All dining options</p>
+                            <p class="restaurant-list-option ml-2 mt-0 mb-0 mr-0 ">{{element}}</p>
                         </div>
-                        <div class="d-flex align-items-center">
-                            <input class="ml-1 regular-radio" type="radio" name="dining-option" id="">
-                            <p class="restaurant-list-option ml-2 mt-0 mb-0 mr-0 ">Delivery only</p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <input class="ml-1 regular-radio" type="radio" name="dining-option" id="">
-                            <p class="restaurant-list-option ml-2 mt-0 mb-0 mr-0 ">Takeout only</p>
-                        </div>
+                        {% endfor %}
                         <div class="mb-3"></div>
+                        {% endfor %}
                     </div>
 
                     <div class="special-border">
+                        {% for types in type_checkbox %}
                         <div class="d-flex mt-2 mb-2">
-                            <img src="{% static 'images/chair.svg' %}" width="20px" alt="">
-                            <p class="ml-1 mt-0 mb-0 mr-0 p-0 restaurant-options">Seating Options</p>
+                            <img src="{{types.option_svg_file.url}}" width="20px" alt="">
+                            <p class="ml-1 mt-0 mb-0 mr-0 p-0 restaurant-options">{{types.option_name}}</p>
                         </div>
+                        {% for element in types.option_inputs.all %}
                         <div class="d-flex align-items-center">
                             <input class="ml-1 custom-checkbox" type="checkbox" name="" id="">
-                            <p class="restaurant-list-option ml-1 mt-0 mb-0 mr-0 ">Bar</p>
+                            <p class="restaurant-list-option ml-1 mt-0 mb-0 mr-0 ">{{element}}</p>
                         </div>
-                        <div class="d-flex align-items-center">
-                            <input class="ml-1 custom-checkbox" type="checkbox" name="" id="">
-                            <p class="restaurant-list-option ml-1 mt-0 mb-0 mr-0 ">Standart</p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <input class="ml-1 custom-checkbox" type="checkbox" name="" id="">
-                            <p class="restaurant-list-option ml-1 mt-0 mb-0 mr-0 ">High Top</p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <input class="ml-1 custom-checkbox" type="checkbox" name="" id="">
-                            <p class="restaurant-list-option ml-1 mt-0 mb-0 mr-0 ">Outdoor</p>
-                        </div>
+                        {% endfor %}
                         <div class="mb-3"></div>
+                        {% endfor %}
                     </div>
 
-                    <div class="special-border">
-                        <div class="d-flex mt-2 mb-2">
-                            <img src="{% static 'images/kitchen.svg' %}" width="20px" alt="">
-                            <p class="ml-1 mt-0 mb-0 mr-0 p-0 restaurant-options">Cuisine</p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <input class="ml-1 custom-checkbox" type="checkbox" name="" id="">
-                            <p class="restaurant-list-option ml-1 mt-0 mb-0 mr-0 ">American</p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <input class="ml-1 custom-checkbox" type="checkbox" name="" id="">
-                            <p class="restaurant-list-option ml-1 mt-0 mb-0 mr-0 ">Italian</p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <input class="ml-1 custom-checkbox" type="checkbox" name="" id="">
-                            <p class="restaurant-list-option ml-1 mt-0 mb-0 mr-0 ">Chinese</p>
-                        </div>
-                        <div class="mb-3"></div>
-                    </div>
-
-                    <div class="special-border">
-                        <div class="d-flex mt-2 mb-2">
-                            <img src="{% static 'images/five.svg' %}" width="20px" alt="">
-                            <p class="ml-1 mt-0 mb-0 mr-0 p-0 restaurant-options">Top Rated</p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <input class="ml-1 custom-checkbox" type="checkbox" name="" id="">
-                            <p class="restaurant-list-option ml-1 mt-0 mb-0 mr-0 ">Authentic</p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <input class="ml-1 custom-checkbox" type="checkbox" name="" id="">
-                            <p class="restaurant-list-option ml-1 mt-0 mb-0 mr-0 ">Bar Seating</p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <input class="ml-1 custom-checkbox" type="checkbox" name="" id="">
-                            <p class="restaurant-list-option ml-1 mt-0 mb-0 mr-0 ">Cellar</p>
-                        </div>
-                        <div class="mb-3"></div>
-                    </div>
-
-                    <div class="special-border">
-                        <div class="d-flex mt-2 mb-2">
-                            <img src="{% static 'images/clock.svg' %}" width="20px" alt="">
-                            <p class="ml-1 mt-0 mb-0 mr-0 p-0 restaurant-options">Time</p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <input class="ml-1 custom-checkbox" type="checkbox" name="" id="">
-                            <p class="restaurant-list-option ml-1 mt-0 mb-0 mr-0 ">Newly Added</p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <input class="ml-1 custom-checkbox" type="checkbox" name="" id="">
-                            <p class="restaurant-list-option ml-1 mt-0 mb-0 mr-0 ">1,000 point times</p>
-                        </div>
-                        <div class="mb-3"></div>
-                    </div>
                 </div>
             </div>
             <div class="d-md-none d-block col-12" style="margin-top: 15px;">
                 <!-- <div class="special-border mt-3"></div> -->
+                {% for types in type_radio %}
                 <div class="special-border"></div>
                 <div class="position-relative " style="cursor: pointer">
                     <div class="d-flex justify-content-between align-items-center option-padding all-options">
                         <div class="d-flex">
-                            <img src="{% static 'images/plate.svg' %}" width="20px" alt="">
-                            <p class="ml-1 mt-0 mb-0 mr-0 p-0 restaurant-options">Dining Options</p>
+                            <img src="{{types.option_svg_file.url}}" width="20px" alt="">
+                            <p class="ml-1 mt-0 mb-0 mr-0 p-0 restaurant-options">{{types.option_name}}</p>
                         </div>
                         <i style="padding: 0px 10px;" class="fa fa-angle-down"></i>
                     </div>
                     <div class="option-tables d-none all-option-tables">
                         <div class="all-options-in-table">
+                        {% for element in types.option_inputs.all %}
                             <div class="d-flex mb-2 align-items-center">
                                 <input class="ml-1 regular-radio" type="radio" name="" id="">
-                                <p class="restaurant-list-option ml-2 mt-0 mb-0 mr-0 ">All dining options</p>
+                                <p class="restaurant-list-option ml-2 mt-0 mb-0 mr-0 ">{{element}}</p>
                             </div>
-                            <div class="d-flex mb-2 align-items-center">
-                                <input class="ml-1 regular-radio" type="radio" name="" id="">
-                                <p class="restaurant-list-option ml-2 mt-0 mb-0 mr-0 ">Delivery only</p>
-                            </div>
-                            <div class="d-flex mb-2 align-items-center">
-                                <input class="ml-1 regular-radio " type="radio" name="" id="">
-                                <p class="restaurant-list-option ml-2 mt-0 mb-0 mr-0 ">Takeout only</p>
-                            </div>
+                        {% endfor %}
                             <div class="triangle-table"></div>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
+
+                {% for types in type_checkbox %}
                 <div class="special-border"></div>
                 <div class="position-relative" style="cursor: pointer">
                     <div class="d-flex justify-content-between align-items-center option-padding  all-options">
                         <div class="d-flex">
-                            <img src="{% static 'images/chair.svg' %}" width="20px" alt="">
-                            <p class="ml-1 mt-0 mb-0 mr-0 p-0 restaurant-options">Seating Options</p>
+                            <img src="{{types.option_svg_file.url}}" width="20px" alt="">
+                            <p class="ml-1 mt-0 mb-0 mr-0 p-0 restaurant-options">{{types.option_name}}</p>
                         </div>
                         <i style="padding: 0px 10px;" class="fa fa-angle-down"></i>
                     </div>
                     <div class="option-tables d-none all-option-tables">
                         <div class="all-options-in-table">
+                        {% for element in types.option_inputs.all%}
                             <div class="d-flex mb-2 align-items-center">
                                 <input class="ml-1 custom-checkbox" type="checkbox" name="" id="">
-                                <p class="restaurant-list-option ml-1 mt-0 mb-0 mr-0 ">Bar</p>
+                                <p class="restaurant-list-option ml-1 mt-0 mb-0 mr-0 ">{{element}}</p>
                             </div>
-                            <div class="d-flex mb-2 align-items-center">
-                                <input class="ml-1 custom-checkbox" type="checkbox" name="" id="">
-                                <p class="restaurant-list-option ml-1 mt-0 mb-0 mr-0 ">Standart</p>
-                            </div>
-                            <div class="d-flex mb-2 align-items-center">
-                                <input class="ml-1 custom-checkbox" type="checkbox" name="" id="">
-                                <p class="restaurant-list-option ml-1 mt-0 mb-0 mr-0 ">High Top</p>
-                            </div>
-                            <div class="d-flex mb-2 align-items-center">
-                                <input class="ml-1 custom-checkbox" type="checkbox" name="" id="">
-                                <p class="restaurant-list-option ml-1 mt-0 mb-0 mr-0 ">Outdoor</p>
-                            </div>
+                        {% endfor %}
                             <div class="triangle-table"></div>
                         </div>
                     </div>
                 </div>
-                <div class="special-border"></div>
-                <div class="position-relative "  style="cursor: pointer">
-                    <div class="d-flex justify-content-between align-items-center option-padding all-options">
-                        <div class="d-flex">
-                            <img src="{% static 'images/kitchen.svg' %}" width="20px" alt="">
-                            <p class="ml-1 mt-0 mb-0 mr-0 p-0 restaurant-options">Cuisine</p>
-                        </div>
-                        <i style="padding: 0px 10px;" class="fa fa-angle-down"></i>
-                    </div>
-                    <div class="option-tables d-none all-option-tables">
-                        <div class="all-options-in-table">
-                            <div class="d-flex mb-2 align-items-center">
-                                <input class="ml-1 custom-checkbox" type="checkbox" name="" id="">
-                                <p class="restaurant-list-option ml-1 mt-0 mb-0 mr-0 ">American</p>
-                            </div>
-                            <div class="d-flex mb-2 align-items-center">
-                                <input class="ml-1 custom-checkbox" type="checkbox" name="" id="">
-                                <p class="restaurant-list-option ml-1 mt-0 mb-0 mr-0 ">Italian</p>
-                            </div>
-                            <div class="d-flex mb-2 align-items-center">
-                                <input class="ml-1 custom-checkbox" type="checkbox" name="" id="">
-                                <p class="restaurant-list-option ml-1 mt-0 mb-0 mr-0 ">Chinese</p>
-                            </div>
-                            <div class="triangle-table"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="special-border"></div>
-                <div class="position-relative "  style="cursor: pointer">
-                    <div class="d-flex justify-content-between align-items-center option-padding all-options">
-                        <div class="d-flex">
-                            <img src="{% static 'images/five.svg' %}" width="20px" alt="">
-                            <p class="ml-1 mt-0 mb-0 mr-0 p-0 restaurant-options">Top Rated</p>
-                        </div>
-                        <i style="padding: 0px 10px;" class="fa fa-angle-down"></i>
-                    </div>
-                    <div class="option-tables d-none all-option-tables">
-                        <div class="all-options-in-table">
-                            <div class="d-flex mb-2 align-items-center">
-                                <input class="ml-1 custom-checkbox" type="checkbox" name="" id="">
-                                <p class="restaurant-list-option ml-1 mt-0 mb-0 mr-0 ">Authentic</p>
-                            </div>
-                            <div class="d-flex mb-2 align-items-center">
-                                <input class="ml-1 custom-checkbox" type="checkbox" name="" id="">
-                                <p class="restaurant-list-option ml-1 mt-0 mb-0 mr-0 ">Bar Seating</p>
-                            </div>
-                            <div class="d-flex mb-2 align-items-center">
-                                <input class="ml-1 custom-checkbox" type="checkbox" name="" id="">
-                                <p class="restaurant-list-option ml-1 mt-0 mb-0 mr-0 ">Cellar</p>
-                            </div>
-                            <div class="triangle-table"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="special-border"></div>
-
-                <div class="position-relative "  style="cursor: pointer">
-                    <div class="d-flex justify-content-between align-items-center option-padding all-options">
-                        <div class="d-flex">
-                            <img src="{% static 'images/clock.svg' %}" width="20px" alt="">
-                            <p class="ml-1 mt-0 mb-0 mr-0 p-0 restaurant-options">Time</p>
-                        </div>
-                        <i style="padding: 0px 10px;" class="fa fa-angle-down"></i>
-                    </div>
-                    <div class="option-tables d-none all-option-tables">
-                        <div class="all-options-in-table">
-                            <div class="d-flex mb-2 align-items-center">
-                                <input class="ml-1 custom-checkbox" type="checkbox" name="" id="">
-                                <p class="restaurant-list-option ml-1 mt-0 mb-0 mr-0 ">Newly Added</p>
-                            </div>
-                            <div class="d-flex mb-2 align-items-center">
-                                <input class="ml-1 custom-checkbox" type="checkbox" name="" id="">
-                                <p class="restaurant-list-option ml-1 mt-0 mb-0 mr-0 ">1,000 point times</p>
-                            </div>
-                            <div class="triangle-table"></div>
-                        </div>
-                    </div>
-                </div>
+            {% endfor %}
+            <div class="special-border"></div>
             </div>
 
             <!-- <div style="border-bottom: 1px solid rgba(0,0,0,.12);" class="col-12"></div> -->
-
+            {% countRestaurants as information %}
+            
             <div class="col-md-9 col-12">
                 <div class="available-table col-md-12 mt-0 p-0"
                     style="height: 60px;border-bottom: 1px solid rgba(0,0,0,.12);">
                     <div>
-                        <span class="count-restaurants">100 Restaurants</span>
+                        <span class="count-restaurants">{{information.restaurant}} Restaurants</span>
                     </div>
                     <div class=" d-flex align-items-center" style="">
                         <button class="button-featured restaurant-dropdown">
@@ -295,31 +142,27 @@
 
                 </div>
 
+                {% for restaurant in restaurants_list%}
                 <div class="mt-3 card restaurant-card mb-3" style="max-width: 100%">
                     <div class="d-flex no-gutters">
-                        <div>
-                            <img src="{% static 'images/rstr.jpg' %}" class="card-img restaurant-card-img" alt="...">
-                        </div>
+                        <a href="">
+                            <img src="{{restaurant.image.url}}" class="card-img restaurant-card-img" alt="...">
+                        </a>
                         <div>
                             <div class="card-body ml-1 body-card">
-                                <h5 class="card-title m-0 restaurant-name">Mistura</h5>
+                                <a class="card-title m-0 restaurant-name">{{restaurant.name}}</a>
                                 <div>
                                     <div>
-                                        <img src="{% static 'images/image-2.svg' %}" alt="">
-                                        <img src="{% static 'images/image-2.svg' %}" alt="">
-                                        <img src="{% static 'images/image-2.svg' %}" alt="">
-                                        <img src="{% static 'images/image-2.svg' %}" alt="">
-                                        <img src="{% static 'images/image-3.svg' %}" alt="">
-                                        <span class="restaurant-feedback">Exceptional</span>
-                                        <span class="restaurant-feedback-number">(683)</span>
+                                        {% get_star_count Restaurants.rating as stars %}
+                                        {{stars|safe}}
                                     </div>
                                 </div>
-                                <small class="restaurant-city-name">City Name</small>
-                                <p style="font-size:14px;font-weight:400">Working time 08:00-22:00</p>
+                                <small class="restaurant-city-name">{{restaurant.city}}</small>
+                                <p style="font-size:14px;font-weight:400">Working time {{restaurant.open_time}} - {{restaurant.close_time}}</p>
                                 <div class="restaurant-delivery">Takeout</div>
                                 <div class="restaurant-telephone">
                                     <img src="{% static 'images/tel.svg' %}" alt="">
-                                    <span>+(994)444-44-44</span>
+                                    <span>{{restaurant.phone_number}}</span>
 
                                 </div>
                             </div>
@@ -328,141 +171,14 @@
 
                 </div>
 
-                <div class="mt-3 card restaurant-card mb-3" style="max-width: 100%">
-                    <div class="d-flex no-gutters">
-                        <div>
-                            <img src="{% static 'images/rstr.jpg' %}" class="card-img restaurant-card-img" alt="...">
-                        </div>
-                        <div>
-                            <div class="card-body ml-1 body-card">
-                                <h5 class="card-title m-0 restaurant-name">Mistura</h5>
-                                <div>
-                                    <div>
-                                        <img src="{% static 'images/image-2.svg' %}" alt="">
-                                        <img src="{% static 'images/image-2.svg' %}" alt="">
-                                        <img src="{% static 'images/image-2.svg' %}" alt="">
-                                        <img src="{% static 'images/image-2.svg' %}" alt="">
-                                        <img src="{% static 'images/image-3.svg' %}" alt="">
-                                        <span class="restaurant-feedback">Exceptional</span>
-                                        <span class="restaurant-feedback-number">(683)</span>
-                                    </div>
-                                </div>
-                                <small class="restaurant-city-name">City Name</small>
-                                <p style="font-size:14px">Working time 08:00-22:00</p>
-                                <div class="restaurant-delivery">Takeout</div>
-                                <div class="restaurant-telephone">
-                                    <img src="{% static 'images/tel.svg' %}" alt="">
-                                    <span>+(994)444-44-44</span>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="mt-3 card restaurant-card mb-3" style="max-width: 100%">
-                    <div class="d-flex no-gutters">
-                        <div>
-                            <img src="{% static 'images/rstr.jpg' %}" class="card-img restaurant-card-img" alt="...">
-                        </div>
-                        <div>
-                            <div class="card-body ml-1 body-card">
-                                <h5 class="card-title m-0 restaurant-name">Mistura</h5>
-                                <div>
-                                    <div>
-                                        <img src="{% static 'images/image-2.svg' %}" alt="">
-                                        <img src="{% static 'images/image-2.svg' %}" alt="">
-                                        <img src="{% static 'images/image-2.svg' %}" alt="">
-                                        <img src="{% static 'images/image-2.svg' %}" alt="">
-                                        <img src="{% static 'images/image-3.svg' %}" alt="">
-                                        <span class="restaurant-feedback">Exceptional</span>
-                                        <span class="restaurant-feedback-number">(683)</span>
-                                    </div>
-                                </div>
-                                <small class="restaurant-city-name">City Name</small>
-                                <p style="font-size:14px">Working time 08:00-22:00</p>
-                                <div class="restaurant-delivery">Takeout</div>
-                                <div class="restaurant-telephone">
-                                    <img src="{% static 'images/tel.svg' %}" alt="">
-                                    <span>+(994)444-44-44</span>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="mt-3 card restaurant-card mb-3" style="max-width: 100%">
-                    <div class="d-flex no-gutters">
-                        <div>
-                            <img src="{% static 'images/rstr.jpg' %}" class="card-img restaurant-card-img" alt="...">
-                        </div>
-                        <div>
-                            <div class="card-body ml-1 body-card">
-                                <h5 class="card-title m-0 restaurant-name">Mistura</h5>
-                                <div>
-                                    <div>
-                                        <img src="{% static 'images/image-2.svg' %}" alt="">
-                                        <img src="{% static 'images/image-2.svg' %}" alt="">
-                                        <img src="{% static 'images/image-2.svg' %}" alt="">
-                                        <img src="{% static 'images/image-2.svg' %}" alt="">
-                                        <img src="{% static 'images/image-3.svg' %}" alt="">
-                                        <span class="restaurant-feedback">Exceptional</span>
-                                        <span class="restaurant-feedback-number">(683)</span>
-                                    </div>
-                                </div>
-                                <small class="restaurant-city-name">City Name</small>
-                                <p style="font-size:14px">Working time 08:00-22:00</p>
-                                <div class="restaurant-delivery">Takeout</div>
-                                <div class="restaurant-telephone">
-                                    <img src="{% static 'images/tel.svg' %}" alt="">
-                                    <span>+(994)444-44-44</span>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="mt-3 card restaurant-card mb-3" style="max-width: 100%">
-                    <div class="d-flex no-gutters">
-                        <div>
-                            <img src="{% static 'images/rstr.jpg' %}" class="card-img restaurant-card-img" alt="...">
-                        </div>
-                        <div>
-                            <div class="card-body ml-1 body-card">
-                                <h5 class="card-title m-0 restaurant-name">Mistura</h5>
-                                <div>
-                                    <div>
-                                        <img src="{% static 'images/image-2.svg' %}" alt="">
-                                        <img src="{% static 'images/image-2.svg' %}" alt="">
-                                        <img src="{% static 'images/image-2.svg' %}" alt="">
-                                        <img src="{% static 'images/image-2.svg' %}" alt="">
-                                        <img src="{% static 'images/image-3.svg' %}" alt="">
-                                        <span class="restaurant-feedback">Exceptional</span>
-                                        <span class="restaurant-feedback-number">(683)</span>
-                                    </div>
-                                </div>
-                                <small class="restaurant-city-name">City Name</small>
-                                <p style="font-size:14px">Working time 08:00-22:00</p>
-                                <div class="restaurant-delivery">Takeout</div>
-                                <div class="restaurant-telephone">
-                                    <img src="{% static 'images/tel.svg' %}" alt="">
-                                    <span>+(994)444-44-44</span>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+                {% empty %}
+                <h1>Empty Information</h1>
+                {% endfor %}
 
             </div>
-            </div>
-            </div>
+            
+        </div>
+    </div>
 </section>
 
 
