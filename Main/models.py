@@ -26,6 +26,10 @@ class Contact(models.Model):
         return self.email
 
 class City(models.Model):
+    #relations
+   
+
+
     #information
     name = models.CharField('Name',max_length=40)
     image = models.ImageField('Image',upload_to='images')
@@ -152,6 +156,8 @@ class Subscriber(models.Model):
 #     created_at = models.DateTimeField(auto_now_add=True)
 #     updated_at = models.DateTimeField(auto_now=True)
 #     is_published = models.BooleanField('is published', default=True)
+
 #
+
+
 #     def __str__(self):
-#         return f'{self.author}'

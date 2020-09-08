@@ -9,8 +9,8 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-#username:amil
-#password:amil
+#username:serveradmin
+#password:serveradmin
 #fullname:amilalizada
 #docker exec -t 6051dff42709 pg_dumpall -c -U trip_db_name > dump_`date +%d-%m-%Y"_"%H_%M_%S`.sql
 
