@@ -35,3 +35,13 @@ services:
       - "postgres"
     env_file: ./.env
     container_name: web
+  
+  pgadmin :
+    container_name : pgadmin
+    image : dpage/pgadmin4:4.23
+    ports: 
+      - "5050:80"
+    restart: on-failure
+    environment:
+      PGADMIN_DEFAULT_EMAIL: 'agil@mail.ru'
+      PGADMIN_DEFAULT_PASSWORD: '12345'
