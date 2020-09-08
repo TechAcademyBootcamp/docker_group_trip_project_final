@@ -214,7 +214,7 @@
     padding: 0px 10px !important;
 }
 .restaurant-name{
-    color: #247f9e;
+    color: #247f9e !important;
     font-size: 1.125rem;
     font-weight: 600;
     cursor: pointer;
@@ -252,17 +252,32 @@
     border: 2px solid rgba(0,0,0,.12);
     padding: 5px 0px;
     border-radius: 3px;
-    width: 150px;
     display: flex;
     justify-content: center;
 }
+.restaurant-card .no-gutters{
+    border: 1px solid rgba(0,0,0,.12) !important;
+    padding: 10px !important;
+    box-shadow: 1px 1px 10px 6px #ededed !important;
+}
 
 @media screen and  (min-width: 1200px){
+    
     .restaurant-container{
         max-width: 1140px;
     }
     .restaurant-search-input{
         padding: 15px 40px;
+    }
+}
+@media screen and  (max-width: 1200px){
+    .resp-options{
+        padding: 0px !important;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .restaurant-find{
+        font-size: 14px;
     }
 }
 @media only screen and (max-width: 766px) {
@@ -273,6 +288,7 @@
     .restaurant-find{
         width: 100%;
         border-radius:0px 0px 3px 3px !important;
+        font-size: 16px;
     }
   } 
   @media only screen and (max-width: 434px) {
@@ -281,6 +297,9 @@
  }
 }
 @media only screen and (max-width: 418px) {
+    .option-tables{
+        left: 45px !important;
+    }
      .available-table{
          display: block;
          flex-wrap: wrap !important;
@@ -381,7 +400,7 @@
         height: 160px;
     }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
     .restaurant-card-img{
         width: 196px;
         height: 196px;

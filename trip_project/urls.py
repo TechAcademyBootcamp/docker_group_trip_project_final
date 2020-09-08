@@ -19,12 +19,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
+    path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS
     path('admin/', admin.site.urls),
     path('',include('Main.urls',namespace='main')),
     path('',include('Tours.urls')),
     path('',include('Main.api.urls')),
     path('api/v1.0/subscribe/',include('Main.api.urls',namespace='api_main')),
     path('hotels/',include('Hotels.urls',namespace='hotels_app')),
-    path('restaurant/',include('Restaurants.urls')),
-    path('places/',include('Places.urls')),
+    path('restaurants/',include('Restaurants.urls',namespace='restaurants_app')),
+    path('places/',include('Places.urls',namespace='places_app')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

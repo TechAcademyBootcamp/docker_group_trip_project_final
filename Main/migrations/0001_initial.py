@@ -127,7 +127,7 @@ class Migration(migrations.Migration):
                 ('description', models.TextField(verbose_name='Description')),
                 ('latitude', models.DecimalField(decimal_places=2, max_digits=6, verbose_name='Price')),
                 ('longtitude', models.DecimalField(decimal_places=2, max_digits=6, verbose_name='Price')),
-                ('city', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='places', to='Main.city', verbose_name='City')),
+                ('city', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='places', to='Main.City', verbose_name='City')),
             ],
             options={
                 'verbose_name': 'Places',

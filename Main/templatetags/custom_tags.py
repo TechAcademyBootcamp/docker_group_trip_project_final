@@ -16,3 +16,4 @@ def get_privacy_terms():
         'privacy': privacy
     }
     return context
+
