@@ -44,23 +44,24 @@ class RoomTypeSerializer(serializers.ModelSerializer):
                   'description',
                   'price',
                   'beds',)
-
-class PoliciesSubSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PoliciesSubFeatures
-        fields = ('title',)
-
 class PoliciesSerializer(serializers.ModelSerializer):
-    sub_features=PoliciesSubSerializer()
     class Meta:
         model = Policies
+        fields = ('title',)
+
+class PoliciesSubSerializer(serializers.ModelSerializer):
+    policies = PoliciesSerializer()
+    class Meta:
+        model = PoliciesSubFeatures
         fields = ('title',
-                  'sub_features',)
+                  'policies',)
+
+
 
 class HotelSerializer(serializers.ModelSerializer):
     city=CitySerializer()
     author= UserSerializer()
-    policies=PoliciesSerializer()
+    policies=PoliciesSerializer(many=True)
     room_type=RoomTypeSerializer(many=True)
     review_fields=ReviewFieldSerializer(many=True)
     class Meta:

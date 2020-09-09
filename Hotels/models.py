@@ -17,7 +17,7 @@ class HotelAmenities(models.Model):
     #information
     name = models.CharField('Name',max_length=40)
     icon = models.CharField('Icon',max_length=200,blank=True,null=True)
-    sub_or_main = models.BooleanField('Is this subcategory?', default=False)
+    room_amenity = models.BooleanField('Is this room amenity?', default=False)
 
     class Meta:
         verbose_name = 'HotelAmenity'
@@ -44,8 +44,7 @@ class Hotel(models.Model):
                                db_index=True, related_name='hotels')
     author = models.ForeignKey(User, verbose_name='Author', on_delete=models.CASCADE,
                                db_index=True, related_name='hotels')
-    policies = models.ForeignKey('Policies', verbose_name='Policies', on_delete=models.CASCADE,
-                               db_index=True, related_name='hotels')
+    policies = models.ManyToManyField('Policies', verbose_name='Policies', related_name='hotels')
     room_type = models.ManyToManyField('RoomType', verbose_name='Room type', related_name='hotels')
     review_fields = models.ManyToManyField('ReviewFields',verbose_name='Review Rating',related_name='hotels')
 
@@ -67,6 +66,7 @@ class RoomType(models.Model):
 
     #relations
     beds = models.ManyToManyField(RoomTypeBeds,verbose_name='RoomTypeBeds',related_name='room_types')
+    child_count = models.ManyToManyField('ChildCount',verbose_name='ChildCount',related_name='room_types')
 
     class Meta:
         verbose_name = 'RoomType'
@@ -154,7 +154,10 @@ class Reviews(models.Model):
 class PoliciesSubFeatures(models.Model):
     # information
     title = models.CharField('Title', max_length=100)
-
+    #relations
+    policies = models.ForeignKey('Policies', verbose_name='Policies', on_delete=models.CASCADE,
+                                 db_index=True,
+                                 related_name='PoliciesSubFeatures')
     class Meta:
         verbose_name = 'Policies SubFeatures'
         verbose_name_plural = 'Policies SubFeatures'
@@ -166,9 +169,7 @@ class Policies(models.Model):
     #information
     title=models.CharField('Title',max_length=100)
 
-    #relations
-    sub_features = models.ForeignKey(PoliciesSubFeatures, verbose_name='Policies', on_delete=models.CASCADE, db_index=True,
-                                related_name='policies')
+
 
     class Meta:
         verbose_name = 'Policies'
@@ -204,3 +205,14 @@ class ReviewRating(models.Model):
 
     def __str__(self):
         return f'{self.rating_point}'
+
+class ChildCount(models.Model):
+    #information
+    count = models.PositiveIntegerField('Count')
+
+    class Meta:
+        verbose_name = 'ChildCount'
+        verbose_name_plural = 'ChildCount'
+
+    def __str__(self):
+        return str(self.count)
