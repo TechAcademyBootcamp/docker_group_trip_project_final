@@ -1,6 +1,8 @@
 from django.db import models
 from Account.models import User
 from Main.models import City
+from Hotels.tools.slug_generator import slugify
+from datetime import datetime
 
 class RoomTypeBeds(models.Model):
     #information
@@ -57,6 +59,10 @@ class Hotel(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        self.slug = f'{slugify(self.name)}-{datetime.now().strftime("%Y%m%d-%H%M%S")}'
+        super().save()
 
 class RoomType(models.Model):
     #information

@@ -110,6 +110,26 @@ min-width: 32px !important;
   background-color: white;
   border-radius: 4px;
 }
-.children-rooms{
-  
+.price-in-js{
+  font-size: 16px;
+}
+.reserve-button-js{
+  font-size:14px;
+}
+.first-child-js{
+  line-height:5px;
+}
+.card-title-js{
+  font-weight: bold;
+}
+.hotel-long-desc-js{
+  font-size: 12px;
+  line-height: 18px;
+}
+.card-js{
+  max-width: 100%;
+  height: 90%;
+  border-color: #5bbaff;
+  box-shadow: 0 0 10px #5bbaff;
+  background-color: #ebf3ff;
 }

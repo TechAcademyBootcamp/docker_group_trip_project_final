@@ -10,7 +10,7 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('email',
                   'image',
                   'name',
-                  'surname')
+                  'surname',)
 
 class RoomTypeBedsSerializer(serializers.ModelSerializer):
     class Meta:
@@ -27,7 +27,7 @@ class ReviewRatingSerializer(serializers.ModelSerializer):
     class Meta:
         model = ReviewRating
         fields = ('rating_point',
-                  'review_field')
+                  'review_field',)
 
 class HotelAmenitiesSerializer(serializers.ModelSerializer):
     class Meta:
@@ -75,12 +75,13 @@ class HotelSerializer(serializers.ModelSerializer):
                   'phone_number',
                   'website',
                   'rating',
+                  'main_image',
                   'city',
                   'author',
                   'policies',
                   'room_type',
                   'review_fields',
-                  'slug')
+                  'slug',)
 
 class HotelImageSerializer(serializers.ModelSerializer):
     hotel = HotelSerializer()

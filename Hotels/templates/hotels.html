@@ -49,7 +49,7 @@
                                         <div class="col-12 pt-2">
                                             <div class="border w-100 py-1 bg-white">
                                                 <select class="border-0 bg-white w-100" name="" id="selected-beds">
-                                                    <option value="">2 beds</option>
+                                                    <option value="1">2 beds</option>
                                                     <option value="3">3 beds</option>
                                                     <option value="4">4 beds</option>
                                                     <option value="5">5 beds</option>
@@ -64,11 +64,11 @@
                                             <div class="border w-100 py-1 bg-white">
                                                 <select class="border-0 bg-white w-100" name="" id="selected-child-count">
                                                     <option value="">No children</option>
-                                                    <option value="saab">1 child</option>
-                                                    <option value="opel">2 children</option>
-                                                    <option value="audi">3 children</option>
-                                                    <option value="opel">4 children</option>
-                                                    <option value="audi">5 children</option>
+                                                    <option value="1">1 child</option>
+                                                    <option value="2">2 children</option>
+                                                    <option value="3">3 children</option>
+                                                    <option value="4">4 children</option>
+                                                    <option value="5">5 children</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -77,10 +77,10 @@
                                                 <div class="col-12">
                                                     <div class="border w-100 py-1 bg-white">
                                                         <select class="border-0 bg-white w-100" name="" id="selected-room-count">
-                                                            <option value="">1 room</option>
-                                                            <option value="saab">2 rooms</option>
-                                                            <option value="opel">3 rooms</option>
-                                                            <option value="audi">4 rooms</option>
+                                                            <option value="1">1 room</option>
+                                                            <option value="2">2 rooms</option>
+                                                            <option value="3">3 rooms</option>
+                                                            <option value="4">4 rooms</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -106,14 +106,14 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text min-span" id="inputGroup-sizing-sm">min</span>
                                         </div>
-                                        <input type="text" class="form-control" aria-label="Small"
+                                        <input type="text" class="form-control min-price" aria-label="Small"
                                             aria-describedby="inputGroup-sizing-sm">
                                     </div>
                                     <div class="input-group input-group-sm mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text max-span" id="inputGroup-sizing-sm">max</span>
+                                            <span class="input-group-text max-span " id="inputGroup-sizing-sm">max</span>
                                         </div>
-                                        <input type="text" class="form-control" aria-label="Small"
+                                        <input type="text" class="form-control max-price" aria-label="Small"
                                             aria-describedby="inputGroup-sizing-sm">
                                     </div>
                                 </div>
@@ -126,12 +126,12 @@
                                     <div class="py-2">
                                         <h6 class="bolder-words">Hotel amenities</h6>
                                     </div>
-                                    <div class="">
+                                    <div class="" id="amenities-hotel">
                                         {% for amenity in hotel_amenities %}
                                         {% if not amenity.room_amenity %}
                                         <div class="d-flex align-items-center justify-content-start">
                                             <label class="containerr">
-                                                <input type="checkbox">
+                                                <input class="checked-inputs hotel-amenity" type="checkbox">
                                                 <span class="checkmark border"></span>
                                             </label>
                                             <span class="mt-3 choose-types">{{amenity.name}}</span>
@@ -153,7 +153,7 @@
                                         {% if amenity.room_amenity %}
                                     <div class="d-flex align-items-center justify-content-start">
                                         <label class="containerr">
-                                            <input type="checkbox">
+                                            <input class="checked-inputs room-amenity" type="checkbox">
                                             <span class="checkmark border"></span>
                                         </label>
                                         <span class="mt-3 choose-types">{{amenity.name}}</span>
@@ -261,10 +261,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-9">
+                <div class="col-9 main-col">
                     <h4 style="font-weight: bold;">Baki : 125 hotels was found</h4>
                     {% for hotel in hotels %}
-                    <div class="row">
+                    <div class="row main-div">
                         <div class="col-12 ">
                             <div class="card mb-3 p-3"
                                 style="max-width: 100%; height: 90%;border-color: #5bbaff;box-shadow: 0 0 10px #5bbaff;background-color: #ebf3ff;">
