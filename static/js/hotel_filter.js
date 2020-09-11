@@ -68,8 +68,8 @@ function loadAllData(data) {
         method: "GET",
         data: data,
         success: function (response) {
+            document.querySelector('.main-div').innerHTML = ''
             for (hotel of response) {
-                document.querySelector('.main-div').innerHTML = ''
                 // let div_row = document.createElement('div')
                 // div_row.classList.add('row')
                 let div_col_12 = document.createElement('div')

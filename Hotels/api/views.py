@@ -16,6 +16,6 @@ class HotelListView(ListAPIView):
         filtered_hotels = Hotel.objects.all()
         if cityName or selectedBed:
             filtered_hotels=Hotel.objects.filter(city__name__icontains=cityName)
-            # filtered_hotels=Hotel.objects.filter(hotel_amenities__in=[hotel_amenity for hotel_amenity in
+        #     filtered_hotels=Hotel.objects.filter(hotel_amenities__in=[hotel_amenity for hotel_amenity in
         # data.get('hotel_amenities')])
         return filtered_hotels
