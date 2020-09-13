@@ -4,20 +4,20 @@ from django.urls import reverse_lazy
 from Main.forms import SubscriberForm,ContactForm
 from django.views.generic import ListView,CreateView,TemplateView
 from Main.models import City,ContactInfo,AboutProject
-# from Hotels.models import Hotels
-# from Restaurants.models import Res
-# from Tours.models import Tours
+from Hotels.models import Hotel
+from Restaurants.models import Restaurants
+from Tours.models import Tours
 # Create your views here.
 
-class MainClassView(ListView):
+class MainClassView(TemplateView):
     template_name = 'main.html'
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data( *args, **kwargs)
-        context['city'] = Recipe.objects.all().order_by('-show_home_page')[:2]
-        context['hotels'] = Category.objects.all()[:3]
-        context['restaurants'] = Category.objects.all()[:3]
-        context['tours'] = Category.objects.all()[:3]
+        context['city_list'] = City.objects.all()[:3]
+        context['hotels'] = Hotel.objects.all()[:3]
+        context['restaurants'] = Restaurants.objects.all()[:3]
+        context['tours'] = Tours.objects.all()[:3]
         return context
 
 
@@ -82,7 +82,11 @@ class CitySinglePage(ListView):
 class CitiesPage(ListView):
     model = City
     template_name = 'cities-page.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["cities"] = City.objects.all
+        return context
+    
 
-    def get_context_data:
-
+    
 

@@ -95,10 +95,11 @@
                 </div>
 
             </div> -->
+            {% for city in cities %}
             <div class="card col-md-6 col-lg-4 col-12 mt-4" style="width: 18rem;">
                 <div class="in-div">
                     <div class="card-image">
-                        <img src="{% static 'images/sicily-italy.jpg' %}" class="card-img-top" alt="...">
+                        <img src="{{city.image.url}}" class="card-img-top" alt="...">
                         <div class="nese">
                             $500
                         </div>
@@ -107,7 +108,7 @@
                     <div class="card-body">
                         <div class="first">
 
-                            <a class="change-text-color" href="">Baku</a>
+                            <a class="change-text-color" href="">{{city.name}}</a>
                             
 
                         </div>
@@ -163,6 +164,7 @@
                 </div>
 
             </div>
+            {% endfor %}
             <!-- <div class="card col-md-6 col-lg-4 col-12 mt-4" style="width: 18rem;">
                 <div class="in-div">
                     <div class="card-image">

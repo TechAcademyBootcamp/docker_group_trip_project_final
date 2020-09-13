@@ -130,3 +130,25 @@ box-shadow: 0 4px 4px rgba(0,0,0,.25);
 .demo-1,.demo-0,.demo-2{
   font-weight: bolder;
 }
+.form-div{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.form-div a{
+  text-decoration: none;
+  color: black;
+  height: 44px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+
+}
+.form-div a:hover{
+  background-color: lightgray;
+
+}
