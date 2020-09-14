@@ -115,6 +115,7 @@ min-width: 32px !important;
 }
 .reserve-button-js{
   font-size:14px;
+  color: white !important;
 }
 .first-child-js{
   line-height:5px;
@@ -132,4 +133,8 @@ min-width: 32px !important;
   border-color: #5bbaff;
   box-shadow: 0 0 10px #5bbaff;
   background-color: #ebf3ff;
+}
+#datepicker,#datepicker1{
+  width: 100% !important;
+  border:none;
 }

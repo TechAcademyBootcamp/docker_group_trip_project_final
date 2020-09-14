@@ -1,4 +1,5 @@
 const api_url = document.querySelector('#url').dataset.url;
+console.log(api_url)
 const all_data = {
 
 }
@@ -68,12 +69,14 @@ function loadAllData(data) {
         method: "GET",
         data: data,
         success: function (response) {
-            document.querySelector('.main-div').innerHTML = ''
+            console.log(response)
+            // var link = document.querySelector('.slugs-anchor').href
+            document.querySelector('.removed-data').innerHTML = ''
             for (hotel of response) {
                 // let div_row = document.createElement('div')
                 // div_row.classList.add('row')
                 let div_col_12 = document.createElement('div')
-                document.querySelector('.main-div').appendChild(div_col_12)
+                document.querySelector('.removed-data').appendChild(div_col_12)
                 div_col_12.classList.add('col-12')
                 // div_row.appendChild(div_col_12)
                 let div_card = document.createElement('div')
@@ -152,10 +155,11 @@ function loadAllData(data) {
                 let price = document.createElement('span')
                 price.innerText=`Price for night ${hotel.room_type[0].price}$`
                 price.classList.add('text-right', 'price-in-js')
-                let reserve_button = document.createElement('button')
+                let reserve_button = document.createElement('a')
                 reserve_button.classList.add('btn', 'btn-danger', 'reserve-button-js')
                 reserve_button.setAttribute('type', 'button')
                 reserve_button.innerText='Reserve'
+                // console.log(link)
                 right_section_sub_div_secondChild.appendChild(price)
                 right_section_sub_div_secondChild.appendChild(reserve_button)
             }

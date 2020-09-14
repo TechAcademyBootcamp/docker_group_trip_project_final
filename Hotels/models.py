@@ -18,12 +18,22 @@ class RoomTypeBeds(models.Model):
 class HotelAmenities(models.Model):
     #information
     name = models.CharField('Name',max_length=40)
-    icon = models.CharField('Icon',max_length=200,blank=True,null=True)
-    room_amenity = models.BooleanField('Is this room amenity?', default=False)
 
     class Meta:
         verbose_name = 'HotelAmenity'
         verbose_name_plural = 'HotelAmenities'
+
+    def __str__(self):
+        return self.name
+
+class RoomAmenities(models.Model):
+    #information
+    name = models.CharField('Name',max_length=40)
+    icon = models.CharField('Icon',max_length=200,blank=True,null=True)
+
+    class Meta:
+        verbose_name = 'RoomAmenity'
+        verbose_name_plural = 'RoomAmenities'
 
     def __str__(self):
         return self.name
@@ -48,6 +58,8 @@ class Hotel(models.Model):
                                db_index=True, related_name='hotels')
     policies = models.ManyToManyField('Policies', verbose_name='Policies', related_name='hotels')
     room_type = models.ManyToManyField('RoomType', verbose_name='Room type', related_name='hotels')
+    hotel_amenity=models.ManyToManyField(HotelAmenities,verbose_name='Hotel Amenity',related_name='hotels')
+    room_amenity = models.ManyToManyField(RoomAmenities, verbose_name='Room Amenity', related_name='hotels')
     review_fields = models.ManyToManyField('ReviewFields',verbose_name='Review Rating',related_name='hotels')
 
     #moderations
@@ -73,6 +85,7 @@ class RoomType(models.Model):
     #relations
     beds = models.ManyToManyField(RoomTypeBeds,verbose_name='RoomTypeBeds',related_name='room_types')
     child_count = models.ManyToManyField('ChildCount',verbose_name='ChildCount',related_name='room_types')
+    room_amenity = models.ManyToManyField(RoomAmenities,verbose_name='Room Amenities',related_name='room_types')
 
     class Meta:
         verbose_name = 'RoomType'
@@ -107,12 +120,15 @@ class Reservation(models.Model):
     user = models.ForeignKey(User,verbose_name='User',on_delete=models.CASCADE,db_index=True,related_name='reservations')
     hotel = models.ForeignKey(Hotel,verbose_name='Hotel',on_delete=models.CASCADE,db_index=True,related_name='reservations')
 
+
+
     class Meta:
         verbose_name = 'Reservation'
         verbose_name_plural = 'Reservations'
 
     def __str__(self):
         return self.hotel.name
+
 
 # class Rating(models.Model):
 #     #information

@@ -128,7 +128,6 @@
                                     </div>
                                     <div class="" id="amenities-hotel">
                                         {% for amenity in hotel_amenities %}
-                                        {% if not amenity.room_amenity %}
                                         <div class="d-flex align-items-center justify-content-start">
                                             <label class="containerr">
                                                 <input class="checked-inputs hotel-amenity" type="checkbox">
@@ -136,7 +135,6 @@
                                             </label>
                                             <span class="mt-3 choose-types">{{amenity.name}}</span>
                                         </div>
-                                        {% endif %}
                                         {% endfor %}
                                     </div>
                                 </div>
@@ -149,8 +147,7 @@
                                     <h6 class="bolder-words">Room amenities </h6>
                                 </div>
                                 <div class="">
-                                        {% for amenity in hotel_amenities %}
-                                        {% if amenity.room_amenity %}
+                                        {% for amenity in room_amenities %}
                                     <div class="d-flex align-items-center justify-content-start">
                                         <label class="containerr">
                                             <input class="checked-inputs room-amenity" type="checkbox">
@@ -158,7 +155,6 @@
                                         </label>
                                         <span class="mt-3 choose-types">{{amenity.name}}</span>
                                     </div>
-                                    {% endif %}
                                     {% endfor %}
                                  
                                 </div>
@@ -262,7 +258,12 @@
                     </div>
                 </div>
                 <div class="col-9 main-col">
-                    <h4 style="font-weight: bold;">Baki : 125 hotels was found</h4>
+                    <div class="row">
+                        <div class="col-12">
+                            <h4 style="font-weight: bold;">Baki : 125 hotels was found</h4>
+                        </div>
+                    </div>
+                    <div class="removed-data">
                     {% for hotel in hotels %}
                     <div class="row main-div">
                         <div class="col-12 ">
@@ -291,15 +292,15 @@
                                             <div class="d-flex align-items-center justify-content-end p-2">
                                                 <div class="d-flex flex-column mr-2" style="line-height:5px;">
                                                     <h6>Very good</h6>
-                                                    <small>231 Reviews</small>
+                                                    <small>75 Reviews</small>
                                                 </div>
                                                 <div class="rating-count">{{hotel.rating}}</div>
                                             </div>
                                             <div class="d-flex flex-column justify-content-end p-2">
                                                 <span class="text-right" style="font-size: 16px;">Price for night
-                                                    20$</span>
-                                                <button type="button" class="btn btn-danger"
-                                                    style="font-size:14px">Reserve</button>
+                                                    {{hotel.room_type.price}}$</span>
+                                                <a href="{% url 'hotels_app:hotels-single' hotel.slug %}" type="button" class="btn btn-danger slugs-anchor"
+                                                    style="font-size:14px; color: white;">Reserve</a>
                                             </div>
                                         </div>
                                     </div>
@@ -308,6 +309,7 @@
                         </div>
                     </div>
                     {% endfor %}
+                </div>
                 </div>
             </div>
         </div>
