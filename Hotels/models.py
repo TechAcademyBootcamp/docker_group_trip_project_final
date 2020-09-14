@@ -1,6 +1,8 @@
 from django.db import models
 from Account.models import User
 from Main.models import City
+from Hotels.tools.slug_generator import slugify
+from datetime import datetime
 
 class RoomTypeBeds(models.Model):
     #information
@@ -16,12 +18,22 @@ class RoomTypeBeds(models.Model):
 class HotelAmenities(models.Model):
     #information
     name = models.CharField('Name',max_length=40)
-    icon = models.CharField('Icon',max_length=200,blank=True,null=True)
-    sub_or_main = models.BooleanField('Is this subcategory?', default=False)
 
     class Meta:
         verbose_name = 'HotelAmenity'
         verbose_name_plural = 'HotelAmenities'
+
+    def __str__(self):
+        return self.name
+
+class RoomAmenities(models.Model):
+    #information
+    name = models.CharField('Name',max_length=40)
+    icon = models.CharField('Icon',max_length=200,blank=True,null=True)
+
+    class Meta:
+        verbose_name = 'RoomAmenity'
+        verbose_name_plural = 'RoomAmenities'
 
     def __str__(self):
         return self.name
@@ -44,9 +56,10 @@ class Hotel(models.Model):
                                db_index=True, related_name='hotels')
     author = models.ForeignKey(User, verbose_name='Author', on_delete=models.CASCADE,
                                db_index=True, related_name='hotels')
-    policies = models.ForeignKey('Policies', verbose_name='Policies', on_delete=models.CASCADE,
-                               db_index=True, related_name='hotels')
+    policies = models.ManyToManyField('Policies', verbose_name='Policies', related_name='hotels')
     room_type = models.ManyToManyField('RoomType', verbose_name='Room type', related_name='hotels')
+    hotel_amenity=models.ManyToManyField(HotelAmenities,verbose_name='Hotel Amenity',related_name='hotels')
+    room_amenity = models.ManyToManyField(RoomAmenities, verbose_name='Room Amenity', related_name='hotels')
     review_fields = models.ManyToManyField('ReviewFields',verbose_name='Review Rating',related_name='hotels')
 
     #moderations
@@ -59,6 +72,10 @@ class Hotel(models.Model):
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        self.slug = f'{slugify(self.name)}-{datetime.now().strftime("%Y%m%d-%H%M%S")}'
+        super().save()
+
 class RoomType(models.Model):
     #information
     title= models.CharField('Room type',max_length=50)
@@ -67,6 +84,8 @@ class RoomType(models.Model):
 
     #relations
     beds = models.ManyToManyField(RoomTypeBeds,verbose_name='RoomTypeBeds',related_name='room_types')
+    child_count = models.ManyToManyField('ChildCount',verbose_name='ChildCount',related_name='room_types')
+    room_amenity = models.ManyToManyField(RoomAmenities,verbose_name='Room Amenities',related_name='room_types')
 
     class Meta:
         verbose_name = 'RoomType'
@@ -101,12 +120,15 @@ class Reservation(models.Model):
     user = models.ForeignKey(User,verbose_name='User',on_delete=models.CASCADE,db_index=True,related_name='reservations')
     hotel = models.ForeignKey(Hotel,verbose_name='Hotel',on_delete=models.CASCADE,db_index=True,related_name='reservations')
 
+
+
     class Meta:
         verbose_name = 'Reservation'
         verbose_name_plural = 'Reservations'
 
     def __str__(self):
         return self.hotel.name
+
 
 # class Rating(models.Model):
 #     #information
@@ -154,7 +176,10 @@ class Reviews(models.Model):
 class PoliciesSubFeatures(models.Model):
     # information
     title = models.CharField('Title', max_length=100)
-
+    #relations
+    policies = models.ForeignKey('Policies', verbose_name='Policies', on_delete=models.CASCADE,
+                                 db_index=True,
+                                 related_name='PoliciesSubFeatures')
     class Meta:
         verbose_name = 'Policies SubFeatures'
         verbose_name_plural = 'Policies SubFeatures'
@@ -166,9 +191,7 @@ class Policies(models.Model):
     #information
     title=models.CharField('Title',max_length=100)
 
-    #relations
-    sub_features = models.ForeignKey(PoliciesSubFeatures, verbose_name='Policies', on_delete=models.CASCADE, db_index=True,
-                                related_name='policies')
+
 
     class Meta:
         verbose_name = 'Policies'
@@ -204,3 +227,14 @@ class ReviewRating(models.Model):
 
     def __str__(self):
         return f'{self.rating_point}'
+
+class ChildCount(models.Model):
+    #information
+    count = models.PositiveIntegerField('Count')
+
+    class Meta:
+        verbose_name = 'ChildCount'
+        verbose_name_plural = 'ChildCount'
+
+    def __str__(self):
+        return str(self.count)

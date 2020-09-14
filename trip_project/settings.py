@@ -42,6 +42,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'jet.dashboard',
     'jet',
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -50,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ckeditor',
     'ckeditor_uploader',
+    'corsheaders',
     'Hotels',
     'Main',
     'Restaurants',
@@ -61,6 +63,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -152,7 +155,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-#ssh root@18.189.44.11
+SITE_ID = 1
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 import os
@@ -181,3 +185,12 @@ CKEDITOR_CONFIGS = {
         'width':'100%',
     }
 }
+
+CORS_ALLOWED_ORIGINS = [
+    "https://example.com",
+    "https://sub.example.com",
+    "http://localhost:8080",
+    "http://127.0.0.1:9000"
+]
+
+CORS_ALLOW_ALL_ORIGINS= True

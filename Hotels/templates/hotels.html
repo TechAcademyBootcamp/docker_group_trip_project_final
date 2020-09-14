@@ -4,7 +4,7 @@
         <link rel="stylesheet" href="{% static 'css/hotels.css' %}">
     {% endblock%}
     {% block content %}
-    <section>
+    <section id="url" data-url="{{url}}">
         <div class="container p-4 ">
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-3">
@@ -22,7 +22,7 @@
                                             <div class="border rounded  bg-white ">
                                                 <form class="bg-white p-1 d-flex align-items-center">
                                                     <i class="fa fa-search "></i>
-                                                    <input class="border-0" style="width:94%" type="text" placeholder="Baku">
+                                                    <input class="border-0" id="city-name" style="width:94%" type="text" placeholder="Baku">
                                                 </form>
                                             </div>
                                         </div>
@@ -48,11 +48,11 @@
                                     <div class="row mt-2">
                                         <div class="col-12 pt-2">
                                             <div class="border w-100 py-1 bg-white">
-                                                <select class="border-0 bg-white w-100" name="" id="">
-                                                    <option value="">2 adults</option>
-                                                    <option value="saab">3 adults</option>
-                                                    <option value="opel">4 adults</option>
-                                                    <option value="audi">5 adults</option>
+                                                <select class="border-0 bg-white w-100" name="" id="selected-beds">
+                                                    <option value="1">2 beds</option>
+                                                    <option value="3">3 beds</option>
+                                                    <option value="4">4 beds</option>
+                                                    <option value="5">5 beds</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -62,13 +62,13 @@
                                     <div class="row">
                                         <div class="col-6 py-1 pr-1 children-rooms">
                                             <div class="border w-100 py-1 bg-white">
-                                                <select class="border-0 bg-white w-100" name="" id="">
+                                                <select class="border-0 bg-white w-100" name="" id="selected-child-count">
                                                     <option value="">No children</option>
-                                                    <option value="saab">1 child</option>
-                                                    <option value="opel">2 children</option>
-                                                    <option value="audi">3 children</option>
-                                                    <option value="opel">4 children</option>
-                                                    <option value="audi">5 children</option>
+                                                    <option value="1">1 child</option>
+                                                    <option value="2">2 children</option>
+                                                    <option value="3">3 children</option>
+                                                    <option value="4">4 children</option>
+                                                    <option value="5">5 children</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -76,11 +76,11 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="border w-100 py-1 bg-white">
-                                                        <select class="border-0 bg-white w-100" name="" id="">
-                                                            <option value="">1 room</option>
-                                                            <option value="saab">2 rooms</option>
-                                                            <option value="opel">3 rooms</option>
-                                                            <option value="audi">4 rooms</option>
+                                                        <select class="border-0 bg-white w-100" name="" id="selected-room-count">
+                                                            <option value="1">1 room</option>
+                                                            <option value="2">2 rooms</option>
+                                                            <option value="3">3 rooms</option>
+                                                            <option value="4">4 rooms</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -91,7 +91,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="row p-3">
-                                        <button type="button" class="btn btn-danger rounded-0 w-100">Search</button>
+                                        <button type="button" id="search-button-1" class="btn btn-danger rounded-0 w-100">Search</button>
                                     </div>
                                 </div>
                             </div>
@@ -106,62 +106,36 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text min-span" id="inputGroup-sizing-sm">min</span>
                                         </div>
-                                        <input type="text" class="form-control" aria-label="Small"
+                                        <input type="text" class="form-control min-price" aria-label="Small"
                                             aria-describedby="inputGroup-sizing-sm">
                                     </div>
                                     <div class="input-group input-group-sm mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text max-span" id="inputGroup-sizing-sm">max</span>
+                                            <span class="input-group-text max-span " id="inputGroup-sizing-sm">max</span>
                                         </div>
-                                        <input type="text" class="form-control" aria-label="Small"
+                                        <input type="text" class="form-control max-price" aria-label="Small"
                                             aria-describedby="inputGroup-sizing-sm">
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-12 border p-2 my-1">
                                     <div class="py-2">
-                                        <h6 class="bolder-words">Property amenities </h6>
+                                        <h6 class="bolder-words">Hotel amenities</h6>
                                     </div>
-                                    <div class="">
-                                        <div>
-                                            <span class="choose-type-parents">Internet options</span>
-                                        </div>
+                                    <div class="" id="amenities-hotel">
+                                        {% for amenity in hotel_amenities %}
                                         <div class="d-flex align-items-center justify-content-start">
                                             <label class="containerr">
-                                                <input type="checkbox">
+                                                <input class="checked-inputs hotel-amenity" type="checkbox">
                                                 <span class="checkmark border"></span>
                                             </label>
-                                            <span class="mt-3 choose-types">Wi-fi</span>
+                                            <span class="mt-3 choose-types">{{amenity.name}}</span>
                                         </div>
-                                    </div>
-                                    <div class="my-2">
-                                        <div class="mt-3">
-                                            <span class="choose-type-parents mt-2">Parking</span>
-                                        </div>
-                                        <div class="d-flex align-items-center justify-content-start">
-                                            <label class="containerr">
-                                                <input type="checkbox">
-                                                <span class="checkmark border"></span>
-                                            </label>
-                                            <span class="mt-3 choose-types">Free self parking</span>
-                                        </div>
-                                        <div class="d-flex align-items-center justify-content-start">
-                                            <label class="containerr">
-                                                <input type="checkbox">
-                                                <span class="checkmark border"></span>
-                                            </label>
-                                            <span class="mt-3 choose-types">Free extended parking</span>
-                                        </div>
-                                        <div class="d-flex align-items-center justify-content-start">
-                                            <label class="containerr">
-                                                <input type="checkbox">
-                                                <span class="checkmark border"></span>
-                                            </label>
-                                            <span class="mt-3 choose-types">Limited parking spaces</span>
-                                        </div>
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>
@@ -173,73 +147,42 @@
                                     <h6 class="bolder-words">Room amenities </h6>
                                 </div>
                                 <div class="">
-                                    <div>
-                                        <span class="choose-type-parents">Bedroom</span>
-                                    </div>
+                                        {% for amenity in room_amenities %}
                                     <div class="d-flex align-items-center justify-content-start">
                                         <label class="containerr">
-                                            <input type="checkbox">
+                                            <input class="checked-inputs room-amenity" type="checkbox">
                                             <span class="checkmark border"></span>
                                         </label>
-                                        <span class="mt-3 choose-types">Heating</span>
+                                        <span class="mt-3 choose-types">{{amenity.name}}</span>
                                     </div>
-                                    <div class="d-flex align-items-center justify-content-start">
-                                        <label class="containerr">
-                                            <input type="checkbox">
-                                            <span class="checkmark border"></span>
-                                        </label>
-                                        <span class="mt-3 choose-types">Linens</span>
-                                    </div>
-                                </div>
-                                <div class="my-2">
-                                    <div class="mt-3">
-                                        <span class="choose-type-parents mt-2">Bathroom</span>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-start">
-                                        <label class="containerr">
-                                            <input type="checkbox">
-                                            <span class="checkmark border"></span>
-                                        </label>
-                                        <span class="mt-3 choose-types">Hair dryer</span>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-start">
-                                        <label class="containerr">
-                                            <input type="checkbox">
-                                            <span class="checkmark border"></span>
-                                        </label>
-                                        <span class="mt-3 choose-types">Separate bathtub and shower</span>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-start">
-                                        <label class="containerr">
-                                            <input type="checkbox">
-                                            <span class="checkmark border"></span>
-                                        </label>
-                                        <span class="mt-3 choose-types">Soap</span>
-                                    </div>
+                                    {% endfor %}
+                                 
                                 </div>
                             </div>
                         </div>
                         </div>
+                        
                         <div class="col-12">
                             <div class="row">
                             <div class="col-12 border p-2 my-1">
                                 <div class="py-2">
                                     <h6 class="bolder-words">Policies </h6>
                                 </div>
+                                {% for policy in PoliciesSub %}
                                 <div class="">
                                     <div>
-                                        <span class="choose-type-parents">Pets</span>
+                                        <span class="choose-type-parents">{{policy.policies.title}}</span>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-start">
                                         <label class="containerr">
                                             <input type="checkbox">
                                             <span class="checkmark border"></span>
                                         </label>
-                                        <span class="mt-3 choose-types">Pets allowed</span>
+                                        <span class="mt-3 choose-types">{{policy.title}}</span>
                                     </div>
-
                                 </div>
-                                <div class="my-2">
+                                {% endfor %}
+                                <!-- <div class="my-2">
                                     <div class="mt-3">
                                         <span class="bolder-words">Children and extra beds</span>
                                     </div>
@@ -308,16 +251,21 @@
                                             </svg>
                                         </a>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-9">
-                    <h4 style="font-weight: bold;">Baki : 125 hotels was found</h4>
-                    {% for hotel in hotels %}
+                <div class="col-9 main-col">
                     <div class="row">
+                        <div class="col-12">
+                            <h4 style="font-weight: bold;">Baki : 125 hotels was found</h4>
+                        </div>
+                    </div>
+                    <div class="removed-data">
+                    {% for hotel in hotels %}
+                    <div class="row main-div">
                         <div class="col-12 ">
                             <div class="card mb-3 p-3"
                                 style="max-width: 100%; height: 90%;border-color: #5bbaff;box-shadow: 0 0 10px #5bbaff;background-color: #ebf3ff;">
@@ -344,15 +292,15 @@
                                             <div class="d-flex align-items-center justify-content-end p-2">
                                                 <div class="d-flex flex-column mr-2" style="line-height:5px;">
                                                     <h6>Very good</h6>
-                                                    <small>231 Reviews</small>
+                                                    <small>75 Reviews</small>
                                                 </div>
                                                 <div class="rating-count">{{hotel.rating}}</div>
                                             </div>
                                             <div class="d-flex flex-column justify-content-end p-2">
                                                 <span class="text-right" style="font-size: 16px;">Price for night
-                                                    20$</span>
-                                                <button type="button" class="btn btn-danger"
-                                                    style="font-size:14px">Reserve</button>
+                                                    {{hotel.room_type.price}}$</span>
+                                                <a href="{% url 'hotels_app:hotels-single' hotel.slug %}" type="button" class="btn btn-danger slugs-anchor"
+                                                    style="font-size:14px; color: white;">Reserve</a>
                                             </div>
                                         </div>
                                     </div>
@@ -361,6 +309,7 @@
                         </div>
                     </div>
                     {% endfor %}
+                </div>
                 </div>
             </div>
         </div>

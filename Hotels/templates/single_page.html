@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static hotel_tags %}
 {% block content %}
+
 <section>
     <div class="container">
         <div class="row justify-content-between align-items-center pt-4">
             <div class="col-3 " >
-                <h5>Abu Park</h5>
-                <span class="star-icon">&#9733;&#9733;</span>
+                <h5>{{hotel.name}}</h5>
+                {% get_star_count hotel.rating as stars %}
+                {{stars|safe}}
+                <!-- <span class="star-icon">&#9733;&#9733;</span> -->
             </div>
             <div class="col-3 d-flex">
                 <button class="rounded bg-light text-primary" style="margin-right: 3px;"><i class="fa fa-heart-o"
@@ -66,7 +69,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="py-3">
-                            <span class="title-of-description">Stay in the heart of Istanbul</span>
+                            <span class="title-of-description">{{hotel.name_description}}</span>
                         </div>
                         <div class="py-2">
                             <span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bookmark-star"
@@ -76,42 +79,10 @@
                                     <path
                                         d="M7.84 4.1a.178.178 0 0 1 .32 0l.634 1.285a.178.178 0 0 0 .134.098l1.42.206c.145.021.204.2.098.303L9.42 6.993a.178.178 0 0 0-.051.158l.242 1.414a.178.178 0 0 1-.258.187l-1.27-.668a.178.178 0 0 0-.165 0l-1.27.668a.178.178 0 0 1-.257-.187l.242-1.414a.178.178 0 0 0-.05-.158l-1.03-1.001a.178.178 0 0 1 .098-.303l1.42-.206a.178.178 0 0 0 .134-.098L7.84 4.1z" />
                                 </svg>
-                                <span class="short-description">One of our top picks in Istanbul.</span> </span>
+                                <span class="short-description">{{hotel.short_description}}</span> </span>
                         </div>
                         <div class="main-description py-2 mb-4">
-                            Located in Istanbul, a 10-minute walk from Basilica Cistern, Sirkeci Ersu Hotel has
-                            accommodations with a shared lounge, private parking, a garden and a terrace. Located around
-                            a 14-minute walk from Column of Constantine, the hotel with free WiFi is also 1.1 km away
-                            from Grand Bazaar. The property provides a 24-hour front desk, room service and currency
-                            exchange for guests.
-
-                            <br> All rooms features air conditioning, a TV with satellite channels, a fridge, an
-                            electric tea
-                            pot, a bidet, a hairdryer and a desk. Rooms come complete with a private bathroom equipped
-                            with a shower and free toiletries, while some rooms at the hotel also have a seating area.
-                            All guest rooms will provide guests with a closet and a coffee machine.
-
-                            <br>Continental and buffet breakfast options are available every morning at Sirkeci Ersu
-                            Hotel.
-
-                            <br>The accommodation also provides a business center and guests can check the newspapers,
-                            use
-                            the fax machine and photocopier or use the on-site ATM machine at Sirkeci Ersu Hotel.
-
-                            <br>Popular points of interest near the hotel include Spice Bazaar, Blue Mosque and Topkapi
-                            Palace. The nearest airport is Istanbul, 40.2 km from Sirkeci Ersu Hotel, and the property
-                            offers a paid airport shuttle service.
-
-                            <br>This is our guests' favorite part of Istanbul, according to independent reviews.
-
-                            <br>Solo travelers in particular like the location – they rated it 9.6 for a one-person
-                            stay.
-
-                            <br>We speak your language!
-
-                            <br>Sirkeci Ersu Hotel has been welcoming Booking.com guests since May 13, 2018
-
-                            <br> in property description is calculated using © OpenStreetMap
+                            {{hotel.long_description}}
                         </div>
                     </div>
                 </div>
@@ -125,60 +96,12 @@
                             </span>
                         </div>
                         <div class="d-flex">
-                            <div class="px-3">
-                                <div class="popular-facilities py-2">
-                                    <span class="px-3"><i class='fas fa-smoking-ban fas-icon'
-                                            style='font-size:24px'></i></span>
-                                    <span class="name-of-facility">Non-smoking rooms</span>
+                                {% for room_amenity in hotel.room_amenity.all %}
+                                <div class="popular-facilities  px-3 d-flex ">
+                                    <span class="px-1">{{room_amenity.icon|safe}}</span>
+                                    <span class="name-of-facility">{{room_amenity.name}}</span>
                                 </div>
-                                <div class="popular-facilities py-2">
-                                    <span class="px-3"><i class='fas fa-bus-alt fas-icon'
-                                            style='font-size:24px'></i></span>
-                                    <span class="name-of-facility">Airport shuttle</span>
-                                </div>
-                            </div>
-                            <div class="px-3">
-                                <div class="popular-facilities py-2">
-                                    <span class="px-3"><i class='fas fa-wheelchair fas-icon'
-                                            style='font-size:24px'></i></span>
-                                    <span class="name-of-facility">Facilities for disabled guests</span>
-                                </div>
-                                <div class="popular-facilities py-2">
-                                    <span class="px-3"><i class='fas fa-concierge-bell fas-icon'
-                                            style='font-size:24px'></i></span>
-                                    <span class="name-of-facility">Room service</span>
-                                </div>
-                            </div>
-                            <div class="px-3">
-                                <div class="popular-facilities py-2">
-                                    <span class="px-3"><i class='fas fa-wifi fas-icon'
-                                            style='font-size:22px'></i></span>
-                                    <span class="name-of-facility">Free WiFi</span>
-                                </div>
-                                <div class="popular-facilities py-2">
-                                    <span class="px-3"><i class='fas fa-parking fas-icon'
-                                            style='font-size:24px'></i></span>
-                                    <span class="name-of-facility">Private Parking</span>
-                                </div>
-                            </div>
-                            <div class="px-3">
-                                <div class="popular-facilities py-2">
-                                    <span class="px-3 "><svg
-                                            class="bk-icon -iconset-tea_maker hp__important_facility_icon fas-icon-svg "
-                                            height="20" width="20" viewBox="0 0 128 128" role="presentation"
-                                            aria-hidden="true" focusable="false">
-                                            <path
-                                                d="M102 40H58a2 2 0 0 0-2 2v46a8 8 0 0 0 8 8h32a8 8 0 0 0 8-8v-.4a20 20 0 0 0 0-39.2V42a2 2 0 0 0-2-2zM73 80a4 4 0 0 1-8 0V56a4 4 0 0 1 8 0zm39-12a12 12 0 0 1-8 11.3V56.7a12 12 0 0 1 8 11.3zm0-60H16a8 8 0 0 0-8 8v96a8 8 0 0 0 8 8h96a8 8 0 0 0 8-8v-6a2 2 0 0 0-2-2H50a2 2 0 0 1-2-2V26a2 2 0 0 1 2-2h14v8h32v-8h22a2 2 0 0 0 2-2v-6a8 8 0 0 0-8-8zM28 64a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm0-24a8 8 0 1 1 8-8 8 8 0 0 1-8 8z">
-                                            </path>
-                                        </svg></span>
-                                    <span class="name-of-facility">Tea/Coffee Maker in Room</span>
-                                </div>
-                                <div class="popular-facilities py-2">
-                                    <span class="px-3"><i class='fas fa-coffee fas-icon'
-                                            style='font-size:22px'></i></span>
-                                    <span class="name-of-facility">Very Good Breakfast</span>
-                                </div>
-                            </div>
+                                {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -202,6 +125,74 @@
                             </th>
                         </tr>
                         <tr class="row">
+                            {% for room_type in hotel.room_type.all %}
+                            <td class="border p-0 col-5">
+                                <div class="col-12">
+                                    <div class="row flex-column">
+                                        
+                                        <div class="titles-for-types">
+                                            <span class="room-type">{{room_type.title}}</span>
+                                        </div>
+                                        <div class="titles-for-types">
+                                            <span class="bed-types-title">Bed count : </span>
+                                            <span style="font-weight: bold;">{{room_type.beds.count}} <i class="fa fa-bed pl-2"
+                                                    style="font-size:24px"></i></span>
+                                        </div>
+                                        <div class="titles-for-types">
+                                            <span class="small-description">
+                                                {{room_type.description}}
+                                            </span>
+                                        </div>
+                                        <div class="titles-for-types">
+                                            {% for room_amenity in room_type.room_amenity.all %}
+                                            <span class="px-2 facilities-with-logo">{{room_amenity.icon|safe}}
+                                                <span class="facilities-with-logo">{{room_amenity.name}}</span></span>
+                                            {% endfor %}
+                                            
+                                        </div>
+                                        <div class=" d-flex justify-content-center align-items-center w-100">
+                                            <div class="underline-after-facilities">
+
+                                            </div>
+                                        </div>
+                                        <div class="titles-for-types">
+                                            {% for hotel_amenity in hotel.hotel_amenity.all %}
+                                            <span class="px-2 facilities-with-logo"><svg
+                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
+                                                    width="14" viewBox="0 0 128 128" role="presentation"
+                                                    aria-hidden="true" focusable="false">
+                                                    <path
+                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
+                                                    </path>
+                                                </svg>
+                                                <span>{{hotel_amenity.name}}</span></span>
+                                            {% endfor %}
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="border col-1 d-flex align-items-start">
+                                <div>
+                                    {% get_bed_count room_type.beds.count as beds %}
+                                                {{beds|safe}}
+                                </div>
+                            </td>
+                            <td class="border col-3 d-flex align-items-start">
+                                <div class="d-flex flex-column align-items-start">
+                                    <div class="col-12 ">
+                                        <div class="row">
+                                            <span class="price-value">AZN <span class="price-count">{{room_type.price}}</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="border col-3">
+                                <button type="button" class="btn btn-primary rounded-0">i'll reserve</button>
+                            </td>
+                            {% endfor %}
+                        </tr>
+                        <!-- <tr class="row">
                             <td class="border p-0 col-5">
                                 <div class="col-12">
                                     <div class="row flex-column">
@@ -331,138 +322,7 @@
                             <td class="border col-3">
                                 <button type="button" class="btn btn-primary rounded-0">i'll reserve</button>
                             </td>
-                        </tr>
-                        <tr class="row">
-                            <td class="border p-0 col-5">
-                                <div class="col-12">
-                                    <div class="row flex-column">
-                                        <div class="titles-for-types">
-                                            <span class="room-type">Standart Double Room</span>
-                                        </div>
-                                        <div class="titles-for-types">
-                                            <span class="bed-types-title">Bed types : </span>
-                                            <span>1 king bed <i class="fa fa-bed pl-2"
-                                                    style="font-size:24px"></i></span>
-                                        </div>
-                                        <div class="titles-for-types">
-                                            <span class="small-description">
-                                                Spacious, air-conditioned room with a flat-screen TV, a minibar and
-                                                a
-                                                private bathroom.
-                                            </span>
-                                        </div>
-                                        <div class="titles-for-types">
-                                            <span class="px-2 facilities-with-logo"><i
-                                                    class='fas fa-swimming-pool facilities-with-logo'></i>
-                                                <span class="facilities-with-logo">Pool view</span></span>
-                                            <span class="px-2"><i class='far fa-building facilities-with-logo'></i>
-                                                <span class="facilities-with-logo">City view</span></span>
-                                            <span class="px-2 pl-3"><i
-                                                    class='far fa-snowflake facilities-with-logo'></i>
-                                                <span class="facilities-with-logo">Air conditioning</span></span>
-                                            <span class="px-2"><i class='fas fa-bath facilities-with-logo'></i>
-                                                <span class="facilities-with-logo">Private bathroom</span></span>
-                                            <span class="px-2"><i class='fas fa-tv facilities-with-logo'></i>
-                                                <span class="facilities-with-logo">Flat screen TV</span></span>
-                                            <span class="px-2"><i class='fas fa-wifi facilities-with-logo'></i>
-                                                <span class="facilities-with-logo">Free WI-FI</span></span>
-                                        </div>
-                                        <div class=" d-flex justify-content-center align-items-center w-100">
-                                            <div class="underline-after-facilities">
-
-                                            </div>
-                                        </div>
-                                        <div class="titles-for-types">
-                                            <span class="px-2 facilities-with-logo"><svg
-                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
-                                                    width="14" viewBox="0 0 128 128" role="presentation"
-                                                    aria-hidden="true" focusable="false">
-                                                    <path
-                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
-                                                    </path>
-                                                </svg>
-                                                <span>Free toiletries</span></span>
-                                            <span class="px-2 facilities-with-logo"><svg
-                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
-                                                    width="14" viewBox="0 0 128 128" role="presentation"
-                                                    aria-hidden="true" focusable="false">
-                                                    <path
-                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
-                                                    </path>
-                                                </svg>
-                                                <span>Bathrobe</span></span>
-                                            <span class="pl-2 pr-4 facilities-with-logo"><svg
-                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
-                                                    width="14" viewBox="0 0 128 128" role="presentation"
-                                                    aria-hidden="true" focusable="false">
-                                                    <path
-                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
-                                                    </path>
-                                                </svg>
-                                                <span>Sofa</span></span>
-                                            <span class="pl-1 pr-4 facilities-with-logo"><svg
-                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
-                                                    width="14" viewBox="0 0 128 128" role="presentation"
-                                                    aria-hidden="true" focusable="false">
-                                                    <path
-                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
-                                                    </path>
-                                                </svg>
-                                                <span>Safe</span></span>
-                                            <span class="px-2 facilities-with-logo"><svg
-                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
-                                                    width="14" viewBox="0 0 128 128" role="presentation"
-                                                    aria-hidden="true" focusable="false">
-                                                    <path
-                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
-                                                    </path>
-                                                </svg>
-                                                <span>High chaire</span></span>
-                                            <span class="pl-2 facilities-with-logo"><svg
-                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
-                                                    width="14" viewBox="0 0 128 128" role="presentation"
-                                                    aria-hidden="true" focusable="false">
-                                                    <path
-                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
-                                                    </path>
-                                                </svg>
-                                                <span>Toilet paper</span></span>
-                                            <span class="px-2 facilities-with-logo"><svg
-                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
-                                                    width="14" viewBox="0 0 128 128" role="presentation"
-                                                    aria-hidden="true" focusable="false">
-                                                    <path
-                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
-                                                    </path>
-                                                </svg>
-                                                <span>Alarm clock</span></span>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="border col-1 d-flex align-items-start">
-                                <div>
-                                    <i class='fas fa-user-alt' style='font-size:20px'></i>
-
-                                </div>
-                                <div>
-                                    <i class='fas fa-user-alt ml-1' style='font-size:20px'></i>
-                                </div>
-                            </td>
-                            <td class="border col-3 d-flex align-items-start">
-                                <div class="d-flex flex-column align-items-start">
-                                    <div class="col-12 ">
-                                        <div class="row">
-                                            <span class="price-value">AZN <span class="price-count">150</span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="border col-3">
-                                <button type="button" class="btn btn-primary rounded-0">i'll reserve</button>
-                            </td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             </div>
@@ -929,15 +789,7 @@
         </div>
     </div>
 </section>
-<section class="py-5">
-    <div class="container">
-        <div class="row">
-            <button type="button" class="btn btn-outline-primary w-100 py-2"><span style="font-weight: bold;">Reserve
-                    for 155$</span></button>
-            - </div>
-    </div>
-</section>
-<section class="pb-2">
+<section class="py-4">
     <div class="container " style="background-color: rgb(245, 245, 245);">
         <span class="nearest-hotels">Nearest hotels : </span>
         <div class="line-under-hotels my-5 col-lg-block"></div>
@@ -1073,6 +925,5 @@
         </div>
     </div>
 </section>
-
 {% include 'includes/subscribers.html' %}
 {% endblock %}
