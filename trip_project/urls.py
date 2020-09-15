@@ -23,7 +23,7 @@ urlpatterns = [
     path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS
     path('admin/', admin.site.urls),
     path('',include('Main.urls',namespace='main')),
-    path('',include('Tours.urls')),
+    path('tours/',include('Tours.urls', namespace='tours')),
     path('api/v1.0/',include('Main.api.urls',namespace='api_main')),
     path('hotels/',include('Hotels.urls',namespace='hotels_app')),
     path('restaurants/',include('Restaurants.urls',namespace='restaurants_app')),

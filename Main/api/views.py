@@ -8,6 +8,8 @@ from Hotels.models import Hotel
 from Tours.models import Tours
 from Restaurants.models import Restaurants
 from rest_framework.response import Response
+from itertools import chain
+import json
 
 
 
@@ -29,22 +31,32 @@ class MainSearchAPIView(APIView):
     
     
      def get(self,request):
-        input_value = request.GET.get('inputValue')
+        input_value = self.request.GET.get('inputValue')
+        print(input_value)
         # if input_value:
         city_query = City.objects.filter(name__icontains=input_value)[:2]
         hotel_query = Hotel.objects.filter(name__icontains=input_value)[:2]
-        tour_query = Tours.objects.filter(title__icontains=input_value)[:2]
+        tour_query = Tours.objects.filter(name__icontains=input_value)[:2]
         restaurant_query = Restaurants.objects.filter(name__icontains=input_value)[:2]
+    # else:
+        
 
         city_serializer = CitySerializer(city_query, many=True)
         hotel_serializer = HotelSerializer(hotel_query, many=True)
         restaurant_serializer = RestaurantSerializer(restaurant_query, many=True)
         tour_serializer = TourSerializer(tour_query, many=True)
 
+        # data = {
+        #     "cities": city_serializer.data,
+        #     "hotels": hotel_serializer.data,
+        #     "restaurant": restaurant_serializer.data,
+        #     "tour": tour_serializer.data,
+        # }
+        data_obj = list(chain(city_serializer.data,hotel_serializer.data,restaurant_serializer.data,tour_serializer.data,))
+        json_data = json.dumps(data_obj)
+        print(json_data , 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
         data = {
-            "cities": city_serializer.data,
-            "hotels": hotel_serializer.data,
-            "restaurant": restaurant_serializer.data,
-            "tour": tour_serializer.data,
+            "data_obj":data_obj,
         }
+        print(data)
         return Response(data)

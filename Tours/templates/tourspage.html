@@ -35,12 +35,11 @@
         <div class="col-3"></div>
     </div>
     <div class="row m-auto mt-4 mb-4">
-        {% for tour in tours %}
+        {% for tour in tours_list %}
         <div class="tours-cards col-xl-3 col-lg-4 col-md-6 col-12 mb-4 mt-4 m-auto">
             <div class="mt-4 mb-4" style="box-shadow: 0 2px 10px 0 rgba(0,0,0,0.1);">
                 <div class="image-div">
-                    <img src="{{tour.main_image.url}}"
-                        class="card-img-top" alt="...">
+                    <img src="{{tour.main_image.url}}" class="card-img-top w-100" alt="...">
                     <div class="heart">
                         <i class="fa fa-heart-o" style="font-size:22px"></i>
                     </div>
@@ -48,7 +47,7 @@
 
                 <div class="card-body">
                     <h1 class="card-title mt-2 mb-2">{{tour.title}}</h1>
-                    <p class="card-text mt-3">With Baku extension</p>
+                    <p class="card-text mt-3">With {{tour.name}} extension</p>
                     <div class="row mt-4 mb-4">
                         <div class="days col-lg-6">{{tour.trip_time}}</div>
 
@@ -214,8 +213,31 @@
     </div>
 
 </section>
-<div class="see-all mb-5 mt-5">
+<!-- <div class="see-all mb-5 mt-5">
     <button class="seeall-button">See All Tours</button>
+</div>  -->
+<div class="row mt-5">
+    <div class="col text-center">
+        <div class="block-27">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                <li class="mr-2"><a class="circle" href="?page={{ page_obj.previous_page_number }}">&lt;</a></li>
+                {% endif %}
+
+                {% for page in page_obj.paginator.page_range %}
+                {% if page == page_obj.number %}
+                <li class="active numbers mr-2"><span>{{page}}</span></li>
+                {% else %}
+                <li class="numbers mr-2"><a class="circle" href="?page={{page}}">{{page}}</a></li>
+                {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                <li class="ml-2"><a href="?page={{ page_obj.paginator.num_pages }}">&gt;</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
 </div>
 
 {% include 'includes/subscribers.html' %}

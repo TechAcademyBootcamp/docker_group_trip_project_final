@@ -10,7 +10,7 @@ class Tours(models.Model):
     owner = models.ForeignKey(USER_MODEL, related_name='tur', on_delete=models.CASCADE)
     city = models.ManyToManyField(City, verbose_name='City', related_name='tours')
 
-    title = models.CharField('Basligi', max_length=120)
+    name = models.CharField('Basligi', max_length=120)
     trip_route = models.CharField('Yol',max_length=1000)
     trip_time = models.CharField('Vaxt',max_length=1000)  
     trip_transport = models.CharField('Neqliyyat',max_length=200)
@@ -28,7 +28,7 @@ class Tours(models.Model):
         # ordering = ('-created_at', '-title')
 
     def __str__(self):
-        return f"{self.title}" 
+        return f"{self.name}" 
 
 class TourComments(models.Model):
 

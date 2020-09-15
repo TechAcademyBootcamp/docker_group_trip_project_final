@@ -5,9 +5,10 @@ from Tours.models import Tours
 
 # Create your views here.
 
-class ToursPage(TemplateView):
+class ToursPage(ListView):
     model = Tours
     template_name = 'tourspage.html'
+    paginate_by = 3
     def get_context_data(self,*args , **kwargs):
         context = super().get_context_data(**kwargs)
         context["tours"] = Tours.objects.all

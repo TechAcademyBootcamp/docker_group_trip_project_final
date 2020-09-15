@@ -39,7 +39,7 @@ class TourSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Tours
-        fields = ('title',
+        fields = ('name',
                   )
 
 

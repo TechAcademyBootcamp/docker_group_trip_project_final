@@ -12,17 +12,23 @@ document.getElementById('search').addEventListener('input', function () {
         success: function (response) {
             console.log(response);
             $('.empty').html('')
-            let formDiv = $(`<div class="form-div w-100"><div>`);
-           
-            
+            let formDiv = $(`<div class="form-div w-100"><div>`);         
             $('.empty').append(formDiv)
-            if (inputValue) {
-                for (let city of response) {
-                    
-                    
-                    $('.form-div').append(`<a class="w-100" href=""><span class="ml-3">${city.name}</span></a>`)
+             if (inputValue) {
+                for (let object of response.data_obj) {
+                                       
+                    $('.form-div').append(`<a class="w-100" href=""><span class="ml-3">${object.name}</span></a>`)
+
                 }
             }
+
+            // if (inputValue) {
+            //     for (let city of response) {
+                                       
+            //         $('.form-div').append(`<a class="w-100" href=""><span class="ml-3">${city.name}</span></a>`)
+
+            //     }
+            // }
         },
         error: function (error_response) {
             console.log(error_response);
