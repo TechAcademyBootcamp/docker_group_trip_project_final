@@ -1,6 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from Account.models import User
+from tools.slug_generator import slugify
 # from django.contrib.auth import get_user_model
 # USER_MODEL = get_user_model()
 
@@ -40,6 +41,8 @@ class City(models.Model):
 
     def __str__(self):
         return self.name
+
+    
 
 class Places(models.Model):
     #relations

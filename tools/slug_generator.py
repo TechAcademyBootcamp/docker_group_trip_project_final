@@ -19,7 +19,6 @@ def slugify(title):
         ('ş', 's'),
         ('ç', 'c'),
         ('&', '-'),
-        ('#', ''),
     )
 
     title_url = title.strip().lower()

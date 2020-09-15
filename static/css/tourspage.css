@@ -3,7 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+body{
+    overflow-x: hidden !important;
+}
 .tours-cards{
     border-radius: 10px;
     box-sizing: border-box;
@@ -161,4 +163,46 @@
             width: 300px;
        }
     }
-   
+    .card-img-top{
+        height: 200px;
+    }
+    .pagination{
+        display: flex;
+        justify-content: center;
+    }
+    .pagination a:hover{
+        text-decoration: none;
+    }
+    .numbers{
+        color: black;
+    }
+    .numbers:hover{
+        background-color: black;
+        color: white;
+    }
+    .pagination a{
+        color: black;
+    }
+    .circle{
+        border-radius: 50%;
+    }
+    .next-icon{
+        width: 15px;
+        height: 15px;
+    }
+    .previous-icon{
+        width: 15px;
+        height: 15px;
+    }
+    .block-27{
+        display: flex;
+        justify-content: center
+        ;
+    }
+    .page-numbers a{
+        text-decoration: none;
+        color:black;
+    }
+    .active span{
+        color:blue;
+    }
