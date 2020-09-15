@@ -219,23 +219,33 @@
 <div class="row mt-5">
     <div class="col text-center">
         <div class="block-27">
-            <ul class="pagination">
-                {% if page_obj.has_previous %}
-                <li class="mr-2"><a class="circle" href="?page={{ page_obj.previous_page_number }}">&lt;</a></li>
+            {% if page_obj.has_previous %}
+                    <a class="prev-icon"
+                        href="?page={{ page_obj.previous_page_number }}{% if sortBy %}&sortBy={{ sortBy }}{% endif %}">
+                        <img class="previous-icon mr-2" src="{% static 'images/back.svg' %}" alt="arrow">
+                    </a>
                 {% endif %}
-
-                {% for page in page_obj.paginator.page_range %}
-                {% if page == page_obj.number %}
-                <li class="active numbers mr-2"><span>{{page}}</span></li>
-                {% else %}
-                <li class="numbers mr-2"><a class="circle" href="?page={{page}}">{{page}}</a></li>
+                {% if page_range|length > 1 %}
+                    <div class="page-numbers">
+                        {% for page_number in page_range %}
+                            {% if page_number == page_obj.number %}
+                                <a class="active mr-2">
+                                    <span>{{ page_number }}</span>
+                                </a>
+                            {% else %}
+                                <a class="page mr-2" href="?page={{ page_number }}{% if sortBy %}&sortBy={{ sortBy }}{% endif %}">
+                                    <span>{{ page_number }}</span>
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 {% endif %}
-                {% endfor %}
-
                 {% if page_obj.has_next %}
-                <li class="ml-2"><a href="?page={{ page_obj.paginator.num_pages }}">&gt;</a></li>
+                    <a class="next-page ml-2"
+                        href="?page={{ page_obj.next_page_number }}{% if sortBy %}&sortBy={{ sortBy }}{% endif %}">
+                        <img src="{% static 'images/next.svg' %}" alt="arrow" class="next-icon">
+                    </a>
                 {% endif %}
-            </ul>
         </div>
     </div>
 </div>

@@ -186,4 +186,23 @@ body{
     .circle{
         border-radius: 50%;
     }
-   
+    .next-icon{
+        width: 15px;
+        height: 15px;
+    }
+    .previous-icon{
+        width: 15px;
+        height: 15px;
+    }
+    .block-27{
+        display: flex;
+        justify-content: center
+        ;
+    }
+    .page-numbers a{
+        text-decoration: none;
+        color:black;
+    }
+    .active span{
+        color:blue;
+    }
