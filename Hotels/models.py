@@ -50,6 +50,7 @@ class Hotel(models.Model):
     website = models.CharField('Website',max_length=50)
     rating = models.DecimalField('Rating',max_digits=2,decimal_places=1)
     main_image = models.ImageField('Main image',upload_to='images/hotelImages')
+    min_price = models.PositiveSmallIntegerField('Min price')
 
     #relations
     city = models.ForeignKey(City,verbose_name='City',on_delete=models.CASCADE,
@@ -190,8 +191,6 @@ class PoliciesSubFeatures(models.Model):
 class Policies(models.Model):
     #information
     title=models.CharField('Title',max_length=100)
-
-
 
     class Meta:
         verbose_name = 'Policies'

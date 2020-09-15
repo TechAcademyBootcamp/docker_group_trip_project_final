@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.sites',
+    'stripe',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -166,3 +167,6 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CORS_ALLOW_ALL_ORIGINS= True
+
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51HRcgpDdUO2pN917s7UQa8Rxkxc5LKw9CMnmInoOXOl1SgZSNM6hnGEtnO1B1GcanL2F8vXOblpBseLYSoS2SuAj00HZFdWP1z'
+STRIPE_SECRET_KEY = 'sk_test_51HRcgpDdUO2pN917YAm70MfBl8mTdRCH8wG4zbFvOx1AuHpzBfZfXfB0TWL9GPyz1d44tLHEPzMn9mUvBR0da1pA00Ux4NAAQW'

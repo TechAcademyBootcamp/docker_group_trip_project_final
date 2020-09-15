@@ -153,7 +153,7 @@ function loadAllData(data) {
                 right_section_sub_div_secondChild.classList.add('d-flex', 'flex-column', 'justify-content-end', 'p-2')
                 right_section_sub_div.appendChild(right_section_sub_div_secondChild)
                 let price = document.createElement('span')
-                price.innerText=`Price for night ${hotel.room_type[0].price}$`
+                price.innerText=`Price for night ${hotel.min_price}$`
                 price.classList.add('text-right', 'price-in-js')
                 let reserve_button = document.createElement('a')
                 reserve_button.classList.add('btn', 'btn-danger', 'reserve-button-js')

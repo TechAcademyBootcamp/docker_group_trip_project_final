@@ -81,7 +81,8 @@ class HotelSerializer(serializers.ModelSerializer):
                   'policies',
                   'room_type',
                   'review_fields',
-                  'slug',)
+                  'slug',
+                  'min_price',)
 
 class HotelImageSerializer(serializers.ModelSerializer):
     hotel = HotelSerializer()

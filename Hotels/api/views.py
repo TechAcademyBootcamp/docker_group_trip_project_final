@@ -36,10 +36,10 @@ class HotelListView(ListAPIView):
             filtered_hotels = filtered_hotels.filter(room_type__child_count__count=selectedChildCount)
             print('AAAAA33333333333', filtered_hotels)
         if minPrice:
-            filtered_hotels=filtered_hotels.filter(room_type__price__gte=minPrice)
+            filtered_hotels=filtered_hotels.filter(min_price__gte=minPrice)
             print('AAAAA4444444444444444', filtered_hotels)
         if maxPrice:
-            filtered_hotels=filtered_hotels.filter(room_type__price__lte=maxPrice)
+            filtered_hotels=filtered_hotels.filter(min_price__lte=maxPrice)
             print('AAAAA555555555555555', filtered_hotels)
         if hotelAmenities:
             filtered_hotels=filtered_hotels.filter(hotel_amenity__name_in=hotelAmenities).distinct('name')

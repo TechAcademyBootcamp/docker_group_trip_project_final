@@ -2,10 +2,13 @@
 {% load static hotel_tags %}
 {% block content %}
 
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/hotel-single.css' %}">
+{% endblock %}
 <section>
     <div class="container">
         <div class="row justify-content-between align-items-center pt-4">
-            <div class="col-3 " >
+            <div class="col-3 ">
                 <h5>{{hotel.name}}</h5>
                 {% get_star_count hotel.rating as stars %}
                 {{stars|safe}}
@@ -96,12 +99,12 @@
                             </span>
                         </div>
                         <div class="d-flex">
-                                {% for room_amenity in hotel.room_amenity.all %}
-                                <div class="popular-facilities  px-3 d-flex ">
-                                    <span class="px-1">{{room_amenity.icon|safe}}</span>
-                                    <span class="name-of-facility">{{room_amenity.name}}</span>
-                                </div>
-                                {% endfor %}
+                            {% for room_amenity in hotel.room_amenity.all %}
+                            <div class="popular-facilities  px-3 d-flex ">
+                                <span class="px-1">{{room_amenity.icon|safe}}</span>
+                                <span class="name-of-facility">{{room_amenity.name}}</span>
+                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -129,14 +132,14 @@
                             <td class="border p-0 col-5">
                                 <div class="col-12">
                                     <div class="row flex-column">
-                                        
+
                                         <div class="titles-for-types">
                                             <span class="room-type">{{room_type.title}}</span>
                                         </div>
                                         <div class="titles-for-types">
                                             <span class="bed-types-title">Bed count : </span>
-                                            <span style="font-weight: bold;">{{room_type.beds.count}} <i class="fa fa-bed pl-2"
-                                                    style="font-size:24px"></i></span>
+                                            <span style="font-weight: bold;">{{room_type.beds.count}} <i
+                                                    class="fa fa-bed pl-2" style="font-size:24px"></i></span>
                                         </div>
                                         <div class="titles-for-types">
                                             <span class="small-description">
@@ -148,7 +151,7 @@
                                             <span class="px-2 facilities-with-logo">{{room_amenity.icon|safe}}
                                                 <span class="facilities-with-logo">{{room_amenity.name}}</span></span>
                                             {% endfor %}
-                                            
+
                                         </div>
                                         <div class=" d-flex justify-content-center align-items-center w-100">
                                             <div class="underline-after-facilities">
@@ -168,161 +171,33 @@
                                                 <span>{{hotel_amenity.name}}</span></span>
                                             {% endfor %}
                                         </div>
-                                    
+
                                     </div>
                                 </div>
                             </td>
                             <td class="border col-1 d-flex align-items-start">
                                 <div>
                                     {% get_bed_count room_type.beds.count as beds %}
-                                                {{beds|safe}}
+                                    {{beds|safe}}
                                 </div>
                             </td>
                             <td class="border col-3 d-flex align-items-start">
                                 <div class="d-flex flex-column align-items-start">
                                     <div class="col-12 ">
                                         <div class="row">
-                                            <span class="price-value">AZN <span class="price-count">{{room_type.price}}</span></span>
+                                            <span class="price-value">AZN <span class="price-count"
+                                                    data-price="{{room_type.price}}">{{room_type.price}}</span></span>
                                         </div>
                                     </div>
                                 </div>
                             </td>
                             <td class="border col-3">
-                                <button type="button" class="btn btn-primary rounded-0">i'll reserve</button>
+                                <a type="button"
+                                    href="{% url 'hotels_app:hotels-reserve' room_type.id %}?HotelId={{hotel.id}}"
+                                    class="btn btn-primary rounded-0 reserve-button">i'll reserve</a>
                             </td>
                             {% endfor %}
                         </tr>
-                        <!-- <tr class="row">
-                            <td class="border p-0 col-5">
-                                <div class="col-12">
-                                    <div class="row flex-column">
-                                        <div class="titles-for-types">
-                                            <span class="room-type">Standart Double Room</span>
-                                        </div>
-                                        <div class="titles-for-types">
-                                            <span class="bed-types-title">Bed types : </span>
-                                            <span>1 king bed <i class="fa fa-bed pl-2"
-                                                    style="font-size:24px"></i></span>
-                                        </div>
-                                        <div class="titles-for-types">
-                                            <span class="small-description">
-                                                Spacious, air-conditioned room with a flat-screen TV, a minibar and
-                                                a
-                                                private bathroom.
-                                            </span>
-                                        </div>
-                                        <div class="titles-for-types">
-                                            <span class="px-2 facilities-with-logo"><i
-                                                    class='fas fa-swimming-pool facilities-with-logo'></i>
-                                                <span class="facilities-with-logo">Pool view</span></span>
-                                            <span class="px-2"><i class='far fa-building facilities-with-logo'></i>
-                                                <span class="facilities-with-logo">City view</span></span>
-                                            <span class="px-2 pl-3"><i
-                                                    class='far fa-snowflake facilities-with-logo'></i>
-                                                <span class="facilities-with-logo">Air conditioning</span></span>
-                                            <span class="px-2"><i class='fas fa-bath facilities-with-logo'></i>
-                                                <span class="facilities-with-logo">Private bathroom</span></span>
-                                            <span class="px-2"><i class='fas fa-tv facilities-with-logo'></i>
-                                                <span class="facilities-with-logo">Flat screen TV</span></span>
-                                            <span class="px-2"><i class='fas fa-wifi facilities-with-logo'></i>
-                                                <span class="facilities-with-logo">Free WI-FI</span></span>
-                                        </div>
-                                        <div class=" d-flex justify-content-center align-items-center w-100">
-                                            <div class="underline-after-facilities">
-
-                                            </div>
-                                        </div>
-                                        <div class="titles-for-types">
-                                            <span class="px-2 facilities-with-logo"><svg
-                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
-                                                    width="14" viewBox="0 0 128 128" role="presentation"
-                                                    aria-hidden="true" focusable="false">
-                                                    <path
-                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
-                                                    </path>
-                                                </svg>
-                                                <span>Free toiletries</span></span>
-                                            <span class="px-2 facilities-with-logo"><svg
-                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
-                                                    width="14" viewBox="0 0 128 128" role="presentation"
-                                                    aria-hidden="true" focusable="false">
-                                                    <path
-                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
-                                                    </path>
-                                                </svg>
-                                                <span>Bathrobe</span></span>
-                                            <span class="pl-2 pr-4 facilities-with-logo"><svg
-                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
-                                                    width="14" viewBox="0 0 128 128" role="presentation"
-                                                    aria-hidden="true" focusable="false">
-                                                    <path
-                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
-                                                    </path>
-                                                </svg>
-                                                <span>Sofa</span></span>
-                                            <span class="pl-1 pr-4 facilities-with-logo"><svg
-                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
-                                                    width="14" viewBox="0 0 128 128" role="presentation"
-                                                    aria-hidden="true" focusable="false">
-                                                    <path
-                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
-                                                    </path>
-                                                </svg>
-                                                <span>Safe</span></span>
-                                            <span class="px-2 facilities-with-logo"><svg
-                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
-                                                    width="14" viewBox="0 0 128 128" role="presentation"
-                                                    aria-hidden="true" focusable="false">
-                                                    <path
-                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
-                                                    </path>
-                                                </svg>
-                                                <span>High chaire</span></span>
-                                            <span class="pl-2 facilities-with-logo"><svg
-                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
-                                                    width="14" viewBox="0 0 128 128" role="presentation"
-                                                    aria-hidden="true" focusable="false">
-                                                    <path
-                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
-                                                    </path>
-                                                </svg>
-                                                <span>Toilet paper</span></span>
-                                            <span class="px-2 facilities-with-logo"><svg
-                                                    class="bk-icon -streamline-checkmark" fill="#008009" height="14"
-                                                    width="14" viewBox="0 0 128 128" role="presentation"
-                                                    aria-hidden="true" focusable="false">
-                                                    <path
-                                                        d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
-                                                    </path>
-                                                </svg>
-                                                <span>Alarm clock</span></span>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="border col-1 d-flex align-items-start">
-                                <div>
-                                    <i class='fas fa-user-alt' style='font-size:20px'></i>
-
-                                </div>
-                                <div>
-                                    <i class='fas fa-user-alt ml-1' style='font-size:20px'></i>
-                                </div>
-                            </td>
-                            <td class="border col-3 d-flex align-items-start">
-                                <div class="d-flex flex-column align-items-start">
-                                    <div class="col-12 ">
-                                        <div class="row">
-                                            <span class="price-value">AZN <span class="price-count">150</span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="border col-3">
-                                <button type="button" class="btn btn-primary rounded-0">i'll reserve</button>
-                            </td>
-                        </tr> -->
                     </tbody>
                 </table>
             </div>
@@ -341,7 +216,7 @@
                         <span class="restaurants-nearby d-flex align-items-center">
                             <span><i class="material-icons rest-icon px-2">&#xe56c;</i></span>
                             <span class="d-flex align-items-center pb-1"><span>Restaurants nearby</span></span>
-                            
+
                         </span>
                     </div>
                 </div>
@@ -376,7 +251,7 @@
                         <span class="restaurants-nearby d-flex align-items-center">
                             <span><i class='fas fa-walking px-2' style='font-size:24px'></i></span>
                             <span class="d-flex align-items-center pb-1"><span>Important places</span></span>
-                            
+
                         </span>
                     </div>
                 </div>
@@ -408,135 +283,7 @@
         </div>
     </div>
 </section>
-<!-- <section>
-        <div class="options-div container p-3 text-dark">
-            <div class="row">
-                <div class="col-4">
-                    <h4>Property amenities :</h4>
-                </div>
-                <div class="col-8">
-                    <div class="row">
-                        <div class="col-6">
-                            <div>
-                                <div class="py-3">
-                                    <i class="fa fa-wifi px-2" style="font-size:24px"></i>
-                                    <span class="option-title"> Internet options: </span>
-                                </div>
-                                <div>
-                                    <p>Available in all rooms: Free WiFi</p>
-                                    <p>Available in some public areas: Free WiFi</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div>
-                                <div class="py-2">
-                                    <i class='fas fa-parking px-2' style='font-size:24px'></i>
-                                    <span class="option-title"> Parking: </span>
-                                </div>
-                                <div>
-                                    <p>Free self parking</p>
-                                    <p>Free extended parking</p>
-                                    <p>Limited parking spaces</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div>
-                                <div class="py-3">
-                                    <i class='fas fa-utensils' style='font-size:24px'></i>
-                                    <span class="option-title"> Food and drinks: </span>
-                                </div>
-                                <div>
-                                    <p>Buffet breakfast available for a fee daily 7:00 AM–8:00 AM: AZN 25 for adults and
-                                        AZN 10 for children</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div>
-                                <div class="py-2">
-                                    <i class='fas fa-spell-check px-2' style='font-size:24px'></i>
-                                    <span class="option-title"> Languages spoken : </span>
-                                </div>
-                                <div>
-                                    <p>Azerbaijan</p>
-                                    <p>Russian</p>
-                                    <p>English</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="py-2">
-        <div class="container p-3 options-div text-dark">
-            <div class="row">
-                <div class="col-4">
-                    <h4>Room amenities :</h4>
-                </div>
-                <div class="col-8">
-                    <div class="row">
-                        <div class="col-6">
-                            <div>
-                                <div class="py-3">
-                                    <i class='fas fa-bed' style='font-size:24px'></i>
-                                    <span class="option-title"> Bedroom : </span>
-                                </div>
-                                <div>
-                                    <p>Heating</p>
-                                    <p>Linens</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div>
-                                <div class="py-2">
-                                    <i class='fas fa-bath' style='font-size:24px'></i>
-                                    <span class="option-title"> Bathroom: </span>
-                                </div>
-                                <div>
-                                    <p>Hair dryer</p>
-                                    <p>Separate bathtub and shower</p>
-                                    <p>Soap</p>
-                                    <p>Toilet paper</p>
-                                    <p>Toothbrush and toothpaste</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div>
-                                <div class="py-3">
-                                    <i class='fas fa-tv' style='font-size:24px'></i>
-                                    <span class="option-title"> Entertainment: </span>
-                                </div>
-                                <div>
-                                    <p>Flat-screen TV</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div>
-                                <div class="py-2">
-                                    <i class='fas fa-utensils' style='font-size:24px'></i>
-                                    <span class="option-title"> Food and drink : </span>
-                                </div>
-                                <div>
-                                    <p>Cookware/dishes/utensils</p>
-                                    <p>Electric kettle</p>
-                                    <p>Kitchen</p>
-                                    <p>Microwave</p>
-                                    <p>Refrigerator</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
+
 <section>
     <div class="container p-3 options-div text-dark">
         <div class="row">
@@ -545,63 +292,18 @@
             </div>
             <div class="col-8">
                 <div class="row">
+                    {% for policy in hotel.policies.all %}
                     <div class="col-6">
-                        <div>
-                            <div class="py-3">
-                                <span class="option-title"> Check-in: </span>
-                            </div>
-                            <div>
-                                <p>Check-in time starts at 2:00 PM</p>
-                                <p>Express check-in</p>
-                                <p>Minimum check-in age - 18</p>
-                            </div>
+                        <div class="py-3">
+                            <span class="option-title"> {{policy.title}} </span>
                         </div>
-                    </div>
-                    <div class="col-6">
+                        {% for subpolicy in policy.PoliciesSubFeatures.all %}
                         <div>
-                            <div class="py-2">
-                                <span class="option-title"> Check-out: </span>
-                            </div>
-                            <div>
-                                <p>Check-out before noon</p>
-                                <p>Late check-out subject to availability</p>
-                                <p>Express check-out</p>
-                            </div>
+                            <p>{{subpolicy.title}}</p>
                         </div>
+                        {% endfor %}
                     </div>
-                    <div class="col-6">
-                        <div>
-                            <div class="py-3">
-                                <span class="option-title"> Access methods: </span>
-                            </div>
-                            <div>
-                                <p>Host will greet you, key retrieval</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div>
-                            <div class="py-2">
-                                <span class="option-title"> Pets : </span>
-                            </div>
-                            <div>
-                                <p>Pets not allowed</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div>
-                            <div class="py-3">
-                                <span class="option-title"> Children and extra beds : </span>
-                            </div>
-                            <div>
-                                <p>Children are welcome</p>
-                                <p>Rollaway/extra beds are available for AZN 40.0 per day</p>
-                                <p>Cribs (infant beds) are not available</p>
-                            </div>
-                        </div>
-                    </div>
-
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -611,7 +313,9 @@
     <div class="container">
         <div class="my-3 d-flex align-items-center">
             <i class="material-icons mx-2" style="color:red">&#xe838;</i><span class="mt-1 review-rating-count"> 5.0
-                (4 reviews)</span>
+                {% review_count hotel.id as count %}
+                ({{count}} reviews)
+            </span>
         </div>
         <div class="row">
             <div class="col-12 col-md-6">
@@ -696,96 +400,31 @@
     </div>
 </section>
 <section>
+    {% reviews hotel.id as all_reviews %}
+
     <div class="container" style="background-color:aliceblue;">
         <div class="row justify-content-between">
+            {% for review in all_reviews %}
             <div class="col-6 mt-2 rounded">
                 <div class="row p-4">
                     <div class="d-flex flex-column">
                         <div class="d-flex">
                             <div class="mr-2">
-                                <img class="user-avatar"
-                                    src="https://www.kutchguide.in/wp-content/uploads/2018/02/pict-customer-male-ivr-people-vector-stencils-library.png-diagram-flowchart-example.png"
-                                    alt="">
+                                <img class="user-avatar" src="{{review.reservation.user.image.url}}" alt="">
                             </div>
                             <div class="d-flex flex-column pt-1 justify-content-center">
-                                <span class="user-data">Name Surname</span>
-                                <span class="user-data">Created time</span>
+                                <span class="user-data">{{review.reservation.user.name}}
+                                    {{review.reservation.user.surname}}</span>
+                                <span class="user-data">{{review.created_at}}</span>
                             </div>
                         </div>
                         <div>
-                            <span>It was a great time for me and my family. House was amazingly clean and our host’s
-                                hospitality was in the highest level. Definitely looking forward to come back again
-                                sometime soon. I highly recommend this place.</span>
+                            <span>{{review.subject}}</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-6 mt-2 rounded">
-                <div class="row p-4">
-                    <div class="d-flex flex-column">
-                        <div class="d-flex">
-                            <div class="mr-2">
-                                <img class="user-avatar"
-                                    src="https://www.kutchguide.in/wp-content/uploads/2018/02/pict-customer-male-ivr-people-vector-stencils-library.png-diagram-flowchart-example.png"
-                                    alt="">
-                            </div>
-                            <div class="d-flex flex-column pt-1 justify-content-center">
-                                <span class="user-data">Name Surname</span>
-                                <span class="user-data">Created time</span>
-                            </div>
-                        </div>
-                        <div>
-                            <span>It was a great time for me and my family. House was amazingly clean and our host’s
-                                hospitality was in the highest level. Definitely looking forward to come back again
-                                sometime soon. I highly recommend this place.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 mt-2 rounded">
-                <div class="row p-4">
-                    <div class="d-flex flex-column">
-                        <div class="d-flex">
-                            <div class="mr-2">
-                                <img class="user-avatar"
-                                    src="https://www.kutchguide.in/wp-content/uploads/2018/02/pict-customer-male-ivr-people-vector-stencils-library.png-diagram-flowchart-example.png"
-                                    alt="">
-                            </div>
-                            <div class="d-flex flex-column pt-1 justify-content-center">
-                                <span class="user-data">Name Surname</span>
-                                <span class="user-data">Created time</span>
-                            </div>
-                        </div>
-                        <div>
-                            <span>It was a great time for me and my family. House was amazingly clean and our host’s
-                                hospitality was in the highest level. Definitely looking forward to come back again
-                                sometime soon. I highly recommend this place.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 mt-2 rounded">
-                <div class="row p-4">
-                    <div class="d-flex flex-column">
-                        <div class="d-flex">
-                            <div class="mr-2">
-                                <img class="user-avatar"
-                                    src="https://www.kutchguide.in/wp-content/uploads/2018/02/pict-customer-male-ivr-people-vector-stencils-library.png-diagram-flowchart-example.png"
-                                    alt="">
-                            </div>
-                            <div class="d-flex flex-column pt-1 justify-content-center">
-                                <span class="user-data">Name Surname</span>
-                                <span class="user-data">Created time</span>
-                            </div>
-                        </div>
-                        <div>
-                            <span>It was a great time for me and my family. House was amazingly clean and our host’s
-                                hospitality was in the highest level. Definitely looking forward to come back again
-                                sometime soon. I highly recommend this place.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -794,134 +433,37 @@
         <span class="nearest-hotels">Nearest hotels : </span>
         <div class="line-under-hotels my-5 col-lg-block"></div>
         <div class="row nearest-hotels-row">
+            {% for hotel in nearest_hotels %}
             <div class="col-12 col-lg-3 ">
-                <div class="card p-2 mb-5 nearest-hotel-card parent-nearest-hotel-card" >
-                    <img class="card-img-top"
-                        src="https://www.geobookings.com/data/accomodations/03ac5df68db3441893459f77c0b8743f.jpg"
+                <div class="card p-2 mb-5 nearest-hotel-card parent-nearest-hotel-card">
+                    <img class="card-img-top" style="width: 230px; height: 150px;" src="{{hotel.main_image.url}}"
                         alt="Card image cap">
                     <div class="card-body p-0">
                         <div class="p-2 ">
-                            <h5 class="card-title mb-1">City Hotel</h5>
+                            <h5 class="card-title mb-1">{{hotel.name}}</h5>
                             <div class="mb-2">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
+                                {% get_star_count hotel.rating as stars %}
+                                {{stars|safe}}
                             </div>
                         </div>
                         <div class="d-flex  justify-content-between">
                             <div class="d-flex flex-column justify-content-start p-1 mb-3 ml-2">
-                                <div class="rating-count mt-2 mb-3 ml-4">8.5</div>
+                                <div class="rating-count mt-2 mb-3 ml-4">{{hotel.rating}}</div>
                                 <div class="d-flex flex-column mr-2 justify-content-start" style="line-height:5px;">
                                     <small>(231 Reviews)</small>
                                 </div>
                             </div>
                             <div class="d-flex flex-column px-2">
                                 <span class="nearest-hotel-price text-right"><span
-                                        class="dollar-symbol mr-1">$</span>35</span>
+                                        class="dollar-symbol mr-1">$</span>{{hotel.min_price}}</span>
                                 <a href="#" class="btn btn-primary">View deal</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-3 ">
-                <div class="card p-2 mb-5 nearest-hotel-card parent-nearest-hotel-card" >
-                    <img class="card-img-top"
-                        src="https://www.geobookings.com/data/accomodations/03ac5df68db3441893459f77c0b8743f.jpg"
-                        alt="Card image cap">
-                    <div class="card-body p-0">
-                        <div class="p-2 ">
-                            <h5 class="card-title mb-1">City Hotel</h5>
-                            <div class="mb-2">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-                        </div>
-                        <div class="d-flex  justify-content-between">
-                            <div class="d-flex flex-column justify-content-start p-1 mb-3 ml-2">
-                                <div class="rating-count mt-2 mb-3 ml-4">8.5</div>
-                                <div class="d-flex flex-column mr-2 justify-content-start" style="line-height:5px;">
-                                    <small>(231 Reviews)</small>
-                                </div>
-                            </div>
-                            <div class="d-flex flex-column px-2">
-                                <span class="nearest-hotel-price text-right"><span
-                                        class="dollar-symbol mr-1">$</span>35</span>
-                                <a href="#" class="btn btn-primary">View deal</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-lg-3 ">
-                <div class="card p-2 mb-5 nearest-hotel-card parent-nearest-hotel-card" >
-                    <img class="card-img-top"
-                        src="https://www.geobookings.com/data/accomodations/03ac5df68db3441893459f77c0b8743f.jpg"
-                        alt="Card image cap">
-                    <div class="card-body p-0">
-                        <div class="p-2 ">
-                            <h5 class="card-title mb-1">City Hotel</h5>
-                            <div class="mb-2">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-                        </div>
-                        <div class="d-flex  justify-content-between">
-                            <div class="d-flex flex-column justify-content-start p-1 mb-3 ml-2">
-                                <div class="rating-count mt-2 mb-3 ml-4">8.5</div>
-                                <div class="d-flex flex-column mr-2 justify-content-start" style="line-height:5px;">
-                                    <small>(231 Reviews)</small>
-                                </div>
-                            </div>
-                            <div class="d-flex flex-column px-2">
-                                <span class="nearest-hotel-price text-right"><span
-                                        class="dollar-symbol mr-1">$</span>35</span>
-                                <a href="#" class="btn btn-primary">View deal</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-lg-3 ">
-                <div class="card p-2 mb-5 nearest-hotel-card parent-nearest-hotel-card" >
-                    <img class="card-img-top"
-                        src="https://www.geobookings.com/data/accomodations/03ac5df68db3441893459f77c0b8743f.jpg"
-                        alt="Card image cap">
-                    <div class="card-body p-0">
-                        <div class="p-2 ">
-                            <h5 class="card-title mb-1">City Hotel</h5>
-                            <div class="mb-2">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-                        </div>
-                        <div class="d-flex  justify-content-between">
-                            <div class="d-flex flex-column justify-content-start p-1 mb-3 ml-2">
-                                <div class="rating-count mt-2 mb-3 ml-4">8.5</div>
-                                <div class="d-flex flex-column mr-2 justify-content-start" style="line-height:5px;">
-                                    <small>(231 Reviews)</small>
-                                </div>
-                            </div>
-                            <div class="d-flex flex-column px-2">
-                                <span class="nearest-hotel-price text-right"><span
-                                        class="dollar-symbol mr-1">$</span>35</span>
-                                <a href="#" class="btn btn-primary">View deal</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
+
         </div>
     </div>
 </section>
