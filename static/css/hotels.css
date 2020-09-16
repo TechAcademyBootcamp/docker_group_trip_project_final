@@ -108,7 +108,7 @@ min-width: 32px !important;
 }
 .input-group-append{
   background-color: white;
-  border-radius: 4px;
+  border-radius: 0;
 }
 .price-in-js{
   font-size: 16px;
@@ -135,6 +135,9 @@ min-width: 32px !important;
   background-color: #ebf3ff;
 }
 #datepicker,#datepicker1{
-  width: 100% !important;
+  width: 75% !important;
   border:none;
+}
+.btn-outline-secondary{
+  border: none !important;
 }

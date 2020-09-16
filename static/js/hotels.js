@@ -1,15 +1,15 @@
-    document.querySelector('.children-show-extra-items').addEventListener('click', function () {
-        if (document.querySelector('.icon-down').classList.contains('d-none')) {
-            document.querySelector('.icon-up').classList.add('d-none')
-            document.querySelector('.icon-down').classList.remove('d-none')
-        } else {
-            document.querySelector('.icon-down').classList.add('d-none')
-            document.querySelector('.icon-up').classList.remove('d-none')
-        }
+    // document.querySelector('.children-show-extra-items').addEventListener('click', function () {
+    //     if (document.querySelector('.icon-down').classList.contains('d-none')) {
+    //         document.querySelector('.icon-up').classList.add('d-none')
+    //         document.querySelector('.icon-down').classList.remove('d-none')
+    //     } else {
+    //         document.querySelector('.icon-down').classList.add('d-none')
+    //         document.querySelector('.icon-up').classList.remove('d-none')
+    //     }
 
 
 
-    })
+    // })
     // if(document.querySelector('.children-show-extra-items').classList.contains
 
     $('#datepicker').datepicker({

@@ -6,7 +6,11 @@ from Hotels.models import Hotel
 class PhoneNumber(APIView):
     def get(self,request):
         data = request.GET
-        print(data.get('phone_number'))
+        # after_url = {'number':'phone_number',}
+        # number = 79259186133 & & text = ferqi
+        # yoxdu & sign = Tach
+        # Taxi & channel = DIRECT
+        # url = requests.get('https://agil.makhmudov@mail.ru:Q9BqK8I8HXoEx1hVIhcE4gRkBVa1@gate.smsaero.ru/v2/sms/send?')
 
 
 class HotelListView(ListAPIView):
