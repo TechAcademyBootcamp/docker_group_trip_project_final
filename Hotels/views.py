@@ -55,24 +55,25 @@ class ReservePage(FormMixin,DetailView):
     model = RoomType
     context_object_name = 'room_type'
 
-    def post(self,request):
-       publishKey = settings.STRIPE_PUBLISHABLE_KEY
-       token = request.POST.get('stripeToken', False)
-       print('AAAAAAAAAAAAAa')
-       if token:
-           try:
-               charge = stripe.Charge.create(
-                   amount=1,
-                   currency='usd',
-                   description='Example charge',
-                   source=token,
-               )
-               messages.info('Paid successfull')
-               return redirect(reverse_lazy('hotels-reserve'))
-           except stripe.CardError as e:
-                messages.info(request, "Your card has been declined.")
-       messages.info('Token not found')
-       return redirect(reverse_lazy('hotels-reserve'))
+    def post(self,request, *args, **kwargs):
+        publishKey = settings.STRIPE_PUBLISHABLE_KEY
+        token = request.POST.get('stripeToken', False)
+        if token:
+            customer = stripe.Customer.create(
+                email=request.user.email,
+                name=request.user.username,
+                source=token
+            )
+            charge = stripe.Charge.create(
+                customer=customer,
+                amount=16000,
+                currency='usd',
+                description='Example charge',
+            )
+            messages.success(request, 'Paid successfull!')
+            return redirect(reverse_lazy('hotels-reserve'))
+        messages.success(request, 'Token not found!')
+        return redirect(reverse_lazy('hotels-reserve'))
 
     def get_context_data(self, **kwargs):
         context = super(FormMixin,self).get_context_data(**kwargs)

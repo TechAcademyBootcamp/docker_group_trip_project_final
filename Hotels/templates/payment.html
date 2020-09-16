@@ -3,6 +3,8 @@
 {% block content %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/payment.css' %}">
+<script src="https://js.stripe.com/v3/"></script>
+<link rel="stylesheet" href="{% static 'css/stripe.css' %}">
 {% endblock %}
 <section>
 
@@ -79,6 +81,7 @@
 
 {% block js %}
 <script src="{% static 'js/payment.js' %}"></script>
+<script src="{% static 'js/stripe.js' %}"></script>
 {% endblock %}
 
 {% endblock %}
