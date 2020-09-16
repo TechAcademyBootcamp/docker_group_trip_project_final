@@ -53,7 +53,7 @@ class MainSearchAPIView(APIView):
         #     "tour": tour_serializer.data,
         # }
         data_obj = list(chain(city_serializer.data,hotel_serializer.data,restaurant_serializer.data,tour_serializer.data,))
-        json_data = json.dumps(data_obj)
+        # json_data = json.dumps(data_obj)
    
         data = {
             "data_obj":data_obj,

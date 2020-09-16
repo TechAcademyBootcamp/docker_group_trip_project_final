@@ -17,7 +17,7 @@ document.getElementById('search').addEventListener('input', function () {
              if (inputValue) {
                 for (let object of response.data_obj) {
                                        
-                    $('.form-div').append(`<a class="w-100" href=""><span class="ml-3">${object.name}</span></a>`)
+                    $('.form-div').append(`<a class="w-100" href="${object.url}"><span class="ml-3">${object.name}</span></a>`)
 
                 }
             }

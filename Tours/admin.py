@@ -1,9 +1,14 @@
 from django.contrib import admin
-from Tours.models import Tours, TourImages , TourComments
+from Tours.models import *
 
 # admin.site.register(Tours)
 admin.site.register(TourComments)
 admin.site.register(TourImages)
+admin.site.register(Inclusion)
+admin.site.register(Activites)
+admin.site.register(ImportantNotes)
+admin.site.register(RightRorYou)
+admin.site.register(WhyYouLove)
 
 class TourImageInline(admin.TabularInline):
     model = TourImages

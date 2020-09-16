@@ -16,6 +16,10 @@ class CitySerializer(serializers.ModelSerializer):
         fields = ('name',
                   'image',)
 
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        data["url"] = instance.get_absolute_url()
+        return data
 
 class HotelSerializer(serializers.ModelSerializer):
 
@@ -39,5 +43,10 @@ class TourSerializer(serializers.ModelSerializer):
         model = Tours
         fields = ('name',
                   )
+
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        data["url"] = instance.get_absolute_url()
+        return data
 
 

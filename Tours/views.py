@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView , DetailView
-from Tours.models import Tours
+from Tours.models import *
 from django.core.paginator import Paginator
 
 # Create your views here.
@@ -28,7 +28,20 @@ class ToursPage(ListView):
 
 
 class ToursSinglePage(DetailView):
-    template_name = 'tours_single_page.html'
     model = Tours
-
+    template_name = 'tours_single_page.html'
+    
+    def get_context_data(self,*args, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # context["tours"] = Tours.objects.all()
+        context["images"] = TourImages.objects.all()
+        context["inclusion"] = Inclusion.objects.all()
+        context["activities"] = Activites.objects.all()
+        context["notes"] = ImportantNotes.objects.all()
+        context["whyyoulove"] = WhyYouLove.objects.all()
+        context["rightforyou"] = RightRorYou.objects.all()
+        print(context['tours'])
+        
+        return context
+    
 

@@ -2,6 +2,9 @@ from django.db import models
 from ckeditor.fields import RichTextField
 from Account.models import User
 from tools.slug_generator import slugify
+from tools.slug_generator import slugify
+from django.urls import reverse_lazy
+from datetime import datetime
 # from django.contrib.auth import get_user_model
 # USER_MODEL = get_user_model()
 
@@ -34,6 +37,7 @@ class City(models.Model):
     #information
     name = models.CharField('Name',max_length=40)
     image = models.ImageField('Image',upload_to='images')
+    slug = models.SlugField('slug', max_length=255, editable=False, unique=True)
 
     class Meta:
         verbose_name = 'City'
@@ -41,6 +45,15 @@ class City(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self,*args, **kwargs):
+        
+        name = self.name
+        self.slug = f"{slugify(self.name)}-{datetime.now().strftime('%Y%m%d-%H%M%S')}"
+        super().save()
+
+    def get_absolute_url(self):
+        return reverse_lazy('main:city-detail', kwargs={'slug': self.slug})
 
     
 
