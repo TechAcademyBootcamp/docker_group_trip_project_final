@@ -3,6 +3,7 @@ from Account.models import User
 from Main.models import City
 from Hotels.tools.slug_generator import slugify
 from datetime import datetime
+from django.urls import reverse_lazy
 
 class RoomTypeBeds(models.Model):
     #information
@@ -77,6 +78,10 @@ class Hotel(models.Model):
         self.slug = f'{slugify(self.name)}-{datetime.now().strftime("%Y%m%d-%H%M%S")}'
         super().save()
 
+    def get_absolute_url(self):
+        return reverse_lazy('hotels_app:hotels-single',kwargs={'slug':self.slug})
+
+
 class RoomType(models.Model):
     #information
     title= models.CharField('Room type',max_length=50)
@@ -111,9 +116,10 @@ class HotelImages(models.Model):
         return self.hotel
 
 class Reservation(models.Model):
-    reservation_time = models.DateTimeField()
-    price = models.DecimalField('Price',max_digits=7,decimal_places=2)
-    note = models.CharField('Note',max_length=300)
+    reservation_start_date = models.DateTimeField()
+    reservation_fin_date = models.DateTimeField()
+    price = models.IntegerField('Price')
+    note = models.CharField('Note',max_length=300,blank=True,null=True)
     day_count = models.PositiveSmallIntegerField('Day count')
 
     #relations

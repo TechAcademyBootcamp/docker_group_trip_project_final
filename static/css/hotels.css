@@ -141,3 +141,19 @@ min-width: 32px !important;
 .btn-outline-secondary{
   border: none !important;
 }
+.deactive-page-numbers{
+  text-decoration: none;
+  font-weight: bold;
+  /* background-color: grey; */
+  /* border-radius: 50px; */
+  font-size: 20px;
+ 
+}
+/* .number-span{
+  padding: 11px 3px !important;
+margin-left: 3px;
+color: white;
+} */
+.page-numbers{
+  padding-bottom: 6px;
+}

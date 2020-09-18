@@ -84,6 +84,11 @@ class HotelSerializer(serializers.ModelSerializer):
                   'slug',
                   'min_price',)
 
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        data["my_url"] = instance.get_absolute_url()
+        return data
+
 class HotelImageSerializer(serializers.ModelSerializer):
     hotel = HotelSerializer()
     class Meta:

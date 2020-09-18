@@ -168,7 +168,7 @@
                 <div class="col-9 main-col">
                     <div class="row">
                         <div class="col-12">
-                            <h4 style="font-weight: bold;">Baki : 125 hotels was found</h4>
+                            <h4 class="baku-125" style="font-weight: bold;" >Baki : 125 hotels was found</h4>
                         </div>
                     </div>
                     <div class="removed-data">
@@ -207,7 +207,7 @@
                                             <div class="d-flex flex-column justify-content-end p-2">
                                                 <span class="text-right" style="font-size: 16px;">Price for night
                                                     {{hotel.min_price}}$</span>
-                                                <a href="{% url 'hotels_app:hotels-single' hotel.slug %}" type="button" class="btn btn-danger slugs-anchor"
+                                                <a href="{% url 'hotels_app:hotels-single' hotel.slug %}"  type="button" class="btn btn-danger slugs-anchor"
                                                     style="font-size:14px; color: white;">Reserve</a>
                                             </div>
                                         </div>
@@ -218,11 +218,49 @@
                     </div>
                     {% endfor %}
                 </div>
+                <div class="row mt-5 old-pagi">
+                    <div class="col text-center">
+                        <div class="block-27 d-flex justify-content-center align-items-center">
+                            {% if page_obj.has_previous %}
+                                    <a class="prev-icon" style="color: #b0ddf2;"
+                                        href="?page={{ page_obj.previous_page_number }}{% if sortBy %}&sortBy={{ sortBy }}{% endif %}">
+                                        <i class='fas fa-angle-left previous-icon mr-2' alt="arrow" style='font-size:24px'></i>
+                                    </a>
+                                {% endif %}
+                                {% if page_range|length > 1 %}
+                                    <div class="page-numbers">
+                                        {% for page_number in page_range %}
+                                            {% if page_number == page_obj.number %}
+                                                <a class="active mr-2" >
+                                                    <span >{{ page_number }}</span>
+                                                </a>
+                                            {% else %}
+                                                <a class="page mr-2 deactive-page-numbers mb-2" style="text-decoration: none;color: rgb(145, 145, 255);" href="?page={{ page_number }}{% if sortBy %}&sortBy={{ sortBy }}{% endif %}">
+                                                    <span class="number-span">{{ page_number }}</span>
+                                                </a>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                                {% if page_obj.has_next %}
+                                    <a class="next-page ml-2" style="color: #b0ddf2;"
+                                        href="?page={{ page_obj.next_page_number }}{% if sortBy %}&sortBy={{ sortBy }}{% endif %}">
+                                        <i class=' fas fa-angle-right' style='font-size:24px' alt="arrow" class="next-icon"></i>
+                                        
+                                    </a>
+                                {% endif %}
+                                
+                        </div>
+                    </div>
+                </div>
+                <div class="row js-pagination d-flex justify-content-center align-items-center">
+
+                </div>
                 </div>
             </div>
         </div>
     </section>
-
+    
 
     {% include 'includes/subscribers.html' %}
     {% endblock %}
