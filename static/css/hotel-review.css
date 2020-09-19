@@ -17,7 +17,7 @@ html, body {
     font-weight: 400;
     }
     .testbox {
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
     height: inherit;
@@ -53,7 +53,7 @@ html, body {
     }
     th, td {
     width: 15%;
-    padding: 15px 0;
+    padding: 17px 0;
     text-align: center;
     vertical-align: unset;
     line-height: 18px;

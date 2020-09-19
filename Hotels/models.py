@@ -155,7 +155,6 @@ class Reservation(models.Model):
 
 class Reviews(models.Model):
     #information
-    title = models.CharField('Title',max_length=50)
     subject= models.TextField('Subject')
 
 
@@ -168,17 +167,17 @@ class Reviews(models.Model):
     #                              related_name='reviews')
     reservation = models.ForeignKey(Reservation,verbose_name='Reservation', on_delete=models.CASCADE, db_index=True,
                                  related_name='reviews')
-    review_rating = models.ManyToManyField('ReviewRating',verbose_name='REview rating',related_name='reviews')
+    # review_rating = models.ManyToManyField('ReviewRating',verbose_name='Review rating',related_name='reviews')
 
     #moderation
-    created_at = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add = True)
 
     class Meta:
         verbose_name = 'Reviews'
         verbose_name_plural = 'Reviews'
 
     def __str__(self):
-        return self.title
+        return self.reservation.hotel.name
 
 class PoliciesSubFeatures(models.Model):
     # information
@@ -225,7 +224,9 @@ class ReviewRating(models.Model):
     #relations
     # review = models.ManyToManyField(Reviews,verbose_name='Review',related_name='reviewRating')
     review_field = models.ManyToManyField(ReviewFields, verbose_name='Review field', related_name='reviewRating')
-
+    hotel = models.ForeignKey(Hotel, verbose_name='Hotel', on_delete=models.CASCADE,
+                                 db_index=True,
+                                 related_name='reviewRating')
     class Meta:
         verbose_name = 'ReviewRating'
         verbose_name_plural = 'ReviewRatings'

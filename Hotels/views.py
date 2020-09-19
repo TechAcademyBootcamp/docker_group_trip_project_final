@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView,CreateView,DetailView,View
-from Hotels.models import Hotel,HotelAmenities,PoliciesSubFeatures,RoomAmenities,Reservation,RoomType,Policies,Reviews,ReviewFields
+from Hotels.models import Hotel,HotelAmenities,PoliciesSubFeatures,RoomAmenities,Reservation,RoomType,Policies,Reviews,ReviewFields,ReviewRating
 from Account.models import User
 from django.urls import reverse_lazy
 from django.views.generic.edit import FormMixin
@@ -89,22 +89,19 @@ class ReservePage(FormMixin,DetailView):
             fin_date=request.GET.get('second_date',date.today()+timedelta(1))
             day_count = request.GET.get('total_days',1)
             hotel = Hotel.objects.filter(id=request.GET.get('HotelId')).first()
-            price = (int(self.get_object().price)*day_count)
-            print('PPPPPPPPPPPPPPPPPPPPPPPPP',self.get_object().price)
-
-            reservation = Reservation(
+            price = (int(self.get_object().price)*int(day_count))
+            print('START DATE',start_date)
+            reservation = Reservation.objects.create(
                 reservation_start_date=start_date,
                 reservation_fin_date=fin_date,
-                price=price,
+                price=float(price),
                 day_count=day_count,
                 room_type=self.get_object(),
                 user=request.user,
                 hotel=hotel,
             )
-            # print('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',reservation,reservation.price)
-            reservation.save()
             messages.success(request, 'Paid successfull!')
-            return redirect(reverse_lazy('hotels-reserve'))
+            return redirect(reverse_lazy('hotels_app:hotels-reserve'))
         messages.success(request, 'Token not found!')
 
         return redirect(reverse_lazy('hotels-reserve'))
@@ -117,13 +114,36 @@ class ReservePage(FormMixin,DetailView):
 
 
 class ReviewSendView(View):
+    review_fields = ReviewFields.objects.all()
+    user = User.objects.all()[0]
+    context = {
+        'review_fields': review_fields,
+        'user': user,
+    }
     def get(self,request):
-        review_fields = ReviewFields.objects.all()
-        user = User.objects.all()[0]
-        context={
-            'review_fields':review_fields,
-            'user':user,
-        }
-        print(context)
-        return render(request,'review.html',context)
+        self.http_method_names = ('get',)
+        if request.method == 'GET':
+            print(request.GET.get('user-email'))
+            reviewFields = ReviewFields.objects.all()
+            for key,value in request.GET.items():
+                if reviewFields.filter(title=key):
+                    reviewRating = ReviewRating.objects.create(
+                        rating_point=value,
+                        hotel=Hotel.objects.filter(name=request.GET.get('hotel-name')).first()
+                    )
+                    reviewField_for_Save = ReviewFields.objects.filter(title=key).first()
+                    reviewRating.review_field.add(reviewField_for_Save)
+                    reviewRating.save()
+            my_reservation = Reservation.objects.filter(user__email=request.GET.get('user-email'),hotel__name=request.GET.get('hotel-name')).last()
+            review = Reviews.objects.create(
+                subject=request.GET.get('my-text'),
+                reservation=my_reservation
+            )
+            review.save()
+        return render(request, 'review.html', self.context)
+
+    def post(self, request, *args, **kwargs):
+        self.http_method_names=('post',)
+        pass
+        return render(request,'review.html',self.context)
 
