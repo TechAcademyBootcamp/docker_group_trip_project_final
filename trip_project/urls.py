@@ -29,4 +29,5 @@ urlpatterns = [
     path('hotels/',include('Hotels.urls',namespace='hotels_app')),
     path('restaurants/',include('Restaurants.urls',namespace='restaurants_app')),
     path('places/',include('Places.urls',namespace='places_app')),
+    path('api/v1.0/restaurants/',include('Restaurants.api.urls',namespace='api_restaurant'))
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

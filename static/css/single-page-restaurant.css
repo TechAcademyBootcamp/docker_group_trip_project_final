@@ -131,8 +131,10 @@
   font-size: 13px;
   font-weight: 400;
   opacity: 1;
+  color: black;
 }
 .restaurant-location-info:hover{
+  color: black;
   text-decoration: underline !important;
 }
 
@@ -268,7 +270,11 @@
 }
 .special-font{
   font-size: 14px;
-  font-weight:400
+  font-weight:400;
+  color: #0f0017 !important;
+}
+.special-font:hover{
+  text-decoration: none !important;
 }
 .img-info:hover + .open-time{
   border-bottom: 1px solid black !important;
@@ -335,6 +341,10 @@
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
+  color: black;
+}
+.see-all:hover{
+  color: black;
 }
 .same-location{
   padding: 0px 24px 0px 0px;
@@ -349,20 +359,6 @@
 }
 .same-location-image-background:hover{
   opacity: 0.9;
-}
-.img1{
-  background-image: url(https://media-cdn.tripadvisor.com/media/photo-s/15/ef/06/24/portion-meat-doner.jpg);
-
-}
-.img2{
-  background-image: url(https://media-cdn.tripadvisor.com/media/photo-f/11/52/4e/97/smokey-brunch.jpg);
-
-}
-.img3{
-  background-image: url(https://media-cdn.tripadvisor.com/media/photo-s/12/7f/74/fb/cho-gao-transit.jpg);
-}
-.img4{
-  background-image: url(https://media-cdn.tripadvisor.com/media/photo-s/16/d9/08/9b/transfer-your-taste-buds.jpg);
 }
 .same-location-restaurant-name{
   font-size: 16px;
@@ -464,6 +460,27 @@ font-family: TripAdvisor_Regular !important;
   font-size: 15px;
   font-weight: 600;
   padding: 10px;
+}
+.links{
+  text-decoration: none !important;
+}
+.user-image{
+  width: 72px;
+  height: 72px;
+}
+.user-image img{
+  border-radius: 72px;
+  width: 100%;
+}
+.comment p{
+  line-height: 20px;
+  font-size: 13px;
+  font-weight: 400;
+  opacity: 1;
+  color: black;
+}
+.comment-user{
+  white-space: nowrap;
 }
 
 @media (max-width:1273px){

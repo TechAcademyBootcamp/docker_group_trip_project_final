@@ -35,10 +35,34 @@
 .restaurant-find:hover{
     background-color: #b8222d;
 }
-.restaurant-cover-photo{
+.restaurants-map{
+    background: url(//cdn.otstatic.com/cfe/5/images/map-fragment-9d072d.png) #eef8fb;
+    background-size: contain;
     height: 60px;
-    object-fit: cover;
-    object-position: center;
+    border-radius: 3px;
+    border: .0625rem solid #61bddb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.map-svg{
+    width: 1rem;
+}
+.map-svg g path{
+    fill: white;
+}
+.google-map{
+    background: #247f9e;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #fff;
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin: 16px 0;
+}
+.restaurants-map:hover{
+    text-decoration: none !important;
 }
 .restaurant-options{
     font-size: 16px;
@@ -161,6 +185,7 @@
     align-items: center;
     background: white;
     border: 2px solid rgba(0,0,0,.12);
+    width: 214px;
 }
 .restaurant-dropdown:hover{
     border: 2px solid #da3743;
@@ -168,16 +193,15 @@
 .restaurant-dropdown:focus{
     outline: #4a6fde solid 2px;
 }
-.restaurant-dropdown:focus + .dropdown-list{
-    visibility: visible !important;
-}
+
 .restaurant-dropdown-featured{
     border-style: none;
     background: white;
     padding: 0.2rem 6.5rem 0.2rem 0.5rem;
     font-size: 12px;
     font-weight: 700;
-    width: 100%;
+    width: 164px;
+    white-space: nowrap;
 }
 .dropdown-list{
     position: absolute;
@@ -189,7 +213,6 @@
     padding: 0px;
     cursor: pointer;
     border: 2px solid rgba(0,0,0,.12);
-    visibility: hidden;
     z-index: 2;
 }
 .dropdown-list li{
@@ -203,7 +226,6 @@
 }
 .restaurant-card{
     border: none;
-    border-bottom: 1px solid rgba(0,0,0,.12);
     padding: 20px 0px;
 }
 .restaurant-card-img{
@@ -259,6 +281,44 @@
     border: 1px solid rgba(0,0,0,.12) !important;
     padding: 10px !important;
     box-shadow: 1px 1px 10px 6px #ededed !important;
+}
+.help-list{
+    background: #f1f0ef;
+    top: 50px;
+    left: 0px;
+    width: 100%;
+    z-index: 2;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: 400;
+}
+.help-list a{
+    color: black;
+}
+.restaurant-advice-list a div{
+    padding: 0px 38px;
+    cursor: pointer;
+}
+.restaurant-advice-list a div:hover{
+    border-radius: 3px;
+    background-color: #da3743;
+}
+.restaurant-advice-list div:hover{
+    color: #fff !important;
+}
+
+.restaurant-advice-list a:hover{
+    text-decoration: none !important;
+}
+.list-pagination{
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.active-page{
+    color: black !important;
 }
 
 @media screen and  (min-width: 1200px){
@@ -318,7 +378,7 @@
          font-weight: 500;
     }
     .restaurant-dropdown-featured{
-         padding: 0.3rem 6.5rem 0.3rem 0.5rem;
+        padding: 0.3rem 6.5rem 0.3rem 0.5rem;
     }
      
 }

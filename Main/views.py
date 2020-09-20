@@ -75,6 +75,6 @@ class CitiesPage(ListView):
     model = City
     template_name = 'cities-page.html'
 
-    def get_context_data:
+    # def get_context_data:
 
 
