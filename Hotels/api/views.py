@@ -42,31 +42,24 @@ class HotelListView(APIView):
         selectedChildCount = data.get('selectedChildCount')
         filtered_hotels = Hotel.objects.all()
         if cityName :
-            filtered_hotels=Hotel.objects.filter(city__name__icontains=cityName).distinct()
-            print('AAAAA111111',filtered_hotels)
-        #     filtered_hotels=Hotel.objects.filter(hotel_amenities__in=[hotel_amenity for hotel_amenity in
-        # data.get('hotel_amenities')])
+            filtered_hotels=filtered_hotels.filter(city__name__icontains=cityName).distinct()
         if selectedBed:
             filtered_hotels = filtered_hotels.filter(room_type__beds__count=selectedBed).distinct()
-            print('AAAAA222222222', filtered_hotels)
         if selectedChildCount:
-            filtered_hotels = filtered_hotels.filter(room_type__child_count__count=selectedChildCount)
-            print('AAAAA33333333333', filtered_hotels)
+            filtered_hotels = filtered_hotels.filter(room_type__child_count__count=selectedChildCount).distinct()
         if minPrice:
-            filtered_hotels=filtered_hotels.filter(min_price__gte=minPrice)
-            print('AAAAA4444444444444444', filtered_hotels)
+            filtered_hotels=filtered_hotels.filter(min_price__gte=minPrice).distinct()
         if maxPrice:
-            filtered_hotels=filtered_hotels.filter(min_price__lte=maxPrice)
-            print('AAAAA555555555555555', filtered_hotels)
+            filtered_hotels=filtered_hotels.filter(min_price__lte=maxPrice).distinct()
         if hotelAmenities:
-            filtered_hotels=filtered_hotels.filter(hotel_amenity__name__in=hotelAmenities)
-            print('AAAAA6666666666666666', filtered_hotels)
+            for hotelAmenity in hotelAmenities:
+                filtered_hotels = filtered_hotels.filter(hotel_amenity__name=hotelAmenity)
         if roomAmenities:
-            filtered_hotels=filtered_hotels.filter(room_amenity__name__in=roomAmenities)
-            print('AAAA77777777777777777', filtered_hotels)
+            for roomAmenity in roomAmenities:
+                filtered_hotels=filtered_hotels.filter(room_amenity__name=roomAmenity)
         print(filtered_hotels)
         hotels_count = filtered_hotels.count()
-        hotel_count_for_each_page = 3
+        hotel_count_for_each_page = 5
         page_count = math.ceil(hotels_count/hotel_count_for_each_page)
         page_range = range(1,page_count+1)
 
@@ -74,7 +67,7 @@ class HotelListView(APIView):
         print('BBBBBBBBBBBBBBBBBBBBBBBBBBBBB',page)
         if isinstance(page, str) and page.isdigit():
             page = int(page)
-        hotels_for_each_page = filtered_hotels[(page-1)*3:page*3]
+        hotels_for_each_page = filtered_hotels[(page-1)*5:page*5]
         serializered_hotels = HotelSerializer(hotels_for_each_page,many=True)
         return Response({
             'filtered_hotels': serializered_hotels.data,

@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static hotel_tags %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/saved_hotels.css' %}">
+{% endblock%}
+{% block content %}
+
+
+
+<div class="row main-div">
+    <div class="col-3">
+        <div class="row">
+            <div class="col-12">
+                <ul class="list-group">
+                    <li class="list-group-item text-muted" contenteditable="false">Profile</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">Name: </strong></span> Joaquin Buenaobra</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">Medical License Number: </strong></span> MNL09-F1SK5</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">Address: </strong></span> Ermita, Manila</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">Email: </strong></span> "jwbuenaobra@hotmail.com"</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">Birthday: </strong></span>3 May 1981</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">Age: </strong></span>37</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">Sex: </strong></span>M</li>
+                    <li class="list-group-item text-muted" contenteditable="false">Contact Details</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">Telephone Number: </strong></span>       514-1132</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">Cellphone Number: </strong></span>09159092245</li>
+                    
+                </ul>
+
+              
+                <ul class="list-group">
+                    <li class="list-group-item text-muted">PATIENT LIBRARY<i class="fa fa-dashboard fa-1x"></i>
+        
+                    </li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class=""><a href="https://bootsnipp.com/user/snippets/Gavb2">Justine Tan</a></strong></span></li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class=""><a href="#">Chris Poernomo</a></strong></span></li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class=""><a href="#">Warren Monsod</a></strong></span> </li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class=""><a href="#">Zysa del Mundo</a></strong></span></li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class=""><button type="button" class="btn btn-info">Schedule Patient</strong></span></li>
+                </ul>
+            </div>
+        </div>
+        <!--left col-->
+        
+    </div>
+    
+    <div class="col-8  mt-3">
+        {% for hotel in hotels %}
+        <div class="card mb-3 p-3"
+            style="max-width: 100%;border-color: #5bbaff;box-shadow: 0 0 10px #5bbaff;background-color: #ebf3ff;">
+            <div class="row no-gutters">
+                <div class="col-md-3">
+                    <img class="content-image"
+                        src="{{hotel.main_image.url}}"
+                        class="card-img" alt="...">
+                </div>
+                <div class="col-md-6">
+                    <div class="card-body">
+                        <h6 class="card-title text-primary mb-1" style="font-weight: bold;">{{hotel.name}}</h6>
+                        <div class="d-flex align-items-center mb-3 ">
+                            {% get_star_count hotel.rating as stars %}
+                            {{stars|safe}}
+                        </div>
+                        <p class="card-text" style="font-size: 12px;line-height: 18px;">{{hotel.short_description}}</p>
+                        <p class="card-text"><small class="text-muted">{{hotel.name_description}}</small>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="d-flex flex-column justify-content-between h-100">
+                        <div class="d-flex align-items-center justify-content-end p-2">
+                            <div class="d-flex flex-column mr-2" style="line-height:5px;">
+                                <h6>Very good</h6>
+                                <small>75 Reviews</small>
+                            </div>
+                            <div class="rating-count">{{hotel.rating}}</div>
+                        </div>
+                        <div class="d-flex flex-column justify-content-end p-2">
+                            <span class="text-right" style="font-size: 16px;">Price for night
+                                {{hotel.min_price}}$</span>
+                            <a href="{% url 'hotels_app:hotels-single' hotel.slug %}"  type="button" class="btn btn-danger slugs-anchor"
+                                style="font-size:14px; color: white;">Reserve</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="row mt-5">
+            <div class="col text-center">
+                <div class="block-27">
+                    <ul class="d-flex align-items-center justify-content-center pagi-ul">
+                        {% if page_obj.has_previous %}
+                            <li style="list-style: none;"><a href="?page={{ page_obj.previous_page_number }}">&lt;</a></li>
+                        {% endif %}
+                        {% for page in page_obj.paginator.page_range %}
+                            {% if page == page_obj.number %}
+                                <li class="active" style="list-style: none;"><span>{{page}}</span></li>
+                            {% else %}
+                                 <li style="list-style: none;"><a href="?page={{page}}">{{page}}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        
+                        {% if page_obj.has_next %}
+                            <li style="list-style: none;"><a href="?page={{ page_obj.next_page_number }}">&gt;</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+{% include 'includes/subscribers.html' %}
+{% endblock %}

@@ -112,7 +112,7 @@ function loadAllData(data) {
                     hotel_rating_stars.innerHTML +='<span class="fa fa-star"> </span>'
                 }
                 let hotel_long_description = document.createElement('p')
-                hotel_long_description.innerText=hotel.long_description
+                hotel_long_description.innerText=hotel.short_description
                 hotel_long_description.classList.add('card-text', 'hotel-long-desc-js')
                 let hotel_name_description_parent = document.createElement('p')
                 hotel_name_description_parent.classList.add('card-text')
@@ -172,6 +172,7 @@ function loadAllData(data) {
                 page_numbers.href=`?page=${i}`
                 document.querySelector('.js-pagination').appendChild(page_numbers)
                 page_numbers.classList.add('m-2','pagination-numbers-js')
+
                 page_numbers.addEventListener('click',function(){
                     all_data['page']=this.innerText
                     loadAllData(all_data)

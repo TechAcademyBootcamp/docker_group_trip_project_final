@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{% static 'css/hotel-review.css' %}">
 {% endblock%}
 {% block content %}
-<form method="POST,GET" class="big-form" >
+<form method="POST" class="big-form" >
     {% csrf_token %}
     <section class="pb-5 pt-3">
         <div class="container">
@@ -19,43 +19,43 @@
                             <div>
                                 <span class="texts">Name Surname</span>
                             </div>
-                            <h6 class="my-0 texts">{{user.reservations.all.1.hotel.name}}</h6>
+                            <h6 class="my-0 texts">{{reservation.user.name}} {{reservation.user.surname}}</h6>
                         </li>
                         <li class="list-group-item d-flex justify-content-between lh-condensed reservation-info">
                             <div>
                                 <span class="texts">Hotel name</span>
                             </div>
-                            <h6 class="my-0 texts">{{room_type.title}}</h6>
+                            <h6 class="my-0 texts">{{reservation.hotel.name}}</h6>
                         </li>
                         <li class="list-group-item d-flex justify-content-between lh-condensed reservation-info">
                             <div>
                                 <span class="texts">Room type</span>
                             </div>
-                            <h6 class="my-0 texts">{{room_type.description}}</h6>
+                            <h6 class="my-0 texts">{{reservation.room_type.title}}</h6>
                         </li>
                         <li class="list-group-item d-flex justify-content-between lh-condensed reservation-info">
                             <div>
                                 <span class="texts">From </span>
                             </div>
-                            <h6 class="my-0 first-date texts">{{request.GET.first_date}}</h6>
+                            <h6 class="my-0 first-date texts">{{reservation.reservation_start_date}}</h6>
                         </li>
                         <li class="list-group-item d-flex justify-content-between lh-condensed reservation-info">
                             <div>
                                 <span class="texts">To</span>
                             </div>
-                            <h6 class="my-0 second-date texts">{{request.GET.second_date}}</h6>
+                            <h6 class="my-0 second-date texts">{{reservation.reservation_fin_date}}</h6>
                         </li>
                         <li class="list-group-item d-flex justify-content-between lh-condensed reservation-info">
                             <div>
                                 <span class="texts">Day count</span>
                             </div>
-                            <h6 class="my-0 price-for-night">{{room_type.price}}</h6>
+                            <h6 class="my-0 price-for-night texts">{{reservation.day_count}}</h6>
                         </li>
 
                         <li class="list-group-item d-flex justify-content-between rsv-inf">
                             <span class="texts" style="font-weight: bold;padding: 7px 0px;">Total Price</span>
-                            <strong class="total-price" style="font-weight: bold;"
-                                data-sum="{{request.GET.total_days}}"></strong>
+                            <strong class="total-price texts" style="font-weight: bold;"
+                                data-sum="{{request.GET.total_days}}">{{reservation.price}}</strong>
                         </li>
                     </ul>
 
@@ -71,30 +71,31 @@
                         <table>
                             <tr>
                                 <th class="first-col"></th>
-                                <th>Excellent</th>
-                                <th>Good</th>
-                                <th>Fair</th>
-                                <th>Poor</th>
                                 <th>Bad</th>
+                                <th>Poor</th>
+                                <th>Fair</th>
+                                <th>Good</th>
+                                <th>Excellent</th>
                             </tr>
                             {% for review_field in review_fields %}
                             <tr>
                                 <td class="first-col">{{review_field.title}}</td>
-                                <td><input class="radio-input" required='True' type="radio" value="5" name="{{review_field.title}}" />
-                                </td>
-                                <td><input class="radio-input " type="radio" value="4" name="{{review_field.title}}" />
-                                </td>
-                                <td><input class="radio-input " type="radio" value="3" name="{{review_field.title}}" />
+                                <td><input class="radio-input" required='True' type="radio" value="1" name="{{review_field.title}}" />
                                 </td>
                                 <td><input class="radio-input " type="radio" value="2" name="{{review_field.title}}" />
                                 </td>
-                                <td><input class="radio-input " type="radio" value="1" name="{{review_field.title}}" />
+                                <td><input class="radio-input " type="radio" value="3" name="{{review_field.title}}" />
+                                </td>
+                                <td><input class="radio-input " type="radio" value="4" name="{{review_field.title}}" />
+                                </td>
+                                <td><input class="radio-input " type="radio" value="5" name="{{review_field.title}}" />
                                 </td>
                             </tr>
 
                             {% endfor %}
-                            <input type="hidden" value="{{user.reservations.all.1.hotel.name}}" name="hotel-name">
-                            <input type="hidden" value="{{user.email}}" name="user-email">
+                            <input type="hidden" value="{{reservation.hotel.name}}" name="hotel-name">
+                            <input type="hidden" value="{{reservation.user.name}}" name="user-email">
+                            <input type="hidden" value="{{reservation.id}}" name="reservation">
 
                         </table>
                 </div>

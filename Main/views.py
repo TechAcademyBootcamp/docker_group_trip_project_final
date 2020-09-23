@@ -37,6 +37,13 @@ class ContactSubjectView(CreateView):
     # http_method_names = ('post',)
     success_url = reverse_lazy('main:home')
 
+    # def post(self, request, *args, **kwargs):
+    #     self.object = None
+    #     return super().post(request, *args, **kwargs)
+    #
+    # def form_valid(self,form):
+    #     return super().form_valid(form)
+
 class ContactPageView(TemplateView):
     template_name = 'contact.html'
 

@@ -5,6 +5,7 @@ from Hotels.tools.slug_generator import slugify
 from datetime import datetime
 from django.urls import reverse_lazy
 
+
 class RoomTypeBeds(models.Model):
     #information
     count = models.PositiveIntegerField('Count')
@@ -104,7 +105,6 @@ class HotelImages(models.Model):
     #information
     image = models.ImageField('Image',upload_to='images/hotelImages')
 
-
     #relations
     hotel=models.ForeignKey(Hotel,verbose_name='Hotel images',on_delete=models.CASCADE,db_index=True,related_name='hotel_images')
 
@@ -113,9 +113,10 @@ class HotelImages(models.Model):
         verbose_name_plural = 'HotelImages'
 
     def __str__(self):
-        return self.hotel
+        return self.hotel.name
 
 class Reservation(models.Model):
+    #information
     reservation_start_date = models.DateTimeField()
     reservation_fin_date = models.DateTimeField()
     price = models.IntegerField('Price')
@@ -137,21 +138,6 @@ class Reservation(models.Model):
         return self.hotel.name
 
 
-# class Rating(models.Model):
-#     #information
-#     point = models.PositiveSmallIntegerField()
-#
-#     #relations
-#     hotel = models.ForeignKey(Hotel,verbose_name='Rating',on_delete=models.CASCADE,db_index=True,related_name='ratings')
-#     user = models.ForeignKey(User, verbose_name='Rating', on_delete=models.CASCADE, db_index=True,
-#                                 related_name='ratings')
-#
-#     class Meta:
-#         verbose_name = 'Rating'
-#         verbose_name_plural = 'Ratings'
-#
-#     def __str__(self):
-#         return self.hotel_id
 
 class Reviews(models.Model):
     #information
@@ -159,15 +145,8 @@ class Reviews(models.Model):
 
 
     #relations
-    # hotel = models.ForeignKey(Hotel, verbose_name='Review of hotel', on_delete=models.CASCADE, db_index=True,
-    #                              related_name='reviews')
-    # user = models.ForeignKey(User, verbose_name='Review of user', on_delete=models.CASCADE, db_index=True,
-    #                             related_name='reviews')
-    # review_fields = models.ManyToManyField('ReviewFields',verbose_name='Rating of review',
-    #                              related_name='reviews')
     reservation = models.ForeignKey(Reservation,verbose_name='Reservation', on_delete=models.CASCADE, db_index=True,
                                  related_name='reviews')
-    # review_rating = models.ManyToManyField('ReviewRating',verbose_name='Review rating',related_name='reviews')
 
     #moderation
     created_at = models.DateTimeField(auto_now_add = True)
@@ -182,6 +161,7 @@ class Reviews(models.Model):
 class PoliciesSubFeatures(models.Model):
     # information
     title = models.CharField('Title', max_length=100)
+
     #relations
     policies = models.ForeignKey('Policies', verbose_name='Policies', on_delete=models.CASCADE,
                                  db_index=True,
@@ -222,7 +202,6 @@ class ReviewRating(models.Model):
     rating_point = models.PositiveSmallIntegerField('Review Rating',default=5)
 
     #relations
-    # review = models.ManyToManyField(Reviews,verbose_name='Review',related_name='reviewRating')
     review_field = models.ManyToManyField(ReviewFields, verbose_name='Review field', related_name='reviewRating')
     hotel = models.ForeignKey(Hotel, verbose_name='Hotel', on_delete=models.CASCADE,
                                  db_index=True,
@@ -232,7 +211,7 @@ class ReviewRating(models.Model):
         verbose_name_plural = 'ReviewRatings'
 
     def __str__(self):
-        return f'{self.rating_point}'
+        return f'{self.hotel.name}'
 
 class ChildCount(models.Model):
     #information
@@ -244,3 +223,19 @@ class ChildCount(models.Model):
 
     def __str__(self):
         return str(self.count)
+
+
+class SavedArticle(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='saved_articles',)
+    hotel =models.ForeignKey(Hotel, on_delete=models.CASCADE, related_name='hotel_saved_articles', null=True, blank=True)
+
+    # moderations
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Saved Article'
+        verbose_name_plural = 'Saved Articles'
+
+    def __str__(self):
+        return f"{self.user} hotel: {self.hotel.name}"
