@@ -1,5 +1,4 @@
-const api_url = document.querySelector('#url').dataset.url;
-console.log(api_url)
+
 const all_data = {
 
 }
@@ -72,7 +71,8 @@ function loadAllData(data) {
             console.log(response)
             // var link = document.querySelector('.slugs-anchor').href
             document.querySelector('.removed-data').innerHTML = ''
-            for (hotel of response) {
+            console.log(response.page_range)
+            for (hotel of response.filtered_hotels) {
                 // let div_row = document.createElement('div')
                 // div_row.classList.add('row')
                 let div_col_12 = document.createElement('div')
@@ -112,7 +112,7 @@ function loadAllData(data) {
                     hotel_rating_stars.innerHTML +='<span class="fa fa-star"> </span>'
                 }
                 let hotel_long_description = document.createElement('p')
-                hotel_long_description.innerText=hotel.long_description
+                hotel_long_description.innerText=hotel.short_description
                 hotel_long_description.classList.add('card-text', 'hotel-long-desc-js')
                 let hotel_name_description_parent = document.createElement('p')
                 hotel_name_description_parent.classList.add('card-text')
@@ -153,9 +153,10 @@ function loadAllData(data) {
                 right_section_sub_div_secondChild.classList.add('d-flex', 'flex-column', 'justify-content-end', 'p-2')
                 right_section_sub_div.appendChild(right_section_sub_div_secondChild)
                 let price = document.createElement('span')
-                price.innerText=`Price for night ${hotel.room_type[0].price}$`
+                price.innerText=`Price for night ${hotel.min_price}$`
                 price.classList.add('text-right', 'price-in-js')
                 let reserve_button = document.createElement('a')
+                reserve_button.href = hotel.my_url
                 reserve_button.classList.add('btn', 'btn-danger', 'reserve-button-js')
                 reserve_button.setAttribute('type', 'button')
                 reserve_button.innerText='Reserve'
@@ -163,6 +164,21 @@ function loadAllData(data) {
                 right_section_sub_div_secondChild.appendChild(price)
                 right_section_sub_div_secondChild.appendChild(reserve_button)
             }
+            document.querySelector('.old-pagi').innerHTML=''
+            document.querySelector('.js-pagination').innerHTML=''
+            for (var i =1;i<=response.page_range;i++){
+                page_numbers=document.createElement('span')
+                page_numbers.innerText=i
+                page_numbers.href=`?page=${i}`
+                document.querySelector('.js-pagination').appendChild(page_numbers)
+                page_numbers.classList.add('m-2','pagination-numbers-js')
+
+                page_numbers.addEventListener('click',function(){
+                    all_data['page']=this.innerText
+                    loadAllData(all_data)
+                })
+            }
+            
         },
         error: function (error) {
             console.log(error)

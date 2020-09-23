@@ -1,0 +1,14 @@
+.main-div{
+    background-color: rgb(211, 243, 243) !important;
+}
+.pagi-ul li{
+    text-decoration: none;
+    font-weight: bold;
+    /* background-color: grey; */
+    /* border-radius: 50px; */
+    font-size: 20px;
+    text-decoration: none;
+    color: rgb(145, 145, 255);
+    cursor: pointer;
+    margin: 0px 5px;
+}

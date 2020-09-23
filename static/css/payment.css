@@ -38,3 +38,9 @@ input[type="radio"] {
 .Sign-methods{
     padding: 10px 10px !important;
 }
+.reservation-info{
+    padding: 21px 18px !important;
+}
+.rsv-inf{
+    padding: 22px 18px;
+}

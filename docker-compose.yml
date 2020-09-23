@@ -45,3 +45,25 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: 'agil@mail.ru'
       PGADMIN_DEFAULT_PASSWORD: '12345'
+    
+  # celery: 
+  #   build: 
+  #     context: .
+  #     dockerfile: celery.dockerfile
+  #   volumes:
+  #     - .:/code
+  #   links:
+  #     # - redis
+  #     - postgres
+  #   depends_on: 
+  #     # - "redis"
+  #     - "postgres"
+  #   env_file: ./.env
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    # command: redis-server --requirepass $REDIS_PASSWORD
+    restart: "always"
+    # env_file: ./.env

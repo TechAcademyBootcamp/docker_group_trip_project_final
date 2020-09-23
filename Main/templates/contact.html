@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="col-12 col-lg-6 py-2">
-                <form action="" class=" p-5 contact-form" method="POST">
+                <form action="{% url 'main:contact-form' %}" class=" p-5 contact-form" method="POST">
                     {% csrf_token %}
                     {% for field in form %}
                    <div class="form-group p-2">

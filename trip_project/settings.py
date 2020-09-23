@@ -36,13 +36,18 @@ PROD = not DEBUG
 ALLOWED_HOSTS = ['*']
 
 
-
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'tech.academy.user2@gmail.com'
+EMAIL_HOST_PASSWORD = 'fsqcyadagqipthcz'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 # Application definition
 
 INSTALLED_APPS = [
     'jet.dashboard',
     'jet',
     'django.contrib.sites',
+    'stripe',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -58,6 +63,7 @@ INSTALLED_APPS = [
     'Tours',
     'Account',
     'Places',
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [
@@ -140,7 +146,12 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Baku'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
@@ -194,3 +205,6 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CORS_ALLOW_ALL_ORIGINS= True
+
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51HRkMbF1lulHJpCgiLbhB9twJlb0eKfKpoYysi83t21e0AoggRB1Uk4YWRCnpz9W7gnpIYbx6rn77wHVKVl3YJcv00ilvU0tE0'
+STRIPE_SECRET_KEY = 'sk_test_51HRkMbF1lulHJpCgsfHy0nItoH7jlFlbyrSVP2IvlWMWo8V8pb1TcRHKHMqSbBCLIi1Vec5T7AVoMlLENUIXHJxw00CIwUA54d'

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from Hotels.models import Hotel,HotelAmenities,HotelImages,RoomType,RoomTypeBeds,Reservation, \
-ReviewRating,Reviews,PoliciesSubFeatures,Policies,ReviewFields,ChildCount,RoomAmenities
+ReviewRating,Reviews,PoliciesSubFeatures,Policies,ReviewFields,ChildCount,RoomAmenities,SavedArticle
 # Register your models here.
 admin.site.register(Hotel)
 admin.site.register(HotelAmenities)
@@ -15,3 +15,4 @@ admin.site.register(PoliciesSubFeatures)
 admin.site.register(Policies)
 admin.site.register(ChildCount)
 admin.site.register(RoomAmenities)
+admin.site.register(SavedArticle)
