@@ -179,10 +179,10 @@ $(document).ready(function () {
                             let div_star = document.createElement('div')
                             for_rating.appendChild(div_star)
                             
-                            for(let i =0;i<parseInt(response.rating);i++){
+                            for(let i =0;i<parseInt(response.overall_rating);i++){
                                 div_star.innerHTML +='<span class="fa fa-star checked"> </span>'
                             }
-                            for(let i=0;i<(5-parseInt(response.rating));i++){
+                            for(let i=0;i<(5-parseInt(response.overall_rating));i++){
                                 div_star.innerHTML  +='<span class="fa fa-star"> </span>'
                             }
 

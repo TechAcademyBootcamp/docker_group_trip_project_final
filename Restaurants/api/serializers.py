@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from Restaurants.models import Restaurants , OptionListTypeCheckbox , OptionsTypeCheckbox , OptionListTypeRadio , OptionsTypeRadio , RestaurantImages,RestaurantMenuImages
+from Restaurants.models import Restaurants , OptionListTypeCheckbox , OptionsTypeCheckbox , OptionListTypeRadio , OptionsTypeRadio ,\
+     RestaurantImages,RestaurantMenuImages, ToEatReason, ReviewRestaurant
 from Main.models import City
 from Account.models import User
 from dataclasses import dataclass, Field
@@ -67,7 +68,6 @@ class RestaurantSerializer(serializers.ModelSerializer):
         fields = (
             'user',
             'name',
-            'rating',
             'city',
             'checkbox_options',
             'radio_options',
@@ -88,6 +88,11 @@ class RestaurantSerializer(serializers.ModelSerializer):
             'created_at',
             'updated_at',
             'slug',
+            'food_rating',
+            'service_rating',
+            'value_rating',
+            'atmosphere_rating',
+            'overall_rating',
         )
 
     def to_representation(self, instance):
@@ -111,4 +116,33 @@ class RestaurantMenuImagesSerializer(serializers.ModelSerializer):
         fields = (
             'restaurant',
             'images',
+        )
+
+class ToEatReasonSerializer(serializers.ModelSerializer):
+    restaurant = RestaurantSerializer()
+
+    class Meta:
+        model = ToEatReason
+        fields = (
+            'restaurant',
+            'reason',
+            'reason_images',
+            'reason_rating',
+            'reason_short_description',
+        )
+
+class ReviewRestaurantSerializer(serializers.ModelSerializer):
+    restaurant = RestaurantSerializer()
+    user = AuthorSerializer()
+
+    class Meta:
+        model = ReviewRestaurant
+        fields = (
+            'user',
+            'restaurant',
+            'comment',
+            'food_rating',
+            'service_rating',
+            'value_rating',
+            'atmosphere_rating',
         )

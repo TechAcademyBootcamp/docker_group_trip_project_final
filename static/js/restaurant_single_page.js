@@ -1,25 +1,8 @@
 $(document).ready(function () {
 
-    document.querySelectorAll('.menu-list').forEach(function(menu){
-        menu.addEventListener('click',function(){
-        console.log('2')
-        document.querySelectorAll('.all-menu-images').forEach(function(e){
-            new PhotoViewer([{
-                src: e.getAttribute('src'),
-              },]);
-        
-            });
-        })
-    })
-    //     new PhotoViewer([{
-    //       src: 'https://farm1.staticflickr.com/313/31812080833_297acfbbd9_z.jpg',
-    //     }, {
-    //       src: 'https://farm4.staticflickr.com/3804/33589584740_b0fbdcd4aa_z.jpg',
-    //     }, {
-    //       src: 'https://farm1.staticflickr.com/470/31340603494_fb7228020d_z.jpg',
-    //     }]);
-  
-    //   });
+    $("#review-submit").submit(function(e) {
+        e.preventDefault();
+    });
 
     $('.all-photos').click(function(){
         console.log('2')
@@ -32,6 +15,7 @@ $(document).ready(function () {
         document.querySelector('.all-photos-page').classList.add('d-none');
         document.querySelector('body').style.overflowY='scroll'
       });
+
     
     })
 
@@ -61,4 +45,6 @@ document.onclick = function (e){
         }
 
     }
+
+
 

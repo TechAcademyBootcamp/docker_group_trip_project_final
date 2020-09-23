@@ -144,7 +144,7 @@
                     <div>
 
                         <span class="count-restaurants">
-                            {{information.restaurant}} {% if information.restaurant == 1 %} Restaurant
+                            {{information.restaurant}} {% if information.restaurant <= 1 %} Restaurant
                             {% elif information.restaurant > 1 %} Restaurants {% endif %}
                         </span>
                     </div>
@@ -177,8 +177,8 @@
                                         class="card-title m-0 restaurant-name">{{restaurant.name}}</a>
                                     <div class="for-rating">
                                         <div>
-                                            {% get_star_count restaurant.rating as stars %}
-                                            {{stars|safe}}
+                                                {% review_part restaurant.id as food_review %}
+                                                {{food_review.star_html_all|safe}}
                                         </div>
                                     </div>
                                     <small class="restaurant-city-name">{{restaurant.city}}</small>
@@ -211,7 +211,9 @@
 
                         {% for page in page_obj.paginator.page_range %}
                         {% if page == page_obj.number %}
+                        {% if information.restaurant > 0 %}
                         <li class="active-page pages " style="color:#077fff" data-page='{{page}}'><span>{{page}}</span></li>
+                        {% endif %}
                         {% else %}
                         <li><span style="color:#077fff" class="pages" data-page='{{page}}'>{{page}}</span></li>
                         {% endif %}

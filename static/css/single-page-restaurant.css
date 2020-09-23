@@ -482,6 +482,10 @@ font-family: TripAdvisor_Regular !important;
 .comment-user{
   white-space: nowrap;
 }
+.review-form select{
+  width: 100%;
+  background: white;
+}
 
 @media (max-width:1273px){
   .reason-img{
