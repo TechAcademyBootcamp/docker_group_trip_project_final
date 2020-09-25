@@ -24,8 +24,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('Main.urls',namespace='main')),
     path('tours/',include('Tours.urls', namespace='tours')),
+    path('account/',include('Account.urls', namespace='account')),
     path('api/v1.0/',include('Main.api.urls',namespace='api_main')),
     path('hotels/',include('Hotels.urls',namespace='hotels_app')),
+    path('', include('social_django.urls', namespace="social")),
     path('restaurants/',include('Restaurants.urls',namespace='restaurants_app')),
     path('places/',include('Places.urls',namespace='places_app')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

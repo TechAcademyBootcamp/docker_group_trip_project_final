@@ -4,6 +4,7 @@ from Main.models import City
 from tools.slug_generator import slugify
 from django.urls import reverse_lazy
 from datetime import datetime
+from django.core.paginator import Paginator
 USER_MODEL = get_user_model()
 
 class Tours(models.Model):
@@ -83,12 +84,14 @@ class TourImages(models.Model):
 
 
 class Inclusion(models.Model):
-    tours  = models.ForeignKey(Tours, on_delete=models.CASCADE , db_index=True , related_name="inclusion")
+    tours  = models.OneToOneField(Tours, on_delete=models.CASCADE , db_index=True , related_name="inclusion")
 
     meals = models.CharField('Yemekler', max_length=120)
     transport = models.CharField('Neqliyyat', max_length=250) 
     acommodation = models.CharField('Qonaqlama',max_length=120)
-    activites = models.CharField('Oyunlar', max_length=250)
+    
+
+
 
 
 class WhyYouLove(models.Model):
@@ -104,10 +107,24 @@ class RightRorYou(models.Model):
 class ImportantNotes(models.Model):
     tours  = models.ForeignKey(Tours, on_delete=models.CASCADE , db_index=True , related_name="notes")
 
-    
+    note_title = models.CharField('Not bashligi', max_length=1000)
     notes = models.CharField('Qeydler',max_length=1000)
 
 class Activites(models.Model):
     inclusion  = models.ForeignKey(Inclusion, on_delete=models.CASCADE , db_index=True , related_name="activities")
-
+    
     avtivity = models.TextField('Eylence')
+
+
+
+class SavedArticleTour(models.Model):
+    user = models.ForeignKey(USER_MODEL, on_delete=models.CASCADE, related_name='tour_saved_articles',)
+    tour =models.ForeignKey(Tours, on_delete=models.CASCADE, related_name='tour_saved_articles', null=True, blank=True)
+    # moderations
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    class Meta:
+        verbose_name = 'Saved Article'
+        verbose_name_plural = 'Saved Articles'
+    def __str__(self):
+        return f"{self.user} tour: {self.tour.name}"

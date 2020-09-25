@@ -41,10 +41,10 @@ class MainSearchAPIView(APIView):
 
     
 
-        city_serializer = CitySerializer(city_query, many=True)
+        city_serializer = CitySerializer(city_query, many=True,context={'request':request})
         hotel_serializer = HotelSerializer(hotel_query, many=True)
-        restaurant_serializer = RestaurantSerializer(restaurant_query, many=True)
-        tour_serializer = TourSerializer(tour_query, many=True)
+        restaurant_serializer = RestaurantSerializer(restaurant_query, many=True,context={'request':request})
+        tour_serializer = TourSerializer(tour_query, many=True,context={'request':request})
 
         # data = {
         #     "cities": city_serializer.data,

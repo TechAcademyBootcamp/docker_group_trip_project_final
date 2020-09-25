@@ -295,6 +295,7 @@
     border-radius: 5px;
     transition: 0.3s ease all;
     text-decoration: none;
+    white-space: nowrap;
 }
 .Sign-methods:hover{
     background: #474747 !important;

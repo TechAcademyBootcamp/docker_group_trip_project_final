@@ -203,6 +203,85 @@ body{
         text-decoration: none;
         color:black;
     }
-    .active span{
-        color:blue;
+    
+
+    .see{
+        display: flex;
+        justify-content: space-between;
+    }
+    .see a{
+        background-color: red;
+        text-decoration: none;
+        color: white;
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        width: 70px;
+        height: 30px;
+        align-items: center;
+    }
+    .active-page{
+        background: #1F1F1F !important;
+        color: #fff !important;
+        border: 1px solid transparent !important;
+        text-align: center !important;
+        display: inline-block !important;
+        width: 40px !important;
+        height: 40px !important;
+        line-height: 40px !important;
+        border-radius: 50% !important;
+    }
+    .page{
+        font-size: 20px !important;
+        cursor: pointer;
+        margin: 2px;
+        color: black !important;
+    }
+    .act-num{
+        cursor: pointer;
+        background-color: white !important;
+        color: black !important;
+        border-radius: 50% !important;
+        border: 1px solid black !important;
+        text-align: center !important;
+        display: inline-block !important;
+        width: 40px !important;
+        height: 40px !important;
+        line-height: 40px !important;
+        border-radius: 50% !important;
+    }
+    .act-num:hover{
+        background-color: black !important;
+        color: white !important;
+        border-radius: 50% !important;
+        border: 1px solid transparent !important;
+        text-align: center !important;
+        display: inline-block !important;
+        width: 40px !important;
+        height: 40px !important;
+        line-height: 40px !important;
+        border-radius: 50% !important;
+    }
+    .page{
+        background-color: black;
+        color: white
+        text-align: center;
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 50%;
+        border: 1px solid #E6E6E6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .page span{
+        color: white;
+    }
+    .page-numbers{
+        display: flex;
+    }
+    .block-27{
+        align-items: center;
     }

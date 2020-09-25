@@ -9,6 +9,7 @@ admin.site.register(Activites)
 admin.site.register(ImportantNotes)
 admin.site.register(RightRorYou)
 admin.site.register(WhyYouLove)
+admin.site.register(SavedArticleTour)
 
 class TourImageInline(admin.TabularInline):
     model = TourImages

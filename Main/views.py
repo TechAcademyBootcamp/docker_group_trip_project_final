@@ -2,11 +2,12 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.urls import reverse_lazy
 from Main.forms import SubscriberForm,ContactForm
-from django.views.generic import ListView,CreateView,TemplateView
+from django.views.generic import ListView,CreateView,TemplateView,DetailView
 from Main.models import City,ContactInfo,AboutProject
 from Hotels.models import Hotel
 from Restaurants.models import Restaurants
 from Tours.models import Tours
+from django.core.paginator import Paginator
 # Create your views here.
 
 class MainClassView(TemplateView):
@@ -75,16 +76,30 @@ class TermsOfUseView(TemplateView):
     template_name = 'terms.html'
 
 
-class CitySinglePage(ListView):
+class CitySinglePage(DetailView):
     model = City
     template_name = 'city_single_page.html'
 
 class CitiesPage(ListView):
     model = City
     template_name = 'cities-page.html'
-    def get_context_data(self, **kwargs):
+    paginate_by = 1
+    context_object_name = 'cities'
+
+    
+    def get_context_data(self,*args , **kwargs):
+        page = self.request.GET.get('page', 1) if self.request.GET.get('page', 1) != '' else 1
+        data = self.get_queryset()
         context = super().get_context_data(**kwargs)
-        context["cities"] = City.objects.all
+        if data:
+            paginator = Paginator(data, self.paginate_by)
+            results = paginator.page(page)
+            index = results.number - 1
+            max_index = len(paginator.page_range)
+            start_index = index - 5 if index >= 5 else 0
+            end_index = index + 5 if index <= max_index - 5 else max_index
+            context['page_range'] = list(paginator.page_range)[start_index:end_index]
+        
         return context
     
 

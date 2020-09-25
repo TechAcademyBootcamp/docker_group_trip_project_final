@@ -145,8 +145,8 @@ ul li{
 .for-sup sup{
     
     position: absolute;
-    top: 13px;  
-    left: 40px; 
+    top: 5px;  
+    left: 60px; 
 }
 .itinerary-plus{
     display: flex;
@@ -231,4 +231,12 @@ ul li{
 }
 .carousel-inner{
     height: 350px;
+}
+.Wishlist{
+    text-decoration: none;
+    color: white;
+}
+.Wishlist:hover{
+    text-decoration: none;
+    color: white;
 }

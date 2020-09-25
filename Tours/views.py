@@ -1,6 +1,7 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect ,get_object_or_404
+from django.http import HttpResponse
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, ListView , DetailView
+from django.views.generic import TemplateView, ListView , DetailView , View
 from Tours.models import *
 from django.core.paginator import Paginator
 
@@ -31,17 +32,43 @@ class ToursSinglePage(DetailView):
     model = Tours
     template_name = 'tours_single_page.html'
     
-    def get_context_data(self,*args, **kwargs):
-        context = super().get_context_data(**kwargs)
-        # context["tours"] = Tours.objects.all()
-        context["images"] = TourImages.objects.all()
-        context["inclusion"] = Inclusion.objects.all()
-        context["activities"] = Activites.objects.all()
-        context["notes"] = ImportantNotes.objects.all()
-        context["whyyoulove"] = WhyYouLove.objects.all()
-        context["rightforyou"] = RightRorYou.objects.all()
-        print(context['tours'])
-        
-        return context
-    
+   
+class SavedTourView(View):
+    def get(self,*args,**kwargs):
+        tour_id = kwargs.get('pk')
+        print(tour_id)
+        message = 'Tour added to wishlist.'
+        tour = get_object_or_404(Tours,id=tour_id)
+        if self.request.user.is_authenticated:
+            save_tour,created= SavedArticleTour.objects.get_or_create(user=self.request.user,tour=tour)
+            if not created:
+                message='Tour was added already'
+            response = HttpResponse(message)
+        else:
+            saved_tours = self.request.COOKIES.get('saved_tours', '')
+            if str(tour_id) not in saved_tour.split(';'):
+                saved_tours += str(tour_id) + ";"
+            response = HttpResponse(message)
+            response.set_cookie('saved_tours', saved_tours)
+            # messages.success(self.request, message)
+        return response
+
+class SavedTourListView(ListView):
+    model = Tours
+    template_name = 'save_tours.html'
+    context_object_name = 'tours_list'
+    def get_queryset(self, ):
+        if self.request.user.is_authenticated:
+            user_saved_articles_ids = self.request.user.tour_saved_articles.values_list('tour__id', flat=True)
+            queryset = super().get_queryset().filter(id__in=user_saved_articles_ids)
+            print(queryset)
+            print(user_saved_articles_ids)
+            return queryset
+        else:
+            saved_tours = self.request.COOKIES.get('saved_tours')
+            if saved_hotels:
+                saved_tours_ids = [int(id) for id in saved_tours.split(';') if id and id != 0]
+                queryset = super().get_queryset()
+                return queryset.filter(id__in=saved_tours_ids)
+            return None
 

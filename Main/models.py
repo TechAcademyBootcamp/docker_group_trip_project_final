@@ -36,7 +36,7 @@ class City(models.Model):
 
     #information
     name = models.CharField('Name',max_length=40)
-    image = models.ImageField('Image',upload_to='images')
+    main_image = models.ImageField('Image',upload_to='images')
     slug = models.SlugField('slug', max_length=255, editable=False, unique=True)
 
     class Meta:
@@ -66,8 +66,8 @@ class Places(models.Model):
     location = models.CharField('Name',max_length=40)
     image = models.ImageField('Image',upload_to='images')
     description = models.TextField('Description')
-    latitude = models.DecimalField('Price',max_digits=6,decimal_places=2)
-    longtitude = models.DecimalField('Price', max_digits=6, decimal_places=2)
+    latitude = models.DecimalField('Latitude',max_digits=6,decimal_places=2)
+    longtitude = models.DecimalField('Longtitude', max_digits=6, decimal_places=2)
 
     class Meta:
         verbose_name = 'Places'

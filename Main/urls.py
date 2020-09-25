@@ -16,7 +16,6 @@ urlpatterns = [
     path('about-us/',AboutUsView.as_view(),name='about-us'),
     path('privacy/',PrivacyPolicyView.as_view(),name='privacy'),
     path('terms/',TermsOfUseView.as_view(),name='terms'),
-    path('<slug:slug>/',CitySinglePage.as_view(),name='city-detail'),
-    path('',CitiesPage.as_view(),name='cities_list')
-
+    path('cities/<slug:slug>/',CitySinglePage.as_view(),name='city-detail'),
+    path('cities/',CitiesPage.as_view(),name='cities_list')
 ]
