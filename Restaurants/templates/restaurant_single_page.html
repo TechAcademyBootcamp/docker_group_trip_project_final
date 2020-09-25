@@ -46,9 +46,9 @@
                     <div class="restaurant-save ml-1 d-sm-block d-none">Save</div>
                 </a>
                 <div class="save-share-border ml-2 mr-2 d-sm-block d-none"></div>
-                <a class=" d-flex align-items-center" style="cursor: pointer">
-                    <img src="{% static 'images/share.svg' %}" width="19px" height="18px;" alt="">
-                    <div class="restaurant-share ml-1 d-sm-block d-none">Share</div>
+                <a href="{% url 'restaurants_app:saved_wishlist' %}" class="d-flex align-items-center" style="cursor: pointer;text-decoration: none;color:black">
+                    <img src="{% static 'images/wish.svg' %}" width="19px" height="18px;" alt="">
+                    <div  class="restaurant-share ml-1 d-sm-block d-none">Wishlist</div>
                 </a>
             </div>
         </div>
@@ -534,9 +534,9 @@
                         </div>
                         <div class="inner-special-topic p-0 comment-user">{{review.user}}</div>
                     </div>
-                    <div class="col-sm-9 col-12 mt-sm-0 mt-1 text-sm-start text-center" style="padding: 0px 20px">
+                    <div class="col-sm-9 col-12 mt-sm-0 mt-1 text-sm-left text-center" style="padding: 0px 20px">
 
-                        <div class="d-flex align-items-center justify-content-sm-left justify-content-center"
+                        <div class="d-flex align-items-center justify-content-sm-start justify-content-center"
                             style="margin-bottom: 5px;">
                             {% review_overall review.food_rating review.service_rating review.value_rating review.atmosphere_rating as average %}
                             {{average|safe}}
@@ -555,56 +555,163 @@
                 <div class="col-12 review-form" style="padding: 0px 20px">
                     <form action="{% url 'restaurants_app:restaurants_review' %}" method="POST" class="review-form">
                         {% csrf_token %}
-                        <div class="col-12 mt-5 d-flex mb-1 align-items-center flex-wrap" style="font-weight: 400;">
-                            <span class="col-sm-3 col-12">{{form.comment.label}}</span>
-                            <span class="col-sm-9 col-12">{{form.comment}}</span>
+                        <div class="mt-5"></div>
+                        <div class="col-12 justify-content-between align-items-center d-flex mb-3 flex-wrap" style="font-weight: 400;">
+                            <span class="col-sm-3 col-12"></span>
+                            <div class="col-sm-9 d-flex justify-content-center">
+                                <div
+                                    class="col-2 style-radio-input d-flex justify-content-center align-items-center flex-column">
+                                    <div>Bad</div>
+                                </div>
+                                <div
+                                    class="col-2 style-radio-input d-flex justify-content-center align-items-center flex-column">
+                                    <div style="white-space: nowrap">Not Bad</div>
+                                </div>
+                                <div
+                                    class="col-2 style-radio-input d-flex justify-content-center align-items-center flex-column">
+                                    <div>Normal</div>
+                                </div>
+                                <div
+                                    class="col-2 style-radio-input d-flex justify-content-center align-items-center flex-column">
+                                    <div>Good</div>
+                                </div>
+                                <div
+                                    class="col-2 style-radio-input d-flex justify-content-center align-items-center flex-column">
+                                    <div>Perfect</div>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="col-12 justify-content-between align-items-center d-flex mb-1 flex-wrap"
                             style="font-weight: 400;">
                             <span class="col-sm-3 col-12">{{form.food_rating.label}}</span>
-                            <div class="col-sm-9 d-flex">
-                                <div class="col-2">
-                                    <div>Bad</div>
-                                    <div><input type="radio" value="1"></div>
+                            <div class="col-sm-9 d-flex justify-content-center">
+                                <div
+                                    class="col-2 style-radio-input d-flex justify-content-center align-items-center flex-column">
+                                    <div><input class="regular-radio food-rating" type="radio" value="1" name="food_rating"></div>
                                 </div>
-                                <div class="col-2">
-                                    <div>Not Bad</div>
-                                    <div><input type="radio" value="2"></div>
+                                <div
+                                    class="col-2 style-radio-input d-flex justify-content-center align-items-center flex-column">
+                                    <div><input class="regular-radio food-rating" type="radio" value="2" name="food_rating"></div>
                                 </div>
-                                <div class="col-2">
-                                    <div>Normal</div>
-                                    <div><input type="radio" value="3"></div>
+                                <div
+                                    class="col-2 style-radio-input d-flex justify-content-center align-items-center flex-column">
+                                    <div><input class="regular-radio food-rating" type="radio" value="3" name="food_rating"></div>
                                 </div>
-                                <div class="col-2">
-                                    <div>Good</div>
-                                    <div><input type="radio" value="4"></div>
+                                <div
+                                    class="col-2 style-radio-input d-flex justify-content-center align-items-center flex-column">
+                                    <div><input class="regular-radio food-rating" type="radio" value="4" name="food_rating"></div>
                                 </div>
-                                <div class="col-2">
-                                    <div>Perfect</div>
-                                    <div><input type="radio" value="5"></div>
+                                <div
+                                    class="col-2 style-radio-input d-flex justify-content-center align-items-center flex-column">
+                                    <div><input class="regular-radio food-rating" type="radio" value="5" name="food_rating"></div>
                                 </div>
 
 
 
                             </div>
-                            <!-- <span class="col-sm-9 col-12">{{form.food_rating}}</span> -->
+                            <div class="d-none"><input type="hidden" class="food-rating-form"
+                                    value="{{form.food_rating}}"></div>
+
                         </div>
                         <div class="col-12 justify-content-between align-items-center d-flex mb-1 flex-wrap"
                             style="font-weight: 400;">
                             <span class="col-sm-3 col-12">{{form.service_rating.label}}</span>
-                            <span class="col-sm-9 col-12">{{form.service_rating}}</span>
+                            <div class="col-sm-9 d-flex justify-content-center">
+                                <div
+                                    class="col-2 style-radio-input d-flex justify-content-center align-items-center flex-column">
+                                    <div><input class="regular-radio service-rating" type="radio" value="1" name="service_rating"></div>
+                                </div>
+                                <div
+                                    class="col-2 style-radio-input d-flex justify-content-center align-items-center flex-column">
+                                    <div><input class="regular-radio service-rating" type="radio" value="2" name="service_rating"></div>
+                                </div>
+                                <div
+                                    class="col-2 style-radio-input d-flex justify-content-center align-items-center flex-column">
+                                    <div><input class="regular-radio service-rating" type="radio" value="3" name="service_rating"></div>
+                                </div>
+                                <div
+                                    class="col-2 style-radio-input d-flex justify-content-center align-items-center flex-column">
+                                    <div><input class="regular-radio service-rating" type="radio" value="4" name="service_rating"></div>
+                                </div>
+                                <div
+                                    class="col-2 style-radio-input d-flex justify-content-center align-items-center flex-column">
+                                    <div><input class="regular-radio service-rating" type="radio" value="5" name="service_rating"></div>
+                                </div>
+
+
+
+                            </div>
+                            <div class="d-none"><input type="hidden" class="service-rating-form"
+                                value="{{form.service_rating}}"></div>
                         </div>
                         <div class="col-12 justify-content-between align-items-center d-flex mb-1 flex-wrap"
                             style="font-weight: 400;">
                             <span class="col-sm-3 col-12">{{form.value_rating.label}}</span>
-                            <span class="col-sm-9 col-12">{{form.value_rating}}</span>
+                            <div class="col-sm-9 d-flex justify-content-center">
+                                <div
+                                    class="col-2 style-radio-input d-flex justify-content-center align-items-center flex-column">
+                                    <div><input class="regular-radio value-rating" type="radio" value="1" name="value_rating"></div>
+                                </div>
+                                <div
+                                    class="col-2 style-radio-input d-flex justify-content-center align-items-center flex-column">
+                                    <div><input class="regular-radio value-rating" type="radio" value="2" name="value_rating"></div>
+                                </div>
+                                <div
+                                    class="col-2 style-radio-input d-flex justify-content-center align-items-center flex-column">
+                                    <div><input class="regular-radio value-rating" type="radio" value="3" name="value_rating"></div>
+                                </div>
+                                <div
+                                    class="col-2 style-radio-input d-flex justify-content-center align-items-center flex-column">
+                                    <div><input class="regular-radio value-rating" type="radio" value="4" name="value_rating"></div>
+                                </div>
+                                <div
+                                    class="col-2 style-radio-input d-flex justify-content-center align-items-center flex-column">
+                                    <div><input class="regular-radio value-rating" type="radio" value="5" name="value_rating"></div>
+                                </div>
+
+
+
+                            </div>
+                            <div class="d-none"><input type="hidden" class="value-rating-form"
+                                value="{{form.value_rating}}"></div>
                         </div>
                         <div class="col-12 justify-content-between align-items-center d-flex mb-1 flex-wrap"
                             style="font-weight: 400;">
                             <span class="col-sm-3 col-12">{{form.atmosphere_rating.label}}</span>
-                            <span class="col-sm-9 col-12">{{form.atmosphere_rating}}</span>
+                            <div class="col-sm-9 d-flex justify-content-center">
+                                <div
+                                    class="col-2 style-radio-input d-flex justify-content-center align-items-center flex-column">
+                                    <div><input class="regular-radio atmosphere-rating" type="radio" value="1" name="atmosphere_rating"></div>
+                                </div>
+                                <div
+                                    class="col-2 style-radio-input d-flex justify-content-center align-items-center flex-column">
+                                    <div><input class="regular-radio atmosphere-rating" type="radio" value="2" name="atmosphere_rating"></div>
+                                </div>
+                                <div
+                                    class="col-2 style-radio-input d-flex justify-content-center align-items-center flex-column">
+                                    <div><input class="regular-radio atmosphere-rating" type="radio" value="3" name="atmosphere_rating"></div>
+                                </div>
+                                <div
+                                    class="col-2 style-radio-input d-flex justify-content-center align-items-center flex-column">
+                                    <div><input class="regular-radio atmosphere-rating" type="radio" value="4" name="atmosphere_rating"></div>
+                                </div>
+                                <div
+                                    class="col-2 style-radio-input d-flex justify-content-center align-items-center flex-column">
+                                    <div><input class="regular-radio atmosphere-rating" type="radio" value="5" name="atmosphere_rating"></div>
+                                </div>
+
+
+
+                            </div>
+                            <div class="d-none"><input type="hidden" class="atmosphere-rating-form"
+                                value="{{form.atmosphere_rating}}"></div>
                         </div>
+                        <div class="col-12 mt-5 d-flex mb-1 align-items-center flex-wrap" style="font-weight: 400;">
+                            <span class="col-sm-3 col-12">{{form.comment.label}}</span>
+                            <span class="col-sm-9 col-12">{{form.comment}}</span>
+                        </div>
+
                         <input type="hidden" value="{{object.name}}" name='restaurant'>
                         <input type="hidden" value="{{object.slug}}" name="slug" id="">
                         <div style="padding: 0px 30px;float:right">

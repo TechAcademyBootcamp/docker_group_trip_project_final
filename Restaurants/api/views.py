@@ -13,28 +13,25 @@ def restaurants_api(request):
     radio_options = request.GET.get('option_radio_input')
     input_value = request.GET.get('find_restaurant')
     dropdown_filter = request.GET.get('restaurant_dropdown_text')
-    list_restaurants = Restaurants.objects.all()
+    list_restaurants = Restaurants.objects.filter(is_published=True)
     if input_value:
         list_restaurants  = list_restaurants.filter(Q(city__name__icontains=input_value)|Q(name__icontains=input_value))
     if checkbox_options :
         for checkbox_option in checkbox_options:
-            list_restaurants = list_restaurants.filter(is_published=True,checkbox_options__option_name=checkbox_option)
+            list_restaurants = list_restaurants.filter(checkbox_options__option_name=checkbox_option)
     if radio_options :
-        list_restaurants = list_restaurants.filter(is_published=True,radio_options__option_name=radio_options)
+        list_restaurants = list_restaurants.filter(radio_options__option_name=radio_options)
     if dropdown_filter:
         print(dropdown_filter)
         if dropdown_filter=='Newest':
-            list_restaurants = list_restaurants.filter(is_published=True).order_by('created_at')
-        elif dropdown_filter=='Highest Rated':
+            list_restaurants = list_restaurants.order_by('created_at')
+        elif dropdown_filter == 'Highest Rated':
             print('ddaa')
-            print(list_restaurants.filter(is_published=True).order_by('-overall_rating'))
-            list_restaurants = list_restaurants.filter(is_published=True).order_by('overall_rating')
-            paginator = Paginator(list_restaurants, 1)
-        else:
-            list_restaurants = list_restaurants.filter(is_published=True)
-    if not input_value and not checkbox_options and not radio_options:
-        list_restaurants = Restaurants.objects.filter(is_published=True)
+            print(list_restaurants.order_by('-overall_rating'))
+            list_restaurants = list_restaurants.order_by('-overall_rating')
+
     restaurants = list_restaurants
+    print('daddasdasdsadada',restaurants)
     serializer = RestaurantSerializer(restaurants,many=True)
     response_data = {
         'message' : 'success',

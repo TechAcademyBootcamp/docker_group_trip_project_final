@@ -117,7 +117,7 @@ $(document).ready(function () {
                     method : "GET",
                     data : all_options,
                     success: function(response) {
-                        console.log(response.restaurants.length)
+                        console.log(response)
                         let number_restaurant_in_page = 1;
                         let count_all_restaurants = response.restaurants.length;
                         if(response.restaurants.length==0){
@@ -297,33 +297,6 @@ $(document).ready(function () {
                     }
                 })
             }
-    
-    // document.querySelector('.restaurant-filter-input').addEventListener('input',function(){
-    //     var search_input = document.querySelector('.restaurant-filter-input').value;
-
-    //     $.ajax({
-    //         url : 'http://localhost:8000/api/v1.0/restaurants/search/',
-    //         method: 'GET',
-    //         data:{
-    //             'search_input':search_input
-    //         },
-    //         success: function (response) {
-    //             $('.help-list').html('')
-    //             let formDiv = $(`<div class="restaurant-advice-list"></div>`);
-               
-                
-    //             $('.help-list').append(formDiv)
-    //             if (search_input) {
-    //                 for (let restaurant of response.restaurants_query) {
-    //                     $('.restaurant-advice-list').append(`<a class="w-100" href=""><div>${restaurant.name}</div></a>`)
-    //                 }
-    //             }
-    //         },
-    //         error: function (error_response) {
-    //             console.log(error_response);
-    //         }
-    //     })
-    // })
 
     document.querySelector('.restaurant-dropdown').addEventListener('click',function(){
         if (document.querySelector('.dropdown-list').classList.contains('d-none')){

@@ -212,10 +212,10 @@ class ReviewRestaurant(models.Model):
     user = user = models.ForeignKey(User,on_delete=models.CASCADE, db_index=True, related_name='user_restaurant_review')
     restaurant = models.ForeignKey(Restaurants,on_delete=models.CASCADE, db_index=True, related_name='review_restaurant')
     comment = models.TextField('Comment')
-    food_rating = models.CharField('Food Rating',max_length=10,choices=rating_type_choice)
-    service_rating = models.CharField('Service Rating',max_length=10,choices=rating_type_choice)
-    value_rating = models.CharField('Value Rating',max_length=10,choices=rating_type_choice)
-    atmosphere_rating = models.CharField('Atmosphere Rating',max_length=10,choices=rating_type_choice)
+    food_rating = models.CharField('Food',max_length=10,choices=rating_type_choice)
+    service_rating = models.CharField('Service',max_length=10,choices=rating_type_choice)
+    value_rating = models.CharField('Value',max_length=10,choices=rating_type_choice)
+    atmosphere_rating = models.CharField('Atmosphere',max_length=10,choices=rating_type_choice)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -251,7 +251,7 @@ class ReviewRestaurant(models.Model):
         self.restaurant.save()
 
 class SavedArticleRestaurants(models.Model):
-    user = models.ForeignKey(User,on_delete=models.CASCADE, db_index=True, related_name='restaurant_saved_articles_user',)
+    user = models.ForeignKey(User,on_delete=models.CASCADE, db_index=True, related_name='restaurant_saved_articles',)
     restaurant =models.ForeignKey(Restaurants, on_delete=models.CASCADE, related_name='restaurant_saved_articles', null=True, blank=True)
     # moderations
     created_at = models.DateTimeField(auto_now_add=True)

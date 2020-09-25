@@ -33,12 +33,6 @@ class ReviewCreateView(CreateView):
     form_class = ReviewForm
     template_name = None
     http_method_names = ('post',)
-    success_url = reverse_lazy('restaurants_app:restaurants')
-
-
-    def get_success_url(self):
-        redirect_url = self.request.GET.get('redirect_url', self.success_url)
-        return redirect_url
 
     def form_valid(self, form,):
         review = form.save(commit=False)
@@ -47,9 +41,9 @@ class ReviewCreateView(CreateView):
         review.restaurant = restaurants
         review.save()
         review.save_star()
-        # ReviewRestaurant.save_star()
         messages.success(self.request, 'Comment Added')
-        return super().form_valid(form)
+        redirect_url = reverse_lazy('restaurants_app:restaurant_single_page',kwargs={'slug':restaurants.slug})
+        return redirect(redirect_url) 
 
     def form_invalid(self, form):
         messages.success(self.request, form.errors)
@@ -80,12 +74,11 @@ class SavedRestaurantListView(ListView):
     model = Restaurants
     template_name = 'saved_restaurants.html'
     context_object_name = 'restaurants_list'
+    paginate_by = 1
     def get_queryset(self, ):
         if self.request.user.is_authenticated:
             user_saved_articles_ids = self.request.user.restaurant_saved_articles.values_list('restaurant__id', flat=True)
             queryset = super().get_queryset().filter(id__in=user_saved_articles_ids)
-            print(queryset)
-            print(user_saved_articles_ids)
             return queryset
         else:
             saved_restaurants = self.request.COOKIES.get('saved_restaurants')
