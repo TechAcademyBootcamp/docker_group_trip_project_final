@@ -17,11 +17,11 @@
     <div class="row container m-auto">
         <div class="under-header-cols col-2">
             <span class="">Days</span>
-            <span>3</span>
+            <span>{{tours.trip_time_count}}</span>
         </div>
         <div class="under-header-cols col-3">
             <span>Style</span>
-            <span>Original</span>
+            <span>{{tours.id}}</span>
         </div>
         <div class="hidden-xs col-2">
 
@@ -29,19 +29,19 @@
         <div class="under-header-cols col-2">
             <span>From</span>
             <div class="for-sup">
-                <span>$ 400</span>
-                <sup>USD</sup>
+                <span>$ {{tours.price}}</span>
+                <sup>AZN</sup>
             </div>
         </div>
         <div class="under-header-cols col-3 d-md-block d-none">
-            <div class="add-wish">
+            <div onclick="save_article({{tours.id}})" class="add-wish">
                 <i class="fa fa-heart-o" style="font-size:22px"></i>
                 <span class="ml-2">Add To Wishlist</span>
             </div>
-            <a class="dates mt-1">
-                <img class="mr-2" src="{% static 'images/calendar (1).svg' %}" />
-                <span>View dates</span>
-            </a>
+            <div class="dates mt-1">
+                 <i class="fa fa-heart-o" style="font-size:22px"></i>
+                <a class="Wishlist" href="{% url 'tours:saved_wishlist' %}">Go Wishlist</a>
+            </div>
         </div>
     </div>
 </div>
@@ -105,7 +105,7 @@
             </p>
             <div class="add-wish d-md-none">
                 <i class="fa fa-heart-o" style="font-size:22px"></i>
-                <span class="ml-2">Add To Wishlist</span>
+                <span onclick="save_article({{tours.id}})" class="ml-2">Add To Wishlist</span>
             </div>
 
             <hr>
@@ -117,19 +117,19 @@
                                 <li class="nowrap">Start</li>
                                 <li class="nowrap">Finish</li>
                                 <li class="nowrap">Destiniton</li>
-                                <li class="nowrap">Style</li>
-                                <li class="nowrap">Theme
+                                {% comment %} <li class="nowrap">Style</li>
+                                <li class="nowrap">Theme {% endcomment %}
                                 </li>
                             </ul>
 
                         </div>
                         <div class="col-6">
                             <ul class="right-second-ul">
-                                <li class="nowrap">Castleton, United Kingdom</li>
-                                <li class="nowrap">Castleton, United Kingdom</li>
-                                <li class="nowrap">United Kingdom</li>
-                                <li class="nowrap">Original</li>
-                                <li class="nowrap">Intrepid Retreats
+                                <li class="nowrap">{{tours.strat}}</li>
+                                <li class="nowrap">{{tours.finish}}</li>
+                                <li class="nowrap">{{tours.trip_route}}</li>
+                                {% comment %} <li class="nowrap">Original</li>
+                                <li class="nowrap">Intrepid Retreats {% endcomment %}
                                 </li>
                             </ul>
                         </div>
@@ -165,8 +165,8 @@
                                     <img class="tour-rating"
                                         src="https://img.icons8.com/fluent-systems-regular/24/000000/hand-drawn-star--v2.png" />
                                 </li>
-                                <li>Min 15</li>
-                                <li>Min 4, Max 12</li>
+                                <li>Min {{tours.min_age}}</li>
+                                <li>Min {{tours.min_size}}, Max {{tours.max_size}}</li>
                             </ul>
                         </div>
                     </div>
@@ -176,11 +176,12 @@
             <div class="love-trip">
                 <h2>Why you'll love this trip</h2>
                 <ul class="ml-5">
+                {% for item in tours.whyyoulove.all %}
                     <li>
-                        <p>Walk the winding trails between picturesque villages and then hole up at a local pub to try a
-                            fittingly named brew from Intrepid Brewing Co.</p>
+                        <p>{{item.reasons}}.</p>
                     </li>
-                    <li>
+                    {% endfor %}
+                    {% comment %} <li>
                         <p>Treat yourself one of the town’s famous tarts or puddings in Bakewell and explore the arched
                             bridges, narrow shopping streets and stone cottages.</p>
                     </li>
@@ -191,17 +192,19 @@
                     <li>
                         <p>Enjoy the ease of leaving your walking boots at the same comfortable, conveniently located
                             accommodation each nighta</p>
-                    </li>
+                    </li> {% endcomment %}
                 </ul>
             </div>
             <div class="right-for-you" id="section1">
                 <h2>Is this trip right for you?</h2>
                 <ul class="ml-5">
+
+                    {% for item in tours.rightforyou.all %}
                     <li>
-                        <p>Walk the winding trails between picturesque villages and then hole up at a local pub to try a
-                            fittingly named brew from Intrepid Brewing Co.</p>
+                        <p>{{item.will_do}}.</p>
                     </li>
-                    <li>
+                    {% endfor %}
+                    {% comment %} <li>
                         <p>Treat yourself one of the town’s famous tarts or puddings in Bakewell and explore the arched
                             bridges, narrow shopping streets and stone cottages.</p>
                     </li>
@@ -210,7 +213,7 @@
                             of the logistics, new destinations can sometimes throw us some unexpected surprises. More
                             often than not, it’ll be a great surprise. But every now and again there might be a hiccup.
                             We like to think that’s what puts the ‘adventure’ in ‘adventure travel’.</p>
-                    </li>
+                    </li> {% endcomment %}
 
                 </ul>
             </div>
@@ -224,15 +227,12 @@
                       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                     </ol>
                     <div class="carousel-inner">
+                    {% for item in tours.tour_images.all %}
                       <div class="carousel-item active">
-                        <img src="{% static 'images/sicily-italy.jpg' %}" class="d-block w-100" alt="...">
+                        <img src="{{item.images.url}}" class="d-block w-100" alt="...">
                       </div>
-                      <div class="carousel-item">
-                        <img src="{% static 'images/sicily-italy.jpg' %}" class="d-block w-100" alt="...">
-                      </div>
-                      <div class="carousel-item">
-                        <img src="{% static 'images/sicily-italy.jpg' %}" class="d-block w-100" alt="...">
-                      </div>
+                      {% endfor %}
+                      
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -345,7 +345,8 @@
                     </div>
                     <div class="col-10">
                         <h2>Meals</h2>
-                        2 breakfasts
+                       {{tours.inclusion.meals}}
+                       
                     </div>
                 </div>
                 <div class="meals row">
@@ -354,7 +355,7 @@
                     </div>
                     <div class="col-10">
                         <h2>Trasnport</h2>
-                        Taxi , bus, Train
+                        {{tours.inclusion.transport}}
                     </div>
                 </div>
                 <div class="meals row">
@@ -364,7 +365,7 @@
                     <div class="col-10">
                         <h2>
                             Accommodation</h2>
-                        Original style bed & breakfast (2 nights)
+                        {{tours.inclusion.acommodation}}
                     </div>
                 </div>
                 <div class="meals row lastone">
@@ -374,11 +375,10 @@
                     <div class="col-10 mt-4">
                         <h2>Included activities</h2>
                         <ul>
-                            <li>Bamford - Hope Valley & Village Walk</li>
-                            <li>Bamford - Local Beer Tasting (Intrepid Explorer Pub)</li>
-                            <li>Hathersage - Hike to Bakewell</li>
-                            <li>Grindleford - Village Community Shop Drink & Snack</li>
-                            <li>Hathersage - Longshaw Estate Walk</li>
+                        {% for item in tours.inclusion.activities.all %}
+                            <li>{{item.avtivity}} cascsc</li>
+                        {% endfor %}
+                            
                         </ul>
                     </div>
                 </div>
@@ -414,19 +414,19 @@
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="col-10">
                             <h2>Meals</h2>
-                            2 breakfasts
+                            {{inclusion.meals}}
                         </div>
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="col-10">
-                            <h2>Trasnport</h2>
-                            Taxi , bus, Train
+                            <h2>Trasnportaaa</h2>
+                            {{inclusion.transport}}sdssa
                         </div>
                     </div>
                     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                         <h2>
                             Accommodation</h2>
-                        Original style bed & breakfast (2 nights)
+                        {{inclusion.acommodation}}
                     </div>
                     <div class="tab-pane fade" id="Photo" role="tabpanel" aria-labelledby="Photo-tab">
                         <h2>Included activities</h2>
@@ -441,26 +441,16 @@
                 </div>
             </div>
             <div class="important-notes mt-5" id="notes">
+                
                 <h2>Important notes</h2>
+                {% for item in tours.notes.all%}
                 <p>
-                    START & END OF TOUR
+                    {{item.title}}
                     <br>
-                    This trip starts with a group meeting at 2 pm on day 1, and ends after lunch on the final day.
-                    Please plan your arrival and departure accordingly. We are happy to book additional
-                    accommodation before or after the trip for you, subject to availability.
+                    {{item.notes}}
                 </p>
-                <p>
-                    MINIMUM NUMBERS
-                    <br>
-                    This trip requires a minimum of 4 clients booked and confirmed in order to depart.
-                </p>
-                <p>
-                    SINGLE SUPPLEMENT
-                    <br>
-                    A single supplement is bookable on this trip, subject to availability at the time of booking. If
-                    you would like to book a single supplement and enquire about availability please speak to your
-                    booking agent.
-                </p>
+                {% endfor %}
+               
             </div>
         </div>
     </div>
@@ -469,18 +459,34 @@
 
 <div class="d-md-none">
     <a class="dates-2">
-        <img class="mr-2" src="{% static 'images/calendar (1).svg' %}" />
-        <span>Go to dates</span>
+        <i class="fa fa-heart-o" style="font-size:22px"></i>
+                <a class="Wishlist" href="{% url 'tours:saved_wishlist' %}">Go Wishlist</a>
     </a>
 </div>
 
 {% include 'includes/subscribers.html' %}
 
 {% block js %}
-
-
 <script src="{% static 'js/tour-single-page.js' %}"></script>
-
+<script>
+    function save_article(tour_id){
+        $.ajax({
+            url: "{% url 'tours:save_wishlist' 12345 %}".replace('12345', tour_id),
+            method: 'GET',
+            success: function (data) {
+                show_message(data)
+            }
+        })
+        function show_message(message) {
+            var x = document.getElementById("snackbar");
+            x.innerText = message;
+            x.className = "show";
+            setTimeout(function () {
+                x.className = x.className.replace("show", "");
+            }, 3000);
+        }
+    }
+</script>
 {% endblock %}
 
 {% endblock content %}

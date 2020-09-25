@@ -1,5 +1,5 @@
 from django.contrib import admin
-from Account.models import User
+from Account.models import *
 
+# admin.site.register(Tours)
 admin.site.register(User)
-# Register your models here.

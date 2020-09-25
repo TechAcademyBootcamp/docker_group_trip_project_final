@@ -36,98 +36,36 @@
     </div>
     <div class="container m-auto mt-4 mb-4">
         <div class="row">
-            <!-- <div class="card col-md-6 col-lg-4 col-12 mt-4" style="width: 18rem;">
-                <div class="in-div">
-                    <div class="card-image">
-                        <img src="{% static 'images/sicily-italy.jpg' %}" class="card-img-top" alt="...">
-                        <div class="nese">
-                            $500
-                        </div>
-                    </div>
-
-                    <div class="card-body">
-                        <div class="first">
-
-                            <a class="change-text-color" href="">Baku</a>
-                        </div>
-                        <div class="first">
-                            <p>United State of America</p>                
-                        </div>
-                        <div class="first">
-                            <span>
-                                (Reviews)
-                            </span>
-                            <div class="stars">
-                                <img class="star" src="{% static 'images/image-2.svg' %}" alt="">
-                                <img class="star" src="{% static 'images/image-2.svg' %}" alt="">
-                                <img class="star" src="{% static 'images/image-2.svg' %}" alt="">
-                                <img class="star" src="{% static 'images/image-2.svg' %}" alt="">
-                                <img class="star" src="{% static 'images/image-2.svg' %}" alt="">
-                            </div>
-                        </div>
-                        <div class="under-div mt-3 row">
-                            <div class="col-4 under-div-indiv">
-                                <span>
-                                    5
-                                </span>
-                                <span>
-                                    Hotels
-                                </span>
-                            </div>
-                            <div class="col-4 under-div-indiv">
-                                <span>
-                                    5
-                                </span>
-                                <span>
-                                    Restaurant
-                                </span>
-                            </div>
-                            <div class="col-4 under-div-indiv">
-                                <span>
-                                    5
-                                </span>
-                                <span>
-                                    Tours
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div> -->
+          
             {% for city in cities %}
             <div class="card col-md-6 col-lg-4 col-12 mt-4" style="width: 18rem;">
                 <div class="in-div">
                     <div class="card-image">
-                        <img src="{{city.image.url}}" class="card-img-top" alt="...">
-                        <div class="nese">
-                            $500
-                        </div>
+                        <img src="{{city.main_image.url}}" class="card-img-top" alt="...">
+                        <a href="{% url 'main:city-detail' city.slug %}" class="nese">
+                            See City
+                        </a>
                     </div>
 
                     <div class="card-body">
                         <div class="first">
 
-                            <a class="change-text-color" href="">{{city.name}}</a>
+                            <a href="{% url 'main:city-detail' city.slug %}" class="change-text-color" href="">{{city.name}}</a>
                             
 
                         </div>
-                        <div class="first">
-                            <p>United State of America</p>
+                        <div class="first w-100">
+                            <p>Republic of Azerbaijan</p>
                             
                         </div>
 
                         <div class="first">
                             <span>
-                                (Reviews)
+                               
                             </span>
                             <div class="stars">
 
-                                <img class="star" src="{% static 'images/image-2.svg' %}" alt="">
-                                <img class="star" src="{% static 'images/image-2.svg' %}" alt="">
-                                <img class="star" src="{% static 'images/image-2.svg' %}" alt="">
-                                <img class="star" src="{% static 'images/image-2.svg' %}" alt="">
-                                <img class="star" src="{% static 'images/image-2.svg' %}" alt="">
+                                
 
 
                             </div>
@@ -137,7 +75,7 @@
                         <div class="under-div mt-3 row">
                             <div class="col-4 under-div-indiv">
                                 <span class="mr-2">
-                                    5
+                                    {{city.hotels.count}}
                                 </span>
                                 <span>
                                     Hotels
@@ -145,15 +83,15 @@
                             </div>
                             <div class="col-4 under-div-indiv">
                                 <span class="mr-2">
-                                    5
+                                    {{city.city_name_restaurant.count}}
                                 </span>
                                 <span>
                                     Restaurant
                                 </span>
                             </div>
-                            <div class="col-4 under-div-indiv">
+                             <div class="col-4 under-div-indiv">
                                 <span class="mr-2">
-                                    5
+                                    {{city.tours.count}}
                                 </span>
                                 <span>
                                     Tours
@@ -165,82 +103,45 @@
 
             </div>
             {% endfor %}
-            <!-- <div class="card col-md-6 col-lg-4 col-12 mt-4" style="width: 18rem;">
-                <div class="in-div">
-                    <div class="card-image">
-                        <img src="{% static 'images/sicily-italy.jpg' %}" class="card-img-top" alt="...">
-                        <div class="nese">
-                            $500
-                        </div>
-                    </div>
-
-                    <div class="card-body">
-                        <div class="first">
-
-                            <a class="change-text-color" href="">Baku</a>
-                           
-
-                        </div>
-                        <div class="first">
-                            <p>United State of America</p>
-                            
-                        </div>
-
-                        <div class="first">
-                            <span>
-                                (Reviews)
-                            </span>
-                            <div class="stars">
-
-                                <img class="star" src="{% static 'images/image-2.svg' %}" alt="">
-                                <img class="star" src="{% static 'images/image-2.svg' %}" alt="">
-                                <img class="star" src="{% static 'images/image-2.svg' %}" alt="">
-                                <img class="star" src="{% static 'images/image-2.svg' %}" alt="">
-                                <img class="star" src="{% static 'images/image-2.svg' %}" alt="">
-
-
-                            </div>
-                            
-
-                        </div>
-                        <div class="under-div mt-3 row">
-                            <div class="col-4 under-div-indiv">
-                                <span class="mr-3">
-                                    5
-                                </span>
-                                <span>
-                                    Hotels
-                                </span>
-                            </div>
-                            <div class="col-4 under-div-indiv">
-                                <span class="mr-3">
-                                    5
-                                </span>
-                                <span>
-                                    Restaurant
-                                </span>
-                            </div>
-                            <div class="col-4 under-div-indiv">
-                                <span class="mr-3">
-                                    5
-                                </span>
-                                <span>
-                                    Tours
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div> -->
+           
         </div>
 
 
     </div>
 
 </section>
-<div class="more-cities mb-5 mt-5">
-    <button class="more-cities-button">More Cties</button>
+<div class="row mt-5">
+    <div class="col text-center">
+        <div class="block-27">
+            {% if page_obj.has_previous %}
+                    <a class="prev-icon"
+                        href="?page={{ page_obj.previous_page_number }}{% if sortBy %}&sortBy={{ sortBy }}{% endif %}">
+                        <img class="previous-icon mr-2" src="{% static 'images/back.svg' %}" alt="arrow">
+                    </a>
+                {% endif %}
+                {% if page_range|length > 1 %}
+                    <div class="page-numbers">
+                        {% for page_number in page_range %}
+                            {% if page_number == page_obj.number %}
+                                <a class="active act-num mr-2">
+                                    <span>{{ page_number }}</span>
+                                </a>
+                            {% else %}
+                                <a class="page mr-2" href="?page={{ page_number }}{% if sortBy %}&sortBy={{ sortBy }}{% endif %}">
+                                    <span>{{ page_number }}</span>
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% if page_obj.has_next %}
+                    <a class="next-page ml-2"
+                        href="?page={{ page_obj.next_page_number }}{% if sortBy %}&sortBy={{ sortBy }}{% endif %}">
+                        <img src="{% static 'images/next.svg' %}" alt="arrow" class="next-icon">
+                    </a>
+                {% endif %}
+        </div>
+    </div>
 </div>
 {% include 'includes/subscribers.html' %}
-{% endblock content %}
+{% endblock  %}

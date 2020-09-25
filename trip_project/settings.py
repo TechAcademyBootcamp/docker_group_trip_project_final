@@ -17,6 +17,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -51,20 +52,54 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.sessions',
+    'django.contrib.sessions',  
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
     'ckeditor',
     'ckeditor_uploader',
     'corsheaders',
     'Hotels',
     'Main',
     'Restaurants',
+    
     'Tours',
     'Account',
     'Places',
     'django_celery_beat',
 ]
+
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '940006685302-denq7k02lpicujnguj6oh6bnrv1pp15a.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'SCT2MsHw9I28MWvLAbXDQGLx'
+
+SOCIAL_AUTH_FACEBOOK_KEY = "616088999077800"        
+SOCIAL_AUTH_FACEBOOK_SECRET = "56e7d70977075eb67c2b516571fb6c07"
+
+SOCIAL_AUTH_PIPELINE = (
+    'social_core.pipeline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid',
+    'social_core.pipeline.social_auth.social_user',
+    'social_core.pipeline.user.get_username',
+    'social_core.pipeline.social_auth.associate_by_email',
+    'social_core.pipeline.user.create_user',
+    'social_core.pipeline.social_auth.associate_user',
+    'social_core.pipeline.social_auth.load_extra_data',
+    'social_core.pipeline.user.user_details',
+)
+
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+    'fields': 'id,name,email', # needed starting from protocol v2.4
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -180,6 +215,18 @@ else:
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'static')
     ]
+
+LOGIN_URL = reverse_lazy('accounts:login')
+LOGIN_REDIRECT_URL = reverse_lazy('main:home')
+LOGOUT_REDIRECT_URL = reverse_lazy('account:login')
+
+
+GOUT_REDIRECT_URL = 'home'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'tech.academy.user2@gmail.com'
+EMAIL_HOST_PASSWORD = 'fsqcyadagqipthcz'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 MEDIA_URL = '/media/'
 

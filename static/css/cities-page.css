@@ -37,6 +37,8 @@ body{
     -moz-transition: 0.3s;
     -o-transition: 0.3s;
     transition: 0.3s;
+    color: white !important;
+    cursor: pointer;
 
 }
 .in-div:hover .card-image .nese{
@@ -131,4 +133,88 @@ body{
 }
 .in-div:hover{
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+.pagination a{
+    color: black;
+}
+.circle{
+    border-radius: 50%;
+}
+.next-icon{
+    width: 15px;
+    height: 15px;
+}
+.previous-icon{
+    width: 15px;
+    height: 15px;
+}
+.block-27{
+    display: flex;
+    justify-content: center
+    ;
+}
+.active-page{
+    background: #1F1F1F !important;
+    color: #fff !important;
+    border: 1px solid transparent !important;
+    text-align: center !important;
+    display: inline-block !important;
+    width: 40px !important;
+    height: 40px !important;
+    line-height: 40px !important;
+    border-radius: 50% !important;
+}
+.page{
+    font-size: 20px !important;
+    cursor: pointer;
+    margin: 2px;
+    color: black !important;
+}
+.act-num{
+    background-color: white !important;
+    color: black !important;
+    border-radius: 50% !important;
+    border: 1px solid black !important;
+    text-align: center !important;
+    display: inline-block !important;
+    width: 40px !important;
+    height: 40px !important;
+    line-height: 40px !important;
+    border-radius: 50% !important;
+    cursor: pointer;
+}
+.act-num:hover{
+    background-color: black !important;
+    color: white !important;
+    border-radius: 50% !important;
+    border: 1px solid transparent !important;
+    text-align: center !important;
+    display: inline-block !important;
+    width: 40px !important;
+    height: 40px !important;
+    line-height: 40px !important;
+    border-radius: 50% !important;
+}
+.page{
+    background-color: black;
+    color: white
+    text-align: center;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    border: 1px solid #E6E6E6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.page span{
+    color: white;
+}
+.page-numbers{
+    display: flex;
+}
+.block-27{
+    align-items: center;
 }

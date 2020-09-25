@@ -99,6 +99,18 @@ font-size: 36px;
   position: relative !important;
   
 }
+.main-images{
+  width: 372px;
+  height: 250px;
+}
+.city-name{
+  text-decoration: none;
+  color: white;
+}
+.city-name:hover{
+  
+  color: red;
+}
 .see-button{
   width: 125px;
   white-space: nowrap;
@@ -113,6 +125,7 @@ font-size: 36px;
   border: 1px  solid red !important;
   background-color: red !important;
   color: white !important;
+  z-index: 2000;
 }
 @media only screen and (max-width: 1400px) and (min-width: 833px) {
   .for-absolute{

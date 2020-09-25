@@ -78,6 +78,8 @@ class Restaurants(models.Model):
         ('5.0', '5.0'),
     ]
     user = models.ForeignKey(User,on_delete=models.CASCADE, db_index=True, related_name='user_restaurant')
+    
+
     name = models.CharField('Name',max_length=40)
     rating = models.CharField('Rating',max_length=10,choices=rating_type_choice)
     city = models.ForeignKey(City, on_delete = models.CASCADE,db_index=True, related_name = 'city_name_restaurant')
