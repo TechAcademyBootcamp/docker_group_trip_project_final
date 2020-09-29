@@ -132,7 +132,7 @@ class ReservePage(FormMixin,DetailView):
 
 class ReviewSendView(View):
     review_fields = ReviewFields.objects.all()
-    user = User.objects.all().first()    ####first ele
+    user = User.objects.first()    ####first ele
     context = {
         'review_fields': review_fields,
         # 'user': user,
