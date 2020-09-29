@@ -181,9 +181,14 @@
                                 </div>
                             </td>
                             <td class="border col-3">
-                                <a type="button"
-                                    href="{% url 'hotels_app:hotels-reserve' room_type.id %}?HotelId={{hotel.id}}"
-                                    class="btn btn-primary rounded-0 reserve-button">i'll reserve</a>
+                                {% if request.user.is_authenticated %}
+                                    <a type="button"
+                                        href="{% url 'hotels_app:hotels-reserve' room_type.id %}?HotelId={{hotel.id}}"
+                                        class="btn btn-primary rounded-0 reserve-button">i'll reserve</a>
+                                {% else %}
+                                    <a type="button"
+                                            href="{% url 'hotels_app:hotels' %}" class="btn btn-primary rounded-0 reserve-button">i'll reserve</a>
+                                {% endif %}
                             </td>
                             {% endfor %}
                         </tr>
@@ -301,7 +306,7 @@
 <section>
     <div class="container">
         <div class="my-3 d-flex align-items-center">
-            <i class="material-icons mx-2" style="color:red">&#xe838;</i><span class="mt-1 review-rating-count"> 5.0
+            <i class="material-icons mx-2" style="color:red">&#xe838;</i><span class="mt-1 review-rating-count"> {{medium_rating}}
                 {% review_count hotel.id as count %}
                 ({{count}} reviews)
             </span>
@@ -310,13 +315,16 @@
             {% for key,value in ratings.items %}
             <div class="col-12 col-md-6">
                 <div class="row my-2">
-                    <div class="col-6">
+                    <div class="col-3">
                         <span>{{key}}</span>
                     </div>
-                    <div class="col-6 d-flex align-items-center">
+                    <div class="col-7 align-items-center d-flex pb-2">
                         <div class="line-div">
                             <span class="line-span"></span>
                         </div>
+                    </div>
+                    <div class="col-2 d-flex align-items-center">
+                        
                         <span class="rating-count">{{value}}</span>
                     </div>
                 </div>

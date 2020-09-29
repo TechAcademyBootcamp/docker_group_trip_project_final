@@ -1,32 +1,14 @@
 from rest_framework.generics import ListAPIView
 from rest_framework.views import APIView
-from Hotels.api.serializers import HotelSerializer
-from Hotels.models import Hotel
+from Hotels.api.serializers import HotelSerializer,UserSerializer,ReservationSerializer,SavedArticleSerializer
+from Hotels.models import Hotel,Reservation,SavedArticle
+from Account.models import User
 import math
 from rest_framework.response import Response
 import requests
 import json
 
-class PhoneNumber(APIView):
-    def get(self,request):
-        data = request.GET
-        driver = data.get('driver_id')
-        phone_number = data.get('phone_number')
-        headers = {
-            'api_key': '15b056aae8c5b037ff52ffa5b6cd1180',
-            'Content-type': 'application/json'
-        }
-        driver_request = requests.get(f'http://0727-dmitrov.ligataxi.com/api/v1/drivers/{driver}/',headers=headers)
-        driver_data=driver_request.json()
-        car = driver_data.get('car')
-        text = f'За вами приедет {car} '
-        after_url = {'number':phone_number,
-                     'text':text,
-                     'sign':'Tach Taxi',
-                     'channel':'DIRECT'}
 
-        url = requests.get('https://agil.makhmudov@mail.ru:Q9BqK8I8HXoEx1hVIhcE4gRkBVa1@gate.smsaero.ru/v2/sms/send?',params=after_url)
-        print('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',url.status_code)
 
 
 class HotelListView(APIView):
@@ -75,5 +57,30 @@ class HotelListView(APIView):
         })
 
 
-
-
+class GetUserView(APIView):
+    def get(self, request):
+        data = request.GET
+        idForProfile= data.get('userId')
+        idForReservation = data.get('reservation-user-id')
+        idForHotel = data.get('hotel-user-id')
+        if idForProfile:
+            user = User.objects.filter(id=idForProfile).first()
+            serializered_user = UserSerializer(user)
+            data={
+                'user': serializered_user.data,
+            }
+        if idForReservation:
+            reservations = Reservation.objects.filter(user__id=idForReservation)
+            print(reservations)
+            serializered_reservations = ReservationSerializer(reservations,many=True)
+            data={
+                'reservations': serializered_reservations.data,
+            }
+        if idForHotel:
+            print('hereeeeeeeeee',idForHotel)
+            hotels = SavedArticle.objects.filter(user__id=idForHotel)
+            serializered_hotels = SavedArticleSerializer(hotels,many=True)
+            data={
+                'hotels': serializered_hotels.data,
+            }
+        return Response(data)
