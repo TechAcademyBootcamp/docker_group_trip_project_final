@@ -1,0 +1,30 @@
+.fa-facebook{
+
+    background-color: blue;
+    width: 40px;
+    height: 40px;
+    color: white;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+
+}
+.fa-google-plus{
+    background-color: rgb(255, 111, 0);
+    width: 40px;
+    height: 40px;
+    color: white;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+
+}
+.fa-facebook a{
+
+    text-decoration: none !important;
+}
+i{
+    text-decoration: none !important;
+}

@@ -50,6 +50,27 @@
         <h4 class="text-center p-5 content-h4">
             <span class="span-under-content">
                 <span class="content-name">
+                    Hotels
+                </span>
+            </span>
+        </h4>
+        <div class="container">
+            <div class="row align-items-center justify-content-center p-4">
+                {% for hotel in hotels %}
+                <div class="col-12 col-lg-4 mb-4 mb-lg-0">
+                    <div class="for-linear">
+                    <div class="main-image-div" style="height: 250px;">
+                        <img class="main-images w-100 h-100 rounded" src="{{hotel.main_image.url}}" alt="">
+                        <a href="{% url 'hotels_app:hotels-single' hotel.slug  %}" class="city-name">{{hotel.name}}</a>
+                    </div>
+                </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <h4 class="text-center p-5 content-h4">
+            <span class="span-under-content">
+                <span class="content-name">
                     Tours
                 </span>
             </span>
@@ -62,6 +83,27 @@
                     <div class="main-image-div" style="height: 250px;">
                         <img class="main-images w-100 h-100 rounded" src="{{tour.main_image.url}}" alt="">
                         <a href="{% url 'tours:tour-detail' tour.slug  %}" class="city-name">{{tour.name}}</a>
+                    </div>
+                </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+                <h4 class="text-center p-5 content-h4">
+            <span class="span-under-content">
+                <span class="content-name">
+                    Restaurants
+                </span>
+            </span>
+        </h4>
+        <div class="container">
+            <div class="row align-items-center justify-content-center p-4">
+                {% for restaurant in restaurants %}
+                <div class="col-12 col-lg-4 mb-4 mb-lg-0">
+                    <div class="for-linear">
+                    <div class="main-image-div" style="height: 250px;">
+                        <img class="main-images w-100 h-100 rounded" src="{{restaurant.image.url}}" alt="">
+                        <a href="{% url 'restaurants_app:restaurant_single_page' restaurant.slug  %}" class="city-name">{{restaurant.name}}</a>
                     </div>
                 </div>
                 </div>

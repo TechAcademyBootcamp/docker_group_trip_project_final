@@ -10,7 +10,7 @@
 
 <section class="header-image">
     <div class="header-text-div">
-        <h1>England Retreat: Peak District</h1>
+        <h1>Azerbaijan: Peak District</h1>
     </div>
 </section>
 <div class="under-header-div">
@@ -29,7 +29,7 @@
         <div class="under-header-cols col-2">
             <span>From</span>
             <div class="for-sup">
-                <span>$ {{tours.price}}</span>
+                <span> {{tours.price}}</span>
                 <sup>AZN</sup>
             </div>
         </div>
@@ -39,7 +39,7 @@
                 <span class="ml-2">Add To Wishlist</span>
             </div>
             <div class="dates mt-1">
-                 <i class="fa fa-heart-o" style="font-size:22px"></i>
+                <i class="fa fa-heart-o" style="font-size:22px"></i>
                 <a class="Wishlist" href="{% url 'tours:saved_wishlist' %}">Go Wishlist</a>
             </div>
         </div>
@@ -51,42 +51,42 @@
             <ul class="scroll-route">
                 <li class="li-hoverly">
                     <a class="a-hoverly " href=""><img class="svgs mr-1" src="{% static 'images/list.svg' %}" />
-                        <span>Overview</span></a>
+                        <span>Baxış</span></a>
                 </li>
                 <li class="li-hoverly">
                     <a class="a-hoverly" href="#gallery"><img class="svgs mr-1"
                             src="{% static 'images/gallery.svg' %}" />
-                        <span>Gallery</span></a>
+                        <span>Qaleriya</span></a>
                 </li>
                 <li class="li-hoverly">
                     <a class="a-hoverly" href="#itinerary"><img class="svgs mr-1"
                             src="{% static 'images/tour.svg' %}" />
-                        <span>Itinerary</span></a>
+                        <span>Səyahət planı</span></a>
                 </li>
                 <li class="li-hoverly">
                     <a class="a-hoverly" href="#inclusion"><img class="svgs mr-1"
                             src="{% static 'images/tick.svg' %}" />
-                        <span>Inclusion</span></a>
+                        <span>Əhatə olunanlar</span></a>
                 </li>
-                <li class="li-hoverly">
+                <!-- <li class="li-hoverly">
                     <a class="a-hoverly" href="#dates"><img class="svgs mr-1"
                             src="{% static 'images/calendar (1).svg' %}" />
                         <span>Dates & availabity</span>
                     </a>
-                </li>
+                </li> -->
                 <li class="li-hoverly">
                     <a class="a-hoverly" href="#notes"><img class="svgs mr-1" src="{% static 'images/note.svg' %}" />
-                        <span>Important notes</span> </a>
+                        <span>Əsas qeydlər</span> </a>
                 </li>
                 <li class="li-hoverly">
                     <a class="a-hoverly" href="#info">
                         <img class="svgs mr-1" src="{% static 'images/newsletter.svg' %}" />
-                        <span>Essential trip information</span>
+                        <span>Tur haqqında</span>
                     </a>
                 </li>
                 <li class="li-hoverly">
                     <a class="a-hoverly " href="#reviews"><img class="svgs mr-1" src="{% static 'images/star.svg' %}" />
-                        <span>Reviews</span></a>
+                        <span>Şərhlər</span></a>
                 </li>
             </ul>
         </section>
@@ -174,9 +174,9 @@
             </div>
             <hr>
             <div class="love-trip">
-                <h2>Why you'll love this trip</h2>
+                <h2>Üstünlüklərimiz</h2>
                 <ul class="ml-5">
-                {% for item in tours.whyyoulove.all %}
+                    {% for item in tours.whyyoulove.all %}
                     <li>
                         <p>{{item.reasons}}.</p>
                     </li>
@@ -196,7 +196,7 @@
                 </ul>
             </div>
             <div class="right-for-you" id="section1">
-                <h2>Is this trip right for you?</h2>
+                <h2>Sizin üçün uyğundurmu?</h2>
                 <ul class="ml-5">
 
                     {% for item in tours.rightforyou.all %}
@@ -217,32 +217,32 @@
 
                 </ul>
             </div>
-            
+
             <div class="gallery">
-                <h2>Gallery</h2>
+                <h2>Qaleriya</h2>
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
-                      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                     </ol>
                     <div class="carousel-inner">
-                    {% for item in tours.tour_images.all %}
-                      <div class="carousel-item active">
-                        <img src="{{item.images.url}}" class="d-block w-100" alt="...">
-                      </div>
-                      {% endfor %}
-                      
+                        {% for item in tours.tour_images.all %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <img src="{{item.images.url}}" class="d-block w-100" alt="...">
+                        </div>
+                        {% endfor %}
+
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Previous</span>
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
                     </a>
                     <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Next</span>
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
                     </a>
-                  </div>
+                </div>
             </div>
 
             <div class="collapse mt-5">
@@ -336,7 +336,7 @@
             </div>
             <div class="inclusion mt-5 d-md-block d-none" id="inclusion">
 
-                <h2 class="">Inclusions</h2>
+                <h2 class="">Əhatə olunanlar</h2>
 
                 <div class="meals row">
                     <div class="col-2">
@@ -344,9 +344,9 @@
                             src="https://img.icons8.com/ios-filled/50/000000/restaurant--v1.png" />
                     </div>
                     <div class="col-10">
-                        <h2>Meals</h2>
-                       {{tours.inclusion.meals}}
-                       
+                        <h2>Yeməklər</h2>
+                        {{tours.inclusion.meals}}
+
                     </div>
                 </div>
                 <div class="meals row">
@@ -354,7 +354,7 @@
                         <img src="https://img.icons8.com/material-rounded/50/000000/train.png" />
                     </div>
                     <div class="col-10">
-                        <h2>Trasnport</h2>
+                        <h2>Nəqliyyat</h2>
                         {{tours.inclusion.transport}}
                     </div>
                 </div>
@@ -364,7 +364,7 @@
                     </div>
                     <div class="col-10">
                         <h2>
-                            Accommodation</h2>
+                            Qonaqlama</h2>
                         {{tours.inclusion.acommodation}}
                     </div>
                 </div>
@@ -373,12 +373,12 @@
                         <img src="https://img.icons8.com/ios-filled/50/000000/unsplash.png" />
                     </div>
                     <div class="col-10 mt-4">
-                        <h2>Included activities</h2>
+                        <h2>Daxil olan əyləncələr</h2>
                         <ul>
-                        {% for item in tours.inclusion.activities.all %}
+                            {% for item in tours.inclusion.activities.all %}
                             <li>{{item.avtivity}} cascsc</li>
-                        {% endfor %}
-                            
+                            {% endfor %}
+
                         </ul>
                     </div>
                 </div>
@@ -413,23 +413,23 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="col-10">
-                            <h2>Meals</h2>
+                            <h2>Yeməklər</h2>
                             {{inclusion.meals}}
                         </div>
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="col-10">
-                            <h2>Trasnportaaa</h2>
+                            <h2>Nəqliyyat</h2>
                             {{inclusion.transport}}sdssa
                         </div>
                     </div>
                     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                         <h2>
-                            Accommodation</h2>
+                            Qonaqlama</h2>
                         {{inclusion.acommodation}}
                     </div>
                     <div class="tab-pane fade" id="Photo" role="tabpanel" aria-labelledby="Photo-tab">
-                        <h2>Included activities</h2>
+                        <h2>Daxil olan əyləncələr</h2>
                         <ul>
                             <li>Bamford - Hope Valley & Village Walk</li>
                             <li>Bamford - Local Beer Tasting (Intrepid Explorer Pub)</li>
@@ -440,9 +440,11 @@
                     </div>
                 </div>
             </div>
+
+
             <div class="important-notes mt-5" id="notes">
-                
-                <h2>Important notes</h2>
+
+                <h2>Əsas qeydlər</h2>
                 {% for item in tours.notes.all%}
                 <p>
                     {{item.title}}
@@ -450,18 +452,20 @@
                     {{item.notes}}
                 </p>
                 {% endfor %}
-               
+
             </div>
         </div>
     </div>
 </section>
 
 
-<div class="d-md-none">
-    <a class="dates-2">
-        <i class="fa fa-heart-o" style="font-size:22px"></i>
-                <a class="Wishlist" href="{% url 'tours:saved_wishlist' %}">Go Wishlist</a>
-    </a>
+<div class="d-md-none d-block">
+    <div class="dates-2">
+        <a>
+            <i class="fa fa-heart-o" style="font-size:22px; color:white"></i>
+            <a class="Wishlist" href="{% url 'tours:saved_wishlist' %}">Go Wishlist</a>
+        </a>
+    </div>
 </div>
 
 {% include 'includes/subscribers.html' %}
@@ -469,7 +473,7 @@
 {% block js %}
 <script src="{% static 'js/tour-single-page.js' %}"></script>
 <script>
-    function save_article(tour_id){
+    function save_article(tour_id) {
         $.ajax({
             url: "{% url 'tours:save_wishlist' 12345 %}".replace('12345', tour_id),
             method: 'GET',
@@ -477,6 +481,7 @@
                 show_message(data)
             }
         })
+
         function show_message(message) {
             var x = document.getElementById("snackbar");
             x.innerText = message;

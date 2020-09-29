@@ -22,9 +22,9 @@ urlpatterns = [
     path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
     path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS
     path('admin/', admin.site.urls),
+    path('account/',include('Account.urls', namespace='account')),
     path('',include('Main.urls',namespace='main')),
     path('tours/',include('Tours.urls', namespace='tours')),
-    path('account/',include('Account.urls', namespace='account')),
     path('api/v1.0/',include('Main.api.urls',namespace='api_main')),
     path('hotels/',include('Hotels.urls',namespace='hotels_app')),
     path('', include('social_django.urls', namespace="social")),

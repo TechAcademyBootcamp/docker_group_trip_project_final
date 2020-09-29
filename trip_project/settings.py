@@ -59,12 +59,12 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'corsheaders',
+    'Account',
     'Hotels',
     'Main',
     'Restaurants',
     
     'Tours',
-    'Account',
     'Places',
     'django_celery_beat',
 ]

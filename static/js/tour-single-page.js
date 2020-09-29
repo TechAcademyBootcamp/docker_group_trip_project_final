@@ -103,29 +103,4 @@ $(document).ready(function () {
         document.querySelector('.collapseall').classList.remove('collapseall');
     };
 
-
-
-
-    // var headerOne = document.querySelectorAll('.collapse-head')
-    // headerOne.forEach((e) => {
-    //     e.addEventListener("click", function () {
-
-    //         console.log(this);
-
-    //         if (this.closest('.card').querySelector('.collapse').classList.contains('show')) {
-    //             console.log('here')
-    //             this.style.backgroundColor = "#ededed";
-
-
-
-    //         } else {
-    //             this.style.backgroundColor = "#2b3945";
-    //         }
-    //     });
-    // })
-
-
-
-
-
 });

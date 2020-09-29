@@ -55,7 +55,18 @@ class City(models.Model):
     def get_absolute_url(self):
         return reverse_lazy('main:city-detail', kwargs={'slug': self.slug})
 
+
+class CityImages(models.Model):
+
+    # relations
+    city  = models.ForeignKey(City, on_delete=models.CASCADE , db_index=True , related_name="city_images")
+
+    images = models.ImageField('Images' , upload_to="images/city/cityimages")
     
+
+    # moderations
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 class Places(models.Model):
     #relations

@@ -10,7 +10,7 @@ from django.core.paginator import Paginator
 class ToursPage(ListView):
     model = Tours
     template_name = 'tourspage.html'
-    paginate_by = 1
+    paginate_by = 3
     def get_context_data(self,*args , **kwargs):
         page = self.request.GET.get('page', 1) if self.request.GET.get('page', 1) != '' else 1
         data = self.get_queryset()
@@ -46,7 +46,7 @@ class SavedTourView(View):
             response = HttpResponse(message)
         else:
             saved_tours = self.request.COOKIES.get('saved_tours', '')
-            if str(tour_id) not in saved_tour.split(';'):
+            if str(tour_id) not in saved_tours.split(';'):
                 saved_tours += str(tour_id) + ";"
             response = HttpResponse(message)
             response.set_cookie('saved_tours', saved_tours)
@@ -66,7 +66,7 @@ class SavedTourListView(ListView):
             return queryset
         else:
             saved_tours = self.request.COOKIES.get('saved_tours')
-            if saved_hotels:
+            if saved_tours:
                 saved_tours_ids = [int(id) for id in saved_tours.split(';') if id and id != 0]
                 queryset = super().get_queryset()
                 return queryset.filter(id__in=saved_tours_ids)

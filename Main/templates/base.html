@@ -48,6 +48,29 @@
     <link rel="stylesheet" href="{% static 'css/gallery.css' %}">
     <link rel="stylesheet" href="{% static 'css/pignose.calendar.css' %}">
     <link rel="stylesheet" href="{% static 'css/single_page.css' %}">
+
+    
+    
+    {% block css %}
+
+    {% endblock %}
+</head>
+
+<body>
+    <div class="site-wrap">
+    {% include 'includes/navbar.html' %}
+    
+    {% block content %}
+
+    {% endblock %}
+
+    
+    {% include 'includes/footer.html' %}
+</div>
+<div id="snackbar">Some text some message..</div>
+
+
+
     <script src="//cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.4/hammer.min.js"></script>
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
@@ -78,27 +101,6 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
         crossorigin="anonymous"></script>
-    
-    
-    {% block css %}
-
-    {% endblock %}
-</head>
-
-<body>
-    <div class="site-wrap">
-    {% include 'includes/navbar.html' %}
-    
-    {% block content %}
-
-    {% endblock %}
-
-    
-    {% include 'includes/footer.html' %}
-</div>
-<div id="snackbar">Some text some message..</div>
-
-
 
     <script>
 

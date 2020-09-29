@@ -132,10 +132,10 @@ class ReservePage(FormMixin,DetailView):
 
 class ReviewSendView(View):
     review_fields = ReviewFields.objects.all()
-    user = User.objects.all()[0]
+    user = User.objects.all().first()    ####first ele
     context = {
         'review_fields': review_fields,
-        'user': user,
+        # 'user': user,
     }
     def get(self,request):
         reservation = Reservation.objects.filter(pk=request.GET.get('reservation_id')).first()

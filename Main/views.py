@@ -90,7 +90,7 @@ class CitySinglePage(DetailView):
 class CitiesPage(ListView):
     model = City
     template_name = 'cities-page.html'
-    paginate_by = 1
+    paginate_by = 3
     context_object_name = 'cities'
 
     

@@ -44,6 +44,11 @@ body {
 }
 .main-image-div:hover + .city-name{
   color: red;
+  background: #1EC6B6;
+  /* background-color: white; */
+}
+/* .city-name:hover{
+  background: #1EC6B6; */
 }
 
 

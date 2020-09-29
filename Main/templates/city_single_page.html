@@ -3,6 +3,7 @@
 
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/citysinglepage.css' %}">
+
 {% endblock %}
 
 {% block content %}
@@ -20,43 +21,36 @@
     </div>
 </section> {% endcomment %}
 <section class="destinition-carousel mt-5 mb-5">
-    <h4 class="text-center p-3 content-h4">
-        <span class="span-under-content">
+    <!-- <h4 class="text-center p-3 content-h4"> -->
+        <!-- <span class="span-under-content">
             <span class="content-name">
                 Most Popular Destinitions
             </span>
-        </span>
-    </h4>
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="for-relative">
-                    {% for places in city.places.all %}
-                    <img class="d-block w-100" src="{{city.image.url}}" alt="Third slide">
-                    <div class="for-absolute">
-                        <div class="description d-none d-md-block">
-                            {{city.description}}
-                        </div>
-                        <a href=" class="see-button">
-                            See Destinition
-                        </a>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-            
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+        </span> -->
+   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+  {% for places in city.city_images.all %}
+
+    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+      <img src="{{places.images.url}}" class="d-block w-100 karusel" alt="...">
     </div>
+    {% endfor %}
+    
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 </section>
 
+                    
+                   
+                    
 
 <section>
     <div class="container-fluid">
@@ -76,7 +70,7 @@
                         <img class="main-images w-100"
                             src="{{city.main_image.url}}"
                             alt="">
-                        <a href="{% url 'hotels_app:hotels' city.slug  %}" class="city-name">{{city.name}}</a>
+                        <a href="{% url 'hotels_app:hotels-single' city.slug  %}" class="city-name">{{city.name}}</a>
                     </div>
                 </div>
                 {% endfor %}
@@ -140,6 +134,9 @@
 
             </div>
         </div>
+
+
+        
 </section>
 {% include 'includes/subscribers.html' %}
 {% endblock  %}

@@ -104,7 +104,7 @@ font-size: 36px;
   height: 250px;
 }
 .city-name{
-  text-decoration: none;
+  /* text-decoration: none; */
   color: white;
 }
 .city-name:hover{
@@ -157,4 +157,11 @@ font-size: 36px;
 .description{
   text-align: center;
   color: white ;
+}
+.karusel{
+  height: 470px;
+  width: 100%;
+}
+.main-image-div a{
+  text-decoration: none;
 }

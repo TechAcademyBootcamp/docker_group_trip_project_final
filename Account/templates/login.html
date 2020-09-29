@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %} Login {% endblock %}
-
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
 {% block content %}
 <section class="ftco-section contact-section register">
         <div class="container">
@@ -24,9 +26,9 @@
                         <div class="form-group">
                             <a href="" class="">Don't have an account? Sign up</a>
                         </div>
-			 <div class="form-group center">
+			             <div class="form-group center d-flex">
                             <a href="{% url 'social:begin' 'facebook' %}" class="social"><i class="fa fa-facebook social-login fb-color"></i></a>
-                            <a href="{% url 'social:begin' 'google-oauth2' %}" class="social"><i class="fa fa-google-plus social-login google-color"></i></a>
+                            <a href="{% url 'social:begin' 'google-oauth2' %}" class="social"><i class="fa fa-google-plus social-login google-color ml-3"></i></a>
                         </div>
                     </form>
 
