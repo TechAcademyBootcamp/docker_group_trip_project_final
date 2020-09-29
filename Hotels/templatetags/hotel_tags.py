@@ -26,6 +26,10 @@ def review_count(hotel_id):
 
 @register.simple_tag
 def reviews(hotel_id):
-    reviews = Reviews.objects.filter(reservation__hotel__pk=hotel_id)[:4]
+    review_count=Reviews.objects.filter(reservation__hotel__pk=hotel_id).count()
+    if review_count >= 4:
+        reviews = Reviews.objects.filter(reservation__hotel__pk=hotel_id)[review_count-4:review_count]
+    else:
+        reviews=Reviews.objects.filter(reservation__hotel__pk=hotel_id)
     print(reviews)
     return reviews

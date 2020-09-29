@@ -239,3 +239,6 @@ class SavedArticle(models.Model):
 
     def __str__(self):
         return f"{self.user} hotel: {self.hotel.name}"
+
+    def get_absolute_url(self):
+        return reverse_lazy('hotels_app:hotels-single',kwargs={'slug':self.hotel.slug})

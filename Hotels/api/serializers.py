@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from Hotels.models import Hotel,RoomTypeBeds,HotelAmenities,RoomType,HotelImages,ReviewFields,\
-    ReviewRating,Reservation,Reviews,Policies,PoliciesSubFeatures
+    ReviewRating,Reservation,Reviews,Policies,PoliciesSubFeatures,SavedArticle
 from Account.models import User
 from Main.api.serializers import CitySerializer
 
@@ -66,7 +66,8 @@ class HotelSerializer(serializers.ModelSerializer):
     review_fields=ReviewFieldSerializer(many=True)
     class Meta:
         model = Hotel
-        fields = ('name',
+        fields = ('id',
+                  'name',
                   'name_description',
                   'short_description',
                   'long_description',
@@ -107,7 +108,9 @@ class ReservationSerializer(serializers.ModelSerializer):
     hotel = HotelSerializer()
     class Meta:
         model = Reservation
-        fields = ('reservation_time',
+        fields = (
+                  'reservation_start_date',
+                  'reservation_fin_date',
                   'price',
                   'note',
                   'day_count',
@@ -126,3 +129,17 @@ class ReviewSerializer(serializers.ModelSerializer):
                   'review_rating',
                   'created_at',)
 
+class SavedArticleSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
+    hotel= HotelSerializer()
+    class Meta:
+        model = SavedArticle
+        fields = ('user',
+                  'hotel',
+                  'created_at',
+                  'updated_at',)
+
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        data["my_url"] = instance.get_absolute_url()
+        return data

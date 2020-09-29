@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect,get_object_or_404
-from django.views.generic import ListView,CreateView,DetailView,View
+from django.views.generic import ListView,CreateView,DetailView,View,TemplateView,DeleteView
 from Hotels.models import Hotel,HotelAmenities,PoliciesSubFeatures,RoomAmenities,Reservation,RoomType,Policies,Reviews,ReviewFields,ReviewRating,\
     HotelImages,SavedArticle
+from django.db.models import Sum
 from Account.models import User
 from django.urls import reverse_lazy
 from django.views.generic.edit import FormMixin
@@ -11,9 +12,9 @@ import stripe
 from django.core.paginator import Paginator
 from django.contrib import messages
 from datetime import date,timedelta
-from Hotels.tasks import send_at_time
-from django.http import HttpResponse
-
+# from Hotels.tasks import send_at_time
+from Hotels.tasks import send_email_to_users
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -53,6 +54,8 @@ class HotelsSinglePage(DetailView):
 
     def get_context_data(self, **kwargs):
         allRatingsForHotel = ReviewRating.objects.filter(hotel=self.get_object().pk)
+        rating_count=allRatingsForHotel.count()
+        sum = ReviewRating.objects.filter(hotel=self.get_object().pk).aggregate(Sum('rating_point'))['rating_point__sum']
         ratings = {
         }
         count=0
@@ -68,16 +71,19 @@ class HotelsSinglePage(DetailView):
             ratings[key]=float( '%.1f'%((value/delivery_count)))
         context = super(HotelsSinglePage, self).get_context_data(**kwargs)
         hotelImages=HotelImages.objects.filter(hotel__id=self.get_object().pk)[:3]
+        if rating_count == 0 :
+            context['medium_rating'] = 5
+        else:
+            context['medium_rating']=float('%.1f'%((sum/rating_count)))
+
         context['images']=hotelImages
         context['ratings']=ratings
         hotels = Hotel.objects.all()[:4]
         context['nearest_hotels'] = hotels
         policies = Policies.objects.all()
         context['policyy']=policies
-        reviews = Reviews.objects.all()[:4]
-        context['reviews'] = reviews
+        count_of_review = Reviews.objects.all().count()
         context['review_count']=Reviews.objects.filter(reservation__hotel__id=self.get_object().pk).count()
-        # context['review_fields']=ReviewFields.objects.all()
         return context
 
 
@@ -88,61 +94,72 @@ class ReservePage(FormMixin,DetailView):
 
     def post(self,request, *args, **kwargs):
         if request.method == 'POST':
-            print('helllllllllllllooooooooooooooo')
-            token = request.POST.get('stripeToken', False)
-            if token:
-                customer = stripe.Customer.create(
-                    email=request.user.email,
-                    name=request.user.username,
-                    source=token
-                )
-                charge = stripe.Charge.create(
-                    customer=customer,
-                    amount=16000,
-                    currency='usd',
-                    description='Example charge',
-                )
-                start_date=request.GET.get('first_date',date.today())
-                fin_date=request.GET.get('second_date',date.today()+timedelta(1))
-                day_count = request.GET.get('total_days',1)
-                hotel = Hotel.objects.filter(id=request.GET.get('HotelId')).first()
-                price = (int(self.get_object().price)*int(day_count))
-                reservation = Reservation.objects.create(
-                    reservation_start_date=start_date,
-                    reservation_fin_date=fin_date,
-                    price=float(price),
-                    day_count=day_count,
-                    room_type=self.get_object(),
-                    user=request.user,
-                    hotel=hotel,
-                )
-                messages.success(request, 'Paid successfull!')
-                url=f"{self.request.get_host()}{reverse_lazy('hotels_app:hotels-reviews')}"
-                send_at_time(request.user.email, reservation.id, url, fin_date)
-                return redirect(reverse_lazy('hotels_app:hotels'))
+            if request.user.is_authenticated:
+                token = request.POST.get('stripeToken', False)
+                if token:
+                    customer = stripe.Customer.create(
+                        email=request.user.email,
+                        name=request.user.username,
+                        source=token
+                    )
+                    charge = stripe.Charge.create(
+                        customer=customer,
+                        amount=16000,
+                        currency='usd',
+                        description='Example charge',
+                    )
+                    start_date=request.GET.get('first_date',date.today())
+                    fin_date=request.GET.get('second_date',date.today()+timedelta(1))
+                    day_count = request.GET.get('total_days',1)
+                    hotel = Hotel.objects.filter(id=request.GET.get('HotelId')).first()
+                    price = (int(self.get_object().price)*int(day_count))
+                    reservation = Reservation.objects.create(
+                        reservation_start_date=start_date,
+                        reservation_fin_date=fin_date,
+                        price=float(price),
+                        day_count=day_count,
+                        room_type=self.get_object(),
+                        user=request.user,
+                        hotel=hotel,
+                    )
+                    messages.success(request, 'Paid successfull!')
+                    url=f"{self.request.get_host()}{reverse_lazy('hotels_app:hotels-reviews')}"
+                    # send_at_time(request.user.email, reservation.id, url, fin_date)
+                    send_email_to_users(request.user.email, reservation.id, url)
+                    return redirect(reverse_lazy('hotels_app:after_payment'))
         messages.success(request, 'Token not found!')
         return redirect(reverse_lazy('hotels_app:hotels'))
 
     def get_context_data(self, **kwargs):
-        context = super(FormMixin,self).get_context_data(**kwargs)
-        hotel = Hotel.objects.filter(pk=self.request.GET.get('HotelId')).first()
-        context['hotel'] = hotel
-        return context
-
+        if self.request.user.is_authenticated:
+            context = super(FormMixin,self).get_context_data(**kwargs)
+            hotel = Hotel.objects.filter(pk=self.request.GET.get('HotelId')).first()
+            context['hotel'] = hotel
+            return context
+        context = super(FormMixin, self).get_context_data(**kwargs)
+        context['message']='User is not authenticated'
+        return redirect(reverse_lazy('hotels_app:after_payment'))
 
 class ReviewSendView(View):
-    review_fields = ReviewFields.objects.all()
-    user = User.objects.all()[0]
-    context = {
-        'review_fields': review_fields,
-        'user': user,
-    }
+
     def get(self,request):
+        review_fields = ReviewFields.objects.all()
         reservation = Reservation.objects.filter(pk=request.GET.get('reservation_id')).first()
-        self.context['reservation']=reservation
-        return render(request, 'review.html', self.context)
+        context={
+            'reservation':reservation,
+            'review_fields':review_fields,
+        }
+        return render(request, 'review.html', context)
 
     def post(self, request, *args, **kwargs):
+        review_fields = ReviewFields.objects.all()
+        user = self.request.user
+        message = ['Thank you for your review.']
+        context = {
+            'review_fields': review_fields,
+            'user': user,
+            'messages': message,
+        }
         reviewFields = ReviewFields.objects.all()
         for key, value in request.POST.items():
             if reviewFields.filter(title=key):
@@ -159,7 +176,7 @@ class ReviewSendView(View):
             reservation=my_reservation
         )
         review.save()
-        return render(request,'review.html',self.context)
+        return render(request,'after_payment.html',context)
 
 class SavedHotelView(View):
     def get(self,*args,**kwargs):
@@ -200,5 +217,32 @@ class SavedHotelListView(ListView):
                 return queryset.filter(id__in=saved_hotel_ids)
             return None
 
+class AfterPaymentView(TemplateView):
+    template_name = 'after_payment.html'
+
+# class DeleteHotelFromWishlist(DeleteView):
+#     success_url = reverse_lazy('hotels_app:saved_hotels')
+#     def get(self,*args,**kwargs):
+#        return self.delete(*args,**kwargs)
 
 
+class DeleteHotelFromWishlist(DeleteView):
+    model = SavedArticle
+    success_url = reverse_lazy('hotels_app:saved_hotels')
+    http_method_names = ('get',)
+
+    def get(self,request,*args,**kwargs):
+        return self.post(request,*args,**kwargs)
+
+    def post(self, request, *args, **kwargs):
+        return self.delete(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        """
+        Call the delete() method on the fetched object and then redirect to the
+        success URL.
+        """
+        self.object = SavedArticle.objects.filter(hotel__id=kwargs.get('pk'))
+        success_url = reverse_lazy('hotels_app:saved_hotels')
+        self.object.delete()
+        return redirect(success_url)

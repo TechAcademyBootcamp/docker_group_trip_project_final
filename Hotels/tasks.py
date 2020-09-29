@@ -9,13 +9,12 @@ from django.conf import settings
 import datetime
 import dateutil.parser
 
-@shared_task
-def send_at_time(email,id,url,fin_date):
-    send_email_to_users.apply_async((email,id,url),eta=fin_date)
+# @shared_task
+# def send_at_time(email,id,url,fin_date):
+#     send_email_to_users.apply_async((email,id,url),eta=fin_date)
 
 @shared_task
 def send_email_to_users(email,id,url):
-    # reservation = Reservation.objects.filter(pk=id).first()
     template_name = 'send_template.html'
     context ={
         'url':url,
